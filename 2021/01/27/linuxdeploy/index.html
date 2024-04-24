@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="google play可以直接获取并下载Google Play APK的镜像站Google Play官网：https:&#x2F;&#x2F;play.google.com&#x2F;store 1、可以直接搜索应用名并下载的，但需要爬Qhttp:&#x2F;&#x2F;apkleecher.com&#x2F;http:&#x2F;&#x2F;apk-dl.com&#x2F;https:&#x2F;&#x2F;apkpure.com&#x2F;2、需要输入Google Play链接或者包名http:&#x2F;&#x2F;www.ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux deploy">
+<meta property="og:url" content="http://example.com/2021/01/27/linuxdeploy/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="google play可以直接获取并下载Google Play APK的镜像站Google Play官网：https:&#x2F;&#x2F;play.google.com&#x2F;store 1、可以直接搜索应用名并下载的，但需要爬Qhttp:&#x2F;&#x2F;apkleecher.com&#x2F;http:&#x2F;&#x2F;apk-dl.com&#x2F;https:&#x2F;&#x2F;apkpure.com&#x2F;2、需要输入Google Play链接或者包名http:&#x2F;&#x2F;www.ap">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-26T16:00:01.000Z">
+<meta property="article:modified_time" content="2024-04-02T09:09:28.510Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/01/27/linuxdeploy/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>linux deploy | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-clock">
+
+    <a href="/clock/" rel="section"><i class="fas fa-clock fa-fw"></i>clock</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/27/linuxdeploy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux deploy
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-01-27 00:00:01" itemprop="dateCreated datePublished" datetime="2021-01-27T00:00:01+08:00">2021-01-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-04-02 17:09:28" itemprop="dateModified" datetime="2024-04-02T17:09:28+08:00">2024-04-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="google-play"><a href="#google-play" class="headerlink" title="google play"></a>google play</h3><p>可以直接获取并下载Google Play APK的镜像站<br>Google Play官网：<a target="_blank" rel="noopener" href="https://play.google.com/store">https://play.google.com/store</a></p>
+<p>1、可以直接搜索应用名并下载的，但需要爬Q<br><a target="_blank" rel="noopener" href="http://apkleecher.com/">http://apkleecher.com/</a><br><a target="_blank" rel="noopener" href="http://apk-dl.com/">http://apk-dl.com/</a><br><a target="_blank" rel="noopener" href="https://apkpure.com/">https://apkpure.com/</a><br>2、需要输入Google Play链接或者包名<br><a target="_blank" rel="noopener" href="http://www.apksmart.com/">http://www.apksmart.com/</a><br><a target="_blank" rel="noopener" href="https://tingyuan.me/apkdownload/">https://tingyuan.me/apkdownload/</a><br><a target="_blank" rel="noopener" href="https://androidappsapk.co/apkdownloader/">https://androidappsapk.co/apkdownloader/</a></p>
+<h3 id="旧手机"><a href="#旧手机" class="headerlink" title="旧手机"></a>旧手机</h3><p>新手机建议安装Termux终端模拟，这里针对破铜烂铁,决定废物利用下，拿来安装inux deploy，当作VPS用，安装 fr，clash，nginx，hexo博客等。<br>屏幕大的的就安装spacedesk当作电脑副屏。<br>打扫卫生发现家里有一堆旧手机,性能排列如下：</p>
+<table>
+<thead>
+<tr>
+<th>手机型号</th>
+<th>CPU</th>
+<th>架构</th>
+<th>指令集</th>
+<th>内存</th>
+<th>系统版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S7edge</td>
+<td>骁龙820</td>
+<td>Kryo</td>
+<td>ARMv8</td>
+<td>4+32</td>
+<td>android9.0</td>
+</tr>
+<tr>
+<td>红米5A</td>
+<td>骁龙425</td>
+<td>A53</td>
+<td>ARMv8</td>
+<td>3+32</td>
+<td>android8.1</td>
+</tr>
+<tr>
+<td>坚果</td>
+<td>骁龙615</td>
+<td>A53</td>
+<td>ARMv8</td>
+<td>2+16</td>
+<td>android8.1</td>
+</tr>
+<tr>
+<td>魅蓝metal</td>
+<td>MT6795</td>
+<td>A53</td>
+<td>ARMv8</td>
+<td>2+16</td>
+<td>android5.1</td>
+</tr>
+<tr>
+<td>魅蓝2</td>
+<td>MT6735</td>
+<td>A53</td>
+<td>ARMv8</td>
+<td>2+16</td>
+<td>android5.1</td>
+</tr>
+<tr>
+<td>大神F1</td>
+<td>MT6592</td>
+<td>A7</td>
+<td>ARMv7</td>
+<td>2+8</td>
+<td>android4.4</td>
+</tr>
+<tr>
+<td>红米NOTE</td>
+<td>骁龙400</td>
+<td>A7</td>
+<td>ARMv7</td>
+<td>2+8</td>
+<td>android4.4</td>
+</tr>
+<tr>
+<td>三星8268</td>
+<td>samsung</td>
+<td>A7</td>
+<td>ARMv7</td>
+<td>1+4</td>
+<td>android4.1</td>
+</tr>
+</tbody></table>
+<p>参考手机性能天梯图：<a target="_blank" rel="noopener" href="https://www.mydrivers.com/zhuanti/tianti/01/">https://www.mydrivers.com/zhuanti/tianti/01/</a></p>
+<h4 id="Android各版本和Linux版本对应关系"><a href="#Android各版本和Linux版本对应关系" class="headerlink" title="Android各版本和Linux版本对应关系"></a>Android各版本和Linux版本对应关系</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Android Version    |API Level  |Linux Kernel in AOSP</span><br><span class="line">----------------------------------------------------</span><br><span class="line">1.5   Cupcake      |3          |2.6.27</span><br><span class="line">1.6   Donut        |4          |2.6.29</span><br><span class="line">2.0/1 Eclair       |5-7        |2.6.29</span><br><span class="line">2.2.x Froyo        |8          |2.6.32</span><br><span class="line">2.3.x Gingerbread  |9, 10      |2.6.35</span><br><span class="line">3.x.x Honeycomb    |11-13      |2.6.36</span><br><span class="line">4.0.x Ice Cream San|14, 15     |3.0.1</span><br><span class="line">4.1.x Jelly Bean   |16         |3.0.31</span><br><span class="line">4.2.x Jelly Bean   |17         |3.4.0</span><br><span class="line">4.3   Jelly Bean   |18         |3.4.39</span><br><span class="line">4.4   Kit Kat      |19, 20     |3.10</span><br><span class="line">5.x   Lollipop     |21, 22     |3.16.1</span><br><span class="line">6.0   Marshmallow  |23         |3.18.10</span><br><span class="line">7.0   Nougat       |24         |4.4.1</span><br><span class="line">7.1   Nougat       |25         |4.4.1</span><br><span class="line">8.0   Oreo         |26         |4.10</span><br><span class="line">8.1   Oreo         |27         |4.10</span><br><span class="line">9.0   Pie          |28         |4.4, 4.9 and 4.14</span><br></pre></td></tr></table></figure>
+
+<h4 id="三星8268"><a href="#三星8268" class="headerlink" title="三星8268"></a>三星8268</h4><p>做个闹钟还可以，其他就算了。</p>
+<h4 id="红米NOTE"><a href="#红米NOTE" class="headerlink" title="红米NOTE"></a>红米NOTE</h4><p>安卓4.0的砖头，没能刷入好用的5.1以上的room</p>
+<h4 id="大神F1"><a href="#大神F1" class="headerlink" title="大神F1"></a>大神F1</h4><p>MT6592为32位CPU, 8个A7，主频高达1.8-2G，性能却比6735,小龙615，400好。</p>
+<h4 id="魅蓝2"><a href="#魅蓝2" class="headerlink" title="魅蓝2"></a>魅蓝2</h4><p>MT6735为MTK第一代64位，4个A53 主频高达1.1-1.3G，低功耗，性能不行<br>frp-ARMv8可以用,用不了frp-ARMv7，clash—ARMv8用不了,clash-ARMv7可以用。无语。</p>
+<h4 id="魅蓝metal"><a href="#魅蓝metal" class="headerlink" title="魅蓝metal"></a>魅蓝metal</h4><p>MT6795为64位8个A53，主频高达2.2G，性能可以大战小龙808了<br>还有6寸1080P大屏，可以当电脑副屏了。</p>
+<h4 id="坚果"><a href="#坚果" class="headerlink" title="坚果"></a>坚果</h4><p>龙哥的艺术品，就不折腾她了，静静的躺着吧，毕竟锤子绝版了。</p>
+<h4 id="红米5A"><a href="#红米5A" class="headerlink" title="红米5A"></a>红米5A</h4><p>留着以后搞，刷机发现recovery使用orangefox的,twrp官网的3.50用不了。</p>
+<h4 id="S7edge"><a href="#S7edge" class="headerlink" title="S7edge"></a>S7edge</h4><p>安装Termux终端模拟。<br>高通820，功耗实在牛，就当作冬天暖手宝。<br>2k高清曲屏，拿来刷抖音，边暖手，舒服。</p>
+<h3 id="刷系统"><a href="#刷系统" class="headerlink" title="刷系统"></a>刷系统</h3><p>android 5.x以上才具有安装linux deploy的价值，可能和linux内核的版本也有关吧，<br>挑选出这三台：魅蓝metal,魅蓝2,大神F1,三台都刷了flyme，安卓5.1。</p>
+<p>登录flyme账户后给Kingroot权限能就能root，联网root 完，再换kingroot使用v9.9.9去除广告版来管理root权限，更清爽。</p>
+<p>其中魅蓝metal，m2 为flyme 6.3，发现root 一顿操作后发现,实现开机启动，需要让手机管家.apk活着（通过手机管家唤醒自启动服务？？）,<br>而手机管家又会自动升级，甚至卸载KING root。极其恶心。<br>解决方法:直接找到&#x2F;system&#x2F;app&#x2F;中，删掉手机管家，或者一开始就在固件包中删掉它。</p>
+<p>大神F1刷了flyme5.1，flyme5本是基于YUN OS的，这个版本是修改版，基于android 5.1，手机管家不会乱来。<br>但是大神的centos7 是32位的…32位的centos太难用了，很多库要找来找去的，跟不上时代了。</p>
+<blockquote>
+<p>注意：Android3.1之后，应用程序无法在安装后自己启动，没有ui的程序必须通过其他应用激活才能启动，如它的<code>Activity、Service、Content Provider</code>被其他应用调用。估计手机管家干这活不过，存在一种例外，就是&#x3D;&#x3D;应用程序被<code>adb push you.apk /system/app/</code>下是会自动启动的，不处于stopped状态&#x3D;&#x3D;。解决方式就是将APK推送到<code>/system/app</code>目录下,或者打包系统时，将APK放置到<code>/system/app</code> 中打包把linnux deploy 一定要安装到<code>/system/app</code>下</p>
+</blockquote>
+<p>总的来说，要安卓5.x以上，内核版本3.16.1，avrmv8架构才有搞头。</p>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><ul>
+<li>RomMakeTool： 奇兔刷机的低版本ROM制作工具，需要断网使用 可以修改boot.img， 打包修改ROM等。</li>
+<li>root工具：magisk manager 7.0+ 或者 kingroot v999 去广告版</li>
+<li>Root Explorer : 文件拷贝，删除&#x2F;system&#x2F;app下固件等</li>
+<li>busybox: pro 工具包</li>
+<li>linux deploy : 2.4+</li>
+<li>wifi adb: 无线 adb <code>adb connect ip:5555</code></li>
+<li>Scrcpy: 电脑端远程直接控制手机</li>
+</ul>
+<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1zt4C5yY-1CDXZef-mIOjVg">https://pan.baidu.com/s/1zt4C5yY-1CDXZef-mIOjVg</a><br>提取码：link （链接无效了，因为被百度拉黑，限速10KB了，日了狗）</p>
+<h3 id="安装-centos"><a href="#安装-centos" class="headerlink" title="安装 centos"></a>安装 centos</h3><p> CPU类型对应架构如下，新出的都是64位的啦<br> 32位：A7(ARMv7)  - armhfp<br> 64位：A53(ARMv8) - aarch64&#x2F;arm64</p>
+<h3 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h3><ul>
+<li>安装类型：目录</li>
+<li>安装路径：<code>/data/centos</code> （重要）</li>
+<li>用户：root</li>
+<li>启用初始化系统 <code>run-parts</code>，启用 <code>SSH</code></li>
+</ul>
+<h3 id="设置选项"><a href="#设置选项" class="headerlink" title="设置选项"></a>设置选项</h3><ul>
+<li>锁定WIFI</li>
+<li>CPU唤醒</li>
+<li>开机启动</li>
+<li>时间戳</li>
+</ul>
+<h3 id="隐身恢复"><a href="#隐身恢复" class="headerlink" title="隐身恢复"></a>隐身恢复</h3><p>点了设置中的隐身模式，会找不到她了</p>
+<h4 id="使用-adb-恢复"><a href="#使用-adb-恢复" class="headerlink" title="使用 adb 恢复"></a>使用 adb 恢复</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">adb</span><br><span class="line">shell</span><br><span class="line">su</span><br><span class="line">am start -n ru.meefik.linuxdeploy/.MainActivity</span><br></pre></td></tr></table></figure>
+<h3 id="安装与启动"><a href="#安装与启动" class="headerlink" title="安装与启动"></a>安装与启动</h3><p>若安装速度慢，可以尝试直接使用备份好的gz镜像源<br>使用备份的镜像时，不要点配置，安装完就可以使用了，点配置容易出问题。<br>常用rootfs下载地址(2019.12.13)</p>
+<p><a target="_blank" rel="noopener" href="http://hub.meefik.ru/rootfs/alpine_arm64.tgz">http://hub.meefik.ru/rootfs/alpine_arm64.tgz</a><br><a target="_blank" rel="noopener" href="http://hub.meefik.ru/rootfs/centos_arm64.tgz">http://hub.meefik.ru/rootfs/centos_arm64.tgz</a><br><a target="_blank" rel="noopener" href="http://hub.meefik.ru/rootfs/kali_arm64.tgz">http://hub.meefik.ru/rootfs/kali_arm64.tgz</a><br><a target="_blank" rel="noopener" href="http://hub.meefik.ru/rootfs/kalitop10_arm64.tgz">http://hub.meefik.ru/rootfs/kalitop10_arm64.tgz</a><br><a target="_blank" rel="noopener" href="http://hub.meefik.ru/rootfs/ubuntu_arm64.tgz">http://hub.meefik.ru/rootfs/ubuntu_arm64.tgz</a><br>若安装失败，尝试更换linux deploy 版本<br>tasker 启动命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># /data/data/ru.meefik.linuxdeploy/files/bin/linuxdeploy start -m</span><br></pre></td></tr></table></figure>
+<h4 id="ssh-fail"><a href="#ssh-fail" class="headerlink" title="ssh fail"></a>ssh fail</h4><p>1.一般出现ssh fail的问题，是因为镜像在安装时没有安装完整，有可能是因为网络掉包、磁盘空间不够或者选择的镜像源有问题导致。</p>
+<p>2.现在我们可以不通过ssh连接容器，用作者预留的通道连接容器，连接容器后再安装ssh就可以解决此问题。</p>
+<p>3.具体方法如下：打开linuxdeploy，启动容器后,adb连接手机，输入一下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell</span><br><span class="line">cd /</span><br><span class="line">./data/data/ru.meefik.linuxdeploy/files/bin/linuxdeploy shell -u root</span><br></pre></td></tr></table></figure>
+
+<p>4.这样就获得容器的shell了，通过这个shell安装ssh。</p>
+<h4 id="rc-local-fail"><a href="#rc-local-fail" class="headerlink" title="rc.local fail"></a>rc.local fail</h4><p>如果后续出现 <code>rc.local... fail</code><br>SSH连接后，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown root:root /etc/rc.local</span><br><span class="line">sudo chmod 755 /etc/rc.local </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh -e</span><br><span class="line">#</span><br><span class="line"># rc.local</span><br><span class="line">#</span><br><span class="line"># This script is executed at the end of each multiuser runlevel.</span><br><span class="line"># Make sure that the script will &quot;exit 0&quot; on success or any other</span><br><span class="line"># value on error.</span><br><span class="line">#</span><br><span class="line"># In order to enable or disable this script just change the execution</span><br><span class="line"># bits.</span><br><span class="line">#</span><br><span class="line"># By default this script does nothing.</span><br><span class="line"></span><br><span class="line"># webdav      </span><br><span class="line">nohup /usr/local/bin/aliyundrive-webdav &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line"># vlmcsd       </span><br><span class="line">nohup /usr/local/bin/vlmcsd-armv7el-uclibc-static &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line"># clash          </span><br><span class="line">nohup /usr/share/clash/clash -d /usr/share/clash &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line"># frpc           </span><br><span class="line">nohup /usr/local/bin/frpc -c /usr/local/etc/frpc.ini &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line"># hyperion    </span><br><span class="line">nohup /usr/share/hyperion/bin/hyperiond &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line"># mosquitto  </span><br><span class="line">nohup /usr/sbin/mosquitto &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line"># hass           </span><br><span class="line">nohup /usr/local/bin/python3.10 /usr/local/bin/hass &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h3><ol>
+<li>手机设置静态IP</li>
+<li>局域网内使用 Termius 工具SSH登录手机IP使用</li>
+<li>传输文件安装 FileZilla 使用sftp</li>
+</ol>
+<h3 id="使用华为镜像源"><a href="#使用华为镜像源" class="headerlink" title="使用华为镜像源"></a>使用华为镜像源</h3><p>CentOS-AltArch的镜像地址为：<a target="_blank" rel="noopener" href="https://repo.huaweicloud.com/centos-altarch/">https://repo.huaweicloud.com/centos-altarch/</a></p>
+<h3 id="无线-ADB使用"><a href="#无线-ADB使用" class="headerlink" title="无线 ADB使用"></a>无线 ADB使用</h3><p>Android 11 及更高版本支持使用 Android 调试桥 (adb) 从工作站以无线方式部署和调试应用。</p>
+<h4 id="通过-WLAN-连接到设备（Android-10-及更低版本）"><a href="#通过-WLAN-连接到设备（Android-10-及更低版本）" class="headerlink" title="通过 WLAN 连接到设备（Android 10 及更低版本）"></a>通过 WLAN 连接到设备（Android 10 及更低版本）</h4><p>将 Android 设备和 adb 主机连接到这两者都可以访问的同一 WLAN 网络。请注意，并非所有接入点都适用；您可能需要使用防火墙已正确配置为支持 adb 的接入点。<br>如果您要连接到 Wear OS 设备，请关闭手机上与该设备配对的蓝牙。<br>使用 USB 线将设备连接到主机。<br>设置目标设备以监听端口 <code>5555</code> 上的 TCP&#x2F;IP 连接。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb tcpip 5555</span><br></pre></td></tr></table></figure>
+<p>拔掉连接目标设备的 USB 线。<br>找到 Android 设备的 IP 地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb connect device_ip_address</span><br></pre></td></tr></table></figure>
+<p>确认主机已连接到目标设备：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ adb devices</span><br><span class="line">List of devices attached</span><br><span class="line">device_ip_address:5555 device</span><br></pre></td></tr></table></figure>
+<h4 id="安装应用"><a href="#安装应用" class="headerlink" title="安装应用"></a>安装应用</h4><p>您可以使用 adb 的 install 命令在模拟器或连接的设备上安装 APK：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install path_to_apk</span><br></pre></td></tr></table></figure>
+<p>在以下示例中，先获得了已连接设备的列表，然后使用其中一个设备的序列号在该设备上安装了 helloWorld.apk。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ adb devices</span><br><span class="line">List of devices attached</span><br><span class="line">emulator-5554 device</span><br><span class="line">emulator-5555 device</span><br><span class="line"></span><br><span class="line">$ adb -s emulator-5555 install helloWorld.apk</span><br></pre></td></tr></table></figure>
+<h4 id="将文件复制到设备-从设备复制文件"><a href="#将文件复制到设备-从设备复制文件" class="headerlink" title="将文件复制到设备&#x2F;从设备复制文件"></a>将文件复制到设备&#x2F;从设备复制文件</h4><p>您可以使用 <code>pull</code> 和 <code>push</code> 命令将文件复制到设备或从设备复制文件。与 <code>install</code> 命令（仅将 APK 文件复制到特定位置）不同，使用 <code>pull</code> 和 <code>push</code> 命令可将任意目录和文件复制到设备中的任何位置。</p>
+<p>如需从设备中复制某个文件或目录（及其子目录），请使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pull remote local</span><br></pre></td></tr></table></figure>
+<p>如需将某个文件或目录（及其子目录）复制到设备，请使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb push local remote</span><br></pre></td></tr></table></figure>
+<p>将 local 和 remote 替换为开发机器（本地）和设备（远程）上的目标文件&#x2F;目录的路径。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb push foo.txt /sdcard/foo.txt</span><br></pre></td></tr></table></figure>
+
+<p>停止 adb 服务器<br>在某些情况下，您可能需要终止 adb 服务器进程，然后重启以解决问题（例如，如果 adb 不响应命令）。</p>
+<p>如需停止 adb 服务器，请使用 <code>adb kill-server</code> 命令。然后，您可以通过发出其他任何 adb 命令来重启服务器。</p>
+<p>发出 adb 命令<br>您可以从开发机器上的命令行发出 adb 命令，也可以通过脚本发出。用法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb [-d | -e | -s serial_number] command</span><br></pre></td></tr></table></figure>
+<p>如果只有一个模拟器在运行或者只连接了一个设备，系统会默认将 adb 命令发送至该设备。如果有多个模拟器正在运行并且&#x2F;或者连接了多个设备，您需要使用 -d、-e 或 -s 选项指定应向其发送命令的目标设备。</p>
+<p>您可以使用以下命令来查看所有支持的 adb 命令的详细列表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb --help</span><br></pre></td></tr></table></figure>
+
+<p>更多adb操作参考 <a target="_blank" rel="noopener" href="https://developer.android.com/studio/command-line/adb">https://developer.android.com/studio/command-line/adb</a></p>
+<h3 id="安卓上电开机"><a href="#安卓上电开机" class="headerlink" title="安卓上电开机"></a>安卓上电开机</h3><p>出处 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/391905516d63">https://www.jianshu.com/p/391905516d63</a></p>
+<p>需要：<br>已root权限、已解BL锁<br>已root权限、已解BL锁<br>已root权限、已解BL锁</p>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
+<li><p>先用recovery备份boot分区，翻车可直接进入rec恢复boot分区。</p>
+</li>
+<li><p>直接修改根目录下的init.rc，无用，开机会被覆盖。</p>
+</li>
+</ol>
+<h4 id="提取boot-img"><a href="#提取boot-img" class="headerlink" title="提取boot.img"></a>提取boot.img</h4><p>使用recovery备份的boot，存放在内置储存的根目录下，MTP导出到电脑。</p>
+<h4 id="解包和修改init-rc"><a href="#解包和修改init-rc" class="headerlink" title="解包和修改init.rc"></a>解包和修改init.rc</h4><p>电脑端使用recovery的工具解包后，编辑的boot.img中的init.rc”，搜索关键词“charger”，找到下面这一段代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">on charger</span><br><span class="line">class_start charger        </span><br><span class="line">setprop sys.powerctl reboot      #加入重启命令</span><br></pre></td></tr></table></figure>
+
+<p>保存，退出</p>
+<h4 id="会刷boot-img"><a href="#会刷boot-img" class="headerlink" title="会刷boot.img"></a>会刷boot.img</h4><p>将新生成的boot.img用recovery刷回手机中，重启手机。</p>
+<h3 id="电脑控制手机"><a href="#电脑控制手机" class="headerlink" title="电脑控制手机"></a>电脑控制手机</h3><p>神器：<a target="_blank" rel="noopener" href="https://github.com/Genymobile/scrcpy/releases/tag/v1.17">https://github.com/Genymobile/scrcpy/releases/tag/v1.17</a><br>手机屏幕触摸怀了，可以通过OTG连接鼠标控制,安装开源的Scrcpy 还能在电脑端直接控制手机。<br>毁掉手机屏幕前，一定要设置好允许adb调试，adb root权限，adb模拟输入，scrcpy控制，上电自动开机等。<br>根据官方介绍，Scrcpy 的特性如下：</p>
+<ul>
+<li>轻量级（原生，仅显示设备屏幕）</li>
+<li>高性能（帧率 30〜60 fps）</li>
+<li>高画质（分辨率 1920×1080 或以上）</li>
+<li>低延迟（35〜70ms）</li>
+<li>启动时间短（1秒内显示）</li>
+<li>非侵入性（设备上未安装任何软件）</li>
+</ul>
+<h3 id="穿透内网"><a href="#穿透内网" class="headerlink" title="穿透内网"></a>穿透内网</h3><p>1.安装frp<br>2.修改配置，使用免费的frp服务器<a target="_blank" rel="noopener" href="https://freefrp.net/">https://freefrp.net/</a> 或其他或自建</p>
+<h3 id="解决chroot下无法使用service-systemctl"><a href="#解决chroot下无法使用service-systemctl" class="headerlink" title="解决chroot下无法使用service, systemctl"></a>解决chroot下无法使用service, systemctl</h3><p>在Linux Deploy中安装的CentOS7无法使用systemctl命令,当我们使用systemctl启动服务时它提示我们,Running in chroot, ignoring request.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/smaknsk/servicectl/archive/1.0.tar.gz</span><br><span class="line">tar -xf 1.0.tar.gz -C /usr/local/lib/</span><br><span class="line">ln -s /usr/local/lib/servicectl-1.0/servicectl /usr/bin/servicectl</span><br><span class="line">ln -s /usr/local/lib/servicectl-1.0/serviced /usr/bin/serviced</span><br></pre></td></tr></table></figure>
+<p>使用<br>servicectl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo servicectl action service</span><br></pre></td></tr></table></figure>
+<p>‎此命令仅执行文件 &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;${service}.service中的${action}， 如果通过的操作启用或禁用，则servicectl将在 ${service}.service上创建或删除symlink以供使用服务。‎</p>
+<p>参数:</p>
+<p>action - 可以是 {start, stop, restart, reload, enable, disable}<br>service -在&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;文件夹中的文件</p>
+<p>serviced</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo serviced action</span><br></pre></td></tr></table></figure>
+<p>‎此命令执行 ${action} 为所有启用服务。‎</p>
+<p>参数:</p>
+<p>action -默认是start，也可以是： {start, stop, restart, reload, disable}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># inside chroot</span><br><span class="line">sudo servicectl enable mariadb</span><br><span class="line"></span><br><span class="line"># outside chroot: </span><br><span class="line"># init startup and run all enabled daemons</span><br><span class="line">sudo chroot /path/to/chroot serviced</span><br></pre></td></tr></table></figure>
+<h3 id="手机改直供电"><a href="#手机改直供电" class="headerlink" title="手机改直供电"></a>手机改直供电</h3><p>手机一直插着电池，时间长了，电池会鼓包，需要修改直供电。取出电池的电池保护板，5V供正极电接BAT+，这里负极不接BAT-，接电池保护板输出的地(如果接BAT-，需要外挂充电宝才能开机)。安卓手机改了直供电，电池电量显示百分比还会随着时间减少，怀疑手机系统虚拟的，而不是电池检测电路的问题。解决方法，通过adb 设置手机一直在充电状态。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell</span><br><span class="line"></span><br><span class="line">dumpsys battery set status 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><p>liunx deploy下的centos安装mysql5.7</p>
+<ol>
+<li>添加mysql用户组和mysql用户<br>2.安装依赖库</li>
+<li>下载解压Mysql<br>4.配置Mysql</li>
+<li>添加环境变量<br>6 mysql 初始化<br>7 mysql 启动，关闭</li>
+</ol>
+<p>MySQL下载地址为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://obs.cn-north-4.myhuaweicloud.com/obs-mirror-ftp4/database/mysql-5.7.27-aarch64.tar.gz</span><br></pre></td></tr></table></figure>
+<ol>
+<li>添加mysql用户组和mysql用户<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># groupadd mysql     //创建mysql组</span><br><span class="line"># useradd -g mysql mysql //创建mysql用户添加到mysql组</span><br><span class="line"># usermod -a -G aid_inet,aid_net_raw mysql   //添加mysql在安卓中的网络访问权限</span><br></pre></td></tr></table></figure>
+2.安装依赖库<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum install -y libaio*</span><br></pre></td></tr></table></figure></li>
+<li>下载解压Mysql<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># wget https://obs.cn-north-4.myhuaweicloud.com/obs-mirror-ftp4/database/mysql-5.7.27-aarch64.tar.gz</span><br><span class="line"># tar -xvf mysql-5.7.27-aarch64.tar.gz -C /usr/local/</span><br></pre></td></tr></table></figure>
+4.配置Mysql<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># mv /usr/local/mysql-5.7.27-aarch64 /usr/local/mysql</span><br><span class="line"># mkdir -p /usr/local/mysql/logs</span><br><span class="line"># chown -R mysql:mysql /usr/local/mysql </span><br><span class="line"># ln -sf /usr/local/mysql/my.cnf /etc/my.cnf</span><br><span class="line"># cp -rf /usr/local/mysql/extra/lib* /usr/lib64/ </span><br><span class="line"># mv /usr/lib64/libstdc++.so.6 /usr/lib64/libstdc++.so.6.old</span><br><span class="line"># ln -s /usr/lib64/libstdc++.so.6.0.24 /usr/lib64/libstdc++.so.6</span><br></pre></td></tr></table></figure></li>
+<li>添加环境变量<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># vim /etc/profile</span><br></pre></td></tr></table></figure>
+添加下面两行代码：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export MYSQL_HOME=/usr/local/mysql</span><br><span class="line">export PATH=$PATH:$MYSQL_HOME/bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># source /etc/profile</span><br></pre></td></tr></table></figure>
+6 mysql 初始化<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mysqld --initialize-insecure --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data</span><br></pre></td></tr></table></figure>
+1<br>7 mysql 启动，关闭<br>方法一（不行，提示chroot）<br>设置开机启动<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># cp -rf /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld </span><br><span class="line"># chmod +x /etc/init.d/mysqld</span><br><span class="line"># service mysqld start  #启动</span><br><span class="line"># service mysqld stop  #关闭</span><br></pre></td></tr></table></figure>
+都可使用的指令 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld &#123;start|stop|restart|reload|force-reload|status&#125;</span><br></pre></td></tr></table></figure>
+方法二（使用rc.local nohup &amp;）<br>新建&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;support-files&#x2F;startmysql.sh<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">nohup /usr/local/mysql/support-files/mysql.server start &gt;/dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+在rc.local增加<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mysql</span><br><span class="line">sh /usr/local/mysql/support-files/startmysql.sh</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>8 登录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># msyql -u root </span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;123456&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这个安装是免密登录的</p>
+<h3 id="安装-Homeassistant"><a href="#安装-Homeassistant" class="headerlink" title="安装 Homeassistant"></a>安装 Homeassistant</h3><p>Home Assistant时会报错版本过低，所以这里采用编译源码的方式安装Python3.9.13和Sqlite3.39.0</p>
+<h4 id="先安装依赖"><a href="#先安装依赖" class="headerlink" title="先安装依赖"></a>先安装依赖</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt upgrade -y</span><br><span class="line">sudo apt install -y gcc wget build-essential zlib1g-dev libbz2-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libjpeg-dev autoconf libopenjp2-7 libtiff5 libturbojpeg0-dev tzdata</span><br></pre></td></tr></table></figure>
+<h4 id="安装Sqlite"><a href="#安装Sqlite" class="headerlink" title="安装Sqlite"></a>安装Sqlite</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.sqlite.org/2022/sqlite-autoconf-3390000.tar.gz</span><br><span class="line">tar -zxvf sqlite-autoconf-3390000.tar.gz</span><br><span class="line">cd sqlite-autoconf-3390000</span><br><span class="line">./configure</span><br><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>查看当前Sqlite版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 --version</span><br></pre></td></tr></table></figure>
+<h4 id="安装Python"><a href="#安装Python" class="headerlink" title="安装Python"></a>安装Python</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf Python-3.9.13.tgz</span><br><span class="line">cd Python-3.9.13</span><br></pre></td></tr></table></figure>
+<p>Python编译链接使用刚安装的Sqlite版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LD_RUN_PATH=/usr/local/lib ./configure LDFLAGS=&quot;-L/usr/local/lib&quot; CPPFLAGS=&quot;-I/usr/local/include&quot;</span><br><span class="line">LD_RUN_PATH=/usr/local/lib make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>查看当前Python版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 -V</span><br><span class="line">pip3 -V</span><br></pre></td></tr></table></figure>
+<p>查看Python使用的Sqlite版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br><span class="line">&gt;&gt;&gt; import sqlite3</span><br><span class="line">&gt;&gt;&gt; sqlite3.sqlite_version</span><br><span class="line">&#x27;3.39.0&#x27;</span><br><span class="line">&gt;&gt;&gt; quit()</span><br></pre></td></tr></table></figure>
+<h4 id="安装-hass"><a href="#安装-hass" class="headerlink" title="安装 hass"></a>安装 hass</h4><ol>
+<li>先安装docker，再安装hass</li>
+<li>直接安装</li>
+<li>官方文档：<br><a target="_blank" rel="noopener" href="https://www.home-assistant.io/installation/linux#install-home-assistant-core">https://www.home-assistant.io/installation/linux#install-home-assistant-core</a><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /srv/homeassistant</span><br><span class="line">cd /srv/homeassistant</span><br><span class="line">python3 -m venv .</span><br><span class="line">source bin/activate</span><br></pre></td></tr></table></figure>
+激活虚拟环境后会变成这样</li>
+</ol>
+<p>(homeassistant) root@localhost:&#x2F;srv&#x2F;homeassistant#<br>再次检查一下虚拟环境中的版本信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 -V</span><br><span class="line">pip3 -V</span><br></pre></td></tr></table></figure>
+<p>更新一下pip版本，并改成国内源加快一下下载速度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 -m pip install --upgrade pip</span><br><span class="line">pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/</span><br></pre></td></tr></table></figure>
+<p>更新一下setuptools和wheel的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 -m pip install --upgrade setuptools</span><br><span class="line">python3 -m pip install --upgrade wheel</span><br></pre></td></tr></table></figure>
+<p>安装Home Assistant</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install homeassistant</span><br></pre></td></tr></table></figure>
+<p>启动Home Assistant</p>
+<p>hass<br>注：首次启动Home Assistant时会下载一些依赖，所以启动时间会较长，访问<a href="http://x.x.x.x:8123时会出现无法访问是正常现象，说明HA还没启动完成">http://x.x.x.x:8123时会出现无法访问是正常现象，说明HA还没启动完成</a></p>
+<p>后面会用到的一些命令就贴在这儿了</p>
+<p>后台运行hass</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup hass &gt; hass.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<p>tail查看日志</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail hass.log</span><br></pre></td></tr></table></figure>
+<p>以后ssh连接后可以直接执行以下命令激活虚拟环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /srv/homeassistant/bin/activate</span><br></pre></td></tr></table></figure>
+<p>退出虚拟环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate </span><br></pre></td></tr></table></figure>
+
+<h3 id="Hyperion-grabber"><a href="#Hyperion-grabber" class="headerlink" title="Hyperion grabber"></a>Hyperion grabber</h3><p>start the grabber in home assistant with the androidtv integration</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service: androidtv.adb_command</span><br><span class="line">data:</span><br><span class="line">  command: &quot;am start com.abrenoch.hyperiongrabber/com.abrenoch.hyperiongrabber.common.BootActivity&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/23/sample/" rel="prev" title="MD SAMPLE">
+      <i class="fa fa-chevron-left"></i> MD SAMPLE
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/01/python/" rel="next" title="python 并发 爬虫">
+      python 并发 爬虫 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#google-play"><span class="nav-number">1.</span> <span class="nav-text">google play</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A7%E6%89%8B%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">旧手机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Android%E5%90%84%E7%89%88%E6%9C%AC%E5%92%8CLinux%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="nav-number">2.1.</span> <span class="nav-text">Android各版本和Linux版本对应关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E6%98%9F8268"><span class="nav-number">2.2.</span> <span class="nav-text">三星8268</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%A2%E7%B1%B3NOTE"><span class="nav-number">2.3.</span> <span class="nav-text">红米NOTE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7%E7%A5%9EF1"><span class="nav-number">2.4.</span> <span class="nav-text">大神F1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AD%85%E8%93%9D2"><span class="nav-number">2.5.</span> <span class="nav-text">魅蓝2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AD%85%E8%93%9Dmetal"><span class="nav-number">2.6.</span> <span class="nav-text">魅蓝metal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9D%9A%E6%9E%9C"><span class="nav-number">2.7.</span> <span class="nav-text">坚果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%A2%E7%B1%B35A"><span class="nav-number">2.8.</span> <span class="nav-text">红米5A</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#S7edge"><span class="nav-number">2.9.</span> <span class="nav-text">S7edge</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B7%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">刷系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-number">4.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-centos"><span class="nav-number">5.</span> <span class="nav-text">安装 centos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%80%89%E9%A1%B9"><span class="nav-number">6.</span> <span class="nav-text">配置选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%80%89%E9%A1%B9"><span class="nav-number">7.</span> <span class="nav-text">设置选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E8%BA%AB%E6%81%A2%E5%A4%8D"><span class="nav-number">8.</span> <span class="nav-text">隐身恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-adb-%E6%81%A2%E5%A4%8D"><span class="nav-number">8.1.</span> <span class="nav-text">使用 adb 恢复</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8"><span class="nav-number">9.</span> <span class="nav-text">安装与启动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ssh-fail"><span class="nav-number">9.1.</span> <span class="nav-text">ssh fail</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rc-local-fail"><span class="nav-number">9.2.</span> <span class="nav-text">rc.local fail</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH"><span class="nav-number">10.</span> <span class="nav-text">SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%8E%E4%B8%BA%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">11.</span> <span class="nav-text">使用华为镜像源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%BA%BF-ADB%E4%BD%BF%E7%94%A8"><span class="nav-number">12.</span> <span class="nav-text">无线 ADB使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-WLAN-%E8%BF%9E%E6%8E%A5%E5%88%B0%E8%AE%BE%E5%A4%87%EF%BC%88Android-10-%E5%8F%8A%E6%9B%B4%E4%BD%8E%E7%89%88%E6%9C%AC%EF%BC%89"><span class="nav-number">12.1.</span> <span class="nav-text">通过 WLAN 连接到设备（Android 10 及更低版本）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8"><span class="nav-number">12.2.</span> <span class="nav-text">安装应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6%E5%88%B0%E8%AE%BE%E5%A4%87-%E4%BB%8E%E8%AE%BE%E5%A4%87%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-number">12.3.</span> <span class="nav-text">将文件复制到设备&#x2F;从设备复制文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%8D%93%E4%B8%8A%E7%94%B5%E5%BC%80%E6%9C%BA"><span class="nav-number">13.</span> <span class="nav-text">安卓上电开机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">13.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E5%8F%96boot-img"><span class="nav-number">13.2.</span> <span class="nav-text">提取boot.img</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%8C%85%E5%92%8C%E4%BF%AE%E6%94%B9init-rc"><span class="nav-number">13.3.</span> <span class="nav-text">解包和修改init.rc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%9A%E5%88%B7boot-img"><span class="nav-number">13.4.</span> <span class="nav-text">会刷boot.img</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E8%84%91%E6%8E%A7%E5%88%B6%E6%89%8B%E6%9C%BA"><span class="nav-number">14.</span> <span class="nav-text">电脑控制手机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BF%E9%80%8F%E5%86%85%E7%BD%91"><span class="nav-number">15.</span> <span class="nav-text">穿透内网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3chroot%E4%B8%8B%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8service-systemctl"><span class="nav-number">16.</span> <span class="nav-text">解决chroot下无法使用service, systemctl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E6%9C%BA%E6%94%B9%E7%9B%B4%E4%BE%9B%E7%94%B5"><span class="nav-number">17.</span> <span class="nav-text">手机改直供电</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85mysql"><span class="nav-number">18.</span> <span class="nav-text">安装mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Homeassistant"><span class="nav-number">19.</span> <span class="nav-text">安装 Homeassistant</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">19.1.</span> <span class="nav-text">先安装依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Sqlite"><span class="nav-number">19.2.</span> <span class="nav-text">安装Sqlite</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Python"><span class="nav-number">19.3.</span> <span class="nav-text">安装Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-hass"><span class="nav-number">19.4.</span> <span class="nav-text">安装 hass</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hyperion-grabber"><span class="nav-number">20.</span> <span class="nav-text">Hyperion grabber</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

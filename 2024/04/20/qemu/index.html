@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="QEMU QEMU” 是一个广泛使用的开源计算机模拟器和虚拟机。”  当作为模拟器时，可以在一种架构（如 x86 PC）下运行另一种架构（如 ARM）下的操作系统和程序。通过使用动态转换，它可以获得非常好的性能。 作为虚拟机时，QEMU 可以使用其他虚拟机管理程序（如 Xen 或 KVM）来使用 CPU 扩展（HVM）进行虚拟化，通过在主机 CPU 上直接执行客户机代码来获得接近于宿主机的性能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QEMU 仿真 arm">
+<meta property="og:url" content="http://example.com/2024/04/20/qemu/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="QEMU QEMU” 是一个广泛使用的开源计算机模拟器和虚拟机。”  当作为模拟器时，可以在一种架构（如 x86 PC）下运行另一种架构（如 ARM）下的操作系统和程序。通过使用动态转换，它可以获得非常好的性能。 作为虚拟机时，QEMU 可以使用其他虚拟机管理程序（如 Xen 或 KVM）来使用 CPU 扩展（HVM）进行虚拟化，通过在主机 CPU 上直接执行客户机代码来获得接近于宿主机的性能。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-23T16:12:40.134Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/04/20/qemu/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>QEMU 仿真 arm | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-clock">
+
+    <a href="/clock/" rel="section"><i class="fas fa-clock fa-fw"></i>clock</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/20/qemu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          QEMU 仿真 arm
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-04-20 00:00:00" itemprop="dateCreated datePublished" datetime="2024-04-20T00:00:00+08:00">2024-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-04-24 00:12:40" itemprop="dateModified" datetime="2024-04-24T00:12:40+08:00">2024-04-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="QEMU"><a href="#QEMU" class="headerlink" title="QEMU"></a>QEMU</h1><p> QEMU” 是一个广泛使用的开源计算机模拟器和虚拟机。”</p>
+<ul>
+<li>当作为模拟器时，可以在一种架构（如 x86 PC）下运行另一种架构（如 ARM）下的操作系统和程序。通过使用动态转换，它可以获得非常好的性能。</li>
+<li>作为虚拟机时，QEMU 可以使用其他虚拟机管理程序（如 Xen 或 KVM）来使用 CPU 扩展（HVM）进行虚拟化，通过在主机 CPU 上直接执行客户机代码来获得接近于宿主机的性能。</li>
+</ul>
+<h2 id="QEMU-安装"><a href="#QEMU-安装" class="headerlink" title="QEMU 安装"></a>QEMU 安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br><span class="line">sudo apt-get install qemu qemu-system qemu-user </span><br></pre></td></tr></table></figure>
+<p>安装完成后，可以通过 Tab 键补全检查安装好的 qemu 工具：”qemu-system-“ </p>
+<ul>
+<li><strong>qemu-system-arm</strong> 用来模拟 32 位的 Arm cpu，比如 Arm9 &#x2F;Arm11、 Cortex-A7&#x2F;A9&#x2F;A15 。</li>
+<li><strong>qemu-system-aarch64</strong> 来模拟 64 位的 Arm cpu，比如 Arm Cortex A53，A57。</li>
+</ul>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="cross-toochain-安装"><a href="#cross-toochain-安装" class="headerlink" title="cross-toochain 安装"></a>cross-toochain 安装</h3><p>安装 32 位编译器，用于编译 32 位的 kernel，u-boot。</p>
+<p><code>sudo apt-get install gcc-arm-linux-gnueabi</code><br>安装 64 位编译器，用于编译 64 位的 kernel，u-boot。 </p>
+<p><code>sudo apt-get install gcc-aarch64-linux-gnu</code></p>
+<ul>
+<li>arm926EJ-S 对应 gcc-arm-none-eabihf</li>
+<li>armv7 对应 gcc-arm-none-eabihf</li>
+<li>armv8 对应 aarch64-none-linux-gnu ??</li>
+</ul>
+<p>设置交叉编译器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export CROSS_COMPILE=arm-none-linux-gnueabi-</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="kernel-编译"><a href="#kernel-编译" class="headerlink" title="kernel 编译"></a>kernel 编译</h3><p>通过 wget 来获取阿里提供的镜像源内核</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.aliyun.com/linux-kernel/v5.x/linux-5.15.105.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="编译-32-位-kernel"><a href="#编译-32-位-kernel" class="headerlink" title="编译 32 位 kernel"></a>编译 32 位 kernel</h4><p>这里我们使用 vexpress-a9 这款开发板。vexpress-a9 是 Arm 公司自己设计的一款 4 核 Cortex-A9 开发板，U-Boot、Linux Kernel 和 QEMU 对这款开发板都做了完整的支持。当然，如果想搭其它开发板，也不难，只要 qemu 和内核对它有成熟的支持就够了。</p>
+<p>生成 vexpress 开发板子的 config 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make CROSS_COMPILE=arm-linux-gnueabi- ARCH=arm vexpress_defconfig</span><br></pre></td></tr></table></figure>
+<p>编译内核：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make CROSS_COMPILE=arm-linux-gnueabi- ARCH=arm</span><br></pre></td></tr></table></figure>
+<p>生成的内核镱像位于 arch&#x2F;arm&#x2F;boot&#x2F;zImage.。</p>
+<blockquote>
+<p>编译 64 位 kernel 使用 aarch64-linux-gnu-</p>
+</blockquote>
+<h3 id="u-boot-编译"><a href="#u-boot-编译" class="headerlink" title="u-boot 编译"></a>u-boot 编译</h3><p>github 上拉去太慢，使用如下地址，通过 wget 来获取。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://ftp.denx.de/pub/u-boot/u-boot-2020.10.tar.bz2</span><br></pre></td></tr></table></figure>
+<p>下载完后，可以看到 configs 目录下有针对这款开发板的配置文件。ca9x4 表示 cortexA9 架构，4 核心。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd u-boot-xxx</span><br><span class="line"></span><br><span class="line">ls configs/ | grep vexpress</span><br></pre></td></tr></table></figure>
+<p>编译：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm vexpress_ca9x4_defconfig</span><br><span class="line">make CROSS_COMPILE=arm-linux-gnueabi- all</span><br></pre></td></tr></table></figure>
+<p>最终编译生成 elf 格式的可执行文件 u-boot 和纯二进制文件 u-boot.bin，其中 QEMU 可以启动的为 elf 格式的可执行文件 u-boot 。</p>
+<blockquote>
+<p>编译 64 位 kernel 使用 aarch64-linux-gnu-</p>
+</blockquote>
+<h3 id="rootfs-编译"><a href="#rootfs-编译" class="headerlink" title="rootfs 编译"></a>rootfs 编译</h3><p>根文件系统首先是内核启动时所 mount 的第一个文件系统，内核代码映像文件保存在根文件系统中，而系统引导启动程序会在根文件系统挂载之后从中把一些基本的初始化脚本和服务等加载到内存中去运行。编译和制作 Linux 最小系统的根文件系统，并通过 sd 卡或者 nfs 挂载根文件系统。<br>根文件系统的制作方法有很多，有 buildroot、busybox 等，安装过程最为简单的轻量级根文件系统制作工具 busybox。</p>
+<h4 id="busybox-编译-快"><a href="#busybox-编译-快" class="headerlink" title="busybox 编译 快"></a>busybox 编译 快</h4><p> busybox 编译完成后，只是初步具有了维持 linux 操作系统基本运行所需的可执行文件，还有设备节点、动态链接库、引导启动相关代码、用户相关信息等，需要根据开发板自身的特性做定制和适配。</p>
+<ol>
+<li>下载并解压 busybox 源码<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/workspace</span><br><span class="line">wget https://busybox.net/downloads/busybox-1.36.1.tar.bz2</span><br><span class="line">tar -xvf busybox-1.36.1.tar.bz2</span><br></pre></td></tr></table></figure></li>
+<li>制作 automake_arm32.sh 自动编译脚本<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd busybox-1.36.1</span><br><span class="line">vi automake_arm32.sh</span><br></pre></td></tr></table></figure>
+在automake_arm32.sh中添加下列代码<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- clean</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j12</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- CONFIG_PREFIX=../objects/rootfs-arm32 install</span><br></pre></td></tr></table></figure>
+运行 automake_arm32.sh 编译安装 busybox<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./automake_arm32.sh</span><br></pre></td></tr></table></figure>
+编译过程中会出现 menuconfig 界面，需要将 “Settings-&gt;Build Options-&gt;Build static binary” 选上</li>
+</ol>
+<h5 id="补充根文件系统"><a href="#补充根文件系统" class="headerlink" title="补充根文件系统"></a>补充根文件系统</h5><p>进入根文件系统目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/workspace/objects/rootfs-arm32</span><br></pre></td></tr></table></figure>
+<p>创建设备节点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir dev</span><br><span class="line">sudo mknod -m 666 dev/tty1 c 4 1</span><br><span class="line">sudo mknod -m 666 dev/tty2 c 4 2</span><br><span class="line">sudo mknod -m 666 dev/tty3 c 4 3</span><br><span class="line">sudo mknod -m 666 dev/tty4 c 4 4</span><br><span class="line">sudo mknod -m 666 dev/console c 5 1</span><br><span class="line">sudo mknod -m 666 dev/null c 1 3</span><br></pre></td></tr></table></figure>
+<p>安装动态链接库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir lib</span><br><span class="line">sudo cp -d /usr/arm-linux-gnueabi/lib/*.so* ./lib</span><br></pre></td></tr></table></figure>
+<p>配置初始化进程 rcS</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p etc/init.d</span><br><span class="line">touch etc/init.d/rcS</span><br><span class="line">chmod 777 etc/init.d/rcS</span><br><span class="line">vim etc/init.d/rcS</span><br></pre></td></tr></table></figure>
+<p>在rcS中填入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin</span><br><span class="line">export LD_LIBRARY_PATH=/lib:/usr/lib</span><br><span class="line">/bin/mount -n -t ramfs ramfs /var</span><br><span class="line">/bin/mount -n -t ramfs ramfs /tmp</span><br><span class="line">/bin/mount -n -t sysfs none /sys</span><br><span class="line">/bin/mount -n -t ramfs none /dev</span><br><span class="line">/bin/mkdir /var/tmp</span><br><span class="line">/bin/mkdir /var/modules</span><br><span class="line">/bin/mkdir /var/run</span><br><span class="line">/bin/mkdir /var/log</span><br><span class="line">/bin/mkdir -p /dev/pts</span><br><span class="line">/bin/mkdir -p /dev/shm</span><br><span class="line">/sbin/mdev -s</span><br><span class="line">/bin/mount -a</span><br><span class="line">echo &quot;-----------------------------------&quot;</span><br><span class="line">echo &quot;*****welcome to vexpress board*****&quot;</span><br><span class="line">echo &quot;-----------------------------------&quot;</span><br></pre></td></tr></table></figure>
+<p>配置文件系统 fstab</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch etc/fstab</span><br><span class="line">vim etc/fstab</span><br></pre></td></tr></table></figure>
+<p>在fstab中填入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proc    /proc           proc    defaults        0       0</span><br><span class="line">none    /dev/pts        devpts  mode=0622       0       0</span><br><span class="line">mdev    /dev            ramfs   defaults        0       0</span><br><span class="line">sysfs   /sys            sysfs   defaults        0       0</span><br><span class="line">tmpfs   /dev/shm        tmpfs   defaults        0       0</span><br><span class="line">tmpfs   /dev            tmpfs   defaults        0       0</span><br><span class="line">tmpfs   /mnt            tmpfs   defaults        0       0</span><br><span class="line">var     /dev            tmpfs   defaults        0       0</span><br><span class="line">ramfs   /dev            ramfs   defaults        0       0</span><br></pre></td></tr></table></figure>
+<p>配置初始化脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch etc/inittab</span><br><span class="line">vim etc/inittab</span><br></pre></td></tr></table></figure>
+<p>在inittab中输入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">::sysinit:/etc/init.d/rcS </span><br><span class="line">::askfirst:-/bin/sh</span><br><span class="line">::restart:/sbin/init </span><br><span class="line">::ctrlaltdel:/sbin/reboot</span><br><span class="line">::shutdown:/bin/umount -a -r</span><br></pre></td></tr></table></figure>
+<p>配置环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch etc/profile</span><br><span class="line">vim etc/profile</span><br></pre></td></tr></table></figure>
+<p>在profile中添加以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh </span><br><span class="line">USER=&quot;root&quot;</span><br><span class="line">LOGNAME=$USER</span><br><span class="line"># export HOSTNAME=vexpress-a9</span><br><span class="line">export HOSTNAME=`cat /etc/sysconfig/HOSTNAME`</span><br><span class="line">export USER=root</span><br><span class="line">export HOME=root</span><br><span class="line">export PS1=&quot;[$USER@$HOSTNAME:\w]\#&quot;</span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin </span><br><span class="line">LD_LIBRARY_PATH=/lib:/usr/lib:$LD_LIBRARY_PATH</span><br><span class="line">export PATH LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
+<p>增加主机名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir etc/sysconfig</span><br><span class="line">vi etc/sysconfig/HOSTNAME</span><br></pre></td></tr></table></figure>
+<p>在HOSTNAME中添加以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vexpress-a9</span><br></pre></td></tr></table></figure>
+<p>创建其他文件夹<br><code>mkdir mnt proc root sys tmp var</code></p>
+<h4 id="buildroot-编译慢"><a href="#buildroot-编译慢" class="headerlink" title="buildroot 编译慢"></a>buildroot 编译慢</h4><p>buildroot中可以方便地加入第三方软件包（其实已经内置了很多），省去了手工交叉编译的烦恼。<br>首先安装一些依赖，比如linux头文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install linux-headers-$(uname -r)</span><br></pre></td></tr></table></figure>
+<p>然后下载安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://buildroot.org/downloads/buildroot-2021.02.4.tar.gz</span><br><span class="line">tar xvf buildroot-2021.02.4.tar.gz</span><br><span class="line">cd buildroot-2021.02.4/</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br><span class="line"></span><br><span class="line">以下选项为基础配置：</span><br><span class="line"></span><br><span class="line">- Target options</span><br><span class="line">  - Target Architecture (ARM (little endian))</span><br><span class="line">  - Target Variant arm926t</span><br><span class="line">- Toolchain</span><br><span class="line">  - C library (musl) # 使用musl减小最终体积</span><br><span class="line">- System configuration</span><br><span class="line">  - Use syslinks to /usr .... # 启用/bin, /sbin, /lib的链接</span><br><span class="line">  - Enable root login # 启用root登录</span><br><span class="line">  - Run a getty after boot # 启用登录密码输入窗口</span><br><span class="line">  - (licheepi) Root password #　默认账户为root 密码为licheepi</span><br><span class="line"></span><br><span class="line">另可自行添加或删除指定的软件包</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Target options：目标体系架构，例如 riscv，arm，x86 等。</li>
+<li>Build options：构建选项，例如 make 过程中使用的命令，源码下载目录，并行构建选项等。</li>
+<li>Toolchain：交叉编译工具链选项，例如使用的 C 库类型。跟体系架构相关。</li>
+<li>System configuration：系统配置，例如根文件系统框架，目标系统 hostname，bash，root 密码等。</li>
+<li>Kernel：（可选的）Linux kernel 编译选项。</li>
+<li>Target packages：安装到目标系统的软件包，例如 dhcp，ssh 等。</li>
+<li>Filesystem images：根文件系统镜像格式，例如 ext4 镜像根文件系统。根文件系统镜像是 Buildroot 最主要的输出件。</li>
+<li>Bootloaders：（可选的）系统启动引导程序 &#x2F; Bootloader，例如 u-boot，grub 等。跟体系架构相关。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+编译的过程如果带上下载软件包的时间比较漫长，很适合喝杯茶睡个午觉；(buildroot不能进行多线程编译)</li>
+</ul>
+<p>编译完成的镜像包，是<br>buildroot-2021.02.4&#x2F;output&#x2F;images&#x2F;rootfs.tar</p>
+<h2 id="仿真运行"><a href="#仿真运行" class="headerlink" title="仿真运行"></a>仿真运行</h2><h3 id="单独启动-u-boot"><a href="#单独启动-u-boot" class="headerlink" title="单独启动 u-boot"></a>单独启动 u-boot</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-arm -M vexpress-a9 -m 512M -kernel where_is_directory/u-boot -nographic</span><br></pre></td></tr></table></figure>
+
+<h3 id="单独启动-kernel"><a href="#单独启动-kernel" class="headerlink" title="单独启动 kernel"></a>单独启动 kernel</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qemu-system-arm -M vexpress-a9 -m 512M -kernel /kernel_direcotry/arch/arm/boot/zImage -dtb  /kernel_direcotry/arch/arm/boot/dts/vexpress-v2p-ca9.dtb -nographic -append &quot;console=ttyAMA0&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="u-boot-加载-kernel"><a href="#u-boot-加载-kernel" class="headerlink" title="u-boot 加载 kernel"></a>u-boot 加载 kernel</h3><ol>
+<li><p>QEMU 可以模拟 sd 卡等外设。我们就把编译好的固件放在一个模块的 sdcard 上，让 QEMU 从这张模拟的 sd 卡上启动 Linux 系统：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">制作 sd 卡镜像，并将它格式化成 fat 格式：</span><br><span class="line">dd if=/dev/zero of=sd.img bs=4096 count=4096</span><br><span class="line">mkfs.ext4 sd.img</span><br><span class="line"></span><br><span class="line">把编译好的 kernel zImage 和 dtb 文件拷贝到 sd.img 中:</span><br><span class="line">sudo mount sd.img mnt/ -o loop,rw</span><br><span class="line">sudo cp kernel_directory/arch/arm/boot/zImage /mnt/</span><br><span class="line">sudo cp kernel_directory/arch/arm/boot/dts/vexpress-v2p-ca9.dtb /mnt/</span><br><span class="line">sudo umount /mnt</span><br></pre></td></tr></table></figure></li>
+<li><p>启动 QEMU </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-arm -M vexpress-a9 -m 512M -kernel uboot_directory/u-boot -nographic  -sd sd.img</span><br></pre></td></tr></table></figure>
+<p>-kernel 指定 QEMU 启动时首先执行的程序，我们这里指定为前面编译好的 u-boot 可以执行文件，通过 u-boot 去加载 kernel。<br>上图所示 u-boot 已经顺利启动并进入命令行模式，下面我们来启动 Linux Kernel</p>
+</li>
+<li><p>首先通过 ext4load 命令把 sd.img 里面的 zImage 和 dtb 文件读到开发板的内存中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ext4load mmc 0:0 0x60008000 zImage</span><br><span class="line">ext4load mmc 0:0 0x62008000 vexpress-v2p-ca9.dtb</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果失败，请重复几次。</p>
+</blockquote>
+</li>
+<li><p>通过 bootz 命令启动 Linux Kernel：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bootz 0x60008000 - 0x62008000</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意事项： 0x60008000  0x62008000 是怎么确认的这个地址？</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>通过 “textofs” 查看 Linux kernel zImage 执行地址对应的内存偏移地址，为：0x00008000<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@test:/home/work/qemu_test/linux-5.10# grep -nr &quot;textofs&quot; ./</span><br><span class="line">./arch/arm/Makefile:141:textofs-y    := 0x00008000</span><br><span class="line">./arch/arm/Makefile:143:textofs-$(CONFIG_PM_H1940)      := 0x00108000</span><br><span class="line">./arch/arm/Makefile:145:textofs-$(CONFIG_ARCH_REALTEK)  := 0x00108000</span><br><span class="line">./arch/arm/Makefile:148:textofs-$(CONFIG_SA1111) := 0x00208000</span><br></pre></td></tr></table></figure></li>
+<li>u-boot 命令行中输入 bdinfo 命令，可以查到这块开发板内存的起始地址。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">=&gt; bdinfo</span><br><span class="line">boot_params = 0x60002000</span><br><span class="line">DRAM bank   = 0x00000000</span><br><span class="line">-&gt; start    = 0x60000000</span><br><span class="line">-&gt; size     = 0x20000000</span><br></pre></td></tr></table></figure>
+从上图中可以看到这块开发板的内存实际地址为 0x60000000，所以对应内核的起始地址为：0x60008000。dtb 的加载地址没有特别的要求，一般注意和 Linux Kernel Image 避开，不要重叠即可；</li>
+</ul>
+<h3 id="kernel-加载-rootfs"><a href="#kernel-加载-rootfs" class="headerlink" title="kernel 加载 rootfs"></a>kernel 加载 rootfs</h3><h4 id="通过-SD-卡挂载根文件系统"><a href="#通过-SD-卡挂载根文件系统" class="headerlink" title="通过 SD 卡挂载根文件系统"></a>通过 SD 卡挂载根文件系统</h4><p>两种挂载根文件系统的方法，一种是通过在 qemu 上添加外设 sd 卡挂载根文件系统，另一种则是通过 nfs 共享文件夹挂载根文件系统。</p>
+<p>自动打包脚本<br>编译安装完成后，进入 object 目录，并制作自动打包脚本 makefs-arm32.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home/workspace/objects</span><br><span class="line">sudo mkdir /mnt/rootfs</span><br><span class="line">sudo chmod 777 /mnt/rootfs</span><br><span class="line">vi makefs-arm32.sh</span><br></pre></td></tr></table></figure>
+<p>在makefs-arm32.sh中添加下列代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/zero of=rootfs-arm32.ext4 bs=1M count=64</span><br><span class="line">mkfs.ext4 rootfs-arm32.ext4</span><br><span class="line">sudo mount -t ext4 rootfs-arm32.ext4 /mnt/rootfs -o loop</span><br><span class="line">sudo cp -rf rootfs-arm32/* /mnt/rootfs/</span><br><span class="line">sudo umount /mnt/rootfs/</span><br></pre></td></tr></table></figure>
+<p>运行自动打包脚本 makefs-arm32.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./makefs-arm32.sh</span><br></pre></td></tr></table></figure>
+<p>运行完成后将在 objects 目录下生成一个 rootfs-arm32.ext4 文件，将作为外设 sd 卡加入到开发板上。<br>修改 qemu-start-vexpress-a9.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi qemu-start-vexpress-a9.sh</span><br></pre></td></tr></table></figure>
+<p>将qemu-start-vexpress-a9.sh修改为以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/sh</span><br><span class="line">qemu-system-arm -M vexpress-a9 \</span><br><span class="line">        -m 512M \</span><br><span class="line">        -kernel vexpress-v2p-ca9/arch/arm/boot/zImage \</span><br><span class="line">        -dtb vexpress-v2p-ca9/arch/arm/boot/dts/vexpress-v2p-ca9.dtb \</span><br><span class="line">        -nographic \</span><br><span class="line">        -append &quot;root=/dev/mmcblk0 rw console=ttyAMA0&quot; \</span><br><span class="line">	    -sd rootfs-arm32.ext4</span><br></pre></td></tr></table></figure>
+<h4 id="通过-NFS-挂载根文件系统"><a href="#通过-NFS-挂载根文件系统" class="headerlink" title="通过 NFS 挂载根文件系统"></a>通过 NFS 挂载根文件系统</h4><p>安装：<br><code>sudo apt install nfs-kernel-server</code><br>配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /sync/rootfs</span><br><span class="line">sudo vim /etc/exports</span><br></pre></td></tr></table></figure>
+<p>在&#x2F;etc&#x2F;exports文件中添加以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sync/rootfs *(rw,sync,no_root_squash,no_subtree_check)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>！！！注意上述内容应严格按照格式输入，不能随意增减空格！！！<br>重启 nfs 服务器：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/rpcbind restart</span><br><span class="line">sudo /etc/init.d/nfs-kernel-server restart</span><br></pre></td></tr></table></figure>
+<p>将安装好的根文件系统拷贝到 &#x2F; sync&#x2F;rootfs 内</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/workspace/objects/rootfs-arm32</span><br><span class="line">sudo cp -rf * /sync/rootfs/</span><br><span class="line">sudo chmod 777 -R /sync/rootfs</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为解决 Linux 内核与 NFS 服务器的兼容问题,重新编译内核，并在 menuconfig 下开启 NFS4 支持。<br>位置：File System -&gt; Network File Systems-&gt;NFS client support for NFS version 4</p>
+</blockquote>
+<p>测试 NFS 挂载根文件系统<br>配置主机网桥（其中 eth0 是 Ubuntu 系统的主网卡，根据实际情况可能会有不同的命名）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install uml-utilities bridge-utils</span><br><span class="line">sudo vim /etc/network/interfaces</span><br></pre></td></tr></table></figure>
+<p>修改interfaces文件如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"> </span><br><span class="line">auto eth0</span><br><span class="line"> </span><br><span class="line">auto br0</span><br><span class="line">iface br0 inet dhcp</span><br><span class="line">bridge_ports eth0</span><br></pre></td></tr></table></figure>
+
+<p>创建 tap0 网卡，用于连接 qemu 虚拟开发板</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo tunctl -u root -t tap0</span><br><span class="line">sudo ifconfig tap0 172.16.16.10 promisc up</span><br></pre></td></tr></table></figure>
+
+<p>创建 qemu-start-vexpress-a9-nfs.sh 脚本文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home/workspace/objects</span><br><span class="line">vim qemu-start-vexpress-a9-nfs.sh</span><br></pre></td></tr></table></figure>
+<p>在qemu-start-vexpress-a9-nfs.sh内添加以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-arm \</span><br><span class="line">        -M vexpress-a9 \</span><br><span class="line">        -m 512M \</span><br><span class="line">        -kernel vexpress-v2p-ca9/arch/arm/boot/zImage \</span><br><span class="line">        -dtb vexpress-v2p-ca9/arch/arm/boot/dts/vexpress-v2p-ca9.dtb \</span><br><span class="line">	    -net tap,ifname=tap0,script=no,downscript=no \</span><br><span class="line">	    -net nic,macaddr=00:16:3e:00:00:01 \</span><br><span class="line">        -nographic \</span><br><span class="line">        -append &quot;root=/dev/nfs rw nfsroot=172.16.16.10:/sync/rootfs,proto=tcp,nfsvers=3,nolock init=/linuxrc console=ttyAMA0 ip=172.16.16.20&quot; \</span><br></pre></td></tr></table></figure>
+
+<p>运行 qemu-start-vexpress-a9-nfs.sh 脚本文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./qemu-start-vexpress-a9-nfs.sh</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/04/16/esp32%E5%BC%80%E5%8F%91/" rel="prev" title="ESP 开发">
+      <i class="fa fa-chevron-left"></i> ESP 开发
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/04/22/mifi/" rel="next" title="mifi asr1803s 移远">
+      mifi asr1803s 移远 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#QEMU"><span class="nav-number">1.</span> <span class="nav-text">QEMU</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#QEMU-%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">QEMU 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">1.2.</span> <span class="nav-text">环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-toochain-%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.1.</span> <span class="nav-text">cross-toochain 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kernel-%E7%BC%96%E8%AF%91"><span class="nav-number">1.2.2.</span> <span class="nav-text">kernel 编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E8%AF%91-32-%E4%BD%8D-kernel"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">编译 32 位 kernel</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u-boot-%E7%BC%96%E8%AF%91"><span class="nav-number">1.2.3.</span> <span class="nav-text">u-boot 编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rootfs-%E7%BC%96%E8%AF%91"><span class="nav-number">1.2.4.</span> <span class="nav-text">rootfs 编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#busybox-%E7%BC%96%E8%AF%91-%E5%BF%AB"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">busybox 编译 快</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.4.1.1.</span> <span class="nav-text">补充根文件系统</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buildroot-%E7%BC%96%E8%AF%91%E6%85%A2"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">buildroot 编译慢</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F%E8%BF%90%E8%A1%8C"><span class="nav-number">1.3.</span> <span class="nav-text">仿真运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E7%8B%AC%E5%90%AF%E5%8A%A8-u-boot"><span class="nav-number">1.3.1.</span> <span class="nav-text">单独启动 u-boot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E7%8B%AC%E5%90%AF%E5%8A%A8-kernel"><span class="nav-number">1.3.2.</span> <span class="nav-text">单独启动 kernel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u-boot-%E5%8A%A0%E8%BD%BD-kernel"><span class="nav-number">1.3.3.</span> <span class="nav-text">u-boot 加载 kernel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kernel-%E5%8A%A0%E8%BD%BD-rootfs"><span class="nav-number">1.3.4.</span> <span class="nav-text">kernel 加载 rootfs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-SD-%E5%8D%A1%E6%8C%82%E8%BD%BD%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">通过 SD 卡挂载根文件系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-NFS-%E6%8C%82%E8%BD%BD%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">通过 NFS 挂载根文件系统</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

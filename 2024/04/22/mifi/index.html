@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言淘宝上出现很多基于物联网卡的随身wifi，大多数硬件几块钱包邮，然后套餐收割。硬件分为USB之差棒子和带电池的移款，LTE Cat.4的大多数基于ASR的1803s主控搭配25vq64 flash, 也有ZXW的，前期还有高通410的。这其实就是蜂窝网络模块的一种使用。这个意义上看，模块既像一台没有屏幕和电池的手机，又像一种功能较为复杂的单片机。 设备的 IMEI快速使用ASR1803s设备，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mifi asr1803s 移远">
+<meta property="og:url" content="http://example.com/2024/04/22/mifi/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言淘宝上出现很多基于物联网卡的随身wifi，大多数硬件几块钱包邮，然后套餐收割。硬件分为USB之差棒子和带电池的移款，LTE Cat.4的大多数基于ASR的1803s主控搭配25vq64 flash, 也有ZXW的，前期还有高通410的。这其实就是蜂窝网络模块的一种使用。这个意义上看，模块既像一台没有屏幕和电池的手机，又像一种功能较为复杂的单片机。 设备的 IMEI快速使用ASR1803s设备，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/cellular-network-architecture.png">
+<meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/5g-evolution.png">
+<meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/device-with-ec20.png">
+<meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/ec20-naked-top.png">
+<meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/ec20-inner-components.png">
+<meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/qcx216-diagram.png">
+<meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/standard-mode-module.png">
+<meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/at-command-architecture.png">
+<meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/open-mode-module.png">
+<meta property="article:published_time" content="2024-04-21T16:00:01.000Z">
+<meta property="article:modified_time" content="2024-04-23T06:09:06.804Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/cellular-network-architecture.png">
+
+<link rel="canonical" href="http://example.com/2024/04/22/mifi/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>mifi asr1803s 移远 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-clock">
+
+    <a href="/clock/" rel="section"><i class="fas fa-clock fa-fw"></i>clock</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/22/mifi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mifi asr1803s 移远
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-04-22 00:00:01" itemprop="dateCreated datePublished" datetime="2024-04-22T00:00:01+08:00">2024-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-04-23 14:09:06" itemprop="dateModified" datetime="2024-04-23T14:09:06+08:00">2024-04-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>淘宝上出现很多基于物联网卡的随身wifi，大多数硬件几块钱包邮，然后套餐收割。硬件分为USB之差棒子和带电池的移款，LTE Cat.4的大多数基于ASR的1803s主控搭配25vq64 flash, 也有ZXW的，前期还有高通410的。这其实就是蜂窝网络模块的一种使用。这个意义上看，模块既像一台没有屏幕和电池的手机，又像一种功能较为复杂的单片机。</p>
+<h3 id="设备的-IMEI"><a href="#设备的-IMEI" class="headerlink" title="设备的 IMEI"></a>设备的 IMEI</h3><p>快速使用ASR1803s设备，打开<a target="_blank" rel="noopener" href="https://python.quectel.com/download">QuecPython官网下载链接</a>, 安装驱动 Win10 QuecPython_USB_Driver_Win10_A, 打开串口助手，波特率 9600，8 N 1, 可以AT命令交互。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">进入工厂模式 AT*PROD=1</span><br><span class="line">删除原IMEI AT*MRD_IMEI=D</span><br><span class="line">写⼊新的IMEI，把第四个参数修改为新的IMEI就可以了 AT*MRD_IMEI=W,0,01JAN1970,000000000000000</span><br><span class="line">删除原SN AT*MRD_SN=D</span><br><span class="line">写⼊新的SN，把第四个参数修改为新的SN就可以了 AT*MRD_SN=W,0,01JAN1970,000000000000000</span><br><span class="line">退出工厂模式 AT*PROD=0</span><br><span class="line">最后重启 AT+RESET</span><br></pre></td></tr></table></figure>
+<p>如上所示，获取设备的 IMEI 号虽然十分简单，但是又特别的常用，所以在这里介绍一下如何查询。那么，IMEI 是什么呢？</p>
+<p>物联网模块的 IMEI 是国际移动设备身份码（International Mobile Equipment Identity）的缩写，它是用于识别物联网模块的唯一标识符。在物联网场景中，IMEI 可以用于以下几个方面：</p>
+<p>设备识别和管理：通过 IMEI，可以唯一地识别和管理物联网设备，包括设备的制造商、型号和版本等信息。这些信息对于设备的维护和升级非常重要。<br>安全性和防盗：IMEI 可以用于防止设备被盗或丢失。如果设备的 IMEI 被注册到一个中央数据库中，就可以通过该数据库来追踪设备的位置和使用情况。<br>远程管理和控制：IMEI 可以用于远程管理和控制物联网设备。例如，如果设备出现故障或需要更新固件，就可以通过 IMEI 来远程诊断和修复设备。<br>数据统计和分析：IMEI 可以用于统计和分析物联网设备的使用情况。例如，可以根据 IMEI 来确定设备的使用时间、位置、频率和使用模式等信息，以便更好地了解设备的使用情况和优化设备的性能。<br>总之，IMEI 是物联网设备非常重要的标识符，可以用于设备管理、安全性、远程管理和数据分析等方面。</p>
+<p>使用 modem 库查询其他设备信息不再赘述，请查看 modem - 设备相关。</p>
+<h3 id="蜂窝网络的概念"><a href="#蜂窝网络的概念" class="headerlink" title="蜂窝网络的概念"></a>蜂窝网络的概念</h3><p>蜂窝网络（Cellular Network，又称移动网络 Mobile Network）是一种无线通信技术，它能够让移动设备（如手机、平板电脑等）在不同的地理区域内进行语音、数据和多媒体等业务的传输。蜂窝网络是现代移动电话和个人通信系统的基础架构之一，也是推动社会信息化进程的重要力量。</p>
+<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/cellular-network-architecture.png"></p>
+<p>5G 毫米波蜂窝网络结构示意图</p>
+<p>如上图所示，蜂窝网络的核心思想是将一个大的服务区域划分为许多个小区（Cell），每个小区内部安装一个基站（Base Station），负责与小区内的移动设备进行无线通信。这些基站之间通过有线或无线的方式连接起来，形成一个覆盖整个服务区域的网络。在传统理论中，这些小区被设计为六边形、圆形或正方形，以六边形最为常见。小区之间彼此连接，实现区域的完整覆盖，形如蜂巢，这也是该项技术被译为蜂窝网络的原因。如今，在实际场景中，很多基站的覆盖区域已经不再是蜂窝形状，但这个称谓依旧流传了下来。</p>
+<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/5g-evolution.png"></p>
+<p>从 1G 到 5G 的演进</p>
+<p>从 1G 到 5G</p>
+<p>蜂窝网络最早由美国贝尔实验室在 1947 年提出，并在 1979 年在日本首次商用。最初的蜂窝网络只能提供模拟语音电话业务，被称为第一代（The 1st Generation，1G）移动通信系统。1G 移动通信系统采用频分多址接入（Frequency Division Multiple Access，FDMA）技术，将不同用户分配到不同频率的信道上。1G 移动通信系统虽然开创了移动通信的时代，但也存在很多缺点，如频谱利用率低、业务种类有限、无高速数据业务、保密性差以及设备成本高等。</p>
+<p>为了解决模拟系统中存在的问题，在 20 世纪 90 年代初，第二代（The 2nd Generation，2G）移动通信系统即数字移动通信技术出现了。2G 移动通信系统采用数字调制技术，并使用时分多址接入（Time Division Multiple Access，TDMA）或者码分多址接入（Code Division Multiple Access，CDMA）技术。2G 移动通信系统相比 1G 系统有了很大的改进，如系统容量、保密性和语音通话质量都大幅提升，并且开始提供数据业务。2G 移动通信系统最具代表性的是欧洲的全球移动通信系统（Global System for Mobile Communication，GSM），它使得全球范围内的漫游成为可能，并成为世界上最广泛使用的标准之一。</p>
+<p>随着互联网的发展，人们对数据业务的需求也越来越高。为了提高数据传输速率，在 2G 系统的基础上又出现了一些增强技术，如通用分组无线服务（General Packet Radio Service，GPRS）、增强型数据速率 GMS 演进（Enhanced Data for GSM Evolution，EDGE）等。这些技术被称为 2.5G 或 2.75G，它们在 2G 系统的基础上提供了更高的数据传输速率，但仍然不能满足人们对高速宽带数据业务的需求。</p>
+<p>2001 年，以数字多媒体移动通信为目的的第三代（The 3rd Generation，3G）移动通信系统进入商用阶段。3G 移动通信系统采用更先进的宽带码分多址技术（Wideband Code Division Multiple Access，WCDMA），并在更高频段使用更大的系统带宽进行数据发送，因而其数据传输速率得到进一步提升。3G 移动通信系统可以同时传输语音和数据信息，支持图像、音乐、视频等多媒体业务。3G 移动通信系统的主要代表有北美的 CDMA2000、欧洲和日本的 WCDMA、中国的时分同步的码分多址技术（Time Division-Synchronization Code Division Multiple Access，TD-SCDMA）等。这些技术都是基于国际电信联盟（International Telecommunication Union，ITU）制定的国际标准 IMT-2000（International Mobile Telecommunications 2000）。</p>
+<p>随着 3G 网络的发展，出现了一些增强技术，如高速下行分组接入（High Speed Downlink Packet Access，HSDPA）、高速上行分组接入（High Speed Uplink Packet Access，HSUPA）和增强型高速分组接入 (High-Speed Packet Access+，HSPA+) 等。这些技术被称为 3.5G 或 3.75G，它们在 3G 系统的基础上提供了更高的数据传输速率和更好的用户体验。</p>
+<p>2011 年，以数字宽带数据移动互联网通信为目的的第四代（The 4th Generation，4G）移动通信系统正式发布。4G 移动通信系统基于扁平化网络架构设计，在 3G 的长期演进（Long Term Evolution，LTE）基础上进行升级。LTE 系统采用正交频分多址（Orthogonal Frequency-Division Multiple Access，OFDMA）、自适应调制编码（Adaptive Modulation and Coding，AMC）和多天线（Multiple-input Multiple-output，MIMO）等关键技术，大大提高了频谱效率和网络性能。4G 移动通信系统拥有非常高的数据传输速度，是 3G 网络的 50 倍以上，其视频图像的传输效果与高清电视相当。4G 移动通信系统最具代表性的是以时分双工（Time Division Duplexing）&#x2F; 频分双工（Frequency Division Duplexing，FDD）为工作模式的高级长期演进技术（Long Term Evolution Advanced，LTE-A）技术。LTE-A 技术在 LTE 技术的基础上采用了载波聚合（Carrier Aggregation，CA）、中继和多点协同传输（Coordinated Multiple Point，CoMP）等技术，在提高网络容量和覆盖范围方面有了突破性进展。</p>
+<p>随着智能终端、物联网、云计算等新兴技术和应用的快速发展，人们对移动通信的需求也越来越高。为了满足未来人类信息社会的需求，第五代（The 5th Generation，5G）移动通信系统应运而生。5G 移动通信系统不仅提供了更高的数据传输速率、更低的时延和更高的可靠性，还支持海量的连接和多样化的业务场景。当前，5G 移动通信系统已渗透到工业、医疗、交通等领域，与各种设备和物体深度融合，实现万物互联，为社会经济发展和人类生活质量提供强大的支撑。</p>
+<p>蜂窝网络作为一种无线通信技术，从诞生至今已经经历了五代的发展，每一代都对应着不同的技术和标准，为用户提供了更高的数据传输速度，更好的语音通话质量，以及一系列新特性和新功能。从 1G 的模拟语音通信，到 5G 的全场景互联，蜂窝网络已经成为现代社会运转的必不可少的信息基础设施之一。</p>
+<h3 id="无线通信模块"><a href="#无线通信模块" class="headerlink" title="无线通信模块"></a>无线通信模块</h3><p>无线通信模块，简称模块（Module，亦称模组或单元），是实现数据上云和远程通信的必不可少的组件，在各类物联网场景中已经得到了极为广泛的应用。从功能上看，它是在本地设备和网络之间构建连接的桥梁。像电脑插上 USB 网卡就可以开始上网一样，在嵌入式系统中加入了模块，系统就具有了连接无线网络的可能性。</p>
+<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/device-with-ec20.png"></p>
+<p>搭载移远 EC20 模块的某物联网产品主板</p>
+<p>很多初次接触模块的用户会对模块这样一个被金属壳笼罩着的奇怪器件感到陌生，它与传统的芯片和分立器件存在很大的不同。实际上，模块的本质就是一种小型的 PCBA（Printed Circuit Board Assembly，组装电路板）。当我们去掉模块表面的金属屏蔽罩，其内部依旧是熟悉（但更为密集）的 PCB 电路结构。</p>
+<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/ec20-naked-top.png"></p>
+<p>某 4G 模块的内部图像</p>
+<p>有过嵌入式系统开发经验的用户对于 “核心板” 或者 SoM（System on Module）应该不会陌生。模块同样可理解为一种将无线通信所需的各类器件集成在一起，用于完成本地电路与云端服务的通信功能的高密度、小体积、带屏蔽罩的“核心板”。在本文开头的关于通信的介绍中，我们讲到了编码（解码）和调制（解调）的概念。在无线通信，尤其是蜂窝通信中，这些步骤往往会演变和拓展得极为复杂。模块的作用即是帮助我们完成这些复杂的步骤，实现简单高效的通信。</p>
+<p>模块的内部结构较为复杂。如下图所示，可以看到包含主芯片（高通 MDM9607）、存储器、电源管理芯片、功率放大器、射频前端等多种集成器件，以及大量密集分布的小尺寸封装的电阻、电容等元件。显然，模块的复杂度和精密度是远超传统电路板的。</p>
+<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/ec20-inner-components.png"></p>
+<p>EC20 Mini PCIe 模块的元件组成</p>
+<p>主芯片（Main Chip），部分厂家称之为基带（Baseband）芯片或调制解调器（Modem）芯片，是整个模块的核心。它的角色、功能和特性与手机中的 SoC（System on Chip，片上系统）十分相似。随着技术的发展和芯片制造工艺的提升，在现代模块中，主芯片通常已经集成了应用处理器（Application Processor，AP）、基带和射频的相关功能，运行着完备的操作系统（RTOS 或 Linux），对外提供包括 GPIO、USB 等在内的各种接口，并能够根据需求完成各类通信操作。从这个意义上看，模块既像一台没有屏幕和电池的手机，又像一种功能较为复杂的单片机。</p>
+<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/qcx216-diagram.png"></p>
+<blockquote>
+<p>高通最新的 QCX216 4G Modem 芯片功能框图</p>
+</blockquote>
+<p>对于同一台 Android 手机，不同人有不同的用法。一些用户会安分地使用出厂自带的系统和功能，另一些则热衷于解锁、刷机、root 等操作，更进一步地去开发和挖掘设备的潜力。和手机类似，模块也有这样的两类应用模式：标准模式和二次开发模式。</p>
+<h3 id="标准模式"><a href="#标准模式" class="headerlink" title="标准模式"></a>标准模式</h3><blockquote>
+<p>类比 ESP32 的AT固件<br>和普通手机一样，模块在出厂时通常都会内置操作系统和应用程序。对于许多用户来说，直接使用模块出厂预置功能就可以满足大部分的网络通信需求。这种无需对模块进行开发和调整，直接作为成品功能单元进行使用的方式称为标准模式或传统模式，是当前应用最普遍的模块使用方式。</p>
+</blockquote>
+<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/standard-mode-module.png"></p>
+<p>标准模式示意图</p>
+<p>如上图所示，在标准模式中，模块与主控（MCU，如 STM32）之间通过 UART 或 USB 接口相连接，基于 AT 指令进行双向交互。不难看出，MCU 是整套系统的核心，通信模块是作为 MCU 的一个独立的功能外设的角色而存在的。系统的主要业务逻辑（用户应用，App）在 MCU 中运行，其他外设（图中的 External Devices）通过 UART、I2C 等接口与 MCU 相连，受 MCU 控制。</p>
+<p>关于 AT 指令</p>
+<p>AT 指令是目前业界历史最悠久，使用领域最广泛的通讯指令集之一。它构建起了一套用户和模块间的完备的双向通信机制：用户（或 MCU）通过向模块发送 AT 指令，控制模块执行包括联网、通话、定位等在内的各类功能，模块则将执行结果和状态返回给用户。这种 “一发一收” 的机制和相对单一的处理方式非常适合在资源有限的嵌入式环境中使用。如今，市面上的绝大多数模块在出厂时都内置了 AT Server 程序，可以接收、解析和执行特定的 AT 指令。</p>
+<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/at-command-architecture.png"></p>
+<p>AT 指令的运行模式</p>
+<p>对于开发者而言，在基于标准模式使用模块时，主要的开发工作量在于主控中运行的用户 App。其业务代码中需要包含较为复杂的 AT 指令发送和返回值解析功能，例如对 URC（Unsolicited Result Code，非请求结果码）的处理等，因而对于初学者难度较大。</p>
+<p>除了 AT 指令功能，模块在标准模式下还可以作为无线网卡，为主控或其他上位机提供包括 PPP 拨号上网在内的一系列网络服务，此处不做赘述。</p>
+<h3 id="二次开发模式"><a href="#二次开发模式" class="headerlink" title="二次开发模式"></a>二次开发模式</h3><blockquote>
+<p>类比使用 ESP-IDF 开发 ESP32<br>在前文中我们曾提到，模块就像是功能较为复杂的单片机。事实上，模块所搭载的主芯片为了满足无线通信的需要，通常具有较高的性能和较多的资源，同时也配备了包括 GPIO、ADC、I2C 等在内的丰富的外设接口，只不过在标准模式下，这些资源对于用户通常不是直接可用的。如果能够 “解锁” 这一限制，模块的应用潜力将极大提升，这就需要对模块进行二次开发。</p>
+</blockquote>
+<p>二次开发的本意是在软件本身提供的一些基本功能和接口的基础上，进行组合和扩展，开发出新的功能来满足用户的特殊需求。具体到模块开发上，二次开发模式允许开发者在底层操作系统的基础上调用 API 编写并运行自己的应用，充分调用模块的各种资源，实现更多的可能性。</p>
+<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/open-mode-module.png"></p>
+<p>二次开发模式示意图</p>
+<p>二次开发最重要的意义在于使模块在一定程度上具备了取代标准模式中的主控的能力，因而这种模式又被称为 OpenCPU 或 OpenMCU（不同厂家可能有不同的专门称呼，如移远称之为 QuecOpen）。如上图所示，与标准模式相比，OpenCPU 模式由于将模块本身作为主控使用，用户应用（App）直接置于模块内部运行，外设（图中的 External Devices）与模块直接相连，整个系统中无需外部处理器（MCU）或只需简单的外部芯片（图中的 Simple Microchip），因而可以有效地达到精简硬件设计、降低器件成本、缩小产品尺寸的目的。在单片机价格居高不下的当下，OpenCPU 方案受到了众多公司的青睐。</p>
+<p>但是，OpenCPU 方案也具有较为明显的局限性。由于这一模式通常需要用户直接在模块底层运行的操作系统的基础上进行开发，技术门槛较高，传统的、不具备系统级开发经验的单片机开发者很难适应。其次，由于 OpenCPU 技术支持难度大，模块厂家通常只向大客户提供相关的工具和资料，入门较为不便。最后，不同厂家、不同型号的模块，其 OpenCPU 开发环境和开发工具存在较大差别，用户编写的程序在不同模块间的移植存在一定的难度。</p>
+<h3 id="使用脚本语言开发模块"><a href="#使用脚本语言开发模块" class="headerlink" title="使用脚本语言开发模块"></a>使用脚本语言开发模块</h3><blockquote>
+<p>类比 ESP32的 micropython 开发<br>传统的 OpenCPU 开发通常使用 C 语言，因此也被称作 CSDK 开发。用户需要直接修改和控制底层的操作系统，具有较高的难度和一定的风险性。在 <a target="_blank" rel="noopener" href="https://python.quectel.com/doc/Application_guide/zh/background/iot-and-low-code.html">前文</a> 中，我们介绍了低代码开发方式和它在物联网领域的应用。目前，已经有部分模块厂商通过在 CSDK 的基础上移植解释器 &#x2F; 虚拟机的方式，使得用户可以使用 Lua、Python 等脚本语言对模块进行二次开发。</p>
+</blockquote>
+<p>与 C 语言相比，脚本语言在语法和使用方式上普遍较为简单，开发者无需花费太多时间和精力即可掌握，并可相对轻松地实现业务逻辑，便于项目的快速开发和功能迭代。同时，对于低代码开发方式而言，开发者通常无需考虑内存回收、基础任务调度等底层细节，显著降低了模块二次开发的技术门槛。最后，对于不同型号的模块，只要它们运行的是同一种脚本语言解释器，用户编写的程序通常只需少量修改（甚至无需修改）即可完成移植。</p>
+<p>如下的示例分别是在 EC100Y-CN 模块上使用 C 语言和 Python 语言实现 LED 闪灯的代码。可以看出，脚本语言更加简单直观，易于编写、便于理解。</p>
+<p>LED 闪灯代码</p>
+<p>使用 QuecOpen（CSDK） 使用 QuecPython</p>
+<p>当然，由于使用脚本语言开发时屏蔽了很多底层细节，因而在灵活性和可控性上不如传统的 C 语言开发。此外，脚本语言与 C 语言相比，本身性能相对较差、执行速度较慢，因而在部分对于性能和实时性要求较高的场景下不适合使用。</p>
+<h3 id="刷-MIFI"><a href="#刷-MIFI" class="headerlink" title="刷 MIFI"></a>刷 MIFI</h3><p>既然随身wifi (MIFI)<br>EC200A 的固件升级从Quectel 拿到的默认的升级的压缩包不能直接用户升级</p>
+<p>F:\temp\EC200ACNDAR01A07M16&gt;FBFMake.exe -r Falcon_EVB_QSPI_Nor_LWG_Only_Nontrusted_PM802_LPDDR2.blf -f out</p>
+<p>BinFile.bin 是烧录的目标文件，可以用QDLoader 工具烧录</p>
+<h3 id="手机修改IMEI-使用绑定IMEI的eSIM流量卡、物流卡"><a href="#手机修改IMEI-使用绑定IMEI的eSIM流量卡、物流卡" class="headerlink" title="手机修改IMEI 使用绑定IMEI的eSIM流量卡、物流卡"></a>手机修改IMEI 使用绑定IMEI的eSIM流量卡、物流卡</h3>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/04/20/qemu/" rel="prev" title="QEMU 仿真 arm">
+      <i class="fa fa-chevron-left"></i> QEMU 仿真 arm
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/04/22/simpread-%E3%80%90Python%E3%80%91%E6%B5%85%E8%B0%88%20%E5%AD%97%E8%8A%82%E7%A0%81%20+%20%E8%99%9A%E6%8B%9F%E6%9C%BA%20(Python%20%E8%A7%A3%E9%87%8A%E5%99%A8)_python%20%E8%99%9A%E6%8B%9F%E6%9C%BA%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/" rel="next" title="浅谈 python 字节码">
+      浅谈 python 字节码 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E7%9A%84-IMEI"><span class="nav-number">2.</span> <span class="nav-text">设备的 IMEI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%9C%82%E7%AA%9D%E7%BD%91%E7%BB%9C%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">蜂窝网络的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9D%97"><span class="nav-number">4.</span> <span class="nav-text">无线通信模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">标准模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">二次开发模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9D%97"><span class="nav-number">7.</span> <span class="nav-text">使用脚本语言开发模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B7-MIFI"><span class="nav-number">8.</span> <span class="nav-text">刷 MIFI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E6%9C%BA%E4%BF%AE%E6%94%B9IMEI-%E4%BD%BF%E7%94%A8%E7%BB%91%E5%AE%9AIMEI%E7%9A%84eSIM%E6%B5%81%E9%87%8F%E5%8D%A1%E3%80%81%E7%89%A9%E6%B5%81%E5%8D%A1"><span class="nav-number">9.</span> <span class="nav-text">手机修改IMEI 使用绑定IMEI的eSIM流量卡、物流卡</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

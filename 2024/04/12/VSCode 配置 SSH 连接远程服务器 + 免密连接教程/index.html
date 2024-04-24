@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="由于本机计算资源有限，为了满足项目需求，导师安排了计算资源。最初，我尝试使用 XShell 进行连接，但由于其非图形界面，操作不够直观，不便于代码编写和项目管理。 而 VSCode 完美解决了这一痛点，我转而选择了 VSCode。VSCode 提供了图形界面的远程开发环境，使得远程连接变得更加轻松和便捷。本教程旨在记录并分享使用 VSCode 进行远程连接的步骤，希望能够帮助到有相似需求的人，提高">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCode 配置 SSH 连接远程">
+<meta property="og:url" content="http://example.com/2024/04/12/VSCode%20%E9%85%8D%E7%BD%AE%20SSH%20%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%20+%20%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="由于本机计算资源有限，为了满足项目需求，导师安排了计算资源。最初，我尝试使用 XShell 进行连接，但由于其非图形界面，操作不够直观，不便于代码编写和项目管理。 而 VSCode 完美解决了这一痛点，我转而选择了 VSCode。VSCode 提供了图形界面的远程开发环境，使得远程连接变得更加轻松和便捷。本教程旨在记录并分享使用 VSCode 进行远程连接的步骤，希望能够帮助到有相似需求的人，提高">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-51a7090e353ee0442e8071aafc0cb73d_b.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-2573982fab9eb5bafd09da842b213f7e_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-5b85e5d9f04ffab768c7c183b2309884_r.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-b7dfcd422a9d004694b390d3ceae825e_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-a549b15b4ac528314928d24778186540_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-b13944c910f4be29538cbaaa01d3eae8_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-f3dfcc846741b6d574fb6ee86041d5af_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-79fc77a6c6d904caa9cf90a63f2fbd9f_r.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-6217ef2d7028e4ff6b9d6b2555757819_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-fedd244c6b0b53051387658643bd3e77_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-643ffe31669e71cf1bd92915c4ab5478_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-4060da4d55fc7bf0fbcd11c828f666b0_r.jpg">
+<meta property="article:published_time" content="2024-04-12T04:22:01.000Z">
+<meta property="article:modified_time" content="2024-04-24T05:47:45.406Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic2.zhimg.com/v2-51a7090e353ee0442e8071aafc0cb73d_b.jpg">
+
+<link rel="canonical" href="http://example.com/2024/04/12/VSCode%20%E9%85%8D%E7%BD%AE%20SSH%20%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%20+%20%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>VSCode 配置 SSH 连接远程 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-clock">
+
+    <a href="/clock/" rel="section"><i class="fas fa-clock fa-fw"></i>clock</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/12/VSCode%20%E9%85%8D%E7%BD%AE%20SSH%20%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%20+%20%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VSCode 配置 SSH 连接远程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-04-12 12:22:01" itemprop="dateCreated datePublished" datetime="2024-04-12T12:22:01+08:00">2024-04-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>由于本机计算资源有限，为了满足项目需求，导师安排了计算资源。最初，我尝试使用 XShell 进行连接，但由于其非图形界面，操作不够直观，不便于代码编写和项目管理。</p>
+<p>而 VSCode 完美解决了这一痛点，我转而选择了 VSCode。VSCode 提供了图形界面的远程开发环境，使得远程连接变得更加轻松和便捷。本教程旨在记录并分享使用 VSCode 进行远程连接的步骤，希望能够帮助到有相似需求的人，提高远程开发的效率和便捷性。</p>
+<p>本机：Windows</p>
+<p>服务器：Linux</p>
+<p>前置要求：</p>
+<ul>
+<li>本机安装 Vscode、ssh（命令行输入 ssh 检查）</li>
+<li>打开 Vscode 时建议使用<strong>管理器员权限</strong>打开，在这之前遇到了一些报错。</li>
+</ul>
+<h2 id="一、远程连接过程"><a href="#一、远程连接过程" class="headerlink" title="一、远程连接过程"></a><strong>一、远程连接过程</strong></h2><ul>
+<li>安装插件 remote-ssh</li>
+</ul>
+<p><img src="https://pic2.zhimg.com/v2-51a7090e353ee0442e8071aafc0cb73d_b.jpg"></p>
+<ul>
+<li>点击远程资源管理器、新建远程</li>
+</ul>
+<p><img src="https://pic3.zhimg.com/v2-2573982fab9eb5bafd09da842b213f7e_r.jpg"></p>
+<ul>
+<li>在窗口上方弹出的命令框中输入：<code>ssh name@ip</code>，<code>name</code>是你服务器的用户名，如果没有创建用户则填 root，<code>ip</code>是你的服务器 ip 地址</li>
+</ul>
+<p><img src="https://pic1.zhimg.com/v2-5b85e5d9f04ffab768c7c183b2309884_r.jpg"></p>
+<p>比如我输入<code>ssh -p 2230 liuwf@202.116.7.104</code>，其中<code>-p 2230</code>表示指定端口号 2230，若是没有指定可以直接删除，输入后按回车</p>
+<ul>
+<li>回车后会弹出选择更新配置文件，点击第一个路径，会自动生成一个 config 文件</li>
+</ul>
+<p><img src="https://pic3.zhimg.com/v2-b7dfcd422a9d004694b390d3ceae825e_r.jpg"></p>
+<ul>
+<li>下图为 config 内容，如果没有自动生成，则手动打开并根据自身情况进行配置，文件的位置在上图的路径。</li>
+</ul>
+<p><img src="https://pic1.zhimg.com/v2-a549b15b4ac528314928d24778186540_r.jpg"></p>
+<p><strong><em>Host:</em></strong> <em>这是一个用户定义的别名，用于指代远程主机。可以在在终端中执行</em> <code>_ssh 别名_</code> <em>替代</em><code>_ssh name@ip_</code><em>。</em></p>
+<p><strong><em>HostName:</em></strong> <em>指定远程主机的实际地址或主机名。</em></p>
+<p><strong><em>Port:</em></strong> <em>指定 SSH 连接使用的端口号。</em></p>
+<p><strong><em>User:</em></strong> <em>指定连接到远程主机时使用的用户名。在这里，用户名是</em> <code>_liuwf_</code><em>。</em></p>
+<ul>
+<li>在 config 文件配置完成并保存后，在 VSCode 的远程资源管理器中已经出现刚配置的远程服务器，此时点击红框按钮连接即可</li>
+</ul>
+<p><img src="https://pic1.zhimg.com/v2-b13944c910f4be29538cbaaa01d3eae8_r.jpg"></p>
+<ul>
+<li>VSCode 会自动进行远程端的设置，窗口上方的中间位置会出现选择平台、输入密码设置，按照自己的情况填写即可。</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/v2-f3dfcc846741b6d574fb6ee86041d5af_r.jpg"></p>
+<ul>
+<li>此时没有意外的话就可以连接上了远程服务器了</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/v2-79fc77a6c6d904caa9cf90a63f2fbd9f_r.jpg"></p>
+<ul>
+<li>连接过程中，我遇到了如下错误：<br><code>Bad owner or permissions on C:\\Users\.ssh</code><br><code>\&gt; /config</code><br><code>\&gt; 过程试图写入的管道不存在。</code></li>
+</ul>
+<p>参考了<a href="https://link.zhihu.com/?target=https://blog.csdn.net/qq_46276946/article/details/131299973">链接</a>仍然不能解决。最后通过使用<strong>管理员权限</strong>打开 VSCode 解决该问题。</p>
+<h2 id="二、如何免密连接"><a href="#二、如何免密连接" class="headerlink" title="二、如何免密连接"></a><strong>二、如何免密连接</strong></h2><p>每次连接都需要输入密码未免有些麻烦，一台机器想要免密访问其他机器，需要把自己的公钥内容发送到别的机器的 authorized_keys 中去，并在本机 config 文件中配置私钥文件位置。如下为流程。</p>
+<h3 id="1-生成新的密钥对"><a href="#1-生成新的密钥对" class="headerlink" title="1. 生成新的密钥对"></a>1. 生成新的密钥对</h3><p>使用命令<code>ssh-keygen</code>生成新的密钥对。你可以选择在生成密钥对时为其指定不同的文件名。请注意，<code>-f</code> 后的<code>id_rsa_linux</code> 和 <code>id_rsa_windows</code> 只是示例文件名，你可以根据需要选择其他文件名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 在 Linux 和 Mac 上</span><br><span class="line">ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa_linux</span><br><span class="line">​</span><br><span class="line"># 在 Windows 上</span><br><span class="line">ssh-keygen -t rsa -b 2048 -f C:\Users\YourUsername\.ssh\id_rsa_windows</span><br><span class="line">​</span><br><span class="line"># 如果你只有单平台使用 ssh</span><br><span class="line">ssh-keygen</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>当你在多个平台上使用 SSH 连接到不同的远程服务器时，可能需要为每个平台生成和使用不同的密钥对。这是因为每个平台（例如，Windows、Linux、Mac）可能有不同的文件系统和密钥文件位置，同时在安全性的考虑下，不同平台上的密钥对最好是独立的。</p>
+<p>输入命令后一路回车</p>
+<p><img src="https://pic2.zhimg.com/v2-6217ef2d7028e4ff6b9d6b2555757819_r.jpg"></p>
+<p>系统会在你指定的路径（本例子为 <code>C:\Users\YourUsername\.ssh</code>）下生成两个文件，分别是<code>id_rsa_windows.pub</code>和<code>id_rsa_windows</code>，前者为生成的公钥，后者为私钥 。</p>
+<h3 id="2-添加公钥到远程服务器"><a href="#2-添加公钥到远程服务器" class="headerlink" title="2. 添加公钥到远程服务器"></a>2. <strong>添加公钥到远程服务器</strong></h3><p>将生成的公钥（ <code>id_rsa_windows.pub</code>的内容）添加到你远程服务器的 <code>authorized_keys</code> 文件中，以允许连接。</p>
+<p>(1). 若你本机是 <strong>Windows</strong>，可以使用以下方法之一：</p>
+<ul>
+<li><p>使用 <code>scp</code> 命令<strong>：</strong>使用 <code>scp</code> 命令将公钥文件传输到远程服务器，在远程服务器上，将公钥内容追加到 <code>authorized_keys</code> 文件，但是本人不建议使用 <a href="https://link.zhihu.com/?target=https://so.csdn.net/so/search?q=scp&spm=1001.2101.3001.7020">scp</a> 发送，这样会对自己机器或者对方机器的原有配置造成覆盖或是丢失，存在风险。</p>
+</li>
+<li><p>手动复制：手动复制公钥文件 (<code>id_rsa_windows.pub</code>) 的内容，然后登录到远程服务器，并将内容粘贴到 <code>authorized_keys</code> 文件。如下是我生成的<code>id_rsa_windows.pub</code>文件内容：</p>
+</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/v2-fedd244c6b0b53051387658643bd3e77_r.jpg"></p>
+<p>在远程服务器上，<code>authorized_keys</code> 文件通常存储在用户的 <code>.ssh</code> 目录中。具体路径可能为 <code>~/.ssh/authorized_keys</code>。例如我的用户名是 <code>liuwf</code>，那么 <code>authorized_keys</code> 文件的路径可能是 <code>/home/liuwf/.ssh/authorized_keys</code> 。</p>
+<p>如果你的<code>.ssh</code>目录或者 <code>authorized_keys</code> 文件不存在，你可以在服务器终端使用以下命令创建它：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 创建目录</span><br><span class="line">mkdir ~/.ssh</span><br><span class="line"># 进入目录</span><br><span class="line">cd ~/.ssh</span><br><span class="line"># 创建 authorized_keys 文件</span><br><span class="line">touch authorized_keys</span><br><span class="line"># 使用文本编辑器打开 authorized_keys 文件，并将你的公钥内容粘贴到其中</span><br><span class="line">nano authorized_keys</span><br><span class="line"># 保存并关闭文本编辑器。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>不熟练使用终端，也可以使用 VSCode 的资源管理器直接创建，粘贴公钥后保存。</p>
+<p><img src="https://pic1.zhimg.com/v2-643ffe31669e71cf1bd92915c4ab5478_r.jpg"></p>
+<p>(2). 如果你本机是 <strong>Linux</strong>：</p>
+<p><code>ssh-copy-id</code> 命令通常用于将你的公钥复制到远程服务器的 <code>authorized_keys</code> 文件中。<code>-i</code> 选项用于指定身份文件（即你的公钥文件）。在本机执行如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i id_rsa_Windows.pub name@ip</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>确保公钥文件 (<code>id_rsa_Windows.pub</code>) 在本地机器上的正确位置，并且你有读取该密钥的权限。同时，确保远程服务器上的用户 有一个 <code>.ssh</code> 目录，并且 <code>authorized_keys</code> 文件有正确的权限（通常是目录权限为 <code>700</code>，<code>authorized_keys</code> 文件权限为 <code>600</code>）。</p>
+<p>然后将你的公钥 (<code>id_rsa_Windows.pub</code>) 的内容复制并追加到远程服务器的 <code>authorized_keys</code> 文件中。</p>
+<h3 id="3-配置-SSH-客户端："><a href="#3-配置-SSH-客户端：" class="headerlink" title="3. 配置 SSH 客户端："></a>3. <strong>配置 SSH 客户端：</strong></h3><p>将添加公钥到远程服务器后，最后一步便是配置你的主机。</p>
+<p>打开你的 SSH 客户端（本机）配置文件（也就是前面生成的 config 文件，一般在<code>C:\Users\YourUsername\.ssh\config</code>），添加配置（<code>IdentityFile</code> <strong>私钥</strong>文件路径），以指定使用哪个私钥文件。下图红框为我添加的内容。</p>
+<p><img src="https://pic1.zhimg.com/v2-4060da4d55fc7bf0fbcd11c828f666b0_r.jpg"></p>
+<p>这样，当你使用 ssh 连接服务器时，SSH 客户端将自动选择相应的私钥文件，就可以实现免密登录了。</p>
+<p>参考链接：</p>
+<p><a href="https://link.zhihu.com/?target=https://blog.csdn.net/qq_56845026/article/details/130639709">配置 SSH 多账户配置不冲突_ssh 多用户 - CSDN 博客</a><a href="https://link.zhihu.com/?target=https://blog.csdn.net/u011762522/article/details/119352495">【大数据技术】多台机器配置 ssh 免密登录的最快捷最不易出错的方法_如何实现不同机器间无密码连接_daydayup-2016 的博客 - CSDN 博客</a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/222452460">undefined</a></p>
+<p>update 2023&#x2F;11&#x2F;17</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/04/12/VSCode%20%E4%BD%BF%E7%94%A8%20clangd%20%E6%9E%84%E5%BB%BA%20Linux%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83_vscode%20clangd-CSDN%20%E5%8D%9A%E5%AE%A2/" rel="prev" title="VSCode 使用 clangd 构建 Linux开发环境">
+      <i class="fa fa-chevron-left"></i> VSCode 使用 clangd 构建 Linux开发环境
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/04/12/%E6%90%AD%E5%BB%BA%20Makefile+OpenOCD+CMSIS-DAP+Vscode%20arm-none-eabi-gcc%20%E5%B7%A5%E7%A8%8B%E6%A8%A1%E6%9D%BF/" rel="next" title="VSCode 搭建 STM32 开发环境">
+      VSCode 搭建 STM32 开发环境 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">一、远程连接过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">二、如何免密连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%94%9F%E6%88%90%E6%96%B0%E7%9A%84%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">2.1.</span> <span class="nav-text">1. 生成新的密钥对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0%E5%85%AC%E9%92%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.2.</span> <span class="nav-text">2. 添加公钥到远程服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%85%8D%E7%BD%AE-SSH-%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%9A"><span class="nav-number">2.3.</span> <span class="nav-text">3. 配置 SSH 客户端：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

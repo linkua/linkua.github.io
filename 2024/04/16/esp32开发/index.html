@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="ESP32 简介ESP32芯片具有以下特性：  处理器和内存：双核32位LX6微处理器，主频最高可达240MHz，520KB SRAM，448KB ROM，同时支持外部4MB SPI Flash和外部8MB PSRAM，为数据的处理和存储提供强大的支持。 WiFi：支持802.11 b&#x2F;g&#x2F;n（2.4GHz）标准，支持STA&#x2F;AP&#x2F;STA+AP工作模式，最大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ESP 开发">
+<meta property="og:url" content="http://example.com/2024/04/16/esp32%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ESP32 简介ESP32芯片具有以下特性：  处理器和内存：双核32位LX6微处理器，主频最高可达240MHz，520KB SRAM，448KB ROM，同时支持外部4MB SPI Flash和外部8MB PSRAM，为数据的处理和存储提供强大的支持。 WiFi：支持802.11 b&#x2F;g&#x2F;n（2.4GHz）标准，支持STA&#x2F;AP&#x2F;STA+AP工作模式，最大">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-16T03:19:30.000Z">
+<meta property="article:modified_time" content="2024-04-16T07:05:30.397Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/04/16/esp32%E5%BC%80%E5%8F%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>ESP 开发 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-clock">
+
+    <a href="/clock/" rel="section"><i class="fas fa-clock fa-fw"></i>clock</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/16/esp32%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ESP 开发
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-04-16 11:19:30 / Modified: 15:05:30" itemprop="dateCreated datePublished" datetime="2024-04-16T11:19:30+08:00">2024-04-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="ESP32-简介"><a href="#ESP32-简介" class="headerlink" title="ESP32 简介"></a>ESP32 简介</h3><p>ESP32芯片具有以下特性：</p>
+<ul>
+<li>处理器和内存：双核32位LX6微处理器，主频最高可达240MHz，520KB SRAM，448KB ROM，同时支持外部4MB SPI Flash和外部8MB PSRAM，为数据的处理和存储提供强大的支持。</li>
+<li>WiFi：支持802.11 b&#x2F;g&#x2F;n（2.4GHz）标准，支持STA&#x2F;AP&#x2F;STA+AP工作模式，最大传输速率可达150Mbps，并支持WPA&#x2F;WPA2&#x2F;WPA3安全模式，提供稳定、安全的无线网络连接。</li>
+<li>蓝牙：支持蓝牙4.2（包括BR&#x2F;EDR和BLE），支持蓝牙音频传输（A2DP&#x2F;AVRCP&#x2F;SPP），使得无线音频传输和远程控制更加便捷。</li>
+<li>外设和接口：ESP32提供了丰富的外设和接口，包括最多34个可编程GPIO引脚，支持UART、SPI、I2C、I2S、PWM等多种通信协议。此外，还集成了12位ADC、8位DAC、触摸传感器、霍尔传感器等，为各种应用场景提供了强大的支持。</li>
+<li>电源管理：具有多种低功耗工作模式，电源电压范围2.2V-3.6V，内置低压稳压器（LDO）和开关电源管理单元（SMU），实现高效的电源管理</li>
+</ul>
+<h4 id="主核（Main-Core）："><a href="#主核（Main-Core）：" class="headerlink" title="主核（Main Core）："></a>主核（Main Core）：</h4><ul>
+<li>特点：主核是ESP32的主要处理器核心，采用Tensilica Xtensa LX6架构，主频高达240MHz。它具有较高的性能，可执行大多数应用程序任务。</li>
+<li>应用：主核通常用于执行主要的应用逻辑、用户界面、Wi-Fi和蓝牙通信以及其他需要高性能处理的任务。</li>
+</ul>
+<h4 id="协处理器核心（Pro-Co-Processor）："><a href="#协处理器核心（Pro-Co-Processor）：" class="headerlink" title="协处理器核心（Pro Co-Processor）："></a>协处理器核心（Pro Co-Processor）：</h4><ul>
+<li>特点：协处理器核心也采用Tensilica Xtensa LX6架构，主频高达160MHz。它专门用于处理Wi-Fi和蓝牙通信协议，以及其他低功耗任务。</li>
+<li>应用：协处理器核心负责Wi-Fi和蓝牙通信堆栈，以减少对主核的干扰，从而实现低功耗通信。</li>
+</ul>
+<h4 id="双核协同工作："><a href="#双核协同工作：" class="headerlink" title="双核协同工作："></a>双核协同工作：</h4><ul>
+<li>特点：ESP32的双核设计允许主核和协处理器核心协同工作，以提高系统性能和效率。它们可以在不同的任务上并行运行，也可以相互通信和同步。</li>
+<li>应用：双核协同工作非常适用于需要同时执行多个任务的应用，例如实时操作系统（RTOS）和并发通信。</li>
+</ul>
+<h4 id="内存："><a href="#内存：" class="headerlink" title="内存："></a>内存：</h4><ul>
+<li>特点：主核和协处理器核心都共享相同的存储器空间，包括闪存、RAM和其他存储器。这使得数据和代码在两个核心之间共享，简化了多任务编程。</li>
+<li>应用：共享内存使得数据在两个核心之间的传递更加高效，有助于提高系统性能。</li>
+</ul>
+<h3 id="VScode-开发环境搭建"><a href="#VScode-开发环境搭建" class="headerlink" title="VScode 开发环境搭建"></a>VScode 开发环境搭建</h3><h4 id="安装-ESP-IDF"><a href="#安装-ESP-IDF" class="headerlink" title="安装 ESP-IDF"></a>安装 ESP-IDF</h4><p>Windows 安装离线版IDF <a target="_blank" rel="noopener" href="https://dl.espressif.cn/dl/esp-idf/?idf=5.2">https://dl.espressif.cn/dl/esp-idf/?idf=5.2</a></p>
+<h4 id="安装-ESP-IDF-插件"><a href="#安装-ESP-IDF-插件" class="headerlink" title="安装 ESP-IDF 插件"></a>安装 ESP-IDF 插件</h4><ol>
+<li>打开 VSCode, 使用快捷键 Shift+Ctrl+X，进入插件管理器</li>
+<li>在搜索栏中，输入 Espressif IDF，选择对应的插件点击 install 即可</li>
+</ol>
+<h4 id="新建基于例程的工程"><a href="#新建基于例程的工程" class="headerlink" title="新建基于例程的工程"></a>新建基于例程的工程</h4><ol>
+<li>按下 F1 打开命令行，输入 ESP-IDF: Show Examples Projects,或者 vscode 上方输入框填入<code>&gt;</code>,再输入命令</li>
+<li>点击 ESP-IDF: Show Examples Projects</li>
+<li>点击 Use current ESP-IDF 使用当前 ESP-IDF</li>
+<li>在列表中选择 hello_world,然后点击 Create project using example hello world</li>
+<li>点击左下角图标选择 COM， 选择目标芯片，点击齿轮图标配置项目</li>
+<li>打开 esp-idf terminal 输入 idf 命令 idf.py menuconifg配置例程引脚，例如LED GPIO pin2。</li>
+</ol>
+<p>在配置窗口中选择 Serial flasher config，将 Falsh 的大小改为 4MB：<br>Save</p>
+<p>编译项目</p>
+<h3 id="esptool-单独下载固件"><a href="#esptool-单独下载固件" class="headerlink" title="esptool 单独下载固件"></a>esptool 单独下载固件</h3><p><code>pip install esptool</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">esptool --port /dev/ttyACM0 --baud 115200 write_flash --flash_size=detect 0 &#x27;/home/link/Downloads/WLED_0.13.3_ESP01.bin&#x27;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/04/14/makefile%E4%BD%BF%E7%94%A8/" rel="prev" title="makefile 文件使用">
+      <i class="fa fa-chevron-left"></i> makefile 文件使用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/04/20/qemu/" rel="next" title="QEMU 仿真 arm">
+      QEMU 仿真 arm <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ESP32-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">ESP32 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%A0%B8%EF%BC%88Main-Core%EF%BC%89%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">主核（Main Core）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%8F%E5%A4%84%E7%90%86%E5%99%A8%E6%A0%B8%E5%BF%83%EF%BC%88Pro-Co-Processor%EF%BC%89%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">协处理器核心（Pro Co-Processor）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%A0%B8%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">双核协同工作：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">内存：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VScode-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">VScode 开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ESP-IDF"><span class="nav-number">2.1.</span> <span class="nav-text">安装 ESP-IDF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ESP-IDF-%E6%8F%92%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">安装 ESP-IDF 插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E5%9F%BA%E4%BA%8E%E4%BE%8B%E7%A8%8B%E7%9A%84%E5%B7%A5%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">新建基于例程的工程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#esptool-%E5%8D%95%E7%8B%AC%E4%B8%8B%E8%BD%BD%E5%9B%BA%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">esptool 单独下载固件</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
