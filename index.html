@@ -1387,7 +1387,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 01:15:44" itemprop="dateModified" datetime="2024-04-25T01:15:44+08:00">2024-04-25</time>
               </span>
 
           
@@ -1446,23 +1446,23 @@
 <p>即时变量、延时变量，export</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A = xxx // 延时变量</span><br><span class="line">B ?= xxx // 延时变量，只有第一次定义时赋值才成功；如果曾定义过，此赋值无效</span><br><span class="line">C := xxx // 立即变量</span><br><span class="line">D += yyy // 如果 D 在前面是延时变量，那么现在它还是延时变量；</span><br><span class="line">D += dir/ dir 是一个目录</span><br><span class="line">// 如果 D 在前面是立即变量，那么现在它还是立即变量</span><br></pre></td></tr></table></figure>
 <p>@echo 看不到变量<br>@echo $(A)</p>
-<h5 id="makefile-函数"><a href="#makefile-函数" class="headerlink" title="makefile 函数"></a>makefile 函数</h5><p>$(foreach var,list,text)<br>简单地说，就是 for each var in list, change it to text。对 list 中的每一个<br>元素，取出来赋给 var，然后把 var 改为 text 所描述的形式。<br>例子：</p>
+<h5 id="makefile-函数"><a href="#makefile-函数" class="headerlink" title="makefile 函数"></a>makefile 函数</h5><p><code>$(foreach var,list,text)</code><br>简单地说，就是 for each var in list, change it to text。对 list 中的每一个<br>元素，取出来赋给 var，然后把 var 改为 text 所描述的形式。<br>例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objs := a.o b.o</span><br><span class="line">dep_files := $(foreach f, $(objs), .$(f).d) // 最终 dep_files := .a.o.d .b.o.d</span><br></pre></td></tr></table></figure>
-<p>$(wildcard pattern)<br>pattern 所列出的文件是否存在，把存在的文件都列出来。<br>例子：</p>
+<p><code>$(wildcard pattern)</code><br>pattern 所列出的文件是否存在，把存在的文件都列出来。<br>例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">src_files := $( wildcard *.c) // 最终 src_files 中列出了当前目录下的所有.c 文件</span><br></pre></td></tr></table></figure>
 
-<p>$(filter pattern…,text)<br>把 text 中符合 pattern 格式的内容，filter(过滤)出来、留下来。<br>例子：</p>
+<p><code>$(filter pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter(过滤)出来、留下来。<br>例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter %/, $(obj-y)) //结果为：c/ d/</span><br></pre></td></tr></table></figure>
 
-<p>$(filter-out pattern…,text)<br>把 text 中符合 pattern 格式的内容，filter-out(过滤)出来、扔掉。<br>例子：</p>
+<p><code>$(filter-out pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter-out(过滤)出来、扔掉。<br>例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter-out %/, $(obj-y)) //结果为：a.o b.o</span><br></pre></td></tr></table></figure>
 
-<p>$(patsubst pattern,replacement,text)<br>寻找<code>text’中符合格式</code>pattern’的字，用<code>replacement’替换它们。 </code>pattern’和&#96;replacement’中可以使用通配符。<br>比如：</p>
+<p><code>$(patsubst pattern,replacement,text)</code><br>寻找text中符合格式pattern的字，用replacement替换它们。<br>pattern和replacement中可以使用通配符。</p>
+<p>比如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subdir-y := c/ d/</span><br><span class="line">subdir-y := $(patsubst %/, %, $(subdir-y)) // 结果为：c d</span><br></pre></td></tr></table></figure>
 <p>EXTRA_CFLAGS :&#x3D; -D DEBUG 打开宏</p>
 <h4 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h4><p>Linux 内核编译通常使用 make 工具，而不是 cmake。cmake 是用于跨平台构建系统的工具，但 Linux 内核不是为跨平台设计的，而是直接使用 make 工具来构建。</p>
 <h4 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h4><p>linux&#x2F;unix 系统开发</p>
-<p>&#96;man man xxB    &#96;&#96;<br>、查看 包含</p>
 
       
     </div>

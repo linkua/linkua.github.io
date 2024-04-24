@@ -103,52 +103,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>ESP 开发</title>
-    <url>/2024/04/16/esp32%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="ESP32-简介"><a href="#ESP32-简介" class="headerlink" title="ESP32 简介"></a>ESP32 简介</h3><p>ESP32芯片具有以下特性：</p>
-<ul>
-<li>处理器和内存：双核32位LX6微处理器，主频最高可达240MHz，520KB SRAM，448KB ROM，同时支持外部4MB SPI Flash和外部8MB PSRAM，为数据的处理和存储提供强大的支持。</li>
-<li>WiFi：支持802.11 b&#x2F;g&#x2F;n（2.4GHz）标准，支持STA&#x2F;AP&#x2F;STA+AP工作模式，最大传输速率可达150Mbps，并支持WPA&#x2F;WPA2&#x2F;WPA3安全模式，提供稳定、安全的无线网络连接。</li>
-<li>蓝牙：支持蓝牙4.2（包括BR&#x2F;EDR和BLE），支持蓝牙音频传输（A2DP&#x2F;AVRCP&#x2F;SPP），使得无线音频传输和远程控制更加便捷。</li>
-<li>外设和接口：ESP32提供了丰富的外设和接口，包括最多34个可编程GPIO引脚，支持UART、SPI、I2C、I2S、PWM等多种通信协议。此外，还集成了12位ADC、8位DAC、触摸传感器、霍尔传感器等，为各种应用场景提供了强大的支持。</li>
-<li>电源管理：具有多种低功耗工作模式，电源电压范围2.2V-3.6V，内置低压稳压器（LDO）和开关电源管理单元（SMU），实现高效的电源管理</li>
-</ul>
-<h4 id="主核（Main-Core）："><a href="#主核（Main-Core）：" class="headerlink" title="主核（Main Core）："></a>主核（Main Core）：</h4><ul>
-<li>特点：主核是ESP32的主要处理器核心，采用Tensilica Xtensa LX6架构，主频高达240MHz。它具有较高的性能，可执行大多数应用程序任务。</li>
-<li>应用：主核通常用于执行主要的应用逻辑、用户界面、Wi-Fi和蓝牙通信以及其他需要高性能处理的任务。</li>
-</ul>
-<h4 id="协处理器核心（Pro-Co-Processor）："><a href="#协处理器核心（Pro-Co-Processor）：" class="headerlink" title="协处理器核心（Pro Co-Processor）："></a>协处理器核心（Pro Co-Processor）：</h4><ul>
-<li>特点：协处理器核心也采用Tensilica Xtensa LX6架构，主频高达160MHz。它专门用于处理Wi-Fi和蓝牙通信协议，以及其他低功耗任务。</li>
-<li>应用：协处理器核心负责Wi-Fi和蓝牙通信堆栈，以减少对主核的干扰，从而实现低功耗通信。</li>
-</ul>
-<h4 id="双核协同工作："><a href="#双核协同工作：" class="headerlink" title="双核协同工作："></a>双核协同工作：</h4><ul>
-<li>特点：ESP32的双核设计允许主核和协处理器核心协同工作，以提高系统性能和效率。它们可以在不同的任务上并行运行，也可以相互通信和同步。</li>
-<li>应用：双核协同工作非常适用于需要同时执行多个任务的应用，例如实时操作系统（RTOS）和并发通信。</li>
-</ul>
-<h4 id="内存："><a href="#内存：" class="headerlink" title="内存："></a>内存：</h4><ul>
-<li>特点：主核和协处理器核心都共享相同的存储器空间，包括闪存、RAM和其他存储器。这使得数据和代码在两个核心之间共享，简化了多任务编程。</li>
-<li>应用：共享内存使得数据在两个核心之间的传递更加高效，有助于提高系统性能。</li>
-</ul>
-<h3 id="VScode-开发环境搭建"><a href="#VScode-开发环境搭建" class="headerlink" title="VScode 开发环境搭建"></a>VScode 开发环境搭建</h3><h4 id="安装-ESP-IDF"><a href="#安装-ESP-IDF" class="headerlink" title="安装 ESP-IDF"></a>安装 ESP-IDF</h4><p>Windows 安装离线版IDF <a href="https://dl.espressif.cn/dl/esp-idf/?idf=5.2">https://dl.espressif.cn/dl/esp-idf/?idf=5.2</a></p>
-<h4 id="安装-ESP-IDF-插件"><a href="#安装-ESP-IDF-插件" class="headerlink" title="安装 ESP-IDF 插件"></a>安装 ESP-IDF 插件</h4><ol>
-<li>打开 VSCode, 使用快捷键 Shift+Ctrl+X，进入插件管理器</li>
-<li>在搜索栏中，输入 Espressif IDF，选择对应的插件点击 install 即可</li>
-</ol>
-<h4 id="新建基于例程的工程"><a href="#新建基于例程的工程" class="headerlink" title="新建基于例程的工程"></a>新建基于例程的工程</h4><ol>
-<li>按下 F1 打开命令行，输入 ESP-IDF: Show Examples Projects,或者 vscode 上方输入框填入<code>&gt;</code>,再输入命令</li>
-<li>点击 ESP-IDF: Show Examples Projects</li>
-<li>点击 Use current ESP-IDF 使用当前 ESP-IDF</li>
-<li>在列表中选择 hello_world,然后点击 Create project using example hello world</li>
-<li>点击左下角图标选择 COM， 选择目标芯片，点击齿轮图标配置项目</li>
-<li>打开 esp-idf terminal 输入 idf 命令 idf.py menuconifg配置例程引脚，例如LED GPIO pin2。</li>
-</ol>
-<p>在配置窗口中选择 Serial flasher config，将 Falsh 的大小改为 4MB：<br>Save</p>
-<p>编译项目</p>
-<h3 id="esptool-单独下载固件"><a href="#esptool-单独下载固件" class="headerlink" title="esptool 单独下载固件"></a>esptool 单独下载固件</h3><p><code>pip install esptool</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">esptool --port /dev/ttyACM0 --baud 115200 write_flash --flash_size=detect 0 &#x27;/home/link/Downloads/WLED_0.13.3_ESP01.bin&#x27;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>VSCode 配置 SSH 连接远程</title>
     <url>/2024/04/12/VSCode%20%E9%85%8D%E7%BD%AE%20SSH%20%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%20+%20%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<p>由于本机计算资源有限，为了满足项目需求，导师安排了计算资源。最初，我尝试使用 XShell 进行连接，但由于其非图形界面，操作不够直观，不便于代码编写和项目管理。</p>
@@ -237,6 +191,52 @@
 <p>参考链接：</p>
 <p><a href="https://link.zhihu.com/?target=https://blog.csdn.net/qq_56845026/article/details/130639709">配置 SSH 多账户配置不冲突_ssh 多用户 - CSDN 博客</a><a href="https://link.zhihu.com/?target=https://blog.csdn.net/u011762522/article/details/119352495">【大数据技术】多台机器配置 ssh 免密登录的最快捷最不易出错的方法_如何实现不同机器间无密码连接_daydayup-2016 的博客 - CSDN 博客</a><a href="https://zhuanlan.zhihu.com/p/222452460">undefined</a></p>
 <p>update 2023&#x2F;11&#x2F;17</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>ESP 开发</title>
+    <url>/2024/04/16/esp32%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="ESP32-简介"><a href="#ESP32-简介" class="headerlink" title="ESP32 简介"></a>ESP32 简介</h3><p>ESP32芯片具有以下特性：</p>
+<ul>
+<li>处理器和内存：双核32位LX6微处理器，主频最高可达240MHz，520KB SRAM，448KB ROM，同时支持外部4MB SPI Flash和外部8MB PSRAM，为数据的处理和存储提供强大的支持。</li>
+<li>WiFi：支持802.11 b&#x2F;g&#x2F;n（2.4GHz）标准，支持STA&#x2F;AP&#x2F;STA+AP工作模式，最大传输速率可达150Mbps，并支持WPA&#x2F;WPA2&#x2F;WPA3安全模式，提供稳定、安全的无线网络连接。</li>
+<li>蓝牙：支持蓝牙4.2（包括BR&#x2F;EDR和BLE），支持蓝牙音频传输（A2DP&#x2F;AVRCP&#x2F;SPP），使得无线音频传输和远程控制更加便捷。</li>
+<li>外设和接口：ESP32提供了丰富的外设和接口，包括最多34个可编程GPIO引脚，支持UART、SPI、I2C、I2S、PWM等多种通信协议。此外，还集成了12位ADC、8位DAC、触摸传感器、霍尔传感器等，为各种应用场景提供了强大的支持。</li>
+<li>电源管理：具有多种低功耗工作模式，电源电压范围2.2V-3.6V，内置低压稳压器（LDO）和开关电源管理单元（SMU），实现高效的电源管理</li>
+</ul>
+<h4 id="主核（Main-Core）："><a href="#主核（Main-Core）：" class="headerlink" title="主核（Main Core）："></a>主核（Main Core）：</h4><ul>
+<li>特点：主核是ESP32的主要处理器核心，采用Tensilica Xtensa LX6架构，主频高达240MHz。它具有较高的性能，可执行大多数应用程序任务。</li>
+<li>应用：主核通常用于执行主要的应用逻辑、用户界面、Wi-Fi和蓝牙通信以及其他需要高性能处理的任务。</li>
+</ul>
+<h4 id="协处理器核心（Pro-Co-Processor）："><a href="#协处理器核心（Pro-Co-Processor）：" class="headerlink" title="协处理器核心（Pro Co-Processor）："></a>协处理器核心（Pro Co-Processor）：</h4><ul>
+<li>特点：协处理器核心也采用Tensilica Xtensa LX6架构，主频高达160MHz。它专门用于处理Wi-Fi和蓝牙通信协议，以及其他低功耗任务。</li>
+<li>应用：协处理器核心负责Wi-Fi和蓝牙通信堆栈，以减少对主核的干扰，从而实现低功耗通信。</li>
+</ul>
+<h4 id="双核协同工作："><a href="#双核协同工作：" class="headerlink" title="双核协同工作："></a>双核协同工作：</h4><ul>
+<li>特点：ESP32的双核设计允许主核和协处理器核心协同工作，以提高系统性能和效率。它们可以在不同的任务上并行运行，也可以相互通信和同步。</li>
+<li>应用：双核协同工作非常适用于需要同时执行多个任务的应用，例如实时操作系统（RTOS）和并发通信。</li>
+</ul>
+<h4 id="内存："><a href="#内存：" class="headerlink" title="内存："></a>内存：</h4><ul>
+<li>特点：主核和协处理器核心都共享相同的存储器空间，包括闪存、RAM和其他存储器。这使得数据和代码在两个核心之间共享，简化了多任务编程。</li>
+<li>应用：共享内存使得数据在两个核心之间的传递更加高效，有助于提高系统性能。</li>
+</ul>
+<h3 id="VScode-开发环境搭建"><a href="#VScode-开发环境搭建" class="headerlink" title="VScode 开发环境搭建"></a>VScode 开发环境搭建</h3><h4 id="安装-ESP-IDF"><a href="#安装-ESP-IDF" class="headerlink" title="安装 ESP-IDF"></a>安装 ESP-IDF</h4><p>Windows 安装离线版IDF <a href="https://dl.espressif.cn/dl/esp-idf/?idf=5.2">https://dl.espressif.cn/dl/esp-idf/?idf=5.2</a></p>
+<h4 id="安装-ESP-IDF-插件"><a href="#安装-ESP-IDF-插件" class="headerlink" title="安装 ESP-IDF 插件"></a>安装 ESP-IDF 插件</h4><ol>
+<li>打开 VSCode, 使用快捷键 Shift+Ctrl+X，进入插件管理器</li>
+<li>在搜索栏中，输入 Espressif IDF，选择对应的插件点击 install 即可</li>
+</ol>
+<h4 id="新建基于例程的工程"><a href="#新建基于例程的工程" class="headerlink" title="新建基于例程的工程"></a>新建基于例程的工程</h4><ol>
+<li>按下 F1 打开命令行，输入 ESP-IDF: Show Examples Projects,或者 vscode 上方输入框填入<code>&gt;</code>,再输入命令</li>
+<li>点击 ESP-IDF: Show Examples Projects</li>
+<li>点击 Use current ESP-IDF 使用当前 ESP-IDF</li>
+<li>在列表中选择 hello_world,然后点击 Create project using example hello world</li>
+<li>点击左下角图标选择 COM， 选择目标芯片，点击齿轮图标配置项目</li>
+<li>打开 esp-idf terminal 输入 idf 命令 idf.py menuconifg配置例程引脚，例如LED GPIO pin2。</li>
+</ol>
+<p>在配置窗口中选择 Serial flasher config，将 Falsh 的大小改为 4MB：<br>Save</p>
+<p>编译项目</p>
+<h3 id="esptool-单独下载固件"><a href="#esptool-单独下载固件" class="headerlink" title="esptool 单独下载固件"></a>esptool 单独下载固件</h3><p><code>pip install esptool</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">esptool --port /dev/ttyACM0 --baud 115200 write_flash --flash_size=detect 0 &#x27;/home/link/Downloads/WLED_0.13.3_ESP01.bin&#x27;</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
@@ -346,6 +346,124 @@
 <p><a href="javascript:void(0);" title="复制代码"><img src="http://assets.cnblogs.com/images/copycode.gif"></a></p>
 <ol start="2">
 <li>根据 key 解析成 map 嵌套，放到 deploy 中</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>hello world</title>
+    <url>/2020/01/01/hello/</url>
+    <content><![CDATA[<h1 id="静态网页博客搭建"><a href="#静态网页博客搭建" class="headerlink" title="静态网页博客搭建"></a>静态网页博客搭建</h1><ul>
+<li>wordpress + 云主机</li>
+<li>jekyll&#x2F;hexo + git代码托管</li>
+</ul>
+<h2 id="git-命令使用"><a href="#git-命令使用" class="headerlink" title="git 命令使用"></a>git 命令使用</h2><p>开始使用 git 的简易指南<br>更多可以参考: (<a href="http://book.git-scm.com/">http://book.git-scm.com/</a>)</p>
+<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init </span><br></pre></td></tr></table></figure>
+<p> 以创建新的 git 仓库。</p>
+<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> /path/to/repository</span><br></pre></td></tr></table></figure>
+<p>如果是远端服务器上的仓库，你的命令会是这个样子</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> username@host:/path/to/repository</span><br></pre></td></tr></table></figure>
+
+<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录,它持有实际文件；第二个是 缓存区，它像个缓存区域(Index)，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。 </p>
+<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
+<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;代码提交信息&quot;</span></span><br></pre></td></tr></table></figure>
+<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
+<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<p>可以把 <i>master</i> 换成你想要推送的任何分支。</p>
+<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt; </span><br></pre></td></tr></table></figure>
+<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master&#x2F;main 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上创建一个叫做“branch_x”的分支，并切换过去：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branch_x</span><br></pre></td></tr></table></figure>
+<p>切换回主分支：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b main</span><br></pre></td></tr></table></figure>
+<p>再把新建的分支删掉：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branch_x</span><br></pre></td></tr></table></figure>
+<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+
+<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。要合并其他分支到你的当前分支（例如 master），执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>在合并改动之前，也可以使用如下命令查看：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;file name&gt;</span><br></pre></td></tr></table></figure>
+<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
+<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard origin/master </span><br></pre></td></tr></table></figure>
+
+<p>显示历史记录时，只显示一行注释信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config format.pretty oneline</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="github-com和raw-githubusercontent-com访问不了的解决方法"><a href="#github-com和raw-githubusercontent-com访问不了的解决方法" class="headerlink" title="github.com和raw.githubusercontent.com访问不了的解决方法"></a>github.com和raw.githubusercontent.com访问不了的解决方法</h3><p>本文链接 <a href="https://www.ioiox.com/archives/62.html">https://www.ioiox.com/archives/62.html</a><br>这里还有免费FRP!!!</p>
+<h3 id="修改-hosts"><a href="#修改-hosts" class="headerlink" title="修改 hosts"></a>修改 hosts</h3><p>在 hosts 文件添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用gh-proxy来代理访问"><a href="#使用gh-proxy来代理访问" class="headerlink" title="使用gh-proxy来代理访问"></a>使用gh-proxy来代理访问</h3><p>gh-proxy 是一款 github release、archive以及项目文件的加速项目，支持直接在终端 git clone ,也可以在 web 端代理下载 github 以及 raw.githubusercontent.com 等文件.<br>项目默认使用jsdelivr和cnpmjs</p>
+<p>支持终端命令行下载 , 例如 git clone , wget , curl 等以及 raw.githubusercontent.com 文件下载.<br>注意：不支持 SSH Key 方式 git clone 下载.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone</span><br><span class="line">git clone https://ghproxy.com/https://github.com/stilleshan/ServerStatus.git</span><br><span class="line"></span><br><span class="line">wget &amp; curl</span><br><span class="line">wget https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">wget https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br><span class="line">curl -O https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">curl -O https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br></pre></td></tr></table></figure>
+<h3 id="实现快速的git-add-commit-push流程"><a href="#实现快速的git-add-commit-push流程" class="headerlink" title="实现快速的git add, commit, push流程"></a>实现快速的git add, commit, push流程</h3><h2 id="Linux-上的实现"><a href="#Linux-上的实现" class="headerlink" title="Linux 上的实现"></a>Linux 上的实现</h2><h3 id="方法-1：使用-Shell-脚本"><a href="#方法-1：使用-Shell-脚本" class="headerlink" title="方法 1：使用 Shell 脚本"></a>方法 1：<strong>使用 Shell 脚本</strong></h3><p>创建一个<a href="https://so.csdn.net/so/search?q=%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6&spm=1001.2101.3001.7020">脚本文件</a>（例如，<code>gitpush.sh</code>），在里面写入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"> </span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;$1&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>然后，你可以通过执行 <code>sh gitpush.sh &quot;你的提交信息&quot;</code> 来运行这个脚本。这里的 <code>$1</code> 是传递给脚本的第一个参数，即你的提交信息。</p>
+<h3 id="方法-1：设置-Git-别名"><a href="#方法-1：设置-Git-别名" class="headerlink" title="方法 1：设置 Git 别名"></a>方法 1：<strong>设置 Git 别名</strong></h3><p>你也可以设置一个 Git 别名来简化这些命令。打开你的 Git 配置文件（通常在<code>~/.gitconfig</code>），然后添加一个新的别名：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[alias]</span><br><span class="line">    acp = &quot;!f() &#123; git add . &amp;&amp; git commit -m \&quot;$1\&quot; &amp;&amp; git push; &#125;; f&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后，你可以使用 <code>git acp &quot;你的提交信息&quot;</code> 来执行这三个命令。</p>
+<p>请记住，自动化提交时要小心，因为这可能会导致未经检查的更改被提交。确保你知道哪些文件被添加和提交。如果你在团队中工作，确保遵守团队的代码提交准则。</p>
+<h2 id="Widnows-上的实现"><a href="#Widnows-上的实现" class="headerlink" title="Widnows 上的实现"></a>Widnows 上的实现</h2><p>在 Windows 系统中实现类似的快速<code>git add</code>, <code>commit</code>, <code>push</code>流程，你可以采用以下两种方法：</p>
+<h3 id="方法-1：批处理脚本"><a href="#方法-1：批处理脚本" class="headerlink" title="方法 1：批处理脚本"></a>方法 1：批处理脚本</h3><ol>
+<li><p><strong>创建批处理文件</strong>：在任意目录下创建一个<code>.bat</code>文件，比如命名为<code>gitpush.bat</code>。</p>
+</li>
+<li><p><strong>编辑脚本内容</strong>：使用文本编辑器打开这个批处理文件，并输入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@echo off git add . git commit -m &quot;%1&quot; git push</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里的<code>%1</code>代表批处理文件的第一个参数，即你的提交信息。</p>
+</li>
+<li><p><strong>使用脚本</strong>：在命令行中，切换到你的 git 仓库目录，运行这个脚本，并传递提交信息作为参数，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gitpush.bat &quot;你的提交信息&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="方法-2：Git-别名"><a href="#方法-2：Git-别名" class="headerlink" title="方法 2：Git 别名"></a>方法 2：Git 别名</h3><ol>
+<li><p><strong>打开 Git Bash</strong>：在 Windows 上，确保你已经安装了 Git，并且可以访问 Git Bash。</p>
+</li>
+<li><p><strong>配置 Git 别名</strong>：在 Git Bash 中，运行以下命令来创建一个新的别名：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global alias.acp &quot;!f() &#123; git add . &amp;&amp; git commit -m \&quot;$1\&quot; &amp;&amp; git push; &#125;; f&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这样，你就设置了一个名为<code>acp</code>的别名，用于执行<code>add</code>, <code>commit</code>和<code>push</code>操作。</p>
+</li>
+<li><p><strong>使用别名</strong>：在 Git Bash 中，切换到你的 git 仓库目录，然后使用这个别名和提交信息，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git acp &quot;你的提交信息&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="wordpress"><a href="#wordpress" class="headerlink" title="wordpress"></a>wordpress</h2><h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h2 id="jekyll"><a href="#jekyll" class="headerlink" title="jekyll"></a>jekyll</h2><h2 id="部署到-github-io"><a href="#部署到-github-io" class="headerlink" title="部署到 github.io"></a>部署到 github.io</h2><p>需要先安装插件 <code>npm install --save hexo-deployer-git</code></p>
+<ol>
+<li>新建 xxx.github.io 公开仓库，xxx 为当前用户名，仓库参数默认。</li>
+<li>修改_config.yml 文件最后的deployment 项<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/one-command-deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/linkua/linkua.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure></li>
+<li>执行 hexo deploy</li>
 </ol>
 ]]></content>
   </entry>
@@ -612,124 +730,6 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
 <p>为了让当前线程“稍等一下”，我们需让当前线程进行自旋，如果在自旋完成后前面锁定同步资源的线程已经释放了锁，那么当前线程就可以不必阻塞而是直接获取同步资源，从而避免切换线程的开销。这就是自旋锁。</p>
 <p>缺点<br>自旋锁本身是有缺点的，它不能代替阻塞。自旋等待虽然避免了线程切换的开销，但它要占用处理器时间。</p>
 <p>如果锁被占用的时间很短，自旋等待的效果就会非常好；<br>如果锁被占用的时间很长，那么自旋的线程只会白浪费处理器资源。<br>所以，自旋等待的时间必须要有一定的限度，如果自旋超过了限定次数没有成功获得锁，就应当挂起线程。（这个次数默认是10次，可以配置）</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>hello world</title>
-    <url>/2020/01/01/hello/</url>
-    <content><![CDATA[<h1 id="静态网页博客搭建"><a href="#静态网页博客搭建" class="headerlink" title="静态网页博客搭建"></a>静态网页博客搭建</h1><ul>
-<li>wordpress + 云主机</li>
-<li>jekyll&#x2F;hexo + git代码托管</li>
-</ul>
-<h2 id="git-命令使用"><a href="#git-命令使用" class="headerlink" title="git 命令使用"></a>git 命令使用</h2><p>开始使用 git 的简易指南<br>更多可以参考: (<a href="http://book.git-scm.com/">http://book.git-scm.com/</a>)</p>
-<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init </span><br></pre></td></tr></table></figure>
-<p> 以创建新的 git 仓库。</p>
-<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> /path/to/repository</span><br></pre></td></tr></table></figure>
-<p>如果是远端服务器上的仓库，你的命令会是这个样子</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> username@host:/path/to/repository</span><br></pre></td></tr></table></figure>
-
-<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录,它持有实际文件；第二个是 缓存区，它像个缓存区域(Index)，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。 </p>
-<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add filename</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
-<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;代码提交信息&quot;</span></span><br></pre></td></tr></table></figure>
-<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
-<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-<p>可以把 <i>master</i> 换成你想要推送的任何分支。</p>
-<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt; </span><br></pre></td></tr></table></figure>
-<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
-<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master&#x2F;main 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上创建一个叫做“branch_x”的分支，并切换过去：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branch_x</span><br></pre></td></tr></table></figure>
-<p>切换回主分支：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b main</span><br></pre></td></tr></table></figure>
-<p>再把新建的分支删掉：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branch_x</span><br></pre></td></tr></table></figure>
-<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-
-<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。要合并其他分支到你的当前分支（例如 master），执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-
-<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-<p>在合并改动之前，也可以使用如下命令查看：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;file name&gt;</span><br></pre></td></tr></table></figure>
-<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
-<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard origin/master </span><br></pre></td></tr></table></figure>
-
-<p>显示历史记录时，只显示一行注释信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config format.pretty oneline</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="github-com和raw-githubusercontent-com访问不了的解决方法"><a href="#github-com和raw-githubusercontent-com访问不了的解决方法" class="headerlink" title="github.com和raw.githubusercontent.com访问不了的解决方法"></a>github.com和raw.githubusercontent.com访问不了的解决方法</h3><p>本文链接 <a href="https://www.ioiox.com/archives/62.html">https://www.ioiox.com/archives/62.html</a><br>这里还有免费FRP!!!</p>
-<h3 id="修改-hosts"><a href="#修改-hosts" class="headerlink" title="修改 hosts"></a>修改 hosts</h3><p>在 hosts 文件添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用gh-proxy来代理访问"><a href="#使用gh-proxy来代理访问" class="headerlink" title="使用gh-proxy来代理访问"></a>使用gh-proxy来代理访问</h3><p>gh-proxy 是一款 github release、archive以及项目文件的加速项目，支持直接在终端 git clone ,也可以在 web 端代理下载 github 以及 raw.githubusercontent.com 等文件.<br>项目默认使用jsdelivr和cnpmjs</p>
-<p>支持终端命令行下载 , 例如 git clone , wget , curl 等以及 raw.githubusercontent.com 文件下载.<br>注意：不支持 SSH Key 方式 git clone 下载.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone</span><br><span class="line">git clone https://ghproxy.com/https://github.com/stilleshan/ServerStatus.git</span><br><span class="line"></span><br><span class="line">wget &amp; curl</span><br><span class="line">wget https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">wget https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br><span class="line">curl -O https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">curl -O https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br></pre></td></tr></table></figure>
-<h3 id="实现快速的git-add-commit-push流程"><a href="#实现快速的git-add-commit-push流程" class="headerlink" title="实现快速的git add, commit, push流程"></a>实现快速的git add, commit, push流程</h3><h2 id="Linux-上的实现"><a href="#Linux-上的实现" class="headerlink" title="Linux 上的实现"></a>Linux 上的实现</h2><h3 id="方法-1：使用-Shell-脚本"><a href="#方法-1：使用-Shell-脚本" class="headerlink" title="方法 1：使用 Shell 脚本"></a>方法 1：<strong>使用 Shell 脚本</strong></h3><p>创建一个<a href="https://so.csdn.net/so/search?q=%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6&spm=1001.2101.3001.7020">脚本文件</a>（例如，<code>gitpush.sh</code>），在里面写入以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"> </span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;$1&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<p>然后，你可以通过执行 <code>sh gitpush.sh &quot;你的提交信息&quot;</code> 来运行这个脚本。这里的 <code>$1</code> 是传递给脚本的第一个参数，即你的提交信息。</p>
-<h3 id="方法-1：设置-Git-别名"><a href="#方法-1：设置-Git-别名" class="headerlink" title="方法 1：设置 Git 别名"></a>方法 1：<strong>设置 Git 别名</strong></h3><p>你也可以设置一个 Git 别名来简化这些命令。打开你的 Git 配置文件（通常在<code>~/.gitconfig</code>），然后添加一个新的别名：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[alias]</span><br><span class="line">    acp = &quot;!f() &#123; git add . &amp;&amp; git commit -m \&quot;$1\&quot; &amp;&amp; git push; &#125;; f&quot;</span><br></pre></td></tr></table></figure>
-
-<p>然后，你可以使用 <code>git acp &quot;你的提交信息&quot;</code> 来执行这三个命令。</p>
-<p>请记住，自动化提交时要小心，因为这可能会导致未经检查的更改被提交。确保你知道哪些文件被添加和提交。如果你在团队中工作，确保遵守团队的代码提交准则。</p>
-<h2 id="Widnows-上的实现"><a href="#Widnows-上的实现" class="headerlink" title="Widnows 上的实现"></a>Widnows 上的实现</h2><p>在 Windows 系统中实现类似的快速<code>git add</code>, <code>commit</code>, <code>push</code>流程，你可以采用以下两种方法：</p>
-<h3 id="方法-1：批处理脚本"><a href="#方法-1：批处理脚本" class="headerlink" title="方法 1：批处理脚本"></a>方法 1：批处理脚本</h3><ol>
-<li><p><strong>创建批处理文件</strong>：在任意目录下创建一个<code>.bat</code>文件，比如命名为<code>gitpush.bat</code>。</p>
-</li>
-<li><p><strong>编辑脚本内容</strong>：使用文本编辑器打开这个批处理文件，并输入以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@echo off git add . git commit -m &quot;%1&quot; git push</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里的<code>%1</code>代表批处理文件的第一个参数，即你的提交信息。</p>
-</li>
-<li><p><strong>使用脚本</strong>：在命令行中，切换到你的 git 仓库目录，运行这个脚本，并传递提交信息作为参数，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gitpush.bat &quot;你的提交信息&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="方法-2：Git-别名"><a href="#方法-2：Git-别名" class="headerlink" title="方法 2：Git 别名"></a>方法 2：Git 别名</h3><ol>
-<li><p><strong>打开 Git Bash</strong>：在 Windows 上，确保你已经安装了 Git，并且可以访问 Git Bash。</p>
-</li>
-<li><p><strong>配置 Git 别名</strong>：在 Git Bash 中，运行以下命令来创建一个新的别名：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global alias.acp &quot;!f() &#123; git add . &amp;&amp; git commit -m \&quot;$1\&quot; &amp;&amp; git push; &#125;; f&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这样，你就设置了一个名为<code>acp</code>的别名，用于执行<code>add</code>, <code>commit</code>和<code>push</code>操作。</p>
-</li>
-<li><p><strong>使用别名</strong>：在 Git Bash 中，切换到你的 git 仓库目录，然后使用这个别名和提交信息，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git acp &quot;你的提交信息&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="wordpress"><a href="#wordpress" class="headerlink" title="wordpress"></a>wordpress</h2><h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h2 id="jekyll"><a href="#jekyll" class="headerlink" title="jekyll"></a>jekyll</h2><h2 id="部署到-github-io"><a href="#部署到-github-io" class="headerlink" title="部署到 github.io"></a>部署到 github.io</h2><p>需要先安装插件 <code>npm install --save hexo-deployer-git</code></p>
-<ol>
-<li>新建 xxx.github.io 公开仓库，xxx 为当前用户名，仓库参数默认。</li>
-<li>修改_config.yml 文件最后的deployment 项<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/one-command-deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/linkua/linkua.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure></li>
-<li>执行 hexo deploy</li>
-</ol>
 ]]></content>
   </entry>
   <entry>
@@ -1121,23 +1121,23 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
 <p>即时变量、延时变量，export</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">A = xxx // 延时变量</span><br><span class="line">B ?= xxx // 延时变量，只有第一次定义时赋值才成功；如果曾定义过，此赋值无效</span><br><span class="line">C := xxx // 立即变量</span><br><span class="line">D += yyy // 如果 D 在前面是延时变量，那么现在它还是延时变量；</span><br><span class="line">D += dir/ dir 是一个目录</span><br><span class="line">// 如果 D 在前面是立即变量，那么现在它还是立即变量</span><br></pre></td></tr></table></figure>
 <p>@echo 看不到变量<br>@echo $(A)</p>
-<h5 id="makefile-函数"><a href="#makefile-函数" class="headerlink" title="makefile 函数"></a>makefile 函数</h5><p>$(foreach var,list,text)<br>简单地说，就是 for each var in list, change it to text。对 list 中的每一个<br>元素，取出来赋给 var，然后把 var 改为 text 所描述的形式。<br>例子：</p>
+<h5 id="makefile-函数"><a href="#makefile-函数" class="headerlink" title="makefile 函数"></a>makefile 函数</h5><p><code>$(foreach var,list,text)</code><br>简单地说，就是 for each var in list, change it to text。对 list 中的每一个<br>元素，取出来赋给 var，然后把 var 改为 text 所描述的形式。<br>例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">objs := a.o b.o</span><br><span class="line">dep_files := $(foreach f, $(objs), .$(f).d) // 最终 dep_files := .a.o.d .b.o.d</span><br></pre></td></tr></table></figure>
-<p>$(wildcard pattern)<br>pattern 所列出的文件是否存在，把存在的文件都列出来。<br>例子：</p>
+<p><code>$(wildcard pattern)</code><br>pattern 所列出的文件是否存在，把存在的文件都列出来。<br>例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src_files := $( wildcard *.c) // 最终 src_files 中列出了当前目录下的所有.c 文件</span><br></pre></td></tr></table></figure>
 
-<p>$(filter pattern…,text)<br>把 text 中符合 pattern 格式的内容，filter(过滤)出来、留下来。<br>例子：</p>
+<p><code>$(filter pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter(过滤)出来、留下来。<br>例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter %/, $(obj-y)) //结果为：c/ d/</span><br></pre></td></tr></table></figure>
 
-<p>$(filter-out pattern…,text)<br>把 text 中符合 pattern 格式的内容，filter-out(过滤)出来、扔掉。<br>例子：</p>
+<p><code>$(filter-out pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter-out(过滤)出来、扔掉。<br>例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter-out %/, $(obj-y)) //结果为：a.o b.o</span><br></pre></td></tr></table></figure>
 
-<p>$(patsubst pattern,replacement,text)<br>寻找<code>text’中符合格式</code>pattern’的字，用<code>replacement’替换它们。 </code>pattern’和&#96;replacement’中可以使用通配符。<br>比如：</p>
+<p><code>$(patsubst pattern,replacement,text)</code><br>寻找text中符合格式pattern的字，用replacement替换它们。<br>pattern和replacement中可以使用通配符。</p>
+<p>比如：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">subdir-y := c/ d/</span><br><span class="line">subdir-y := $(patsubst %/, %, $(subdir-y)) // 结果为：c d</span><br></pre></td></tr></table></figure>
 <p>EXTRA_CFLAGS :&#x3D; -D DEBUG 打开宏</p>
 <h4 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h4><p>Linux 内核编译通常使用 make 工具，而不是 cmake。cmake 是用于跨平台构建系统的工具，但 Linux 内核不是为跨平台设计的，而是直接使用 make 工具来构建。</p>
 <h4 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h4><p>linux&#x2F;unix 系统开发</p>
-<p>&#96;man man xxB    &#96;&#96;<br>、查看 包含</p>
 ]]></content>
   </entry>
   <entry>
