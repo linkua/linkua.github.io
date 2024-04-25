@@ -255,53 +255,6 @@
       </tags>
   </entry>
   <entry>
-    <title>F1C100s 启动</title>
-    <url>/2024/03/08/f1c100s%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="sunxi-tools"><a href="#sunxi-tools" class="headerlink" title="sunxi-tools"></a>sunxi-tools</h3><p>Sunxi-tools 是一组命令行工具，用于操作基于全志 SoC 的 ARM 设备。它们可以用于各种目的，比如在 FEX 和二进制格式之间转换，操作 PIO 设置，访问 FEL 工厂模式，以及编程 SPI 闪存。</p>
-<p>今天咱们研究下如何在 Windows 环境下使用 sunxi-tools。</p>
-<span id="more"></span>
-
-
-<p>下载并解压缩</p>
-<p>Zadig 用于安装 sunxi-tools windows 驱动安装。</p>
-<p>Zadig USB 是一个开源的 USB 驱动程序安装工具，它允许用户更改 USB 设备的驱动程序。这个工具通常用于 Windows 操作系统，用于安装 WinUSB、libusb、usbser 等驱动程序。</p>
-<p>开发板进入烧写模式</p>
-<p>短路 V3S（F1C100s&#x2F;F1C200s&#x2F;V3s）板子的 spi flash 1,4 或 1,2 脚, 上电（通过 USB 线进入接入电脑）电脑检测到新的 usb 烧写设备。</p>
-<h3 id="H3-四核Cortex-A7-32bit"><a href="#H3-四核Cortex-A7-32bit" class="headerlink" title="H3 四核Cortex-A7 32bit"></a>H3 四核Cortex-A7 32bit</h3><p><a href="https://www.armbian.com/nanopi-neo/">https://www.armbian.com/nanopi-neo/</a><br>镜像<br><a href="https://github.com/armbian/community/releases/download/24.5.0-trunk.306/Armbian_community_24.5.0-trunk.306_Nanopineo_jammy_current_6.6.23.img.xz">https://github.com/armbian/community/releases/download/24.5.0-trunk.306/Armbian_community_24.5.0-trunk.306_Nanopineo_jammy_current_6.6.23.img.xz</a> root 1234</p>
-<h3 id="F1C100S-ARM9-ARM926EJ-S-32bit"><a href="#F1C100S-ARM9-ARM926EJ-S-32bit" class="headerlink" title="F1C100S ARM9 ARM926EJ-S 32bit"></a>F1C100S ARM9 ARM926EJ-S 32bit</h3><p>F1C100s 的内核是 ARM926EJ-S ，ARMv5 架构，有 MMU，没有硬件 FPU，主频默认为 408MHz；</p>
-<h4 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Manufacturer    Allwinner</span><br><span class="line">CPU             ARM ARM926EJ-S @ 533MHz</span><br><span class="line">                L1 Cache: 16KB Data, 32KB Instruction</span><br><span class="line">                FPU: None</span><br><span class="line">Memory          32MB Embedded DDR (F1C100s) or 64MB Embedded DDR (F1C200s)</span><br><span class="line">GPU              Custom 2D-only</span><br><span class="line">VPU              Unknown</span><br><span class="line">Video            LCD, CVBS</span><br><span class="line">Audio            DAC</span><br><span class="line">Storage          SD/MMC (SD v2.0, eMMC V4.41)</span><br><span class="line">USB              USB 2.0 OTG</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="功能框图"><a href="#功能框图" class="headerlink" title="功能框图"></a>功能框图</h4><p><img src="https://aijishu.com/img/bVbJ2K"></p>
-<h4 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h4><p><img src="https://aijishu.com/img/bVbJ2L"></p>
-<ul>
-<li>F1C100s 的内核是 ARM926EJ-S ，ARMv5 架构，有 MMU，没有硬件 FPU，主频默认为 408MHz；</li>
-<li>F1C100s 内置 32MB DDR1 内存；</li>
-<li>F1C200s 是 F1C100s 的兄弟型号，其它特性都相同，内存容量翻倍为 64MB；</li>
-</ul>
-<h4 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h4><p>1、上电后, f1c100s 内部 BROM (芯片内置，无法擦除) 启动；<br>2、首先检查 SD0 有没有插卡, 如果有插卡就读卡 8k 偏移数据，是否是合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>3、检测 SPI0 NOR FLASH(W25QXXX, MX25LXXX) 是否存在, 是否有合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>4、检测 SPI0 NAND FLASH 是否存在, 是否有合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>5、因为找不到任何可以引导的介质， 系统进入 usb fel 模式， 可以用 USB 烧录了。<br>对于 F1C100s 而言启动时寻找用户程序的位置顺序如下：</p>
-<ul>
-<li>SDC0 接口（PF0~PF5）上的 SD（TF）卡；</li>
-<li>SPI0 接口（PC0~PC3）上的 Nor Flash；</li>
-<li>SPI0 接口（PC0~PC3）上的 Nand Flash；<br>对于 SD（TF）卡而言在它上面的数据存储布局通常如下：</li>
-</ul>
-<table><thead><tr><th>start</th><th>sector</th><th>size</th><th>usage</th></tr></thead><tbody><tr><td>0KB</td><td>0</td><td>8KB</td><td>Unused, available for an MBR or (limited) GPT partition table</td></tr><tr><td>8KB</td><td>16</td><td>32KB</td><td>Initial SPL loader</td></tr><tr><td>40KB</td><td>80</td><td>Max 984KB</td><td>U-Boot</td></tr><tr><td>1MB</td><td>2048</td><td>-</td><td>bootfs and rootfs</td></tr></tbody></table>
-
-<p>上面参数中 SPL 从 8K 位置开始不能动（这是由 BROM 决定的）；文件系统可以根据需要来分区，boot 分区在前，通常为 FAT 格式。</p>
-<p>编译后得到 u-boot-sunxi-with-spl.bin 这个文件会拼合 spl 和 u-boot ，直接把这个文件写入到 8KB 开始的位置就行了。</p>
-<p>对于 SPI Flash 而言其实和 SD（TF）卡而言差不多，最关键的就是将 u-boot-sunxi-with-spl.bin 文件放在头部，即从 0 位置开始写入；其它内容根据需求而设置，只要对应的调整 u-boot 读取启动内核时相关位置参数就行。</p>
-<p>需要注意的是默认情况下 SPI Flash 最大支持 16M，更大就需要在程序中设置 bank 了。</p>
-<h4 id="fel-模式"><a href="#fel-模式" class="headerlink" title="fel 模式"></a>fel 模式</h4><p>上文中可以了解到 F1C100s 要是启动外部程序均失败的话就会进入 FEL 模式，用户可以通过 USB 和芯片进行交互 。在 FEL 模式你可以直接运行 u-boot 和 linux 等，也可以将数据写入 spiflash 中（可以用作烧录固件到设备中）。</p>
-<p>FEL 模式其实也就是 BROM 上的一段程序，可以在 u-boot 命令行中使用 go 0xffff0020 跳转进入。另外也可以通过在 SD（TF）卡写入下面数据来通过 SD（TF）卡启动跳转：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># sdX 为SD（TF）卡，使用 sudo fdisk -l 查看</span><br><span class="line"># 如果有自动挂载的分区则逐条使用 sudo umount /dev/sdXn 进行卸载</span><br><span class="line">wget https://github.com/linux-sunxi/sunxi-tools/raw/master/bin/fel-sdboot.sunxi</span><br><span class="line">sudo dd if=fel-sdboot.sunxi of=/dev/sdX bs=1024 seek=8</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>ARM926EJ-S</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ESP 开发</title>
     <url>/2024/04/16/esp32%E5%BC%80%E5%8F%91/</url>
     <content><![CDATA[<h3 id="ESP32-简介"><a href="#ESP32-简介" class="headerlink" title="ESP32 简介"></a>ESP32 简介</h3><p>ESP32芯片具有以下特性：</p>
@@ -351,6 +304,53 @@
       </categories>
       <tags>
         <tag>esp32</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>F1C100s 启动</title>
+    <url>/2024/03/08/f1c100s%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="sunxi-tools"><a href="#sunxi-tools" class="headerlink" title="sunxi-tools"></a>sunxi-tools</h3><p>Sunxi-tools 是一组命令行工具，用于操作基于全志 SoC 的 ARM 设备。它们可以用于各种目的，比如在 FEX 和二进制格式之间转换，操作 PIO 设置，访问 FEL 工厂模式，以及编程 SPI 闪存。</p>
+<p>今天咱们研究下如何在 Windows 环境下使用 sunxi-tools。</p>
+<span id="more"></span>
+
+
+<p>下载并解压缩</p>
+<p>Zadig 用于安装 sunxi-tools windows 驱动安装。</p>
+<p>Zadig USB 是一个开源的 USB 驱动程序安装工具，它允许用户更改 USB 设备的驱动程序。这个工具通常用于 Windows 操作系统，用于安装 WinUSB、libusb、usbser 等驱动程序。</p>
+<p>开发板进入烧写模式</p>
+<p>短路 V3S（F1C100s&#x2F;F1C200s&#x2F;V3s）板子的 spi flash 1,4 或 1,2 脚, 上电（通过 USB 线进入接入电脑）电脑检测到新的 usb 烧写设备。</p>
+<h3 id="H3-四核Cortex-A7-32bit"><a href="#H3-四核Cortex-A7-32bit" class="headerlink" title="H3 四核Cortex-A7 32bit"></a>H3 四核Cortex-A7 32bit</h3><p><a href="https://www.armbian.com/nanopi-neo/">https://www.armbian.com/nanopi-neo/</a><br>镜像<br><a href="https://github.com/armbian/community/releases/download/24.5.0-trunk.306/Armbian_community_24.5.0-trunk.306_Nanopineo_jammy_current_6.6.23.img.xz">https://github.com/armbian/community/releases/download/24.5.0-trunk.306/Armbian_community_24.5.0-trunk.306_Nanopineo_jammy_current_6.6.23.img.xz</a> root 1234</p>
+<h3 id="F1C100S-ARM9-ARM926EJ-S-32bit"><a href="#F1C100S-ARM9-ARM926EJ-S-32bit" class="headerlink" title="F1C100S ARM9 ARM926EJ-S 32bit"></a>F1C100S ARM9 ARM926EJ-S 32bit</h3><p>F1C100s 的内核是 ARM926EJ-S ，ARMv5 架构，有 MMU，没有硬件 FPU，主频默认为 408MHz；</p>
+<h4 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Manufacturer    Allwinner</span><br><span class="line">CPU             ARM ARM926EJ-S @ 533MHz</span><br><span class="line">                L1 Cache: 16KB Data, 32KB Instruction</span><br><span class="line">                FPU: None</span><br><span class="line">Memory          32MB Embedded DDR (F1C100s) or 64MB Embedded DDR (F1C200s)</span><br><span class="line">GPU              Custom 2D-only</span><br><span class="line">VPU              Unknown</span><br><span class="line">Video            LCD, CVBS</span><br><span class="line">Audio            DAC</span><br><span class="line">Storage          SD/MMC (SD v2.0, eMMC V4.41)</span><br><span class="line">USB              USB 2.0 OTG</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="功能框图"><a href="#功能框图" class="headerlink" title="功能框图"></a>功能框图</h4><p><img src="https://aijishu.com/img/bVbJ2K"></p>
+<h4 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h4><p><img src="https://aijishu.com/img/bVbJ2L"></p>
+<ul>
+<li>F1C100s 的内核是 ARM926EJ-S ，ARMv5 架构，有 MMU，没有硬件 FPU，主频默认为 408MHz；</li>
+<li>F1C100s 内置 32MB DDR1 内存；</li>
+<li>F1C200s 是 F1C100s 的兄弟型号，其它特性都相同，内存容量翻倍为 64MB；</li>
+</ul>
+<h4 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h4><p>1、上电后, f1c100s 内部 BROM (芯片内置，无法擦除) 启动；<br>2、首先检查 SD0 有没有插卡, 如果有插卡就读卡 8k 偏移数据，是否是合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>3、检测 SPI0 NOR FLASH(W25QXXX, MX25LXXX) 是否存在, 是否有合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>4、检测 SPI0 NAND FLASH 是否存在, 是否有合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>5、因为找不到任何可以引导的介质， 系统进入 usb fel 模式， 可以用 USB 烧录了。<br>对于 F1C100s 而言启动时寻找用户程序的位置顺序如下：</p>
+<ul>
+<li>SDC0 接口（PF0~PF5）上的 SD（TF）卡；</li>
+<li>SPI0 接口（PC0~PC3）上的 Nor Flash；</li>
+<li>SPI0 接口（PC0~PC3）上的 Nand Flash；<br>对于 SD（TF）卡而言在它上面的数据存储布局通常如下：</li>
+</ul>
+<table><thead><tr><th>start</th><th>sector</th><th>size</th><th>usage</th></tr></thead><tbody><tr><td>0KB</td><td>0</td><td>8KB</td><td>Unused, available for an MBR or (limited) GPT partition table</td></tr><tr><td>8KB</td><td>16</td><td>32KB</td><td>Initial SPL loader</td></tr><tr><td>40KB</td><td>80</td><td>Max 984KB</td><td>U-Boot</td></tr><tr><td>1MB</td><td>2048</td><td>-</td><td>bootfs and rootfs</td></tr></tbody></table>
+
+<p>上面参数中 SPL 从 8K 位置开始不能动（这是由 BROM 决定的）；文件系统可以根据需要来分区，boot 分区在前，通常为 FAT 格式。</p>
+<p>编译后得到 u-boot-sunxi-with-spl.bin 这个文件会拼合 spl 和 u-boot ，直接把这个文件写入到 8KB 开始的位置就行了。</p>
+<p>对于 SPI Flash 而言其实和 SD（TF）卡而言差不多，最关键的就是将 u-boot-sunxi-with-spl.bin 文件放在头部，即从 0 位置开始写入；其它内容根据需求而设置，只要对应的调整 u-boot 读取启动内核时相关位置参数就行。</p>
+<p>需要注意的是默认情况下 SPI Flash 最大支持 16M，更大就需要在程序中设置 bank 了。</p>
+<h4 id="fel-模式"><a href="#fel-模式" class="headerlink" title="fel 模式"></a>fel 模式</h4><p>上文中可以了解到 F1C100s 要是启动外部程序均失败的话就会进入 FEL 模式，用户可以通过 USB 和芯片进行交互 。在 FEL 模式你可以直接运行 u-boot 和 linux 等，也可以将数据写入 spiflash 中（可以用作烧录固件到设备中）。</p>
+<p>FEL 模式其实也就是 BROM 上的一段程序，可以在 u-boot 命令行中使用 go 0xffff0020 跳转进入。另外也可以通过在 SD（TF）卡写入下面数据来通过 SD（TF）卡启动跳转：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># sdX 为SD（TF）卡，使用 sudo fdisk -l 查看</span><br><span class="line"># 如果有自动挂载的分区则逐条使用 sudo umount /dev/sdXn 进行卸载</span><br><span class="line">wget https://github.com/linux-sunxi/sunxi-tools/raw/master/bin/fel-sdboot.sunxi</span><br><span class="line">sudo dd if=fel-sdboot.sunxi of=/dev/sdX bs=1024 seek=8</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>ARM926EJ-S</tag>
       </tags>
   </entry>
   <entry>
