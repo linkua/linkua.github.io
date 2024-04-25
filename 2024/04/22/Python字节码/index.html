@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Python 通常被描述为一种 解释型语言，在这类语言中，源代码在程序运行时被 “翻译” 成 “指令”，但这还不够确切。同许多解释型语言一样，Python 在正式处理代码前，内部先进行预处理，将 Python 源代码编译成字节码，然后将其转发至 Python 虚拟机中。换言之，Python 实际上将源代码编译为 “虚拟机” 的一组指令，而这种中间格式的指令便称为 “字节码”。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈 python 字节码">
+<meta property="og:url" content="http://example.com/2024/04/22/Python%E5%AD%97%E8%8A%82%E7%A0%81/index.html">
+<meta property="og:site_name" content="Excerpt">
+<meta property="og:description" content="Python 通常被描述为一种 解释型语言，在这类语言中，源代码在程序运行时被 “翻译” 成 “指令”，但这还不够确切。同许多解释型语言一样，Python 在正式处理代码前，内部先进行预处理，将 Python 源代码编译成字节码，然后将其转发至 Python 虚拟机中。换言之，Python 实际上将源代码编译为 “虚拟机” 的一组指令，而这种中间格式的指令便称为 “字节码”。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200523141631484.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200523125801716.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200523125901740.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200523141519552.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200523150938912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDc4NDAz,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020052314241452.png">
+<meta property="article:published_time" content="2024-04-22T10:20:00.000Z">
+<meta property="article:modified_time" content="2024-04-25T06:41:13.424Z">
+<meta property="article:author" content="Linkua">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200523141631484.png">
+
+<link rel="canonical" href="http://example.com/2024/04/22/Python%E5%AD%97%E8%8A%82%E7%A0%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>浅谈 python 字节码 | Excerpt</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Excerpt</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-clock">
+
+    <a href="/clock/" rel="section"><i class="fas fa-clock fa-fw"></i>clock</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/22/Python%E5%AD%97%E8%8A%82%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          浅谈 python 字节码
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-04-22 18:20:00" itemprop="dateCreated datePublished" datetime="2024-04-22T18:20:00+08:00">2024-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-04-25 14:41:13" itemprop="dateModified" datetime="2024-04-25T14:41:13+08:00">2024-04-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Python&spm=1001.2101.3001.7020">Python</a> 通常被描述为一种 <strong>解释型语言</strong>，在这类语言中，源代码在程序运行时被 “翻译” 成 “指令”，但这还不够确切。同许多解释型语言一样，Python 在正式处理代码前，内部先进行预处理，将 Python 源代码编译成字节码，然后将其转发至 Python 虚拟机中。换言之，<strong>Python 实际上将源代码编译为 “虚拟机” 的一组指令，而这种中间格式的指令便称为 “字节码”</strong>。</p>
+<span id="more"></span>
+
+<h3 id="字节码编译"><a href="#字节码编译" class="headerlink" title="字节码编译"></a>字节码编译</h3><p>执行 Python 程序时，Python 内部将隐式地将 <strong>源代码 (source code)</strong> 编译成 <strong>字节码 (byte code)<strong>。编译可以理解为一种简单的 “翻译” 步骤，</strong>但有别于 C、C++ 等静态语言的编译</strong>；字节码则是一种 <strong>低级的</strong>、<strong>与平台无关的</strong> 代码表现形式，*<em>但有别于</em>***机器的二进制代码 (如 Intel 或 ARM 芯片的指令)**。简言之，Python 将源代码语句的每一条分解为单一步骤，从而 “翻译” 为一组字节码指令。相比于文本文件中的 Python 源代码，字节码的运行速度更快。</p>
+<p>注意，上述过程的发生对大多数用户而言是隐式的。若 Python 进程在机器上拥有写入权限， 那么它将把程序的字节码保存为一个 <strong>.pyc</strong> <strong>文件</strong> (即已编译的 Python 源文件 (.py compiled)) 。在 Python3 中，**.pyc 字节码文件** 被存储在名为 <strong><strong>pycache</strong></strong> 的子目录中，该子目录位于与 .py 源文件相同的路径下。而 <strong>pycache</strong> 子目录中的文件命名中包含了编译它们的 Python 的版本信息 (基于创建它的特定 Python 进制代码版本，如 test.<strong>cpython-36</strong>.pyc) 。例如：</p>
+<p>在 Windows 下创建一个 test.py 文件：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200523141631484.png"></p>
+<p>然后在 IDE 中编译 (后续说明原因)，在 test.py 所在目录下可以显式看到多出了一个 <strong>pycache</strong> 子目录：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200523125801716.png"></p>
+<p>进入 <strong>pycache</strong> 子目录中可以看到其字节码文件  test.cpython-36.pyc：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200523125901740.png"></p>
+<p>在记事本中打开，可见由于编码问题无法直接阅读，但可以看到 test.py 的程序主体也在其中：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200523141519552.png"></p>
+<p>事实上，当一个模块首次被导入或修改已编译的源文件时，都会在 .py 所在目录的 <strong>pycache</strong> 的子目录下创建一个包含已编译代码的 .pyc 文件。新创建的 <strong>pycache</strong> 子目录能够 <strong>避免太多文件挤在同一路径下</strong>，而新的字节码文件命名规范确保了同一主机上安装的不同版本的 Python 所生成的字节码文件 <strong>不会相互覆盖</strong>。当然，这些字节码文件都是自动生成的，与大多数 Python 程序无关，也随着不同版本的 Python 有着不同的形式。</p>
+<p>上述 Python 保存字节码的方式是对 Python 程序 <strong>启动速度</strong> 的一种优化 (<strong>而非运行速度的优化</strong>)。下次运行程序时，若上次保存字节码后未再修改过源代码，并且使用同一个 Python 编译器版本运行， 那么 Python 将会加载 .pyc 文件并跳过编译步骤。该过程工作原理如下：</p>
+<blockquote>
+<ul>
+<li><strong>源文件的改变</strong>：Python 会自动检查源文件和字节码文件最后一次修改的时间戳，以确认是否必须重新编译：若源代码被编辑并保存，则下次程序运行时，将自动重新创建字节码文件。</li>
+<li><strong>Python 的版本</strong>：导入 (import) 机制会检查是否需要因使用了不同的 Python 版本而重新编译，这些版本信息在 Python3 中存储于字节码文件名中间部分。</li>
+</ul>
+</blockquote>
+<p>可见，源文件的修改和 Python 版本的改变都会触发新的字节码文件的编译。导入模块时，若同时存在 .py 和 .pyc 文件，Python 将优先使用 .pyc 文件运行；若 .pyc 文件的编译时间早于 .py 的时间，则将重新编译 .py 并更新 .pyc 文件。还有，字节码文件也是发布 Python 程序的方法之一。若 Python 只找到 .pyc 字节码文件，而未找到对应的原始 .py 源代码文件，它也很 “乐意” 运行该程序。</p>
+<p><strong>即便 Python 无法在机器上写入字节码， 程序也可以正常工作 —— 字节码会在内存中生成， 并在程序结束时直接被丢弃</strong> (这就是在 IDE 中只点击 “运行” 不会看到 .pyc 文件的原因，若要显式查看还需要在 IDE 中手动点击“编译”)。然而，由于 .pyc 文件具有加速启动的作用，最好确保在大型程序中能够创建它们。</p>
+<p>最后，字节码只会针对那些被导入 (import) 的文件而生成， 而不是顶层的执行脚本 (严格来说，这是一种针对 “导入” 的优化)。此外，文件仅在程序运行 (或编译) 时才会被导入，而在交互式命令行中输入的命令并不会生成字节码。</p>
+<h3 id="Python-虚拟机-PVM"><a href="#Python-虚拟机-PVM" class="headerlink" title="Python 虚拟机 (PVM)"></a>Python 虚拟机 (PVM)</h3><p>一旦源程序编译成字节码 (或从已存在的 .pyc 文件中载入字节码)，便会将字节码发送到被称为 <strong>Python 虚拟机 (Python Virtual Machine, PVM)</strong> 的程序上来执行。不同于大名鼎鼎的 JAVA 虚拟机 (JVM)，Python 虚拟机 (PVM) 相对鲜为人知，其中一个原因在于 PVM 是更为知名的 <strong>Python 解释器 (Python Interpreter)</strong> 的一部分 (如 CPython 使用了基于堆栈的虚拟机)。但不同于诸如 Vmware 那种 <strong>系统虚拟机</strong>，此处指的是类似 JVM、CLR 的 <strong>程序虚拟机</strong>。</p>
+<p>常见的 Python 解释器有：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200523150938912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDc4NDAz,size_16,color_FFFFFF,t_70"></p>
+<p>简单来说，<strong>Python 解释器</strong> 由一个 <strong>编译器 (compiler)</strong> 和一个 <strong>虚拟机</strong> 构成，<strong>编译器负责将源代码转换成字节码文件，而虚拟机负责执行字节码。</strong>所以，解释型语言其实也有隐式的编译过程，只不过该编译过程并非直接生成目标代码，而是生成中间代码 (字节码)，然后再通过虚拟机来逐行解释执行字节码。</p>
+<p>更具体地，PVM 并非一个独立程序，也无须安装。本质上，PVM 可以理解为一个 <strong>迭代运行字节码指令的 “大循环”</strong> —— 一个接一个地完成操作。PVＭ 作为 <strong>Python 的运行时引擎</strong>，时常表现为 Python 系统的一部分，并且作为实际运行脚本的组件。从程序运行的技术流程上看，PVM 是 <strong>Python 解释器运行程序的最后一步</strong>。下图展示了 Python 运行时的简化执行模型：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020052314241452.png"></p>
+<p>事实上，程序员编写的由源代码构成的 .py 源文件，先被自动编译为由字节码构成的 .pyc 字节码文件，然后被传递给 Python 虚拟机 (PVM) 中运行。注意，.pyc 文件是字节码在磁盘上的表现形式，而字节码在 PVM 程序里对应的是 PyCodeObject 对象 (import 模块时创建该对象)。PVM 会字节码当前的上下文环境中，从编译得到的 PyCodeObject 对象中逐条执行字节码指令，从而完成程序的执行。关于更深层的源码分析则大可不必深究。</p>
+<p>总体上，操作系统中执行程序离不开两个概念：<strong>进程和线程</strong>。Python 通过 PyInterpreterState 和 PyTreadState 分别模拟进程和线程的概念。其中，每个 PyThreadState 都对应着一个帧栈，PVM 在多个线程上切换。当 PVM 开始执行时，它会先进行一些初始化操作，最后进入 PyEval_EvalFramEx 函数，它的作用是不断读取编译好的字节码并逐条执行，类似 CPU 执行指令的过程。PyEval_EvalFramEx 函数内部主要是一个 switch 结构，根据字节码的不同执行不同的代码。</p>
+<p>总之，程序员只需简单地编写代码并运行文件，而 Python 会负责所有运行这些文件的逻辑。</p>
+<h3 id="性能意义"><a href="#性能意义" class="headerlink" title="性能意义"></a>性能意义</h3><p>倘若熟悉 C 和 C++ 这类完全编译语言，则很容易发现 Python 运行模式中的一些差异。例如，Python 的执行流程中通常 <strong>没有 build &#x2F; make 的步骤</strong>，而是写完代码立即执行 (run)；<strong>Python 字节码并非机器的二进制代码</strong> (如 Intel 或 ARM 芯片的指令)。其实，字节码是特定于 Python 的一种表现形式。这就是为什么 <strong>Python 代码难以运行得像 C 或 C++ 代码一样快，因为 PVM 循环 (而非 CPU 芯片) 仍需逐行解释字节码，并且相比于 CPU 指令，执行字节码指令需要更多的工作</strong>。另一方面，与其他经典的解释器不同，Python 仍有内部的编译步骤，即无需反复地重新分析、分解每行源代码语句的文本 (所以 Python 又比经典的解释型语言更快些)。在上述机制的综合作用下，Python 代码的运行速度介于传统的编译语言和传统的解释语言之间。</p>
+<h3 id="开发意义"><a href="#开发意义" class="headerlink" title="开发意义"></a>开发意义</h3><p>Python 执行模型所导致的另一个结果是：Python 的开发和执行环境实际上并无区别。换言之，<strong>编译和执行源代码的系统是同一个系统</strong>。在 Python 中，编译器总是在运行时出现，并作为运行程序系统的一部分，从而将大大缩短开发周期，<strong>提升开发效率</strong>。在程序开始执行前，无需预编译和链接，只需简单地输入并运行代码即可。这同样让 Python 带上了更浓厚的 <strong>动态语言</strong> 色彩：在运行时， Python 程序去构建并执行另一个 Python 程序是可能的，且往往非常方便。例如，eval 和 exec 内置模块能够接受并运行包含 Python 程序代码的字符串。上述结构是 Python 能够实现产品定制的原因：因为 Python 代码可以动态地被修改，用户可以改进系统内部的 Python 部分，而无需拥有或编译整个系统的代码。</p>
+<p>总而言之，Python 完全不需要初始的编译阶段，所有的事情都是在程序运行时发生的，甚至包括建立函数和类的操作以及模块的链接。而这些工作对于静态语言而言，往往发生在执行之前。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/04/22/mifi/" rel="prev" title="mifi">
+      <i class="fa fa-chevron-left"></i> mifi
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E7%A0%81%E7%BC%96%E8%AF%91"><span class="nav-text">字节码编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-%E8%99%9A%E6%8B%9F%E6%9C%BA-PVM"><span class="nav-text">Python 虚拟机 (PVM)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E6%84%8F%E4%B9%89"><span class="nav-text">性能意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%84%8F%E4%B9%89"><span class="nav-text">开发意义</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Linkua</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Linkua</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

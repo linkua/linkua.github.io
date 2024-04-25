@@ -24,12 +24,13 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="OneNET">
 <meta property="og:url" content="http://example.com/2024/03/23/onenet/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Excerpt">
 <meta property="og:description" content="MQTT设备接入支持标准MQTTV3.1.1版本，支持TLS加密，接入服务地址如下： 1MQTT协议 &#x27;mqtts.heclouds.com:1883&#x27; 设备可通过MQTT connnect报文进行登录，connect报文中三要素填写方法如下： 参数	是否必须	参数说明clientId	是	设备名称username	是	平台分配的产品IDpassword	是	填写经过 key">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-03-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-04-24T05:47:45.412Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2024-04-25T06:47:11.820Z">
+<meta property="article:author" content="Linkua">
+<meta property="article:tag" content="MQTT">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2024/03/23/onenet/">
@@ -45,7 +46,7 @@
   };
 </script>
 
-  <title>OneNET | Hexo</title>
+  <title>OneNET | Excerpt</title>
   
 
 
@@ -96,7 +97,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Hexo</h1>
+      <h1 class="site-title">Excerpt</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -187,12 +188,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -213,8 +214,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 14:47:11" itemprop="dateModified" datetime="2024-04-25T14:47:11+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
 
           
 
@@ -231,6 +241,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MQTT协议 &#x27;mqtts.heclouds.com:1883&#x27;</span><br></pre></td></tr></table></figure>
 <p>设备可通过MQTT connnect报文进行登录，connect报文中三要素填写方法如下：</p>
 <p>参数	是否必须	参数说明<br>clientId	是	设备名称<br>username	是	平台分配的产品ID<br>password	是	填写经过 key 计算的 token</p>
+<span id="more"></span>
+
 <h4 id="token计算方式"><a href="#token计算方式" class="headerlink" title="token计算方式"></a>token计算方式</h4><p>打开 “tokenV2.0.exe”<br>res: products&#x2F;产品ID&#x2F;devices&#x2F;设备名称   例如：res &#x3D; products&#x2F;vUui7WOi1a&#x2F;devices&#x2F;led0<br>et: 2121957139 例如 UTC token最后有效时间 2038</p>
 
     </div>
@@ -240,6 +252,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MQTT/" rel="tag"># MQTT</a>
+          </div>
 
         
 
@@ -312,13 +327,13 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MQTT"><span class="nav-number">1.</span> <span class="nav-text">MQTT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#token%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">token计算方式</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MQTT"><span class="nav-text">MQTT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#token%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F"><span class="nav-text">token计算方式</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
+  <p class="site-author-name" itemprop="name">Linkua</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -329,6 +344,14 @@
           <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>
@@ -358,7 +381,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">Linkua</span>
 </div>
 
         

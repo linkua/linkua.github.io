@@ -20,16 +20,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="源程序编译Makefile 的编写程序库的链接程序的调试头文件和系统求助    源程序的编译在 Linux 下面，如果要编译一个 C 语言源程序，我们要使用 GNU 的 gcc 编译器。 下面我们以一个实例来说明如何使用 gcc 编译器。假设我们有下面一个非常简单的源程序 (hello.c)：  123456789101112int main(int argc，char **argv)  &amp;#12">
+  <meta name="description" content="Makefile的编写">
 <meta property="og:type" content="article">
 <meta property="og:title" content="makefile 文件使用">
 <meta property="og:url" content="http://example.com/2024/04/14/makefile%E4%BD%BF%E7%94%A8/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="源程序编译Makefile 的编写程序库的链接程序的调试头文件和系统求助    源程序的编译在 Linux 下面，如果要编译一个 C 语言源程序，我们要使用 GNU 的 gcc 编译器。 下面我们以一个实例来说明如何使用 gcc 编译器。假设我们有下面一个非常简单的源程序 (hello.c)：  123456789101112int main(int argc，char **argv)  &amp;#12">
+<meta property="og:site_name" content="Excerpt">
+<meta property="og:description" content="Makefile的编写">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-04-24T05:47:45.411Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2024-04-25T07:15:01.844Z">
+<meta property="article:author" content="Linkua">
+<meta property="article:tag" content="makefile make">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2024/04/14/makefile%E4%BD%BF%E7%94%A8/">
@@ -45,7 +46,7 @@
   };
 </script>
 
-  <title>makefile 文件使用 | Hexo</title>
+  <title>makefile 文件使用 | Excerpt</title>
   
 
 
@@ -96,7 +97,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Hexo</h1>
+      <h1 class="site-title">Excerpt</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -187,12 +188,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -213,8 +214,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 15:15:01" itemprop="dateModified" datetime="2024-04-25T15:15:01+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
 
           
 
@@ -227,39 +237,47 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="源程序编译"><a href="#源程序编译" class="headerlink" title="源程序编译"></a>源程序编译</h3><p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Makefile&spm=1001.2101.3001.7020">Makefile</a> 的编写<br>程序库的链接<br>程序的调试<br>头文件和系统求助  </p>
-<ol>
-<li>源程序的编译<br>在 Linux 下面，如果要编译一个 C 语言源程序，我们要使用 GNU 的 gcc 编译器。 下面我们以一个实例来说明如何使用 gcc 编译器。<br>假设我们有下面一个非常简单的源程序 (hello.c)：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">printf(&quot;Hello Linux\n&quot;)；  </span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">要编译这个程序，我们只要在命令行下执行：  </span><br><span class="line">```gcc -o hello hello.c```  </span><br><span class="line">gcc 编译器就会为我们生成一个 hello 的可执行文件。执行./hello 就可以看到程序的输出结果了。命令行中 gcc 表示我们是用 gcc 来编译我们的源程序，-o 选项表示我们要求编译器给我们输出的可执行文件名为 hello 而 hello.c 是我们的源程序文件。  </span><br><span class="line">gcc 编译器有许多选项，一般来说我们只要知道其中的几个就够了。 -o 选项我们已经知道了，表示我们要求输出的可执行文件名。 -c 选项表示我们只要求编译器输出目标代码，而不必要输出可执行文件。 -g 选项表示我们要求编译器在编译的时候提供我们以后对程序进行调试的信息。  </span><br><span class="line">知道了这三个选项，我们就可以编译我们自己所写的简单的源程序了，如果你想要知道更多的选项，可以查看 gcc 的帮助文档，那里有着许多对其它选项的详细说明。  </span><br><span class="line">2.Makefile 的编写  </span><br><span class="line">假设我们有下面这样的一个程序，源代码如下：  </span><br></pre></td></tr></table></figure>
-&#x2F;* main.c *&#x2F;</li>
+        <p>Makefile的编写 </p>
+<span id="more"></span>
+<h3 id="源程序编译"><a href="#源程序编译" class="headerlink" title="源程序编译"></a>源程序编译</h3><ol>
+<li>源程序的编译<br>在 Linux 下面，如果要编译一个 C 语言源程序，我们要使用 GNU 的 gcc 编译器。 下面我们以一个实例来说明如何使用 gcc 编译器。<br>假设我们有下面一个非常简单的源程序 (hello.c)：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;Hello Linux\n&quot;)；  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>#include “mytool1.h”<br>#include “mytool2.h”<br>int main(int argc，char *<em>argv)<br>{<br>mytool1_print(“hello”)；<br>mytool2_print(“hello”)；<br>}<br>&#x2F;</em> mytool1.h *&#x2F;<br>#ifndef _MYTOOL_1_H<br>#define _MYTOOL_1_H<br>void mytool1_print(char <em>print_str)；<br>#endif<br>&#x2F;</em> mytool1.c *&#x2F;<br>#include “mytool1.h”<br>void mytool1_print(char <em>print_str)<br>{<br>printf(“This is mytool1 print %s\n”，print_str)；<br>}<br>&#x2F;</em> mytool2.h *&#x2F;<br>#ifndef _MYTOOL_2_H<br>#define _MYTOOL_2_H<br>void mytool2_print(char <em>print_str)；<br>#endif<br>&#x2F;</em> mytool2.c *&#x2F;<br>#include “mytool2.h”<br>void mytool2_print(char *print_str)<br>{<br>printf(“This is mytool2 print %s\n”，print_str)；<br>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当然由于这个程序是很短的我们可以这样来编译  </span><br></pre></td></tr></table></figure>
-<p>gcc -c main.c<br>gcc -c mytool1.c<br>gcc -c mytool2.c<br>gcc -o main main.o mytool1.o mytool2.o</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这样的话我们也可以产生 main 程序，而且也不时很麻烦。但是如果我们考虑一下如果有一天我们修改了其中的一个文件 (比如说 mytool1.c) 那么我们 难道还要重新输入上面的命令? 也许你会说，这个很容易解决啊，我写一个 SHELL 脚本，让她帮我去完成不就可以了。是的对于这个程序来说，是可以起到作用 的。但是当我们把事情想的更复杂一点，如果我们的程序有几百个源程序的时候，难道也要编译器重新一个一个的去编译?  </span><br><span class="line">为此，聪明的程序员们想出了一个很好的工具来做这件事情，这就是 make。我们只要执行以下 make，就可以把上面的问题解决掉。在我们执行 make 之 前，我们要先编写一个非常重要的文件。--Makefile。对于上面的那个程序来说，可能的一个 Makefile 的文件是：  </span><br></pre></td></tr></table></figure>
-<p>main：main.o mytool1.o mytool2.o<br>gcc -o main main.o mytool1.o mytool2.o<br>main.o：main.c mytool1.h mytool2.h<br>gcc -c main.c<br>mytool1.o：mytool1.c mytool1.h<br>gcc -c mytool1.c<br>mytool2.o：mytool2.c mytool2.h<br>gcc -c mytool2.c</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">有了这个 Makefile 文件，不过我们什么时候修改了源程序当中的什么文件，我们只要执行 make 命令，我们的编译器都只会去编译和我们修改的文件有关的文件，其它的文件她连理都不想去理的。  </span><br><span class="line">下面我们学习 Makefile 是如何编写的。  </span><br><span class="line">在 Makefile 中也 #开始的行都是注释行. Makefile 中最重要的是描述文件的依赖关系的说明。一般的格式是：  </span><br></pre></td></tr></table></figure>
-<p>target：components<br>TAB rule</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">第一行表示的是依赖关系。第二行是规则。  </span><br><span class="line">比如说我们上面的那个 Makefile 文件的第二行  </span><br><span class="line">```main：main.o mytool1.o mytool2.o``` </span><br><span class="line">表示我们的目标 (target)main 的依赖对象(components) 是 main.o mytool1.o mytool2.o 当倚赖的对象在目标修改后修改的话，就要去执行规则一行所指定的命令。就象我们的上面那个 Makefile 第三行所说的一样要执行 gcc -o main main.o mytool1.o mytool2.o 注意规则一行中的 TAB 表示那里是一个 TAB 键  </span><br><span class="line"></span><br><span class="line">### $@，$^，$&lt; </span><br><span class="line">Makefile 有三个非常有用的变量。分别是 $@，$^，$&lt; 代表的意义分别是：  </span><br><span class="line">$@-- 目标文件，$^-- 所有的依赖文件，$&lt;-- 第一个依赖文件。  </span><br><span class="line">如果我们使用上面三个变量，那么我们可以简化我们的 Makefile 文件为：  </span><br></pre></td></tr></table></figure>
-<p>&#x2F;&#x2F;这是简化后的 Makefile<br>main：main.o mytool1.o mytool2.o<br>gcc -o $@ $^<br>main.o：main.c mytool1.h mytool2.h<br>gcc -c $&lt;<br>mytool1.o：mytool1.c mytool1.h<br>gcc -c $&lt;<br>mytool2.o：mytool2.c mytool2.h<br>gcc -c $&lt;  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">经过简化后我们的 Makefile 是简单了一点，不过人们有时候还想简单一点。这里我们学习一个 Makefile 的缺省规则  </span><br><span class="line">.c.o：  </span><br><span class="line">```gcc -c $&lt;```  </span><br><span class="line">这个规则表示所有的 .o 文件都是依赖与相应的. c 文件的。例如 mytool.o 依赖于 mytool.c 这样 Makefile 还可以变为：  </span><br></pre></td></tr></table></figure>
-<p>&#x2F;&#x2F;这是再一次简化后的 Makefile<br>main：main.o mytool1.o mytool2.o<br>gcc -o $@ $^<br>.c.o：<br>gcc -c $&lt;</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">好了，我们的 Makefile 也差不多了，如果想知道更多的关于 Makefile 规则可以查看相应的文档。  </span><br><span class="line">### 程序库的链接  </span><br><span class="line">试着编译下面这个程序  </span><br></pre></td></tr></table></figure>
-<p>&#x2F;* temp.c *&#x2F;<br>#include<br>int main(int argc，char **argv)<br>{<br>double value；<br>printf(“Value：%f\n”，value)；<br>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这个程序相当简单，但是当我们用 gcc -o temp temp.c 编译时会出现下面所示的错误。  </span><br></pre></td></tr></table></figure>
-<p>&#x2F;tmp&#x2F;cc33Kydu.o： In function <code>main&#39;：   /tmp/cc33Kydu.o(.text+0xe)： undefined reference to </code>log’<br>collect2： ld returned 1 exit status</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">出现这个错误是因为编译器找不到 log 的具体实现。虽然我们包括了正确的头文件，但是我们在编译的时候还是要连接确定的库。在 Linux 下，为了使用数学 函数，我们必须和数学库连接，为此我们要加入 -lm 选项。 ```gcc -o temp temp.c -lm``` 这样才能够正确的编译。也许有人要问，前面我们用 printf 函数的时候怎么没有连接库呢? 是这样的，对于一些常用的函数的实现，gcc 编译器会自 动去连接一些常用库，这样我们就没有必要自己去指定了。有时候我们在编译程序的时候还要指定库的路径，这个时候我们要用到编译器的  -L 选项指定路径。比如说我们有一个库在 /home/hoyt/mylib 下，这样我们编译的时候还要加上```-L/home/hoyt/mylib```对于一些标准库来说，我们没有必要指出路径。只要它们在起缺省库的路径下就可以了。系统的缺省库的路径```/lib /usr/lib /usr/local/lib ```在这三个路径下面的库，我们可以不指定路径。  </span><br><span class="line">### 程序的调试  </span><br><span class="line">我们编写的程序不太可能一次性就会成功的，在我们的程序当中，会出现许许多多我们想不到的错误，这个时候我们就要对我们的程序进行调试了。  </span><br><span class="line">最常用的调试软件是 gdb. 如果你想在图形界面下调试程序，那么你现在可以选择 xxgdb. 记得要在编译的时候加入 -g 选项. 关于 gdb 的使用可以看 gdb 的帮助文件。由于我没有用过这个软件，所以我也不能够说出如何使用。不过我不喜欢用 gdb. 跟踪一个程序是很烦的 事情，我一般用在程序当中输出中间变量的值来调试程序的。当然你可以选择自己的办法，没有必要去学别人的。现在有了许多 IDE 环境，里面已经自己带了调试 器了。你可以选择几个试一试找出自己喜欢的一个用。  </span><br><span class="line">### 头文件和系统求助  </span><br><span class="line">有时候我们只知道一个函数的大概形式，不记得确切的表达式，或者是不记得着函数在那个头文件进行了说明。这个时候我们可以求助系统。  </span><br><span class="line">比如说我们想知道 fread 这个函数的确切形式，我们只要执行 man fread 系统就会输出着函数的详细解释的。和这个函数所在的头文件说明了。 如果我们要 write 这个函数的说明，当我们执行 man write 时，输出的结果却不是我们所需要的。 因为我们要的是 write 这个函数的说明，可是出来的却是 write 这个命令的说明。为了得到 write 的函数说明我们要用 man 2 write. 2 表示我们用的 write 这个函数是系统调用函数，还有一个我们常用的是 3 表示函数是 C 的库函数。  </span><br><span class="line">记住不管什么时候，man 都是我们的最好助手</span><br><span class="line"></span><br><span class="line">[Makefile](https://so.csdn.net/so/search?q=Makefile&amp;spm=1001.2101.3001.7020 &quot;Makefile&quot;) 中``` $(SRC:%.c=%.o)``` 的含义：**将 SRC 变量中所有以. c 结尾的文件名替换成对应的以. o 结尾的文件名，然后赋回给 SRC**</span><br></pre></td></tr></table></figure>
-<p>CROSS_COMPILE ?&#x3D; arm-linux-gnueabihf-</p>
-<p>GCC :&#x3D; $(CROSS_COMPILE)gcc </p>
-<p>APP_TARGET &#x3D; .&#x2F;app_button</p>
-<p>INC_DIR &#x3D; -I&#x2F;<br>INC_DIR +&#x3D; -I.&#x2F;bsp&#x2F;beep <br>INC_DIR +&#x3D; -I.&#x2F;bsp&#x2F;clk <br>INC_DIR +&#x3D; -I.&#x2F;bsp&#x2F;led<br>INC_DIR +&#x3D; -I.&#x2F;bsp&#x2F;button </p>
-<p>CFLAGS +&#x3D; $(INC_DIR)</p>
-<p>BEEP &#x3D; \<br>    .&#x2F;bsp&#x2F;beep&#x2F;beep.c \<br>    .&#x2F;bsp&#x2F;clk&#x2F;clk.c \<br>    .&#x2F;bsp&#x2F;led&#x2F;led.c \<br>    .&#x2F;bsp&#x2F;button&#x2F;button.c</p>
-<p>MAIN &#x3D; .&#x2F;main.c</p>
-<p>SRC +&#x3D; $(MAIN)<br>SRC +&#x3D; $(BEEP)</p>
-<p>%.o:%.c<br>    $(GCC) -c $(CFLAGS) $^ -o $@</p>
-<p>SRCOBJ &#x3D; $(SRC:.c&#x3D;.o)</p>
-<p>all:$(APP_TARGET)<br>$(APP_TARGET): $(SRCOBJ)<br>    $(GCC) $(SRCOBJ) $(CFLAGS) -o $(APP_TARGET)</p>
-<p>clean:<br>    rm -f $(APP_TARGET) $(SRCOBJ)<br>&#96;&#96;&#96;</p>
+<p>要编译这个程序，我们只要在命令行下执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -o hello hello.c</span><br></pre></td></tr></table></figure>
+
+
+<p>gcc 编译器就会为我们生成一个 hello 的可执行文件。执行.&#x2F;hello 就可以看到程序的输出结果了。命令行中 gcc 表示我们是用 gcc 来编译我们的源程序，-o 选项表示我们要求编译器给我们输出的可执行文件名为 hello 而 hello.c 是我们的源程序文件。<br>gcc 编译器有许多选项，一般来说我们只要知道其中的几个就够了。 -o 选项我们已经知道了，表示我们要求输出的可执行文件名。 -c 选项表示我们只要求编译器输出目标代码，而不必要输出可执行文件。 -g 选项表示我们要求编译器在编译的时候提供我们以后对程序进行调试的信息。<br>知道了这三个选项，我们就可以编译我们自己所写的简单的源程序了，如果你想要知道更多的选项，可以查看 gcc 的帮助文档，那里有着许多对其它选项的详细说明。</p>
+<p>2.Makefile 的编写<br>假设我们有下面这样的一个程序，源代码如下：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/* main.c */  </span><br><span class="line">#include &quot;mytool1.h&quot;  </span><br><span class="line">#include &quot;mytool2.h&quot;  </span><br><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">    mytool1_print(&quot;hello&quot;)；  </span><br><span class="line">    mytool2_print(&quot;hello&quot;)；  </span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">/* mytool1.h */  </span><br><span class="line">#ifndef _MYTOOL_1_H  </span><br><span class="line">#define _MYTOOL_1_H  </span><br><span class="line">void mytool1_print(char *print_str)；  </span><br><span class="line">#endif  </span><br><span class="line">/* mytool1.c */  </span><br><span class="line">#include &quot;mytool1.h&quot;  </span><br><span class="line">void mytool1_print(char *print_str)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;This is mytool1 print %s\n&quot;，print_str)；  </span><br><span class="line">&#125;  </span><br><span class="line">/* mytool2.h */  </span><br><span class="line">#ifndef _MYTOOL_2_H  </span><br><span class="line">#define _MYTOOL_2_H  </span><br><span class="line">void mytool2_print(char *print_str)；  </span><br><span class="line">#endif  </span><br><span class="line">/* mytool2.c */  </span><br><span class="line">#include &quot;mytool2.h&quot;  </span><br><span class="line">void mytool2_print(char *print_str)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;This is mytool2 print %s\n&quot;，print_str)；  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>当然由于这个程序是很短的我们可以这样来编译 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gcc -c main.c  </span><br><span class="line">gcc -c mytool1.c  </span><br><span class="line">gcc -c mytool2.c  </span><br><span class="line">gcc -o main main.o mytool1.o mytool2.o</span><br></pre></td></tr></table></figure>
+
+<p>这样的话我们也可以产生 main 程序，而且也不时很麻烦。但是如果我们考虑一下如果有一天我们修改了其中的一个文件 (比如说 mytool1.c) 那么我们 难道还要重新输入上面的命令? 也许你会说，这个很容易解决啊，我写一个 SHELL 脚本，让她帮我去完成不就可以了。是的对于这个程序来说，是可以起到作用 的。但是当我们把事情想的更复杂一点，如果我们的程序有几百个源程序的时候，难道也要编译器重新一个一个的去编译?<br>为此，聪明的程序员们想出了一个很好的工具来做这件事情，这就是 make。我们只要执行以下 make，就可以把上面的问题解决掉。在我们执行 make 之 前，我们要先编写一个非常重要的文件。–Makefile。对于上面的那个程序来说，可能的一个 Makefile 的文件是：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o main main.o mytool1.o mytool2.o  </span><br><span class="line">main.o：main.c mytool1.h mytool2.h  </span><br><span class="line">gcc -c main.c  </span><br><span class="line">mytool1.o：mytool1.c mytool1.h  </span><br><span class="line">gcc -c mytool1.c  </span><br><span class="line">mytool2.o：mytool2.c mytool2.h  </span><br><span class="line">gcc -c mytool2.c</span><br></pre></td></tr></table></figure>
+
+<p>有了这个 Makefile 文件，不过我们什么时候修改了源程序当中的什么文件，我们只要执行 make 命令，我们的编译器都只会去编译和我们修改的文件有关的文件，其它的文件她连理都不想去理的。<br>下面我们学习 Makefile 是如何编写的。<br>在 Makefile 中也 #开始的行都是注释行. Makefile 中最重要的是描述文件的依赖关系的说明。一般的格式是：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target：components  </span><br><span class="line">TAB rule</span><br></pre></td></tr></table></figure>
+
+<p>第一行表示的是依赖关系。第二行是规则。<br>比如说我们上面的那个 Makefile 文件的第二行  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">main：main.o mytool1.o mytool2.o</span><br></pre></td></tr></table></figure>
+<p>表示我们的目标 (target)main 的依赖对象(components) 是 main.o mytool1.o mytool2.o 当倚赖的对象在目标修改后修改的话，就要去执行规则一行所指定的命令。就象我们的上面那个 Makefile 第三行所说的一样要执行 gcc -o main main.o mytool1.o mytool2.o 注意规则一行中的 TAB 表示那里是一个 TAB 键  </p>
+<h3 id="变量-，-，"><a href="#变量-，-，" class="headerlink" title="变量 $@，$^，$&lt;"></a>变量 $@，$^，$&lt;</h3><p>Makefile 有三个非常有用的变量。分别是 $@，$^，$&lt; 代表的意义分别是：<br>$@– 目标文件，$^– 所有的依赖文件，$&lt;– 第一个依赖文件。<br>如果我们使用上面三个变量，那么我们可以简化我们的 Makefile 文件为：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//这是简化后的 Makefile  </span><br><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o $@ $^  </span><br><span class="line">main.o：main.c mytool1.h mytool2.h  </span><br><span class="line">gcc -c $&lt;  </span><br><span class="line">mytool1.o：mytool1.c mytool1.h  </span><br><span class="line">gcc -c $&lt;  </span><br><span class="line">mytool2.o：mytool2.c mytool2.h  </span><br><span class="line">gcc -c $&lt;  </span><br></pre></td></tr></table></figure>
+
+<p>经过简化后我们的 Makefile 是简单了一点，不过人们有时候还想简单一点。这里我们学习一个 Makefile 的缺省规则<br>.c.o：<br><code>gcc -c $&lt;</code><br>这个规则表示所有的 .o 文件都是依赖与相应的. c 文件的。例如 mytool.o 依赖于 mytool.c 这样 Makefile 还可以变为：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//这是再一次简化后的 Makefile  </span><br><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o $@ $^  </span><br><span class="line">.c.o：  </span><br><span class="line">gcc -c $&lt;</span><br></pre></td></tr></table></figure>
+<p>好了，我们的 Makefile 也差不多了，如果想知道更多的关于 Makefile 规则可以查看相应的文档。</p>
+<h3 id="程序库的链接"><a href="#程序库的链接" class="headerlink" title="程序库的链接"></a>程序库的链接</h3><p>试着编译下面这个程序  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/* temp.c */  </span><br><span class="line">#include  </span><br><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">double value；  </span><br><span class="line">printf(&quot;Value：%f\n&quot;，value)；  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个程序相当简单，但是当我们用 gcc -o temp temp.c 编译时会出现下面所示的错误。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/tmp/cc33Kydu.o： In function `main&#x27;：  </span><br><span class="line">/tmp/cc33Kydu.o(.text+0xe)： undefined reference to `log&#x27;  </span><br><span class="line">collect2： ld returned 1 exit status</span><br></pre></td></tr></table></figure>
+
+<p>出现这个错误是因为编译器找不到 log 的具体实现。虽然我们包括了正确的头文件，但是我们在编译的时候还是要连接确定的库。在 Linux 下，为了使用数学 函数，我们必须和数学库连接，为此我们要加入 -lm 选项。 <code>gcc -o temp temp.c -lm</code> 这样才能够正确的编译。也许有人要问，前面我们用 printf 函数的时候怎么没有连接库呢? 是这样的，对于一些常用的函数的实现，gcc 编译器会自 动去连接一些常用库，这样我们就没有必要自己去指定了。有时候我们在编译程序的时候还要指定库的路径，这个时候我们要用到编译器的  -L 选项指定路径。比如说我们有一个库在 &#x2F;home&#x2F;hoyt&#x2F;mylib 下，这样我们编译的时候还要加上<code>-L/home/hoyt/mylib</code>对于一些标准库来说，我们没有必要指出路径。只要它们在起缺省库的路径下就可以了。系统的缺省库的路径<code>/lib /usr/lib /usr/local/lib </code>在这三个路径下面的库，我们可以不指定路径。</p>
+<h3 id="程序的调试"><a href="#程序的调试" class="headerlink" title="程序的调试"></a>程序的调试</h3><p>我们编写的程序不太可能一次性就会成功的，在我们的程序当中，会出现许许多多我们想不到的错误，这个时候我们就要对我们的程序进行调试了。<br>最常用的调试软件是 gdb. 如果你想在图形界面下调试程序，那么你现在可以选择 xxgdb. 记得要在编译的时候加入 -g 选项. 关于 gdb 的使用可以看 gdb 的帮助文件。由于我没有用过这个软件，所以我也不能够说出如何使用。不过我不喜欢用 gdb. 跟踪一个程序是很烦的 事情，我一般用在程序当中输出中间变量的值来调试程序的。当然你可以选择自己的办法，没有必要去学别人的。现在有了许多 IDE 环境，里面已经自己带了调试 器了。你可以选择几个试一试找出自己喜欢的一个用。</p>
+<h3 id="头文件和系统求助"><a href="#头文件和系统求助" class="headerlink" title="头文件和系统求助"></a>头文件和系统求助</h3><p>有时候我们只知道一个函数的大概形式，不记得确切的表达式，或者是不记得着函数在那个头文件进行了说明。这个时候我们可以求助系统。<br>比如说我们想知道 fread 这个函数的确切形式，我们只要执行 man fread 系统就会输出着函数的详细解释的。和这个函数所在的头文件说明了。 如果我们要 write 这个函数的说明，当我们执行 man write 时，输出的结果却不是我们所需要的。 因为我们要的是 write 这个函数的说明，可是出来的却是 write 这个命令的说明。为了得到 write 的函数说明我们要用 man 2 write. 2 表示我们用的 write 这个函数是系统调用函数，还有一个我们常用的是 3 表示函数是 C 的库函数。<br>记住不管什么时候，man 都是我们的最好助手</p>
+<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Makefile&spm=1001.2101.3001.7020" title="Makefile">Makefile</a> 中<code> $(SRC:%.c=%.o)</code> 的含义：<strong>将 SRC 变量中所有以. c 结尾的文件名替换成对应的以. o 结尾的文件名，然后赋回给 SRC</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">CROSS_COMPILE ?= arm-linux-gnueabihf-</span><br><span class="line"></span><br><span class="line">GCC := $(CROSS_COMPILE)gcc </span><br><span class="line"></span><br><span class="line">APP_TARGET = ./app_button</span><br><span class="line"></span><br><span class="line">INC_DIR = -I/  </span><br><span class="line">INC_DIR += -I./bsp/beep   </span><br><span class="line">INC_DIR += -I./bsp/clk   </span><br><span class="line">INC_DIR += -I./bsp/led  </span><br><span class="line">INC_DIR += -I./bsp/button </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">CFLAGS += $(INC_DIR)</span><br><span class="line"></span><br><span class="line">BEEP = \  </span><br><span class="line">    ./bsp/beep/beep.c \  </span><br><span class="line">    ./bsp/clk/clk.c \  </span><br><span class="line">    ./bsp/led/led.c \  </span><br><span class="line">    ./bsp/button/button.c</span><br><span class="line"></span><br><span class="line">MAIN = ./main.c</span><br><span class="line"></span><br><span class="line">SRC += $(MAIN)  </span><br><span class="line">SRC += $(BEEP)</span><br><span class="line"></span><br><span class="line">%.o:%.c  </span><br><span class="line">    $(GCC) -c $(CFLAGS) $^ -o $@</span><br><span class="line"></span><br><span class="line">SRCOBJ = $(SRC:.c=.o)</span><br><span class="line"></span><br><span class="line">all:$(APP_TARGET)  </span><br><span class="line">$(APP_TARGET): $(SRCOBJ)  </span><br><span class="line">    $(GCC) $(SRCOBJ) $(CFLAGS) -o $(APP_TARGET)</span><br><span class="line"></span><br><span class="line">clean:  </span><br><span class="line">    rm -f $(APP_TARGET) $(SRCOBJ)</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -268,6 +286,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/makefile-make/" rel="tag"># makefile make</a>
+          </div>
 
         
 
@@ -340,13 +361,13 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%AF%91"><span class="nav-number">1.</span> <span class="nav-text">源程序编译</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%AF%91"><span class="nav-text">源程序编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-%EF%BC%8C-%EF%BC%8C"><span class="nav-text">变量 $@，$^，$&lt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%BA%93%E7%9A%84%E9%93%BE%E6%8E%A5"><span class="nav-text">程序库的链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%B0%83%E8%AF%95"><span class="nav-text">程序的调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%E5%92%8C%E7%B3%BB%E7%BB%9F%E6%B1%82%E5%8A%A9"><span class="nav-text">头文件和系统求助</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
+  <p class="site-author-name" itemprop="name">Linkua</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -357,6 +378,14 @@
           <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>
@@ -386,7 +415,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">Linkua</span>
 </div>
 
         

@@ -21,11 +21,11 @@
   </script>
 
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Excerpt">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Excerpt">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Linkua">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/">
@@ -41,7 +41,7 @@
   };
 </script>
 
-  <title>Hexo</title>
+  <title>Excerpt</title>
   
 
 
@@ -92,7 +92,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Hexo</h1>
+      <h1 class="site-title">Excerpt</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -178,21 +178,21 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/22/simpread-%E3%80%90Python%E3%80%91%E6%B5%85%E8%B0%88%20%E5%AD%97%E8%8A%82%E7%A0%81%20+%20%E8%99%9A%E6%8B%9F%E6%9C%BA%20(Python%20%E8%A7%A3%E9%87%8A%E5%99%A8)_python%20%E8%99%9A%E6%8B%9F%E6%9C%BA%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/22/Python%E5%AD%97%E8%8A%82%E7%A0%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/04/22/simpread-%E3%80%90Python%E3%80%91%E6%B5%85%E8%B0%88%20%E5%AD%97%E8%8A%82%E7%A0%81%20+%20%E8%99%9A%E6%8B%9F%E6%9C%BA%20(Python%20%E8%A7%A3%E9%87%8A%E5%99%A8)_python%20%E8%99%9A%E6%8B%9F%E6%9C%BA%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">浅谈 python 字节码</a>
+            <a href="/2024/04/22/Python%E5%AD%97%E8%8A%82%E7%A0%81/" class="post-title-link" itemprop="url">浅谈 python 字节码</a>
         </h2>
 
         <div class="post-meta">
@@ -209,8 +209,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 14:41:13" itemprop="dateModified" datetime="2024-04-25T14:41:13+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
 
           
 
@@ -223,57 +232,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>目录</strong></p>
-<p><a href="#t0">一、绪论</a></p>
-<p><a href="#t1">二、说明</a></p>
-<p><a href="#t2">2.1 字节码编译</a></p>
-<p><a href="#t3">2.2 Python 虚拟机 (PVM)</a></p>
-<p><a href="#t4">2.3 性能意义 ☆</a></p>
-<p><a href="#t5">2.4 开发意义</a></p>
-<p><a href="#t6">三、小结</a></p>
-<h2 id="一、绪论"><a href="#一、绪论" class="headerlink" title="一、绪论"></a>一、绪论</h2><p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Python&spm=1001.2101.3001.7020">Python</a> 通常被描述为一种 <strong>解释型语言</strong>，在这类语言中，源代码在程序运行时被 “翻译” 成 “指令”，但这还不够确切。同许多解释型语言一样，Python 在正式处理代码前，内部先进行预处理，将 Python 源代码编译成字节码，然后将其转发至 Python 虚拟机中。换言之，<strong>Python 实际上将源代码编译为 “虚拟机” 的一组指令，而这种中间格式的指令便称为 “字节码”</strong>。</p>
-<h2 id="二、说明"><a href="#二、说明" class="headerlink" title="二、说明"></a>二、说明</h2><h3 id="2-1-字节码编译"><a href="#2-1-字节码编译" class="headerlink" title="2.1 字节码编译"></a>2.1 字节码编译</h3><p>执行 Python 程序时，Python 内部将隐式地将 <strong>源代码 (source code)</strong> 编译成 <strong>字节码 (byte code)<strong>。编译可以理解为一种简单的 “翻译” 步骤，</strong>但有别于 C、C++ 等静态语言的编译</strong>；字节码则是一种 <strong>低级的</strong>、<strong>与平台无关的</strong> 代码表现形式，*<em>但有别于</em>***机器的二进制代码 (如 Intel 或 ARM 芯片的指令)**。简言之，Python 将源代码语句的每一条分解为单一步骤，从而 “翻译” 为一组字节码指令。相比于文本文件中的 Python 源代码，字节码的运行速度更快。</p>
-<p>注意，上述过程的发生对大多数用户而言是隐式的。若 Python 进程在机器上拥有写入权限， 那么它将把程序的字节码保存为一个 <strong>.pyc</strong> <strong>文件</strong> (即已编译的 Python 源文件 (.py compiled)) 。在 Python3 中，**.pyc 字节码文件** 被存储在名为 <strong><strong>pycache</strong></strong> 的子目录中，该子目录位于与 .py 源文件相同的路径下。而 <strong>pycache</strong> 子目录中的文件命名中包含了编译它们的 Python 的版本信息 (基于创建它的特定 Python 进制代码版本，如 test.<strong>cpython-36</strong>.pyc) 。例如：</p>
-<p>在 Windows 下创建一个 test.py 文件：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200523141631484.png"></p>
-<p>然后在 IDE 中编译 (后续说明原因)，在 test.py 所在目录下可以显式看到多出了一个 <strong>pycache</strong> 子目录：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200523125801716.png"></p>
-<p>进入 <strong>pycache</strong> 子目录中可以看到其字节码文件  test.cpython-36.pyc：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200523125901740.png"></p>
-<p>在记事本中打开，可见由于编码问题无法直接阅读，但可以看到 test.py 的程序主体也在其中：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200523141519552.png"></p>
-<p>事实上，当一个模块首次被导入或修改已编译的源文件时，都会在 .py 所在目录的 <strong>pycache</strong> 的子目录下创建一个包含已编译代码的 .pyc 文件。新创建的 <strong>pycache</strong> 子目录能够 <strong>避免太多文件挤在同一路径下</strong>，而新的字节码文件命名规范确保了同一主机上安装的不同版本的 Python 所生成的字节码文件 <strong>不会相互覆盖</strong>。当然，这些字节码文件都是自动生成的，与大多数 Python 程序无关，也随着不同版本的 Python 有着不同的形式。</p>
-<p>上述 Python 保存字节码的方式是对 Python 程序 <strong>启动速度</strong> 的一种优化 (<strong>而非运行速度的优化</strong>)。下次运行程序时，若上次保存字节码后未再修改过源代码，并且使用同一个 Python 编译器版本运行， 那么 Python 将会加载 .pyc 文件并跳过编译步骤。该过程工作原理如下：</p>
-<blockquote>
-<ul>
-<li><strong>源文件的改变</strong>：Python 会自动检查源文件和字节码文件最后一次修改的时间戳，以确认是否必须重新编译：若源代码被编辑并保存，则下次程序运行时，将自动重新创建字节码文件。</li>
-<li><strong>Python 的版本</strong>：导入 (import) 机制会检查是否需要因使用了不同的 Python 版本而重新编译，这些版本信息在 Python3 中存储于字节码文件名中间部分。</li>
-</ul>
-</blockquote>
-<p>可见，源文件的修改和 Python 版本的改变都会触发新的字节码文件的编译。导入模块时，若同时存在 .py 和 .pyc 文件，Python 将优先使用 .pyc 文件运行；若 .pyc 文件的编译时间早于 .py 的时间，则将重新编译 .py 并更新 .pyc 文件。还有，字节码文件也是发布 Python 程序的方法之一。若 Python 只找到 .pyc 字节码文件，而未找到对应的原始 .py 源代码文件，它也很 “乐意” 运行该程序。</p>
-<p><strong>即便 Python 无法在机器上写入字节码， 程序也可以正常工作 —— 字节码会在内存中生成， 并在程序结束时直接被丢弃</strong> (这就是在 IDE 中只点击 “运行” 不会看到 .pyc 文件的原因，若要显式查看还需要在 IDE 中手动点击“编译”)。然而，由于 .pyc 文件具有加速启动的作用，最好确保在大型程序中能够创建它们。</p>
-<p>最后，字节码只会针对那些被导入 (import) 的文件而生成， 而不是顶层的执行脚本 (严格来说，这是一种针对 “导入” 的优化)。此外，文件仅在程序运行 (或编译) 时才会被导入，而在交互式命令行中输入的命令并不会生成字节码。</p>
-<h3 id="2-2-Python-虚拟机-PVM"><a href="#2-2-Python-虚拟机-PVM" class="headerlink" title="2.2 Python 虚拟机 (PVM)"></a>2.2 Python 虚拟机 (PVM)</h3><p>一旦源程序编译成字节码 (或从已存在的 .pyc 文件中载入字节码)，便会将字节码发送到被称为 <strong>Python 虚拟机 (Python Virtual Machine, PVM)</strong> 的程序上来执行。不同于大名鼎鼎的 JAVA 虚拟机 (JVM)，Python 虚拟机 (PVM) 相对鲜为人知，其中一个原因在于 PVM 是更为知名的 <strong>Python 解释器 (Python Interpreter)</strong> 的一部分 (如 CPython 使用了基于堆栈的虚拟机)。但不同于诸如 Vmware 那种 <strong>系统虚拟机</strong>，此处指的是类似 JVM、CLR 的 <strong>程序虚拟机</strong>。</p>
-<p>常见的 Python 解释器有：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200523150938912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDc4NDAz,size_16,color_FFFFFF,t_70"></p>
-<p>简单来说，<strong>Python 解释器</strong> 由一个 <strong>编译器 (compiler)</strong> 和一个 <strong>虚拟机</strong> 构成，<strong>编译器负责将源代码转换成字节码文件，而虚拟机负责执行字节码。</strong>所以，解释型语言其实也有隐式的编译过程，只不过该编译过程并非直接生成目标代码，而是生成中间代码 (字节码)，然后再通过虚拟机来逐行解释执行字节码。</p>
-<p>更具体地，PVM 并非一个独立程序，也无须安装。本质上，PVM 可以理解为一个 <strong>迭代运行字节码指令的 “大循环”</strong> —— 一个接一个地完成操作。PVＭ 作为 <strong>Python 的运行时引擎</strong>，时常表现为 Python 系统的一部分，并且作为实际运行脚本的组件。从程序运行的技术流程上看，PVM 是 <strong>Python 解释器运行程序的最后一步</strong>。下图展示了 Python 运行时的简化执行模型：</p>
-<p><img src="https://img-blog.csdnimg.cn/2020052314241452.png"></p>
-<p>事实上，程序员编写的由源代码构成的 .py 源文件，先被自动编译为由字节码构成的 .pyc 字节码文件，然后被传递给 Python 虚拟机 (PVM) 中运行。注意，.pyc 文件是字节码在磁盘上的表现形式，而字节码在 PVM 程序里对应的是 PyCodeObject 对象 (import 模块时创建该对象)。PVM 会字节码当前的上下文环境中，从编译得到的 PyCodeObject 对象中逐条执行字节码指令，从而完成程序的执行。关于更深层的源码分析则大可不必深究。</p>
-<p>总体上，操作系统中执行程序离不开两个概念：<strong>进程和线程</strong>。Python 通过 PyInterpreterState 和 PyTreadState 分别模拟进程和线程的概念。其中，每个 PyThreadState 都对应着一个帧栈，PVM 在多个线程上切换。当 PVM 开始执行时，它会先进行一些初始化操作，最后进入 PyEval_EvalFramEx 函数，它的作用是不断读取编译好的字节码并逐条执行，类似 CPU 执行指令的过程。PyEval_EvalFramEx 函数内部主要是一个 switch 结构，根据字节码的不同执行不同的代码。</p>
-<p>总之，程序员只需简单地编写代码并运行文件，而 Python 会负责所有运行这些文件的逻辑。</p>
-<h3 id="2-3-性能意义-☆"><a href="#2-3-性能意义-☆" class="headerlink" title="2.3 性能意义 ☆"></a>2.3 性能意义 <strong>☆</strong></h3><p>倘若熟悉 C 和 C++ 这类完全编译语言，则很容易发现 Python 运行模式中的一些差异。例如，Python 的执行流程中通常 <strong>没有 build &#x2F; make 的步骤</strong>，而是写完代码立即执行 (run)；<strong>Python 字节码并非机器的二进制代码</strong> (如 Intel 或 ARM 芯片的指令)。其实，字节码是特定于 Python 的一种表现形式。这就是为什么 <strong>Python 代码难以运行得像 C 或 C++ 代码一样快，因为 PVM 循环 (而非 CPU 芯片) 仍需逐行解释字节码，并且相比于 CPU 指令，执行字节码指令需要更多的工作</strong>。另一方面，与其他经典的解释器不同，Python 仍有内部的编译步骤，即无需反复地重新分析、分解每行源代码语句的文本 (所以 Python 又比经典的解释型语言更快些)。在上述机制的综合作用下，Python 代码的运行速度介于传统的编译语言和传统的解释语言之间。</p>
-<h3 id="2-4-开发意义"><a href="#2-4-开发意义" class="headerlink" title="2.4 开发意义"></a>2.4 开发意义</h3><p>Python 执行模型所导致的另一个结果是：Python 的开发和执行环境实际上并无区别。换言之，<strong>编译和执行源代码的系统是同一个系统</strong>。在 Python 中，编译器总是在运行时出现，并作为运行程序系统的一部分，从而将大大缩短开发周期，<strong>提升开发效率</strong>。在程序开始执行前，无需预编译和链接，只需简单地输入并运行代码即可。这同样让 Python 带上了更浓厚的 <strong>动态语言</strong> 色彩：在运行时， Python 程序去构建并执行另一个 Python 程序是可能的，且往往非常方便。例如，eval 和 exec 内置模块能够接受并运行包含 Python 程序代码的字符串。上述结构是 Python 能够实现产品定制的原因：因为 Python 代码可以动态地被修改，用户可以改进系统内部的 Python 部分，而无需拥有或编译整个系统的代码。</p>
-<p>总而言之，Python 完全不需要初始的编译阶段，所有的事情都是在程序运行时发生的，甚至包括建立函数和类的操作以及模块的链接。而这些工作对于静态语言而言，往往发生在执行之前。</p>
-<h2 id="三、小结"><a href="#三、小结" class="headerlink" title="三、小结"></a>三、小结</h2><p><img src="https://img-blog.csdnimg.cn/20201031162940687.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDc4NDAz,size_16,color_FFFFFF,t_70"></p>
-<p><img src="https://img-blog.csdnimg.cn/20200523155023305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5NDc4NDAz,size_16,color_FFFFFF,t_70"></p>
-<p> 参考文献：</p>
-<p>《Learning Python 5th》</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cqcre/article/details/91456902" title="你了解 Python 字节码的原理吗？_VIP_CQCRE的博客-CSDN博客">你了解 Python 字节码的原理吗？_VIP_CQCRE 的博客 - CSDN 博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38855233" title="python程序是如何运行的？ - 知乎">python 程序是如何运行的？ - 知乎</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/webber1992/p/6597166.html" title="python虚拟机运行原理 - webber_liu - 博客园">python 虚拟机运行原理 - webber_liu - 博客园</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Bottle-cap/articles/10123700.html" title="python 解释器及其工作原理 - 小萍瓶盖儿 - 博客园">python 解释器及其工作原理 - 小萍瓶盖儿 - 博客园</a></p>
-
+          <p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Python&spm=1001.2101.3001.7020">Python</a> 通常被描述为一种 <strong>解释型语言</strong>，在这类语言中，源代码在程序运行时被 “翻译” 成 “指令”，但这还不够确切。同许多解释型语言一样，Python 在正式处理代码前，内部先进行预处理，将 Python 源代码编译成字节码，然后将其转发至 Python 虚拟机中。换言之，<strong>Python 实际上将源代码编译为 “虚拟机” 的一组指令，而这种中间格式的指令便称为 “字节码”</strong>。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/22/Python%E5%AD%97%E8%8A%82%E7%A0%81/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -296,17 +263,17 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/04/22/mifi/" class="post-title-link" itemprop="url">mifi asr1803s 移远</a>
+            <a href="/2024/04/22/mifi/" class="post-title-link" itemprop="url">mifi</a>
         </h2>
 
         <div class="post-meta">
@@ -323,8 +290,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 14:42:09" itemprop="dateModified" datetime="2024-04-25T14:42:09+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
 
           
 
@@ -338,75 +314,14 @@
 
       
           <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>淘宝上出现很多基于物联网卡的随身wifi，大多数硬件几块钱包邮，然后套餐收割。硬件分为USB之差棒子和带电池的移款，LTE Cat.4的大多数基于ASR的1803s主控搭配25vq64 flash, 也有ZXW的，前期还有高通410的。这其实就是蜂窝网络模块的一种使用。这个意义上看，模块既像一台没有屏幕和电池的手机，又像一种功能较为复杂的单片机。</p>
-<h3 id="设备的-IMEI"><a href="#设备的-IMEI" class="headerlink" title="设备的 IMEI"></a>设备的 IMEI</h3><p>快速使用ASR1803s设备，打开<a target="_blank" rel="noopener" href="https://python.quectel.com/download">QuecPython官网下载链接</a>, 安装驱动 Win10 QuecPython_USB_Driver_Win10_A, 打开串口助手，波特率 9600，8 N 1, 可以AT命令交互。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">进入工厂模式 AT*PROD=1</span><br><span class="line">删除原IMEI AT*MRD_IMEI=D</span><br><span class="line">写⼊新的IMEI，把第四个参数修改为新的IMEI就可以了 AT*MRD_IMEI=W,0,01JAN1970,000000000000000</span><br><span class="line">删除原SN AT*MRD_SN=D</span><br><span class="line">写⼊新的SN，把第四个参数修改为新的SN就可以了 AT*MRD_SN=W,0,01JAN1970,000000000000000</span><br><span class="line">退出工厂模式 AT*PROD=0</span><br><span class="line">最后重启 AT+RESET</span><br></pre></td></tr></table></figure>
-<p>如上所示，获取设备的 IMEI 号虽然十分简单，但是又特别的常用，所以在这里介绍一下如何查询。那么，IMEI 是什么呢？</p>
-<p>物联网模块的 IMEI 是国际移动设备身份码（International Mobile Equipment Identity）的缩写，它是用于识别物联网模块的唯一标识符。在物联网场景中，IMEI 可以用于以下几个方面：</p>
-<p>设备识别和管理：通过 IMEI，可以唯一地识别和管理物联网设备，包括设备的制造商、型号和版本等信息。这些信息对于设备的维护和升级非常重要。<br>安全性和防盗：IMEI 可以用于防止设备被盗或丢失。如果设备的 IMEI 被注册到一个中央数据库中，就可以通过该数据库来追踪设备的位置和使用情况。<br>远程管理和控制：IMEI 可以用于远程管理和控制物联网设备。例如，如果设备出现故障或需要更新固件，就可以通过 IMEI 来远程诊断和修复设备。<br>数据统计和分析：IMEI 可以用于统计和分析物联网设备的使用情况。例如，可以根据 IMEI 来确定设备的使用时间、位置、频率和使用模式等信息，以便更好地了解设备的使用情况和优化设备的性能。<br>总之，IMEI 是物联网设备非常重要的标识符，可以用于设备管理、安全性、远程管理和数据分析等方面。</p>
-<p>使用 modem 库查询其他设备信息不再赘述，请查看 modem - 设备相关。</p>
-<h3 id="蜂窝网络的概念"><a href="#蜂窝网络的概念" class="headerlink" title="蜂窝网络的概念"></a>蜂窝网络的概念</h3><p>蜂窝网络（Cellular Network，又称移动网络 Mobile Network）是一种无线通信技术，它能够让移动设备（如手机、平板电脑等）在不同的地理区域内进行语音、数据和多媒体等业务的传输。蜂窝网络是现代移动电话和个人通信系统的基础架构之一，也是推动社会信息化进程的重要力量。</p>
-<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/cellular-network-architecture.png"></p>
-<p>5G 毫米波蜂窝网络结构示意图</p>
-<p>如上图所示，蜂窝网络的核心思想是将一个大的服务区域划分为许多个小区（Cell），每个小区内部安装一个基站（Base Station），负责与小区内的移动设备进行无线通信。这些基站之间通过有线或无线的方式连接起来，形成一个覆盖整个服务区域的网络。在传统理论中，这些小区被设计为六边形、圆形或正方形，以六边形最为常见。小区之间彼此连接，实现区域的完整覆盖，形如蜂巢，这也是该项技术被译为蜂窝网络的原因。如今，在实际场景中，很多基站的覆盖区域已经不再是蜂窝形状，但这个称谓依旧流传了下来。</p>
-<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/5g-evolution.png"></p>
-<p>从 1G 到 5G 的演进</p>
-<p>从 1G 到 5G</p>
-<p>蜂窝网络最早由美国贝尔实验室在 1947 年提出，并在 1979 年在日本首次商用。最初的蜂窝网络只能提供模拟语音电话业务，被称为第一代（The 1st Generation，1G）移动通信系统。1G 移动通信系统采用频分多址接入（Frequency Division Multiple Access，FDMA）技术，将不同用户分配到不同频率的信道上。1G 移动通信系统虽然开创了移动通信的时代，但也存在很多缺点，如频谱利用率低、业务种类有限、无高速数据业务、保密性差以及设备成本高等。</p>
-<p>为了解决模拟系统中存在的问题，在 20 世纪 90 年代初，第二代（The 2nd Generation，2G）移动通信系统即数字移动通信技术出现了。2G 移动通信系统采用数字调制技术，并使用时分多址接入（Time Division Multiple Access，TDMA）或者码分多址接入（Code Division Multiple Access，CDMA）技术。2G 移动通信系统相比 1G 系统有了很大的改进，如系统容量、保密性和语音通话质量都大幅提升，并且开始提供数据业务。2G 移动通信系统最具代表性的是欧洲的全球移动通信系统（Global System for Mobile Communication，GSM），它使得全球范围内的漫游成为可能，并成为世界上最广泛使用的标准之一。</p>
-<p>随着互联网的发展，人们对数据业务的需求也越来越高。为了提高数据传输速率，在 2G 系统的基础上又出现了一些增强技术，如通用分组无线服务（General Packet Radio Service，GPRS）、增强型数据速率 GMS 演进（Enhanced Data for GSM Evolution，EDGE）等。这些技术被称为 2.5G 或 2.75G，它们在 2G 系统的基础上提供了更高的数据传输速率，但仍然不能满足人们对高速宽带数据业务的需求。</p>
-<p>2001 年，以数字多媒体移动通信为目的的第三代（The 3rd Generation，3G）移动通信系统进入商用阶段。3G 移动通信系统采用更先进的宽带码分多址技术（Wideband Code Division Multiple Access，WCDMA），并在更高频段使用更大的系统带宽进行数据发送，因而其数据传输速率得到进一步提升。3G 移动通信系统可以同时传输语音和数据信息，支持图像、音乐、视频等多媒体业务。3G 移动通信系统的主要代表有北美的 CDMA2000、欧洲和日本的 WCDMA、中国的时分同步的码分多址技术（Time Division-Synchronization Code Division Multiple Access，TD-SCDMA）等。这些技术都是基于国际电信联盟（International Telecommunication Union，ITU）制定的国际标准 IMT-2000（International Mobile Telecommunications 2000）。</p>
-<p>随着 3G 网络的发展，出现了一些增强技术，如高速下行分组接入（High Speed Downlink Packet Access，HSDPA）、高速上行分组接入（High Speed Uplink Packet Access，HSUPA）和增强型高速分组接入 (High-Speed Packet Access+，HSPA+) 等。这些技术被称为 3.5G 或 3.75G，它们在 3G 系统的基础上提供了更高的数据传输速率和更好的用户体验。</p>
-<p>2011 年，以数字宽带数据移动互联网通信为目的的第四代（The 4th Generation，4G）移动通信系统正式发布。4G 移动通信系统基于扁平化网络架构设计，在 3G 的长期演进（Long Term Evolution，LTE）基础上进行升级。LTE 系统采用正交频分多址（Orthogonal Frequency-Division Multiple Access，OFDMA）、自适应调制编码（Adaptive Modulation and Coding，AMC）和多天线（Multiple-input Multiple-output，MIMO）等关键技术，大大提高了频谱效率和网络性能。4G 移动通信系统拥有非常高的数据传输速度，是 3G 网络的 50 倍以上，其视频图像的传输效果与高清电视相当。4G 移动通信系统最具代表性的是以时分双工（Time Division Duplexing）&#x2F; 频分双工（Frequency Division Duplexing，FDD）为工作模式的高级长期演进技术（Long Term Evolution Advanced，LTE-A）技术。LTE-A 技术在 LTE 技术的基础上采用了载波聚合（Carrier Aggregation，CA）、中继和多点协同传输（Coordinated Multiple Point，CoMP）等技术，在提高网络容量和覆盖范围方面有了突破性进展。</p>
-<p>随着智能终端、物联网、云计算等新兴技术和应用的快速发展，人们对移动通信的需求也越来越高。为了满足未来人类信息社会的需求，第五代（The 5th Generation，5G）移动通信系统应运而生。5G 移动通信系统不仅提供了更高的数据传输速率、更低的时延和更高的可靠性，还支持海量的连接和多样化的业务场景。当前，5G 移动通信系统已渗透到工业、医疗、交通等领域，与各种设备和物体深度融合，实现万物互联，为社会经济发展和人类生活质量提供强大的支撑。</p>
-<p>蜂窝网络作为一种无线通信技术，从诞生至今已经经历了五代的发展，每一代都对应着不同的技术和标准，为用户提供了更高的数据传输速度，更好的语音通话质量，以及一系列新特性和新功能。从 1G 的模拟语音通信，到 5G 的全场景互联，蜂窝网络已经成为现代社会运转的必不可少的信息基础设施之一。</p>
-<h3 id="无线通信模块"><a href="#无线通信模块" class="headerlink" title="无线通信模块"></a>无线通信模块</h3><p>无线通信模块，简称模块（Module，亦称模组或单元），是实现数据上云和远程通信的必不可少的组件，在各类物联网场景中已经得到了极为广泛的应用。从功能上看，它是在本地设备和网络之间构建连接的桥梁。像电脑插上 USB 网卡就可以开始上网一样，在嵌入式系统中加入了模块，系统就具有了连接无线网络的可能性。</p>
-<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/device-with-ec20.png"></p>
-<p>搭载移远 EC20 模块的某物联网产品主板</p>
-<p>很多初次接触模块的用户会对模块这样一个被金属壳笼罩着的奇怪器件感到陌生，它与传统的芯片和分立器件存在很大的不同。实际上，模块的本质就是一种小型的 PCBA（Printed Circuit Board Assembly，组装电路板）。当我们去掉模块表面的金属屏蔽罩，其内部依旧是熟悉（但更为密集）的 PCB 电路结构。</p>
-<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/ec20-naked-top.png"></p>
-<p>某 4G 模块的内部图像</p>
-<p>有过嵌入式系统开发经验的用户对于 “核心板” 或者 SoM（System on Module）应该不会陌生。模块同样可理解为一种将无线通信所需的各类器件集成在一起，用于完成本地电路与云端服务的通信功能的高密度、小体积、带屏蔽罩的“核心板”。在本文开头的关于通信的介绍中，我们讲到了编码（解码）和调制（解调）的概念。在无线通信，尤其是蜂窝通信中，这些步骤往往会演变和拓展得极为复杂。模块的作用即是帮助我们完成这些复杂的步骤，实现简单高效的通信。</p>
-<p>模块的内部结构较为复杂。如下图所示，可以看到包含主芯片（高通 MDM9607）、存储器、电源管理芯片、功率放大器、射频前端等多种集成器件，以及大量密集分布的小尺寸封装的电阻、电容等元件。显然，模块的复杂度和精密度是远超传统电路板的。</p>
-<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/ec20-inner-components.png"></p>
-<p>EC20 Mini PCIe 模块的元件组成</p>
-<p>主芯片（Main Chip），部分厂家称之为基带（Baseband）芯片或调制解调器（Modem）芯片，是整个模块的核心。它的角色、功能和特性与手机中的 SoC（System on Chip，片上系统）十分相似。随着技术的发展和芯片制造工艺的提升，在现代模块中，主芯片通常已经集成了应用处理器（Application Processor，AP）、基带和射频的相关功能，运行着完备的操作系统（RTOS 或 Linux），对外提供包括 GPIO、USB 等在内的各种接口，并能够根据需求完成各类通信操作。从这个意义上看，模块既像一台没有屏幕和电池的手机，又像一种功能较为复杂的单片机。</p>
-<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/qcx216-diagram.png"></p>
-<blockquote>
-<p>高通最新的 QCX216 4G Modem 芯片功能框图</p>
-</blockquote>
-<p>对于同一台 Android 手机，不同人有不同的用法。一些用户会安分地使用出厂自带的系统和功能，另一些则热衷于解锁、刷机、root 等操作，更进一步地去开发和挖掘设备的潜力。和手机类似，模块也有这样的两类应用模式：标准模式和二次开发模式。</p>
-<h3 id="标准模式"><a href="#标准模式" class="headerlink" title="标准模式"></a>标准模式</h3><blockquote>
-<p>类比 ESP32 的AT固件<br>和普通手机一样，模块在出厂时通常都会内置操作系统和应用程序。对于许多用户来说，直接使用模块出厂预置功能就可以满足大部分的网络通信需求。这种无需对模块进行开发和调整，直接作为成品功能单元进行使用的方式称为标准模式或传统模式，是当前应用最普遍的模块使用方式。</p>
-</blockquote>
-<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/standard-mode-module.png"></p>
-<p>标准模式示意图</p>
-<p>如上图所示，在标准模式中，模块与主控（MCU，如 STM32）之间通过 UART 或 USB 接口相连接，基于 AT 指令进行双向交互。不难看出，MCU 是整套系统的核心，通信模块是作为 MCU 的一个独立的功能外设的角色而存在的。系统的主要业务逻辑（用户应用，App）在 MCU 中运行，其他外设（图中的 External Devices）通过 UART、I2C 等接口与 MCU 相连，受 MCU 控制。</p>
-<p>关于 AT 指令</p>
-<p>AT 指令是目前业界历史最悠久，使用领域最广泛的通讯指令集之一。它构建起了一套用户和模块间的完备的双向通信机制：用户（或 MCU）通过向模块发送 AT 指令，控制模块执行包括联网、通话、定位等在内的各类功能，模块则将执行结果和状态返回给用户。这种 “一发一收” 的机制和相对单一的处理方式非常适合在资源有限的嵌入式环境中使用。如今，市面上的绝大多数模块在出厂时都内置了 AT Server 程序，可以接收、解析和执行特定的 AT 指令。</p>
-<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/at-command-architecture.png"></p>
-<p>AT 指令的运行模式</p>
-<p>对于开发者而言，在基于标准模式使用模块时，主要的开发工作量在于主控中运行的用户 App。其业务代码中需要包含较为复杂的 AT 指令发送和返回值解析功能，例如对 URC（Unsolicited Result Code，非请求结果码）的处理等，因而对于初学者难度较大。</p>
-<p>除了 AT 指令功能，模块在标准模式下还可以作为无线网卡，为主控或其他上位机提供包括 PPP 拨号上网在内的一系列网络服务，此处不做赘述。</p>
-<h3 id="二次开发模式"><a href="#二次开发模式" class="headerlink" title="二次开发模式"></a>二次开发模式</h3><blockquote>
-<p>类比使用 ESP-IDF 开发 ESP32<br>在前文中我们曾提到，模块就像是功能较为复杂的单片机。事实上，模块所搭载的主芯片为了满足无线通信的需要，通常具有较高的性能和较多的资源，同时也配备了包括 GPIO、ADC、I2C 等在内的丰富的外设接口，只不过在标准模式下，这些资源对于用户通常不是直接可用的。如果能够 “解锁” 这一限制，模块的应用潜力将极大提升，这就需要对模块进行二次开发。</p>
-</blockquote>
-<p>二次开发的本意是在软件本身提供的一些基本功能和接口的基础上，进行组合和扩展，开发出新的功能来满足用户的特殊需求。具体到模块开发上，二次开发模式允许开发者在底层操作系统的基础上调用 API 编写并运行自己的应用，充分调用模块的各种资源，实现更多的可能性。</p>
-<p><img src="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/open-mode-module.png"></p>
-<p>二次开发模式示意图</p>
-<p>二次开发最重要的意义在于使模块在一定程度上具备了取代标准模式中的主控的能力，因而这种模式又被称为 OpenCPU 或 OpenMCU（不同厂家可能有不同的专门称呼，如移远称之为 QuecOpen）。如上图所示，与标准模式相比，OpenCPU 模式由于将模块本身作为主控使用，用户应用（App）直接置于模块内部运行，外设（图中的 External Devices）与模块直接相连，整个系统中无需外部处理器（MCU）或只需简单的外部芯片（图中的 Simple Microchip），因而可以有效地达到精简硬件设计、降低器件成本、缩小产品尺寸的目的。在单片机价格居高不下的当下，OpenCPU 方案受到了众多公司的青睐。</p>
-<p>但是，OpenCPU 方案也具有较为明显的局限性。由于这一模式通常需要用户直接在模块底层运行的操作系统的基础上进行开发，技术门槛较高，传统的、不具备系统级开发经验的单片机开发者很难适应。其次，由于 OpenCPU 技术支持难度大，模块厂家通常只向大客户提供相关的工具和资料，入门较为不便。最后，不同厂家、不同型号的模块，其 OpenCPU 开发环境和开发工具存在较大差别，用户编写的程序在不同模块间的移植存在一定的难度。</p>
-<h3 id="使用脚本语言开发模块"><a href="#使用脚本语言开发模块" class="headerlink" title="使用脚本语言开发模块"></a>使用脚本语言开发模块</h3><blockquote>
-<p>类比 ESP32的 micropython 开发<br>传统的 OpenCPU 开发通常使用 C 语言，因此也被称作 CSDK 开发。用户需要直接修改和控制底层的操作系统，具有较高的难度和一定的风险性。在 <a target="_blank" rel="noopener" href="https://python.quectel.com/doc/Application_guide/zh/background/iot-and-low-code.html">前文</a> 中，我们介绍了低代码开发方式和它在物联网领域的应用。目前，已经有部分模块厂商通过在 CSDK 的基础上移植解释器 &#x2F; 虚拟机的方式，使得用户可以使用 Lua、Python 等脚本语言对模块进行二次开发。</p>
-</blockquote>
-<p>与 C 语言相比，脚本语言在语法和使用方式上普遍较为简单，开发者无需花费太多时间和精力即可掌握，并可相对轻松地实现业务逻辑，便于项目的快速开发和功能迭代。同时，对于低代码开发方式而言，开发者通常无需考虑内存回收、基础任务调度等底层细节，显著降低了模块二次开发的技术门槛。最后，对于不同型号的模块，只要它们运行的是同一种脚本语言解释器，用户编写的程序通常只需少量修改（甚至无需修改）即可完成移植。</p>
-<p>如下的示例分别是在 EC100Y-CN 模块上使用 C 语言和 Python 语言实现 LED 闪灯的代码。可以看出，脚本语言更加简单直观，易于编写、便于理解。</p>
-<p>LED 闪灯代码</p>
-<p>使用 QuecOpen（CSDK） 使用 QuecPython</p>
-<p>当然，由于使用脚本语言开发时屏蔽了很多底层细节，因而在灵活性和可控性上不如传统的 C 语言开发。此外，脚本语言与 C 语言相比，本身性能相对较差、执行速度较慢，因而在部分对于性能和实时性要求较高的场景下不适合使用。</p>
-<h3 id="刷-MIFI"><a href="#刷-MIFI" class="headerlink" title="刷 MIFI"></a>刷 MIFI</h3><p>既然随身wifi (MIFI)<br>EC200A 的固件升级从Quectel 拿到的默认的升级的压缩包不能直接用户升级</p>
-<p>F:\temp\EC200ACNDAR01A07M16&gt;FBFMake.exe -r Falcon_EVB_QSPI_Nor_LWG_Only_Nontrusted_PM802_LPDDR2.blf -f out</p>
-<p>BinFile.bin 是烧录的目标文件，可以用QDLoader 工具烧录</p>
-<h3 id="手机修改IMEI-使用绑定IMEI的eSIM流量卡、物流卡"><a href="#手机修改IMEI-使用绑定IMEI的eSIM流量卡、物流卡" class="headerlink" title="手机修改IMEI 使用绑定IMEI的eSIM流量卡、物流卡"></a>手机修改IMEI 使用绑定IMEI的eSIM流量卡、物流卡</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/22/mifi/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -429,12 +344,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -456,8 +371,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 14:42:16" itemprop="dateModified" datetime="2024-04-25T14:42:16+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
 
           
 
@@ -473,166 +397,15 @@
           <h1 id="QEMU"><a href="#QEMU" class="headerlink" title="QEMU"></a>QEMU</h1><p> QEMU” 是一个广泛使用的开源计算机模拟器和虚拟机。”</p>
 <ul>
 <li>当作为模拟器时，可以在一种架构（如 x86 PC）下运行另一种架构（如 ARM）下的操作系统和程序。通过使用动态转换，它可以获得非常好的性能。</li>
-<li>作为虚拟机时，QEMU 可以使用其他虚拟机管理程序（如 Xen 或 KVM）来使用 CPU 扩展（HVM）进行虚拟化，通过在主机 CPU 上直接执行客户机代码来获得接近于宿主机的性能。</li>
-</ul>
-<h2 id="QEMU-安装"><a href="#QEMU-安装" class="headerlink" title="QEMU 安装"></a>QEMU 安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br><span class="line">sudo apt-get install qemu qemu-system qemu-user </span><br></pre></td></tr></table></figure>
-<p>安装完成后，可以通过 Tab 键补全检查安装好的 qemu 工具：”qemu-system-“ </p>
-<ul>
-<li><strong>qemu-system-arm</strong> 用来模拟 32 位的 Arm cpu，比如 Arm9 &#x2F;Arm11、 Cortex-A7&#x2F;A9&#x2F;A15 。</li>
-<li><strong>qemu-system-aarch64</strong> 来模拟 64 位的 Arm cpu，比如 Arm Cortex A53，A57。</li>
-</ul>
-<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="cross-toochain-安装"><a href="#cross-toochain-安装" class="headerlink" title="cross-toochain 安装"></a>cross-toochain 安装</h3><p>安装 32 位编译器，用于编译 32 位的 kernel，u-boot。</p>
-<p><code>sudo apt-get install gcc-arm-linux-gnueabi</code><br>安装 64 位编译器，用于编译 64 位的 kernel，u-boot。 </p>
-<p><code>sudo apt-get install gcc-aarch64-linux-gnu</code></p>
-<ul>
-<li>arm926EJ-S 对应 gcc-arm-none-eabihf</li>
-<li>armv7 对应 gcc-arm-none-eabihf</li>
-<li>armv8 对应 aarch64-none-linux-gnu ??</li>
-</ul>
-<p>设置交叉编译器：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export CROSS_COMPILE=arm-none-linux-gnueabi-</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="kernel-编译"><a href="#kernel-编译" class="headerlink" title="kernel 编译"></a>kernel 编译</h3><p>通过 wget 来获取阿里提供的镜像源内核</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.aliyun.com/linux-kernel/v5.x/linux-5.15.105.tar.gz</span><br></pre></td></tr></table></figure>
-<h4 id="编译-32-位-kernel"><a href="#编译-32-位-kernel" class="headerlink" title="编译 32 位 kernel"></a>编译 32 位 kernel</h4><p>这里我们使用 vexpress-a9 这款开发板。vexpress-a9 是 Arm 公司自己设计的一款 4 核 Cortex-A9 开发板，U-Boot、Linux Kernel 和 QEMU 对这款开发板都做了完整的支持。当然，如果想搭其它开发板，也不难，只要 qemu 和内核对它有成熟的支持就够了。</p>
-<p>生成 vexpress 开发板子的 config 文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make CROSS_COMPILE=arm-linux-gnueabi- ARCH=arm vexpress_defconfig</span><br></pre></td></tr></table></figure>
-<p>编译内核：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make CROSS_COMPILE=arm-linux-gnueabi- ARCH=arm</span><br></pre></td></tr></table></figure>
-<p>生成的内核镱像位于 arch&#x2F;arm&#x2F;boot&#x2F;zImage.。</p>
-<blockquote>
-<p>编译 64 位 kernel 使用 aarch64-linux-gnu-</p>
-</blockquote>
-<h3 id="u-boot-编译"><a href="#u-boot-编译" class="headerlink" title="u-boot 编译"></a>u-boot 编译</h3><p>github 上拉去太慢，使用如下地址，通过 wget 来获取。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://ftp.denx.de/pub/u-boot/u-boot-2020.10.tar.bz2</span><br></pre></td></tr></table></figure>
-<p>下载完后，可以看到 configs 目录下有针对这款开发板的配置文件。ca9x4 表示 cortexA9 架构，4 核心。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd u-boot-xxx</span><br><span class="line"></span><br><span class="line">ls configs/ | grep vexpress</span><br></pre></td></tr></table></figure>
-<p>编译：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm vexpress_ca9x4_defconfig</span><br><span class="line">make CROSS_COMPILE=arm-linux-gnueabi- all</span><br></pre></td></tr></table></figure>
-<p>最终编译生成 elf 格式的可执行文件 u-boot 和纯二进制文件 u-boot.bin，其中 QEMU 可以启动的为 elf 格式的可执行文件 u-boot 。</p>
-<blockquote>
-<p>编译 64 位 kernel 使用 aarch64-linux-gnu-</p>
-</blockquote>
-<h3 id="rootfs-编译"><a href="#rootfs-编译" class="headerlink" title="rootfs 编译"></a>rootfs 编译</h3><p>根文件系统首先是内核启动时所 mount 的第一个文件系统，内核代码映像文件保存在根文件系统中，而系统引导启动程序会在根文件系统挂载之后从中把一些基本的初始化脚本和服务等加载到内存中去运行。编译和制作 Linux 最小系统的根文件系统，并通过 sd 卡或者 nfs 挂载根文件系统。<br>根文件系统的制作方法有很多，有 buildroot、busybox 等，安装过程最为简单的轻量级根文件系统制作工具 busybox。</p>
-<h4 id="busybox-编译-快"><a href="#busybox-编译-快" class="headerlink" title="busybox 编译 快"></a>busybox 编译 快</h4><p> busybox 编译完成后，只是初步具有了维持 linux 操作系统基本运行所需的可执行文件，还有设备节点、动态链接库、引导启动相关代码、用户相关信息等，需要根据开发板自身的特性做定制和适配。</p>
-<ol>
-<li>下载并解压 busybox 源码<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/workspace</span><br><span class="line">wget https://busybox.net/downloads/busybox-1.36.1.tar.bz2</span><br><span class="line">tar -xvf busybox-1.36.1.tar.bz2</span><br></pre></td></tr></table></figure></li>
-<li>制作 automake_arm32.sh 自动编译脚本<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd busybox-1.36.1</span><br><span class="line">vi automake_arm32.sh</span><br></pre></td></tr></table></figure>
-在automake_arm32.sh中添加下列代码<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- clean</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j12</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- CONFIG_PREFIX=../objects/rootfs-arm32 install</span><br></pre></td></tr></table></figure>
-运行 automake_arm32.sh 编译安装 busybox<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./automake_arm32.sh</span><br></pre></td></tr></table></figure>
-编译过程中会出现 menuconfig 界面，需要将 “Settings-&gt;Build Options-&gt;Build static binary” 选上</li>
-</ol>
-<h5 id="补充根文件系统"><a href="#补充根文件系统" class="headerlink" title="补充根文件系统"></a>补充根文件系统</h5><p>进入根文件系统目录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/workspace/objects/rootfs-arm32</span><br></pre></td></tr></table></figure>
-<p>创建设备节点</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir dev</span><br><span class="line">sudo mknod -m 666 dev/tty1 c 4 1</span><br><span class="line">sudo mknod -m 666 dev/tty2 c 4 2</span><br><span class="line">sudo mknod -m 666 dev/tty3 c 4 3</span><br><span class="line">sudo mknod -m 666 dev/tty4 c 4 4</span><br><span class="line">sudo mknod -m 666 dev/console c 5 1</span><br><span class="line">sudo mknod -m 666 dev/null c 1 3</span><br></pre></td></tr></table></figure>
-<p>安装动态链接库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir lib</span><br><span class="line">sudo cp -d /usr/arm-linux-gnueabi/lib/*.so* ./lib</span><br></pre></td></tr></table></figure>
-<p>配置初始化进程 rcS</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p etc/init.d</span><br><span class="line">touch etc/init.d/rcS</span><br><span class="line">chmod 777 etc/init.d/rcS</span><br><span class="line">vim etc/init.d/rcS</span><br></pre></td></tr></table></figure>
-<p>在rcS中填入以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin</span><br><span class="line">export LD_LIBRARY_PATH=/lib:/usr/lib</span><br><span class="line">/bin/mount -n -t ramfs ramfs /var</span><br><span class="line">/bin/mount -n -t ramfs ramfs /tmp</span><br><span class="line">/bin/mount -n -t sysfs none /sys</span><br><span class="line">/bin/mount -n -t ramfs none /dev</span><br><span class="line">/bin/mkdir /var/tmp</span><br><span class="line">/bin/mkdir /var/modules</span><br><span class="line">/bin/mkdir /var/run</span><br><span class="line">/bin/mkdir /var/log</span><br><span class="line">/bin/mkdir -p /dev/pts</span><br><span class="line">/bin/mkdir -p /dev/shm</span><br><span class="line">/sbin/mdev -s</span><br><span class="line">/bin/mount -a</span><br><span class="line">echo &quot;-----------------------------------&quot;</span><br><span class="line">echo &quot;*****welcome to vexpress board*****&quot;</span><br><span class="line">echo &quot;-----------------------------------&quot;</span><br></pre></td></tr></table></figure>
-<p>配置文件系统 fstab</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch etc/fstab</span><br><span class="line">vim etc/fstab</span><br></pre></td></tr></table></figure>
-<p>在fstab中填入以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proc    /proc           proc    defaults        0       0</span><br><span class="line">none    /dev/pts        devpts  mode=0622       0       0</span><br><span class="line">mdev    /dev            ramfs   defaults        0       0</span><br><span class="line">sysfs   /sys            sysfs   defaults        0       0</span><br><span class="line">tmpfs   /dev/shm        tmpfs   defaults        0       0</span><br><span class="line">tmpfs   /dev            tmpfs   defaults        0       0</span><br><span class="line">tmpfs   /mnt            tmpfs   defaults        0       0</span><br><span class="line">var     /dev            tmpfs   defaults        0       0</span><br><span class="line">ramfs   /dev            ramfs   defaults        0       0</span><br></pre></td></tr></table></figure>
-<p>配置初始化脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch etc/inittab</span><br><span class="line">vim etc/inittab</span><br></pre></td></tr></table></figure>
-<p>在inittab中输入以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">::sysinit:/etc/init.d/rcS </span><br><span class="line">::askfirst:-/bin/sh</span><br><span class="line">::restart:/sbin/init </span><br><span class="line">::ctrlaltdel:/sbin/reboot</span><br><span class="line">::shutdown:/bin/umount -a -r</span><br></pre></td></tr></table></figure>
-<p>配置环境变量</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch etc/profile</span><br><span class="line">vim etc/profile</span><br></pre></td></tr></table></figure>
-<p>在profile中添加以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh </span><br><span class="line">USER=&quot;root&quot;</span><br><span class="line">LOGNAME=$USER</span><br><span class="line"># export HOSTNAME=vexpress-a9</span><br><span class="line">export HOSTNAME=`cat /etc/sysconfig/HOSTNAME`</span><br><span class="line">export USER=root</span><br><span class="line">export HOME=root</span><br><span class="line">export PS1=&quot;[$USER@$HOSTNAME:\w]\#&quot;</span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin </span><br><span class="line">LD_LIBRARY_PATH=/lib:/usr/lib:$LD_LIBRARY_PATH</span><br><span class="line">export PATH LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
-<p>增加主机名</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir etc/sysconfig</span><br><span class="line">vi etc/sysconfig/HOSTNAME</span><br></pre></td></tr></table></figure>
-<p>在HOSTNAME中添加以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vexpress-a9</span><br></pre></td></tr></table></figure>
-<p>创建其他文件夹<br><code>mkdir mnt proc root sys tmp var</code></p>
-<h4 id="buildroot-编译慢"><a href="#buildroot-编译慢" class="headerlink" title="buildroot 编译慢"></a>buildroot 编译慢</h4><p>buildroot中可以方便地加入第三方软件包（其实已经内置了很多），省去了手工交叉编译的烦恼。<br>首先安装一些依赖，比如linux头文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install linux-headers-$(uname -r)</span><br></pre></td></tr></table></figure>
-<p>然后下载安装：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://buildroot.org/downloads/buildroot-2021.02.4.tar.gz</span><br><span class="line">tar xvf buildroot-2021.02.4.tar.gz</span><br><span class="line">cd buildroot-2021.02.4/</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br><span class="line"></span><br><span class="line">以下选项为基础配置：</span><br><span class="line"></span><br><span class="line">- Target options</span><br><span class="line">  - Target Architecture (ARM (little endian))</span><br><span class="line">  - Target Variant arm926t</span><br><span class="line">- Toolchain</span><br><span class="line">  - C library (musl) # 使用musl减小最终体积</span><br><span class="line">- System configuration</span><br><span class="line">  - Use syslinks to /usr .... # 启用/bin, /sbin, /lib的链接</span><br><span class="line">  - Enable root login # 启用root登录</span><br><span class="line">  - Run a getty after boot # 启用登录密码输入窗口</span><br><span class="line">  - (licheepi) Root password #　默认账户为root 密码为licheepi</span><br><span class="line"></span><br><span class="line">另可自行添加或删除指定的软件包</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Target options：目标体系架构，例如 riscv，arm，x86 等。</li>
-<li>Build options：构建选项，例如 make 过程中使用的命令，源码下载目录，并行构建选项等。</li>
-<li>Toolchain：交叉编译工具链选项，例如使用的 C 库类型。跟体系架构相关。</li>
-<li>System configuration：系统配置，例如根文件系统框架，目标系统 hostname，bash，root 密码等。</li>
-<li>Kernel：（可选的）Linux kernel 编译选项。</li>
-<li>Target packages：安装到目标系统的软件包，例如 dhcp，ssh 等。</li>
-<li>Filesystem images：根文件系统镜像格式，例如 ext4 镜像根文件系统。根文件系统镜像是 Buildroot 最主要的输出件。</li>
-<li>Bootloaders：（可选的）系统启动引导程序 &#x2F; Bootloader，例如 u-boot，grub 等。跟体系架构相关。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
-编译的过程如果带上下载软件包的时间比较漫长，很适合喝杯茶睡个午觉；(buildroot不能进行多线程编译)</li>
-</ul>
-<p>编译完成的镜像包，是<br>buildroot-2021.02.4&#x2F;output&#x2F;images&#x2F;rootfs.tar</p>
-<h2 id="仿真运行"><a href="#仿真运行" class="headerlink" title="仿真运行"></a>仿真运行</h2><h3 id="单独启动-u-boot"><a href="#单独启动-u-boot" class="headerlink" title="单独启动 u-boot"></a>单独启动 u-boot</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-arm -M vexpress-a9 -m 512M -kernel where_is_directory/u-boot -nographic</span><br></pre></td></tr></table></figure>
-
-<h3 id="单独启动-kernel"><a href="#单独启动-kernel" class="headerlink" title="单独启动 kernel"></a>单独启动 kernel</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qemu-system-arm -M vexpress-a9 -m 512M -kernel /kernel_direcotry/arch/arm/boot/zImage -dtb  /kernel_direcotry/arch/arm/boot/dts/vexpress-v2p-ca9.dtb -nographic -append &quot;console=ttyAMA0&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="u-boot-加载-kernel"><a href="#u-boot-加载-kernel" class="headerlink" title="u-boot 加载 kernel"></a>u-boot 加载 kernel</h3><ol>
-<li><p>QEMU 可以模拟 sd 卡等外设。我们就把编译好的固件放在一个模块的 sdcard 上，让 QEMU 从这张模拟的 sd 卡上启动 Linux 系统：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">制作 sd 卡镜像，并将它格式化成 fat 格式：</span><br><span class="line">dd if=/dev/zero of=sd.img bs=4096 count=4096</span><br><span class="line">mkfs.ext4 sd.img</span><br><span class="line"></span><br><span class="line">把编译好的 kernel zImage 和 dtb 文件拷贝到 sd.img 中:</span><br><span class="line">sudo mount sd.img mnt/ -o loop,rw</span><br><span class="line">sudo cp kernel_directory/arch/arm/boot/zImage /mnt/</span><br><span class="line">sudo cp kernel_directory/arch/arm/boot/dts/vexpress-v2p-ca9.dtb /mnt/</span><br><span class="line">sudo umount /mnt</span><br></pre></td></tr></table></figure></li>
-<li><p>启动 QEMU </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-arm -M vexpress-a9 -m 512M -kernel uboot_directory/u-boot -nographic  -sd sd.img</span><br></pre></td></tr></table></figure>
-<p>-kernel 指定 QEMU 启动时首先执行的程序，我们这里指定为前面编译好的 u-boot 可以执行文件，通过 u-boot 去加载 kernel。<br>上图所示 u-boot 已经顺利启动并进入命令行模式，下面我们来启动 Linux Kernel</p>
-</li>
-<li><p>首先通过 ext4load 命令把 sd.img 里面的 zImage 和 dtb 文件读到开发板的内存中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ext4load mmc 0:0 0x60008000 zImage</span><br><span class="line">ext4load mmc 0:0 0x62008000 vexpress-v2p-ca9.dtb</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：如果失败，请重复几次。</p>
-</blockquote>
-</li>
-<li><p>通过 bootz 命令启动 Linux Kernel：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bootz 0x60008000 - 0x62008000</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意事项： 0x60008000  0x62008000 是怎么确认的这个地址？</p>
-</blockquote>
-</li>
-</ol>
-<ul>
-<li>通过 “textofs” 查看 Linux kernel zImage 执行地址对应的内存偏移地址，为：0x00008000<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@test:/home/work/qemu_test/linux-5.10# grep -nr &quot;textofs&quot; ./</span><br><span class="line">./arch/arm/Makefile:141:textofs-y    := 0x00008000</span><br><span class="line">./arch/arm/Makefile:143:textofs-$(CONFIG_PM_H1940)      := 0x00108000</span><br><span class="line">./arch/arm/Makefile:145:textofs-$(CONFIG_ARCH_REALTEK)  := 0x00108000</span><br><span class="line">./arch/arm/Makefile:148:textofs-$(CONFIG_SA1111) := 0x00208000</span><br></pre></td></tr></table></figure></li>
-<li>u-boot 命令行中输入 bdinfo 命令，可以查到这块开发板内存的起始地址。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">=&gt; bdinfo</span><br><span class="line">boot_params = 0x60002000</span><br><span class="line">DRAM bank   = 0x00000000</span><br><span class="line">-&gt; start    = 0x60000000</span><br><span class="line">-&gt; size     = 0x20000000</span><br></pre></td></tr></table></figure>
-从上图中可以看到这块开发板的内存实际地址为 0x60000000，所以对应内核的起始地址为：0x60008000。dtb 的加载地址没有特别的要求，一般注意和 Linux Kernel Image 避开，不要重叠即可；</li>
-</ul>
-<h3 id="kernel-加载-rootfs"><a href="#kernel-加载-rootfs" class="headerlink" title="kernel 加载 rootfs"></a>kernel 加载 rootfs</h3><h4 id="通过-SD-卡挂载根文件系统"><a href="#通过-SD-卡挂载根文件系统" class="headerlink" title="通过 SD 卡挂载根文件系统"></a>通过 SD 卡挂载根文件系统</h4><p>两种挂载根文件系统的方法，一种是通过在 qemu 上添加外设 sd 卡挂载根文件系统，另一种则是通过 nfs 共享文件夹挂载根文件系统。</p>
-<p>自动打包脚本<br>编译安装完成后，进入 object 目录，并制作自动打包脚本 makefs-arm32.sh</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home/workspace/objects</span><br><span class="line">sudo mkdir /mnt/rootfs</span><br><span class="line">sudo chmod 777 /mnt/rootfs</span><br><span class="line">vi makefs-arm32.sh</span><br></pre></td></tr></table></figure>
-<p>在makefs-arm32.sh中添加下列代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/zero of=rootfs-arm32.ext4 bs=1M count=64</span><br><span class="line">mkfs.ext4 rootfs-arm32.ext4</span><br><span class="line">sudo mount -t ext4 rootfs-arm32.ext4 /mnt/rootfs -o loop</span><br><span class="line">sudo cp -rf rootfs-arm32/* /mnt/rootfs/</span><br><span class="line">sudo umount /mnt/rootfs/</span><br></pre></td></tr></table></figure>
-<p>运行自动打包脚本 makefs-arm32.sh</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./makefs-arm32.sh</span><br></pre></td></tr></table></figure>
-<p>运行完成后将在 objects 目录下生成一个 rootfs-arm32.ext4 文件，将作为外设 sd 卡加入到开发板上。<br>修改 qemu-start-vexpress-a9.sh</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi qemu-start-vexpress-a9.sh</span><br></pre></td></tr></table></figure>
-<p>将qemu-start-vexpress-a9.sh修改为以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/sh</span><br><span class="line">qemu-system-arm -M vexpress-a9 \</span><br><span class="line">        -m 512M \</span><br><span class="line">        -kernel vexpress-v2p-ca9/arch/arm/boot/zImage \</span><br><span class="line">        -dtb vexpress-v2p-ca9/arch/arm/boot/dts/vexpress-v2p-ca9.dtb \</span><br><span class="line">        -nographic \</span><br><span class="line">        -append &quot;root=/dev/mmcblk0 rw console=ttyAMA0&quot; \</span><br><span class="line">	    -sd rootfs-arm32.ext4</span><br></pre></td></tr></table></figure>
-<h4 id="通过-NFS-挂载根文件系统"><a href="#通过-NFS-挂载根文件系统" class="headerlink" title="通过 NFS 挂载根文件系统"></a>通过 NFS 挂载根文件系统</h4><p>安装：<br><code>sudo apt install nfs-kernel-server</code><br>配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /sync/rootfs</span><br><span class="line">sudo vim /etc/exports</span><br></pre></td></tr></table></figure>
-<p>在&#x2F;etc&#x2F;exports文件中添加以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sync/rootfs *(rw,sync,no_root_squash,no_subtree_check)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>！！！注意上述内容应严格按照格式输入，不能随意增减空格！！！<br>重启 nfs 服务器：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/rpcbind restart</span><br><span class="line">sudo /etc/init.d/nfs-kernel-server restart</span><br></pre></td></tr></table></figure>
-<p>将安装好的根文件系统拷贝到 &#x2F; sync&#x2F;rootfs 内</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/workspace/objects/rootfs-arm32</span><br><span class="line">sudo cp -rf * /sync/rootfs/</span><br><span class="line">sudo chmod 777 -R /sync/rootfs</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>为解决 Linux 内核与 NFS 服务器的兼容问题,重新编译内核，并在 menuconfig 下开启 NFS4 支持。<br>位置：File System -&gt; Network File Systems-&gt;NFS client support for NFS version 4</p>
-</blockquote>
-<p>测试 NFS 挂载根文件系统<br>配置主机网桥（其中 eth0 是 Ubuntu 系统的主网卡，根据实际情况可能会有不同的命名）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install uml-utilities bridge-utils</span><br><span class="line">sudo vim /etc/network/interfaces</span><br></pre></td></tr></table></figure>
-<p>修改interfaces文件如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"> </span><br><span class="line">auto eth0</span><br><span class="line"> </span><br><span class="line">auto br0</span><br><span class="line">iface br0 inet dhcp</span><br><span class="line">bridge_ports eth0</span><br></pre></td></tr></table></figure>
-
-<p>创建 tap0 网卡，用于连接 qemu 虚拟开发板</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo tunctl -u root -t tap0</span><br><span class="line">sudo ifconfig tap0 172.16.16.10 promisc up</span><br></pre></td></tr></table></figure>
-
-<p>创建 qemu-start-vexpress-a9-nfs.sh 脚本文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home/workspace/objects</span><br><span class="line">vim qemu-start-vexpress-a9-nfs.sh</span><br></pre></td></tr></table></figure>
-<p>在qemu-start-vexpress-a9-nfs.sh内添加以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-arm \</span><br><span class="line">        -M vexpress-a9 \</span><br><span class="line">        -m 512M \</span><br><span class="line">        -kernel vexpress-v2p-ca9/arch/arm/boot/zImage \</span><br><span class="line">        -dtb vexpress-v2p-ca9/arch/arm/boot/dts/vexpress-v2p-ca9.dtb \</span><br><span class="line">	    -net tap,ifname=tap0,script=no,downscript=no \</span><br><span class="line">	    -net nic,macaddr=00:16:3e:00:00:01 \</span><br><span class="line">        -nographic \</span><br><span class="line">        -append &quot;root=/dev/nfs rw nfsroot=172.16.16.10:/sync/rootfs,proto=tcp,nfsvers=3,nolock init=/linuxrc console=ttyAMA0 ip=172.16.16.20&quot; \</span><br></pre></td></tr></table></figure>
-
-<p>运行 qemu-start-vexpress-a9-nfs.sh 脚本文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./qemu-start-vexpress-a9-nfs.sh</span><br></pre></td></tr></table></figure>
-
+<li>作为虚拟机时，QEMU 可以使用其他虚拟机管理程序（如 Xen 或 KVM）来使用 CPU 扩展（HVM）进行虚拟化，通过在主机 CPU 上直接执行客户机代码来获得接近于宿主机的性能。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/20/qemu/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -655,12 +428,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -682,8 +455,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 14:39:39" itemprop="dateModified" datetime="2024-04-25T14:39:39+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
 
           
 
@@ -702,42 +484,15 @@
 <li>WiFi：支持802.11 b&#x2F;g&#x2F;n（2.4GHz）标准，支持STA&#x2F;AP&#x2F;STA+AP工作模式，最大传输速率可达150Mbps，并支持WPA&#x2F;WPA2&#x2F;WPA3安全模式，提供稳定、安全的无线网络连接。</li>
 <li>蓝牙：支持蓝牙4.2（包括BR&#x2F;EDR和BLE），支持蓝牙音频传输（A2DP&#x2F;AVRCP&#x2F;SPP），使得无线音频传输和远程控制更加便捷。</li>
 <li>外设和接口：ESP32提供了丰富的外设和接口，包括最多34个可编程GPIO引脚，支持UART、SPI、I2C、I2S、PWM等多种通信协议。此外，还集成了12位ADC、8位DAC、触摸传感器、霍尔传感器等，为各种应用场景提供了强大的支持。</li>
-<li>电源管理：具有多种低功耗工作模式，电源电压范围2.2V-3.6V，内置低压稳压器（LDO）和开关电源管理单元（SMU），实现高效的电源管理</li>
-</ul>
-<h4 id="主核（Main-Core）："><a href="#主核（Main-Core）：" class="headerlink" title="主核（Main Core）："></a>主核（Main Core）：</h4><ul>
-<li>特点：主核是ESP32的主要处理器核心，采用Tensilica Xtensa LX6架构，主频高达240MHz。它具有较高的性能，可执行大多数应用程序任务。</li>
-<li>应用：主核通常用于执行主要的应用逻辑、用户界面、Wi-Fi和蓝牙通信以及其他需要高性能处理的任务。</li>
-</ul>
-<h4 id="协处理器核心（Pro-Co-Processor）："><a href="#协处理器核心（Pro-Co-Processor）：" class="headerlink" title="协处理器核心（Pro Co-Processor）："></a>协处理器核心（Pro Co-Processor）：</h4><ul>
-<li>特点：协处理器核心也采用Tensilica Xtensa LX6架构，主频高达160MHz。它专门用于处理Wi-Fi和蓝牙通信协议，以及其他低功耗任务。</li>
-<li>应用：协处理器核心负责Wi-Fi和蓝牙通信堆栈，以减少对主核的干扰，从而实现低功耗通信。</li>
-</ul>
-<h4 id="双核协同工作："><a href="#双核协同工作：" class="headerlink" title="双核协同工作："></a>双核协同工作：</h4><ul>
-<li>特点：ESP32的双核设计允许主核和协处理器核心协同工作，以提高系统性能和效率。它们可以在不同的任务上并行运行，也可以相互通信和同步。</li>
-<li>应用：双核协同工作非常适用于需要同时执行多个任务的应用，例如实时操作系统（RTOS）和并发通信。</li>
-</ul>
-<h4 id="内存："><a href="#内存：" class="headerlink" title="内存："></a>内存：</h4><ul>
-<li>特点：主核和协处理器核心都共享相同的存储器空间，包括闪存、RAM和其他存储器。这使得数据和代码在两个核心之间共享，简化了多任务编程。</li>
-<li>应用：共享内存使得数据在两个核心之间的传递更加高效，有助于提高系统性能。</li>
-</ul>
-<h3 id="VScode-开发环境搭建"><a href="#VScode-开发环境搭建" class="headerlink" title="VScode 开发环境搭建"></a>VScode 开发环境搭建</h3><h4 id="安装-ESP-IDF"><a href="#安装-ESP-IDF" class="headerlink" title="安装 ESP-IDF"></a>安装 ESP-IDF</h4><p>Windows 安装离线版IDF <a target="_blank" rel="noopener" href="https://dl.espressif.cn/dl/esp-idf/?idf=5.2">https://dl.espressif.cn/dl/esp-idf/?idf=5.2</a></p>
-<h4 id="安装-ESP-IDF-插件"><a href="#安装-ESP-IDF-插件" class="headerlink" title="安装 ESP-IDF 插件"></a>安装 ESP-IDF 插件</h4><ol>
-<li>打开 VSCode, 使用快捷键 Shift+Ctrl+X，进入插件管理器</li>
-<li>在搜索栏中，输入 Espressif IDF，选择对应的插件点击 install 即可</li>
-</ol>
-<h4 id="新建基于例程的工程"><a href="#新建基于例程的工程" class="headerlink" title="新建基于例程的工程"></a>新建基于例程的工程</h4><ol>
-<li>按下 F1 打开命令行，输入 ESP-IDF: Show Examples Projects,或者 vscode 上方输入框填入<code>&gt;</code>,再输入命令</li>
-<li>点击 ESP-IDF: Show Examples Projects</li>
-<li>点击 Use current ESP-IDF 使用当前 ESP-IDF</li>
-<li>在列表中选择 hello_world,然后点击 Create project using example hello world</li>
-<li>点击左下角图标选择 COM， 选择目标芯片，点击齿轮图标配置项目</li>
-<li>打开 esp-idf terminal 输入 idf 命令 idf.py menuconifg配置例程引脚，例如LED GPIO pin2。</li>
-</ol>
-<p>在配置窗口中选择 Serial flasher config，将 Falsh 的大小改为 4MB：<br>Save</p>
-<p>编译项目</p>
-<h3 id="esptool-单独下载固件"><a href="#esptool-单独下载固件" class="headerlink" title="esptool 单独下载固件"></a>esptool 单独下载固件</h3><p><code>pip install esptool</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">esptool --port /dev/ttyACM0 --baud 115200 write_flash --flash_size=detect 0 &#x27;/home/link/Downloads/WLED_0.13.3_ESP01.bin&#x27;</span><br></pre></td></tr></table></figure>
-
+<li>电源管理：具有多种低功耗工作模式，电源电压范围2.2V-3.6V，内置低压稳压器（LDO）和开关电源管理单元（SMU），实现高效的电源管理
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/16/esp32%E5%BC%80%E5%8F%91/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -760,12 +515,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -787,8 +542,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 15:15:01" itemprop="dateModified" datetime="2024-04-25T15:15:01+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
 
           
 
@@ -801,40 +565,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="源程序编译"><a href="#源程序编译" class="headerlink" title="源程序编译"></a>源程序编译</h3><p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Makefile&spm=1001.2101.3001.7020">Makefile</a> 的编写<br>程序库的链接<br>程序的调试<br>头文件和系统求助  </p>
-<ol>
-<li>源程序的编译<br>在 Linux 下面，如果要编译一个 C 语言源程序，我们要使用 GNU 的 gcc 编译器。 下面我们以一个实例来说明如何使用 gcc 编译器。<br>假设我们有下面一个非常简单的源程序 (hello.c)：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">printf(&quot;Hello Linux\n&quot;)；  </span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">要编译这个程序，我们只要在命令行下执行：  </span><br><span class="line">```gcc -o hello hello.c```  </span><br><span class="line">gcc 编译器就会为我们生成一个 hello 的可执行文件。执行./hello 就可以看到程序的输出结果了。命令行中 gcc 表示我们是用 gcc 来编译我们的源程序，-o 选项表示我们要求编译器给我们输出的可执行文件名为 hello 而 hello.c 是我们的源程序文件。  </span><br><span class="line">gcc 编译器有许多选项，一般来说我们只要知道其中的几个就够了。 -o 选项我们已经知道了，表示我们要求输出的可执行文件名。 -c 选项表示我们只要求编译器输出目标代码，而不必要输出可执行文件。 -g 选项表示我们要求编译器在编译的时候提供我们以后对程序进行调试的信息。  </span><br><span class="line">知道了这三个选项，我们就可以编译我们自己所写的简单的源程序了，如果你想要知道更多的选项，可以查看 gcc 的帮助文档，那里有着许多对其它选项的详细说明。  </span><br><span class="line">2.Makefile 的编写  </span><br><span class="line">假设我们有下面这样的一个程序，源代码如下：  </span><br></pre></td></tr></table></figure>
-&#x2F;* main.c *&#x2F;</li>
-</ol>
-<p>#include “mytool1.h”<br>#include “mytool2.h”<br>int main(int argc，char *<em>argv)<br>{<br>mytool1_print(“hello”)；<br>mytool2_print(“hello”)；<br>}<br>&#x2F;</em> mytool1.h *&#x2F;<br>#ifndef _MYTOOL_1_H<br>#define _MYTOOL_1_H<br>void mytool1_print(char <em>print_str)；<br>#endif<br>&#x2F;</em> mytool1.c *&#x2F;<br>#include “mytool1.h”<br>void mytool1_print(char <em>print_str)<br>{<br>printf(“This is mytool1 print %s\n”，print_str)；<br>}<br>&#x2F;</em> mytool2.h *&#x2F;<br>#ifndef _MYTOOL_2_H<br>#define _MYTOOL_2_H<br>void mytool2_print(char <em>print_str)；<br>#endif<br>&#x2F;</em> mytool2.c *&#x2F;<br>#include “mytool2.h”<br>void mytool2_print(char *print_str)<br>{<br>printf(“This is mytool2 print %s\n”，print_str)；<br>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当然由于这个程序是很短的我们可以这样来编译  </span><br></pre></td></tr></table></figure>
-<p>gcc -c main.c<br>gcc -c mytool1.c<br>gcc -c mytool2.c<br>gcc -o main main.o mytool1.o mytool2.o</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这样的话我们也可以产生 main 程序，而且也不时很麻烦。但是如果我们考虑一下如果有一天我们修改了其中的一个文件 (比如说 mytool1.c) 那么我们 难道还要重新输入上面的命令? 也许你会说，这个很容易解决啊，我写一个 SHELL 脚本，让她帮我去完成不就可以了。是的对于这个程序来说，是可以起到作用 的。但是当我们把事情想的更复杂一点，如果我们的程序有几百个源程序的时候，难道也要编译器重新一个一个的去编译?  </span><br><span class="line">为此，聪明的程序员们想出了一个很好的工具来做这件事情，这就是 make。我们只要执行以下 make，就可以把上面的问题解决掉。在我们执行 make 之 前，我们要先编写一个非常重要的文件。--Makefile。对于上面的那个程序来说，可能的一个 Makefile 的文件是：  </span><br></pre></td></tr></table></figure>
-<p>main：main.o mytool1.o mytool2.o<br>gcc -o main main.o mytool1.o mytool2.o<br>main.o：main.c mytool1.h mytool2.h<br>gcc -c main.c<br>mytool1.o：mytool1.c mytool1.h<br>gcc -c mytool1.c<br>mytool2.o：mytool2.c mytool2.h<br>gcc -c mytool2.c</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">有了这个 Makefile 文件，不过我们什么时候修改了源程序当中的什么文件，我们只要执行 make 命令，我们的编译器都只会去编译和我们修改的文件有关的文件，其它的文件她连理都不想去理的。  </span><br><span class="line">下面我们学习 Makefile 是如何编写的。  </span><br><span class="line">在 Makefile 中也 #开始的行都是注释行. Makefile 中最重要的是描述文件的依赖关系的说明。一般的格式是：  </span><br></pre></td></tr></table></figure>
-<p>target：components<br>TAB rule</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">第一行表示的是依赖关系。第二行是规则。  </span><br><span class="line">比如说我们上面的那个 Makefile 文件的第二行  </span><br><span class="line">```main：main.o mytool1.o mytool2.o``` </span><br><span class="line">表示我们的目标 (target)main 的依赖对象(components) 是 main.o mytool1.o mytool2.o 当倚赖的对象在目标修改后修改的话，就要去执行规则一行所指定的命令。就象我们的上面那个 Makefile 第三行所说的一样要执行 gcc -o main main.o mytool1.o mytool2.o 注意规则一行中的 TAB 表示那里是一个 TAB 键  </span><br><span class="line"></span><br><span class="line">### $@，$^，$&lt; </span><br><span class="line">Makefile 有三个非常有用的变量。分别是 $@，$^，$&lt; 代表的意义分别是：  </span><br><span class="line">$@-- 目标文件，$^-- 所有的依赖文件，$&lt;-- 第一个依赖文件。  </span><br><span class="line">如果我们使用上面三个变量，那么我们可以简化我们的 Makefile 文件为：  </span><br></pre></td></tr></table></figure>
-<p>&#x2F;&#x2F;这是简化后的 Makefile<br>main：main.o mytool1.o mytool2.o<br>gcc -o $@ $^<br>main.o：main.c mytool1.h mytool2.h<br>gcc -c $&lt;<br>mytool1.o：mytool1.c mytool1.h<br>gcc -c $&lt;<br>mytool2.o：mytool2.c mytool2.h<br>gcc -c $&lt;  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">经过简化后我们的 Makefile 是简单了一点，不过人们有时候还想简单一点。这里我们学习一个 Makefile 的缺省规则  </span><br><span class="line">.c.o：  </span><br><span class="line">```gcc -c $&lt;```  </span><br><span class="line">这个规则表示所有的 .o 文件都是依赖与相应的. c 文件的。例如 mytool.o 依赖于 mytool.c 这样 Makefile 还可以变为：  </span><br></pre></td></tr></table></figure>
-<p>&#x2F;&#x2F;这是再一次简化后的 Makefile<br>main：main.o mytool1.o mytool2.o<br>gcc -o $@ $^<br>.c.o：<br>gcc -c $&lt;</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">好了，我们的 Makefile 也差不多了，如果想知道更多的关于 Makefile 规则可以查看相应的文档。  </span><br><span class="line">### 程序库的链接  </span><br><span class="line">试着编译下面这个程序  </span><br></pre></td></tr></table></figure>
-<p>&#x2F;* temp.c *&#x2F;<br>#include<br>int main(int argc，char **argv)<br>{<br>double value；<br>printf(“Value：%f\n”，value)；<br>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这个程序相当简单，但是当我们用 gcc -o temp temp.c 编译时会出现下面所示的错误。  </span><br></pre></td></tr></table></figure>
-<p>&#x2F;tmp&#x2F;cc33Kydu.o： In function <code>main&#39;：   /tmp/cc33Kydu.o(.text+0xe)： undefined reference to </code>log’<br>collect2： ld returned 1 exit status</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">出现这个错误是因为编译器找不到 log 的具体实现。虽然我们包括了正确的头文件，但是我们在编译的时候还是要连接确定的库。在 Linux 下，为了使用数学 函数，我们必须和数学库连接，为此我们要加入 -lm 选项。 ```gcc -o temp temp.c -lm``` 这样才能够正确的编译。也许有人要问，前面我们用 printf 函数的时候怎么没有连接库呢? 是这样的，对于一些常用的函数的实现，gcc 编译器会自 动去连接一些常用库，这样我们就没有必要自己去指定了。有时候我们在编译程序的时候还要指定库的路径，这个时候我们要用到编译器的  -L 选项指定路径。比如说我们有一个库在 /home/hoyt/mylib 下，这样我们编译的时候还要加上```-L/home/hoyt/mylib```对于一些标准库来说，我们没有必要指出路径。只要它们在起缺省库的路径下就可以了。系统的缺省库的路径```/lib /usr/lib /usr/local/lib ```在这三个路径下面的库，我们可以不指定路径。  </span><br><span class="line">### 程序的调试  </span><br><span class="line">我们编写的程序不太可能一次性就会成功的，在我们的程序当中，会出现许许多多我们想不到的错误，这个时候我们就要对我们的程序进行调试了。  </span><br><span class="line">最常用的调试软件是 gdb. 如果你想在图形界面下调试程序，那么你现在可以选择 xxgdb. 记得要在编译的时候加入 -g 选项. 关于 gdb 的使用可以看 gdb 的帮助文件。由于我没有用过这个软件，所以我也不能够说出如何使用。不过我不喜欢用 gdb. 跟踪一个程序是很烦的 事情，我一般用在程序当中输出中间变量的值来调试程序的。当然你可以选择自己的办法，没有必要去学别人的。现在有了许多 IDE 环境，里面已经自己带了调试 器了。你可以选择几个试一试找出自己喜欢的一个用。  </span><br><span class="line">### 头文件和系统求助  </span><br><span class="line">有时候我们只知道一个函数的大概形式，不记得确切的表达式，或者是不记得着函数在那个头文件进行了说明。这个时候我们可以求助系统。  </span><br><span class="line">比如说我们想知道 fread 这个函数的确切形式，我们只要执行 man fread 系统就会输出着函数的详细解释的。和这个函数所在的头文件说明了。 如果我们要 write 这个函数的说明，当我们执行 man write 时，输出的结果却不是我们所需要的。 因为我们要的是 write 这个函数的说明，可是出来的却是 write 这个命令的说明。为了得到 write 的函数说明我们要用 man 2 write. 2 表示我们用的 write 这个函数是系统调用函数，还有一个我们常用的是 3 表示函数是 C 的库函数。  </span><br><span class="line">记住不管什么时候，man 都是我们的最好助手</span><br><span class="line"></span><br><span class="line">[Makefile](https://so.csdn.net/so/search?q=Makefile&amp;spm=1001.2101.3001.7020 &quot;Makefile&quot;) 中``` $(SRC:%.c=%.o)``` 的含义：**将 SRC 变量中所有以. c 结尾的文件名替换成对应的以. o 结尾的文件名，然后赋回给 SRC**</span><br></pre></td></tr></table></figure>
-<p>CROSS_COMPILE ?&#x3D; arm-linux-gnueabihf-</p>
-<p>GCC :&#x3D; $(CROSS_COMPILE)gcc </p>
-<p>APP_TARGET &#x3D; .&#x2F;app_button</p>
-<p>INC_DIR &#x3D; -I&#x2F;<br>INC_DIR +&#x3D; -I.&#x2F;bsp&#x2F;beep <br>INC_DIR +&#x3D; -I.&#x2F;bsp&#x2F;clk <br>INC_DIR +&#x3D; -I.&#x2F;bsp&#x2F;led<br>INC_DIR +&#x3D; -I.&#x2F;bsp&#x2F;button </p>
-<p>CFLAGS +&#x3D; $(INC_DIR)</p>
-<p>BEEP &#x3D; \<br>    .&#x2F;bsp&#x2F;beep&#x2F;beep.c \<br>    .&#x2F;bsp&#x2F;clk&#x2F;clk.c \<br>    .&#x2F;bsp&#x2F;led&#x2F;led.c \<br>    .&#x2F;bsp&#x2F;button&#x2F;button.c</p>
-<p>MAIN &#x3D; .&#x2F;main.c</p>
-<p>SRC +&#x3D; $(MAIN)<br>SRC +&#x3D; $(BEEP)</p>
-<p>%.o:%.c<br>    $(GCC) -c $(CFLAGS) $^ -o $@</p>
-<p>SRCOBJ &#x3D; $(SRC:.c&#x3D;.o)</p>
-<p>all:$(APP_TARGET)<br>$(APP_TARGET): $(SRCOBJ)<br>    $(GCC) $(SRCOBJ) $(CFLAGS) -o $(APP_TARGET)</p>
-<p>clean:<br>    rm -f $(APP_TARGET) $(SRCOBJ)<br>&#96;&#96;&#96;</p>
-
+          <p>Makefile的编写 </p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/14/makefile%E4%BD%BF%E7%94%A8/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -857,12 +596,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -884,8 +623,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 15:11:43" itemprop="dateModified" datetime="2024-04-25T15:11:43+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
 
           
 
@@ -898,87 +646,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="STM32F407-GCC-Template"><a href="#STM32F407-GCC-Template" class="headerlink" title="STM32F407-GCC-Template"></a>STM32F407-GCC-Template<a href="#stm32f407-gcc-template"></a></h2><h2 id="Arm-none-eabi-gcc-Makefile-OpenOCD-CMSIS-DAP-Vscode-工程模板"><a href="#Arm-none-eabi-gcc-Makefile-OpenOCD-CMSIS-DAP-Vscode-工程模板" class="headerlink" title="Arm-none-eabi-gcc + Makefile+OpenOCD+CMSIS-DAP+Vscode 工程模板"></a>Arm-none-eabi-gcc + Makefile+OpenOCD+CMSIS-DAP+Vscode 工程模板<a href="#arm-none-eabi-gcc--makefileopenocdcmsis-dapvscode%E5%B7%A5%E7%A8%8B%E6%A8%A1%E6%9D%BF"></a></h2><h3 id="一、本次环境搭建所用的软硬件"><a href="#一、本次环境搭建所用的软硬件" class="headerlink" title="一、本次环境搭建所用的软硬件"></a><strong>一、本次环境搭建所用的软硬件</strong><a href="#%E4%B8%80%E6%9C%AC%E6%AC%A1%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E6%89%80%E7%94%A8%E7%9A%84%E8%BD%AF%E7%A1%AC%E4%BB%B6"></a></h3><p>1）Windows or Linux (本文以 Windows 为主)</p>
-<p>2）JLink、Daplink、Wch-Link 烧录器</p>
-<p>3）GNU Arm Embedded Toolchain 交叉编译器</p>
-<p>4）Mingw-w64 GCC for Windows 64</p>
-<p>5）Debug 调试工具 openocd</p>
-<p>6）Visual Studio Code</p>
-<h3 id="二、软件安装配置"><a href="#二、软件安装配置" class="headerlink" title="二、软件安装配置"></a><strong>二、软件安装配置</strong><a href="#%E4%BA%8C%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"></a></h3><ol>
-<li><h4 id="GNU-Arm-Embedded-Toolchain-交叉编译器"><a href="#GNU-Arm-Embedded-Toolchain-交叉编译器" class="headerlink" title="GNU Arm Embedded Toolchain 交叉编译器"></a>GNU Arm Embedded Toolchain 交叉编译器<a href="#gnu-arm-embedded-toolchain%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%99%A8"></a></h4><p>进入 arm 开发者官网，往下滑动选择下载解压可用的 ZIP 压缩包文件</p>
-<p><a target="_blank" rel="noopener" href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads">下载链接： Downloads | GNU Arm Embedded Toolchain Downloads – Arm Developer</a></p>
-<p><img src="https://img-blog.csdnimg.cn/5decaad4e9e94e788558dd698a4a63a8.png#pic_center"></p>
-<p>将下载好的压缩包文件解压在 gcc-arm-none-eabi”文件夹中，并记住文件内 “bin” 文件的路径，后续需添加到系统环境变量 Path 中。</p>
-<p><img src="https://img-blog.csdnimg.cn/73625863b78e439583ff0983492058d8.png#pic_center"><br>添加完环境变量后，进行测试，检测是否安装好。</p>
-</li>
-</ol>
-<p><img src="https://img-blog.csdnimg.cn/1e27ddde285b486ca8ecbe7f4a5c7263.png#pic_center"><br><img src="https://img-blog.csdnimg.cn/c9c15123af854497aa4f9bb1a6d3743d.png#pic_center"></p>
-<ol start="2">
-<li><h4 id="安装-Mingw-w64-GCC"><a href="#安装-Mingw-w64-GCC" class="headerlink" title="安装 Mingw-w64 GCC"></a>安装 <strong>Mingw-w64 GCC</strong><a href="#%E5%AE%89%E8%A3%85mingw-w64-gcc"></a></h4><p>点击链接进入到 SourceForge 官网，往下翻可以找到很多版本的下载链接，选择红色框内型号即可，不同前后缀的具体差异请参考:</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/AMDDMA/article/details/111600238">MinGW gcc 下载链接及 sjlj、dwarf、seh 异同以及 gcc 安装_AMDDMA 的博客 - CSDN 博客_seh 和 sjlj</a></p>
-<p>下载链接：</p>
-<p><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/">MinGW-w64 - for 32 and 64 bit Windows - Browse Files at SourceForge.net</a></p>
-<p><img src="https://img-blog.csdnimg.cn/e749553d3a154897a51c13e8c800b5a2.png#pic_center"></p>
-<p>同样，将下载好的文件解压到 “gcc-arm-none-eabi” 文件夹下，记住目录下的 “bin” 文件路径<br><img src="https://img-blog.csdnimg.cn/cd9ced4bebca4dbf98254f877154e28b.png#pic_center"><br>进入 “bin” 文件内找到 “mingw32-make” 应用程序文件，复制一份并重命名为“make”。这么做有利于在命令行执行 make 指令，而不是输入 mingw32-make。<br><img src="https://img-blog.csdnimg.cn/13d113abda4d4746ba4318b66a3e2b88.png#pic_center"></p>
-</li>
-</ol>
-<p>​ 添加完环境变量后，进行测试，检测是否安装好。<br><img src="https://img-blog.csdnimg.cn/d14653da6f34477c9e52846a80cf8807.png#pic_center"><br><img src="https://img-blog.csdnimg.cn/2c78084c87804091936fd8e7588205ae.png#pic_center"></p>
-<h4 id="3-安装调试软件-Download-pre-built-OpenOCD-for-Windows"><a href="#3-安装调试软件-Download-pre-built-OpenOCD-for-Windows" class="headerlink" title="3. 安装调试软件 Download pre-built OpenOCD for Windows"></a>3. 安装调试软件 Download pre-built OpenOCD for Windows<a href="#3-%E5%AE%89%E8%A3%85%E8%B0%83%E8%AF%95%E8%BD%AF%E4%BB%B6download-pre-built-openocd-for-windows"></a></h4><p>默认安装 Vscode, 安装过程比较简单，参考其他文章。有了以上三个软件的支持，已经可以在 VScode 中编译并生成 bin 文件和 hex 文件了，但众所周知，程序员最大的工作是 Debug，那就免不了需要一款调试软件了。</p>
-<p>Debug 常用的硬件有 STLink、JLink，WCH-Link,DapLink.</p>
-<p>Download pre-built OpenOCD for Windows 下载链接：<a target="_blank" rel="noopener" href="https://gnutoolchains.com/arm-eabi/openocd/">OpenOCD for Windows</a></p>
-<p>​ <img src="https://img-blog.csdnimg.cn/601edc211dec4a199f0c1808384006c3.png#pic_center"></p>
-<p>同样将下载好的压缩包解压至 “OpenOCD-20231002-0.12.0”，记住文件内“bin” 文件的路径。<br><img src="https://img-blog.csdnimg.cn/93692dd2b3b7424b8bad0394b9189368.png#pic_center"><br>添加完环境变量后，进行测试，检测是否安装好。<br><img src="https://img-blog.csdnimg.cn/a103e7827d3c4fcf85a872d0b84b71bb.png#pic_center"><img src="https://img-blog.csdnimg.cn/a43eaa58038d43c9806342702516db6c.png#pic_center"></p>
-<p>综上所述，基本的软件环境已经配置好。</p>
-<h3 id="三、STM32-GCC-Template-工程配置"><a href="#三、STM32-GCC-Template-工程配置" class="headerlink" title="三、STM32-GCC-Template 工程配置"></a><strong>三、STM32-GCC-Template 工程配置</strong><a href="#%E4%B8%89stm32-gcc-template%E5%B7%A5%E7%A8%8B%E9%85%8D%E7%BD%AE"></a></h3><ol>
-<li><p>工程结构</p>
-<p>STM32-GCC-Template 使用的标准固件库开发，当然你可以使用 HAL 开发 (这个不重要，有库就行了)</p>
-<p><img src="https://img-blog.csdnimg.cn/d59feb2ea2b64b17bfffdcf497db997f.png#pic_center"></p>
-</li>
-</ol>
-<p>prismjs prismjs</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">- Application</span><br><span class="line">   Application/inc</span><br><span class="line">   Application/src</span><br><span class="line">- BspLibraries</span><br><span class="line">   BspLibraries/inc</span><br><span class="line">   BspLibraries/src</span><br><span class="line">- FwlibLibraries</span><br><span class="line">   FwlibLibraries/CMSIS/Include</span><br><span class="line">   FwlibLibraries/inc</span><br><span class="line">   FwlibLibraries/src</span><br><span class="line">- Kernel</span><br><span class="line">   Kernel/inc</span><br><span class="line">   Kernel/src</span><br><span class="line">- SystemLibraries</span><br><span class="line">   SystemLibraries/inc</span><br><span class="line">   SystemLibraries/src</span><br><span class="line">- Build</span><br><span class="line">  //编译过程输出文件</span><br><span class="line">- tools</span><br><span class="line">  tools/startup_stm32f407xx.s</span><br><span class="line">  tools/STM32F407ZGTx_FLASH.ld</span><br><span class="line"></span><br><span class="line">- Makefile</span><br><span class="line">   Makefile脚本文件，重点，构建全流程脚本</span><br><span class="line">   //OpenOCD 调试下载配置文件</span><br><span class="line">   cmsis-dap.cfg  </span><br><span class="line">   stm32f4x.cfg</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Makefile 文件编写 (重点)</li>
-</ol>
-<p>prismjs prismjs</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br></pre></td><td class="code"><pre><span class="line">Author = dele</span><br><span class="line"></span><br><span class="line">######################################</span><br><span class="line"># target 构建目标</span><br><span class="line">###################################### </span><br><span class="line">TARGET = stm32f407-gcc-template  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">######################################</span><br><span class="line"># building variables</span><br><span class="line">######################################</span><br><span class="line"># debug build?</span><br><span class="line">DEBUG = 1</span><br><span class="line"># optimization</span><br><span class="line">OPT = -Og</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#######################################</span><br><span class="line"># paths</span><br><span class="line">#######################################</span><br><span class="line"># source path</span><br><span class="line"></span><br><span class="line"># firmware library path</span><br><span class="line">PERIFLIB_PATH = </span><br><span class="line"></span><br><span class="line"># Build path</span><br><span class="line">BUILD_DIR = Build</span><br><span class="line">######################################</span><br><span class="line"># source #   </span><br><span class="line">######################################</span><br><span class="line"># 修改1 C源文件添加 参加文件工程，按照下面格式添加所有的c文件</span><br><span class="line"># C sources</span><br><span class="line">C_SOURCES =  \</span><br><span class="line">			Kernel/src/stm32f4xx_it.c \</span><br><span class="line">			Kernel/src/system_stm32f4xx.c \</span><br><span class="line">			FwlibLibraries/src/misc.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_adc.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_can.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_crc.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_cryp_aes.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_cryp.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_cryp_des.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_cryp_tdes.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_dac.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_dbgmcu.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_dcmi.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_dma2d.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_dma.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_exti.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_flash.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_flash_ramfunc.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_gpio.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_hash.c\</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_hash_md5.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_hash_sha1.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_i2c.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_iwdg.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_ltdc.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_pwr.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_rcc.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_rng.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_rtc.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_sai.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_sdio.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_spi.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_syscfg.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_tim.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_usart.c \</span><br><span class="line">			FwlibLibraries/src/stm32f4xx_wwdg.c  \</span><br><span class="line">			BspLibraries/src/key.c \</span><br><span class="line">			BspLibraries/src/led.c \</span><br><span class="line">			SystemLibraries/src/delay.c \</span><br><span class="line">			SystemLibraries/src/usart.c \</span><br><span class="line">			SystemLibraries/src/sys.c \</span><br><span class="line">			SystemLibraries/src/timer.c \</span><br><span class="line">			Application/src/main.c \</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line"># ASM sources</span><br><span class="line"># 修改2 汇编启动源文件添加 </span><br><span class="line">ASM_SOURCES =  \</span><br><span class="line">tools/startup_stm32f407xx.s</span><br><span class="line"></span><br><span class="line">#######################################</span><br><span class="line"># binaries</span><br><span class="line">#######################################</span><br><span class="line"># 修改3 gcc-arm-none-eabi工具链地址</span><br><span class="line">PREFIX = arm-none-eabi-</span><br><span class="line">GCC_PATH = /SoftwareApplication/gcc-arm-none-eabi/bin</span><br><span class="line">ifdef GCC_PATH</span><br><span class="line">CC = $(GCC_PATH)/$(PREFIX)gcc</span><br><span class="line">AS = $(GCC_PATH)/$(PREFIX)gcc -x assembler-with-cpp</span><br><span class="line">CP = $(GCC_PATH)/$(PREFIX)objcopy</span><br><span class="line">SZ = $(GCC_PATH)/$(PREFIX)size</span><br><span class="line">else</span><br><span class="line">CC = $(PREFIX)gcc</span><br><span class="line">AS = $(PREFIX)gcc -x assembler-with-cpp</span><br><span class="line">CP = $(PREFIX)objcopy</span><br><span class="line">SZ = $(PREFIX)size</span><br><span class="line">endif</span><br><span class="line">HEX = $(CP) -O ihex</span><br><span class="line">BIN = $(CP) -O binary -S</span><br><span class="line"> </span><br><span class="line">#######################################</span><br><span class="line"># CFLAGS</span><br><span class="line">#######################################</span><br><span class="line"># cpu 架构</span><br><span class="line">CPU = -mcpu=cortex-m4</span><br><span class="line"></span><br><span class="line"># fpu</span><br><span class="line">FPU = -mfpu=fpv4-sp-d16</span><br><span class="line"></span><br><span class="line"># float-abi</span><br><span class="line">FLOAT-ABI = -mfloat-abi=hard</span><br><span class="line"></span><br><span class="line"># mcu</span><br><span class="line">MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)</span><br><span class="line"></span><br><span class="line"># macros for gcc</span><br><span class="line"># AS defines</span><br><span class="line">AS_DEFS = </span><br><span class="line"></span><br><span class="line"># C defines</span><br><span class="line"># 修改4 全局宏定义 -DXXX </span><br><span class="line">C_DEFS =  \</span><br><span class="line">-DSTM32F40_41xxx \</span><br><span class="line">-DUSE_STDPERIPH_DRIVER\</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># AS includes</span><br><span class="line">AS_INCLUDES = </span><br><span class="line"></span><br><span class="line"># C includes</span><br><span class="line"># 修改5 H源文件添加 参加文件工程，按照下面格式添加所有的文件夹</span><br><span class="line">C_INCLUDES =\</span><br><span class="line">-I Kernel/inc        	 \</span><br><span class="line">-I FwlibLibraries/inc    \</span><br><span class="line">-I FwlibLibraries/CMSIS/Include \</span><br><span class="line">-I BspLibraries/inc      \</span><br><span class="line">-I SystemLibraries/inc   \</span><br><span class="line">-I Application/inc		 \</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># compile gcc flags</span><br><span class="line">ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections</span><br><span class="line"></span><br><span class="line">CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections</span><br><span class="line"></span><br><span class="line">ifeq ($(DEBUG), 1)</span><br><span class="line">CFLAGS += -g -gdwarf-2</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Generate dependency information</span><br><span class="line">CFLAGS += -MMD -MP -MF&quot;$(@:%.o=%.d)&quot; -MT&quot;$(@:%.o=%.d)&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#######################################</span><br><span class="line"># LDFLAGS</span><br><span class="line">#######################################</span><br><span class="line"># link script</span><br><span class="line"># 修改6 link script 链接脚本文件添加  链接脚本如何获取看参考stm32cubemx官方工程</span><br><span class="line">LDSCRIPT = \</span><br><span class="line">tools/STM32F407ZGTx_FLASH.ld</span><br><span class="line"></span><br><span class="line"># libraries</span><br><span class="line">LIBS = -lc -lm -lnosys </span><br><span class="line">LIBDIR = </span><br><span class="line">LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections</span><br><span class="line"></span><br><span class="line"># default action: build all</span><br><span class="line">all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#######################################</span><br><span class="line"># build the application</span><br><span class="line">#######################################</span><br><span class="line"># list of objects</span><br><span class="line">OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))</span><br><span class="line">vpath %.c $(sort $(dir $(C_SOURCES)))</span><br><span class="line"># list of ASM program objects</span><br><span class="line">OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))</span><br><span class="line">vpath %.s $(sort $(dir $(ASM_SOURCES)))</span><br><span class="line"></span><br><span class="line">$(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR) </span><br><span class="line">	@echo &quot;[CC]    $&lt;&quot;</span><br><span class="line">	@$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(&lt;:.c=.lst)) $&lt; -o $@</span><br><span class="line"></span><br><span class="line">$(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)</span><br><span class="line">	@echo &quot;[AS]    $&lt;&quot;</span><br><span class="line">	@$(AS) -c $(CFLAGS) $&lt; -o $@</span><br><span class="line"></span><br><span class="line">$(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile</span><br><span class="line">	@echo &quot;[HEX]   $&lt; -&gt; $@&quot;</span><br><span class="line">	@$(CC) $(OBJECTS) $(LDFLAGS) -o $@</span><br><span class="line">	@$(SZ) $@</span><br><span class="line"></span><br><span class="line">$(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)</span><br><span class="line">	@echo &quot;[HEX]   $&lt; -&gt; $@&quot;</span><br><span class="line">	@$(HEX) $&lt; $@</span><br><span class="line">	</span><br><span class="line">$(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)</span><br><span class="line">	@echo &quot;[BIN]   $&lt; -&gt; $@&quot;</span><br><span class="line">	@$(BIN) $&lt; $@	</span><br><span class="line">	</span><br><span class="line">$(BUILD_DIR):</span><br><span class="line">	@mkdir $@		</span><br><span class="line"></span><br><span class="line">#######################################</span><br><span class="line"># clean up</span><br><span class="line">####################################### </span><br><span class="line"># make clean  清除编译中间文件</span><br><span class="line"># Windows环境不支持 rm 因此写成 -del </span><br><span class="line"># Linux环境 </span><br><span class="line">clean:</span><br><span class="line">	-del /q  $(BUILD_DIR)</span><br><span class="line"># Openocd 调试下载工具 </span><br><span class="line"># 修改7  cmsis-dap.cfg -f stm32f4x.cfg</span><br><span class="line"># 配置文件 修改成为自己使用的工具和芯片文件 如 stlink.cfg jlink.cfg stm32f1xx.cfg</span><br><span class="line">flash:</span><br><span class="line">	openocd -f cmsis-dap.cfg -f stm32f4x.cfg -c init -c halt -c &quot;program $(BUILD_DIR)/$(TARGET).bin 0x8000000&quot; -c reset -c shutdown</span><br><span class="line">#######################################</span><br><span class="line"># dependencies</span><br><span class="line">#######################################</span><br><span class="line">-include $(wildcard $(BUILD_DIR)/*.d)</span><br><span class="line"># *** EOF ***</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="四、STM32-工程测试"><a href="#四、STM32-工程测试" class="headerlink" title="四、STM32 - 工程测试"></a><strong>四、STM32 - 工程测试</strong><a href="#%E5%9B%9Bstm32-%E5%B7%A5%E7%A8%8B%E6%B5%8B%E8%AF%95"></a></h3><ol>
-<li><p>make 构建工程</p>
-<p><img src="https://img-blog.csdnimg.cn/2db23a70a4024cd29f468f8380ac5bb3.png#pic_center"></p>
-<p><img src="https://img-blog.csdnimg.cn/b4473675095c40bb873d9d4b5677309f.png#pic_center"></p>
-</li>
-<li><p>make flash</p>
-<p><img src="https://img-blog.csdnimg.cn/39b5dbef9ab344719940441b8cb0639e.png#pic_center"></p>
-<p>接上串口线，打开串口软件，查看终端输出情况（如果是从 MDK-Keil 工程移植过来，printf 应该是不支持的，因此终端没有输出，需要修改相关代码，后面写修改文件）（图片中的情况是修改之后的效果）</p>
-</li>
-</ol>
-<p>prismjs language</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![在这里插入图片描述](https://img-blog.csdnimg.cn/1cf3ac67fade4aa49f3648b98d0759ab.png#pic_center)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li><p>make clean</p>
-<p>清除工程，修改 main.c 代码, 重新构建代码</p>
-<p><img src="https://img-blog.csdnimg.cn/c05f04375b1f4452b1e98b7d1a8789a2.png#pic_center"><br><img src="https://img-blog.csdnimg.cn/d80b4aca9ec844dfb9014afc9219e380.png#pic_center"><img src="https://img-blog.csdnimg.cn/f25272a305ae450eacb4df05369d3bb3.png#pic_center"></p>
-</li>
-<li><p>注意修改的部分（仅我的工程，不代表全部）</p>
-<p>（1）usart.c printf 重定向问题</p>
-<p>prismjs prismjs</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//重定向c库函数printf到串口，重定向后可使用printf函数</span><br><span class="line">// int fputc(int ch, FILE *f)</span><br><span class="line">// &#123;</span><br><span class="line">//     /* 发送一个字节数据到串口 */</span><br><span class="line">//     USART_SendData(DEBUG_USART, (uint8_t) ch);</span><br><span class="line"></span><br><span class="line">//     /* 等待发送完毕 */</span><br><span class="line">//     while (USART_GetFlagStatus(DEBUG_USART, USART_FLAG_TXE) == RESET);</span><br><span class="line"></span><br><span class="line">//     return (ch);</span><br><span class="line">// &#125;</span><br><span class="line">int _write (int fd, char *pBuffer, int size)</span><br><span class="line">&#123;</span><br><span class="line">    for (int i = 0; i &lt; size; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        while((USART1-&gt;SR&amp;0X40)==0);//等待上一次串口数据发送完成</span><br><span class="line">        USART1-&gt;DR = (uint8_t) pBuffer[i];       //写DR,串口1将发送数据</span><br><span class="line">    &#125;</span><br><span class="line">    return size;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>（2）sys.c 汇编代码 （注意，由于工程来源于正点原子的工程修改，可能与其他工程模板不一样，非不要）</p>
-<p>prismjs prismjs</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">//THUMB指令不支持汇编内联</span><br><span class="line">//采用如下方法实现执行汇编指令WFI  </span><br><span class="line">__asm void WFI_SET(void)</span><br><span class="line">&#123;</span><br><span class="line">	WFI;		  </span><br><span class="line">&#125;</span><br><span class="line">//关闭所有中断(但是不包括fault和NMI中断)</span><br><span class="line">__asm void INTX_DISABLE(void)</span><br><span class="line">&#123;</span><br><span class="line">	CPSID   I</span><br><span class="line">	BX      LR	  </span><br><span class="line">&#125;</span><br><span class="line">//开启所有中断</span><br><span class="line">__asm void INTX_ENABLE(void)</span><br><span class="line">&#123;</span><br><span class="line">	CPSIE   I</span><br><span class="line">	BX      LR  </span><br><span class="line">&#125;</span><br><span class="line">//设置栈顶地址</span><br><span class="line">//addr:栈顶地址</span><br><span class="line">__asm void MSR_MSP(u32 addr) </span><br><span class="line">&#123;</span><br><span class="line">	MSR MSP, r0 			//set Main Stack value</span><br><span class="line">	BX r14</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>修改后</p>
-<p>prismjs prismjs</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//THUMB指令不支持汇编内联</span><br><span class="line">//采用如下方法实现执行汇编指令WFI  </span><br><span class="line">void WFI_SET(void)</span><br><span class="line">&#123;</span><br><span class="line">	__ASM volatile(&quot;WFI&quot;);		  </span><br><span class="line">&#125;</span><br><span class="line">//关闭所有中断(但是不包括fault和NMI中断)</span><br><span class="line">void INTX_DISABLE(void)</span><br><span class="line">&#123;</span><br><span class="line">	__ASM volatile(&quot;CPSID   I&quot;);</span><br><span class="line">	__ASM volatile(&quot;BX      LR&quot;);</span><br><span class="line">	</span><br><span class="line">		  </span><br><span class="line">&#125;</span><br><span class="line">//开启所有中断</span><br><span class="line">void INTX_ENABLE(void)</span><br><span class="line">&#123;</span><br><span class="line">	__ASM volatile(&quot;CPSIE   I&quot;);</span><br><span class="line">	__ASM volatile(&quot;BX      LR&quot;);</span><br><span class="line">&#125;</span><br><span class="line">//设置栈顶地址</span><br><span class="line">//addr:栈顶地址</span><br><span class="line">void MSR_MSP(u32 addr)</span><br><span class="line">&#123;</span><br><span class="line">	__ASM volatile(&quot;MSR MSP, r0&quot;); </span><br><span class="line">	__ASM volatile(&quot;BX r14&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="五、测试效果"><a href="#五、测试效果" class="headerlink" title="五、测试效果"></a><strong>五、测试效果</strong><a href="#%E4%BA%94%E6%B5%8B%E8%AF%95%E6%95%88%E6%9E%9C"></a></h3><p>​ 使用 Vscode 进行工程修改编辑，编译，下载代码（可以使用 Cortex-Debug 进行调试）<br><img src="https://img-blog.csdnimg.cn/47ff459b4abb44a19be63cb796a6f100.png#pic_center"></p>
-<p><img src="https://img-blog.csdnimg.cn/36d8547c34b94b6fa67226e6c80361c9.png#pic_center"></p>
-<p><img src="https://img-blog.csdnimg.cn/537781281acf4786bda56a165e9f7bf0.png#pic_center"></p>
-
+          <p>使用VSCode 搭建 STM32 开发环境</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/12/%E6%90%AD%E5%BB%BA%20Makefile+OpenOCD+CMSIS-DAP+Vscode%20arm-none-eabi-gcc%20%E5%B7%A5%E7%A8%8B%E6%A8%A1%E6%9D%BF/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1001,12 +677,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -1028,8 +704,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 14:57:38" itemprop="dateModified" datetime="2024-04-25T14:57:38+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
 
           
 
@@ -1044,91 +729,14 @@
       
           <p>由于本机计算资源有限，为了满足项目需求，导师安排了计算资源。最初，我尝试使用 XShell 进行连接，但由于其非图形界面，操作不够直观，不便于代码编写和项目管理。</p>
 <p>而 VSCode 完美解决了这一痛点，我转而选择了 VSCode。VSCode 提供了图形界面的远程开发环境，使得远程连接变得更加轻松和便捷。本教程旨在记录并分享使用 VSCode 进行远程连接的步骤，希望能够帮助到有相似需求的人，提高远程开发的效率和便捷性。</p>
-<p>本机：Windows</p>
-<p>服务器：Linux</p>
-<p>前置要求：</p>
-<ul>
-<li>本机安装 Vscode、ssh（命令行输入 ssh 检查）</li>
-<li>打开 Vscode 时建议使用<strong>管理器员权限</strong>打开，在这之前遇到了一些报错。</li>
-</ul>
-<h2 id="一、远程连接过程"><a href="#一、远程连接过程" class="headerlink" title="一、远程连接过程"></a><strong>一、远程连接过程</strong></h2><ul>
-<li>安装插件 remote-ssh</li>
-</ul>
-<p><img src="https://pic2.zhimg.com/v2-51a7090e353ee0442e8071aafc0cb73d_b.jpg"></p>
-<ul>
-<li>点击远程资源管理器、新建远程</li>
-</ul>
-<p><img src="https://pic3.zhimg.com/v2-2573982fab9eb5bafd09da842b213f7e_r.jpg"></p>
-<ul>
-<li>在窗口上方弹出的命令框中输入：<code>ssh name@ip</code>，<code>name</code>是你服务器的用户名，如果没有创建用户则填 root，<code>ip</code>是你的服务器 ip 地址</li>
-</ul>
-<p><img src="https://pic1.zhimg.com/v2-5b85e5d9f04ffab768c7c183b2309884_r.jpg"></p>
-<p>比如我输入<code>ssh -p 2230 liuwf@202.116.7.104</code>，其中<code>-p 2230</code>表示指定端口号 2230，若是没有指定可以直接删除，输入后按回车</p>
-<ul>
-<li>回车后会弹出选择更新配置文件，点击第一个路径，会自动生成一个 config 文件</li>
-</ul>
-<p><img src="https://pic3.zhimg.com/v2-b7dfcd422a9d004694b390d3ceae825e_r.jpg"></p>
-<ul>
-<li>下图为 config 内容，如果没有自动生成，则手动打开并根据自身情况进行配置，文件的位置在上图的路径。</li>
-</ul>
-<p><img src="https://pic1.zhimg.com/v2-a549b15b4ac528314928d24778186540_r.jpg"></p>
-<p><strong><em>Host:</em></strong> <em>这是一个用户定义的别名，用于指代远程主机。可以在在终端中执行</em> <code>_ssh 别名_</code> <em>替代</em><code>_ssh name@ip_</code><em>。</em></p>
-<p><strong><em>HostName:</em></strong> <em>指定远程主机的实际地址或主机名。</em></p>
-<p><strong><em>Port:</em></strong> <em>指定 SSH 连接使用的端口号。</em></p>
-<p><strong><em>User:</em></strong> <em>指定连接到远程主机时使用的用户名。在这里，用户名是</em> <code>_liuwf_</code><em>。</em></p>
-<ul>
-<li>在 config 文件配置完成并保存后，在 VSCode 的远程资源管理器中已经出现刚配置的远程服务器，此时点击红框按钮连接即可</li>
-</ul>
-<p><img src="https://pic1.zhimg.com/v2-b13944c910f4be29538cbaaa01d3eae8_r.jpg"></p>
-<ul>
-<li>VSCode 会自动进行远程端的设置，窗口上方的中间位置会出现选择平台、输入密码设置，按照自己的情况填写即可。</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/v2-f3dfcc846741b6d574fb6ee86041d5af_r.jpg"></p>
-<ul>
-<li>此时没有意外的话就可以连接上了远程服务器了</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/v2-79fc77a6c6d904caa9cf90a63f2fbd9f_r.jpg"></p>
-<ul>
-<li>连接过程中，我遇到了如下错误：<br><code>Bad owner or permissions on C:\\Users\.ssh</code><br><code>\&gt; /config</code><br><code>\&gt; 过程试图写入的管道不存在。</code></li>
-</ul>
-<p>参考了<a href="https://link.zhihu.com/?target=https://blog.csdn.net/qq_46276946/article/details/131299973">链接</a>仍然不能解决。最后通过使用<strong>管理员权限</strong>打开 VSCode 解决该问题。</p>
-<h2 id="二、如何免密连接"><a href="#二、如何免密连接" class="headerlink" title="二、如何免密连接"></a><strong>二、如何免密连接</strong></h2><p>每次连接都需要输入密码未免有些麻烦，一台机器想要免密访问其他机器，需要把自己的公钥内容发送到别的机器的 authorized_keys 中去，并在本机 config 文件中配置私钥文件位置。如下为流程。</p>
-<h3 id="1-生成新的密钥对"><a href="#1-生成新的密钥对" class="headerlink" title="1. 生成新的密钥对"></a>1. 生成新的密钥对</h3><p>使用命令<code>ssh-keygen</code>生成新的密钥对。你可以选择在生成密钥对时为其指定不同的文件名。请注意，<code>-f</code> 后的<code>id_rsa_linux</code> 和 <code>id_rsa_windows</code> 只是示例文件名，你可以根据需要选择其他文件名。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 在 Linux 和 Mac 上</span><br><span class="line">ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa_linux</span><br><span class="line">​</span><br><span class="line"># 在 Windows 上</span><br><span class="line">ssh-keygen -t rsa -b 2048 -f C:\Users\YourUsername\.ssh\id_rsa_windows</span><br><span class="line">​</span><br><span class="line"># 如果你只有单平台使用 ssh</span><br><span class="line">ssh-keygen</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong>当你在多个平台上使用 SSH 连接到不同的远程服务器时，可能需要为每个平台生成和使用不同的密钥对。这是因为每个平台（例如，Windows、Linux、Mac）可能有不同的文件系统和密钥文件位置，同时在安全性的考虑下，不同平台上的密钥对最好是独立的。</p>
-<p>输入命令后一路回车</p>
-<p><img src="https://pic2.zhimg.com/v2-6217ef2d7028e4ff6b9d6b2555757819_r.jpg"></p>
-<p>系统会在你指定的路径（本例子为 <code>C:\Users\YourUsername\.ssh</code>）下生成两个文件，分别是<code>id_rsa_windows.pub</code>和<code>id_rsa_windows</code>，前者为生成的公钥，后者为私钥 。</p>
-<h3 id="2-添加公钥到远程服务器"><a href="#2-添加公钥到远程服务器" class="headerlink" title="2. 添加公钥到远程服务器"></a>2. <strong>添加公钥到远程服务器</strong></h3><p>将生成的公钥（ <code>id_rsa_windows.pub</code>的内容）添加到你远程服务器的 <code>authorized_keys</code> 文件中，以允许连接。</p>
-<p>(1). 若你本机是 <strong>Windows</strong>，可以使用以下方法之一：</p>
-<ul>
-<li><p>使用 <code>scp</code> 命令<strong>：</strong>使用 <code>scp</code> 命令将公钥文件传输到远程服务器，在远程服务器上，将公钥内容追加到 <code>authorized_keys</code> 文件，但是本人不建议使用 <a href="https://link.zhihu.com/?target=https://so.csdn.net/so/search?q=scp&spm=1001.2101.3001.7020">scp</a> 发送，这样会对自己机器或者对方机器的原有配置造成覆盖或是丢失，存在风险。</p>
-</li>
-<li><p>手动复制：手动复制公钥文件 (<code>id_rsa_windows.pub</code>) 的内容，然后登录到远程服务器，并将内容粘贴到 <code>authorized_keys</code> 文件。如下是我生成的<code>id_rsa_windows.pub</code>文件内容：</p>
-</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/v2-fedd244c6b0b53051387658643bd3e77_r.jpg"></p>
-<p>在远程服务器上，<code>authorized_keys</code> 文件通常存储在用户的 <code>.ssh</code> 目录中。具体路径可能为 <code>~/.ssh/authorized_keys</code>。例如我的用户名是 <code>liuwf</code>，那么 <code>authorized_keys</code> 文件的路径可能是 <code>/home/liuwf/.ssh/authorized_keys</code> 。</p>
-<p>如果你的<code>.ssh</code>目录或者 <code>authorized_keys</code> 文件不存在，你可以在服务器终端使用以下命令创建它：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 创建目录</span><br><span class="line">mkdir ~/.ssh</span><br><span class="line"># 进入目录</span><br><span class="line">cd ~/.ssh</span><br><span class="line"># 创建 authorized_keys 文件</span><br><span class="line">touch authorized_keys</span><br><span class="line"># 使用文本编辑器打开 authorized_keys 文件，并将你的公钥内容粘贴到其中</span><br><span class="line">nano authorized_keys</span><br><span class="line"># 保存并关闭文本编辑器。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>不熟练使用终端，也可以使用 VSCode 的资源管理器直接创建，粘贴公钥后保存。</p>
-<p><img src="https://pic1.zhimg.com/v2-643ffe31669e71cf1bd92915c4ab5478_r.jpg"></p>
-<p>(2). 如果你本机是 <strong>Linux</strong>：</p>
-<p><code>ssh-copy-id</code> 命令通常用于将你的公钥复制到远程服务器的 <code>authorized_keys</code> 文件中。<code>-i</code> 选项用于指定身份文件（即你的公钥文件）。在本机执行如下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i id_rsa_Windows.pub name@ip</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>确保公钥文件 (<code>id_rsa_Windows.pub</code>) 在本地机器上的正确位置，并且你有读取该密钥的权限。同时，确保远程服务器上的用户 有一个 <code>.ssh</code> 目录，并且 <code>authorized_keys</code> 文件有正确的权限（通常是目录权限为 <code>700</code>，<code>authorized_keys</code> 文件权限为 <code>600</code>）。</p>
-<p>然后将你的公钥 (<code>id_rsa_Windows.pub</code>) 的内容复制并追加到远程服务器的 <code>authorized_keys</code> 文件中。</p>
-<h3 id="3-配置-SSH-客户端："><a href="#3-配置-SSH-客户端：" class="headerlink" title="3. 配置 SSH 客户端："></a>3. <strong>配置 SSH 客户端：</strong></h3><p>将添加公钥到远程服务器后，最后一步便是配置你的主机。</p>
-<p>打开你的 SSH 客户端（本机）配置文件（也就是前面生成的 config 文件，一般在<code>C:\Users\YourUsername\.ssh\config</code>），添加配置（<code>IdentityFile</code> <strong>私钥</strong>文件路径），以指定使用哪个私钥文件。下图红框为我添加的内容。</p>
-<p><img src="https://pic1.zhimg.com/v2-4060da4d55fc7bf0fbcd11c828f666b0_r.jpg"></p>
-<p>这样，当你使用 ssh 连接服务器时，SSH 客户端将自动选择相应的私钥文件，就可以实现免密登录了。</p>
-<p>参考链接：</p>
-<p><a href="https://link.zhihu.com/?target=https://blog.csdn.net/qq_56845026/article/details/130639709">配置 SSH 多账户配置不冲突_ssh 多用户 - CSDN 博客</a><a href="https://link.zhihu.com/?target=https://blog.csdn.net/u011762522/article/details/119352495">【大数据技术】多台机器配置 ssh 免密登录的最快捷最不易出错的方法_如何实现不同机器间无密码连接_daydayup-2016 的博客 - CSDN 博客</a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/222452460">undefined</a></p>
-<p>update 2023&#x2F;11&#x2F;17</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/12/VSCode%20%E9%85%8D%E7%BD%AE%20SSH%20%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%20+%20%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1147,21 +755,21 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/12/VSCode%20%E4%BD%BF%E7%94%A8%20clangd%20%E6%9E%84%E5%BB%BA%20Linux%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83_vscode%20clangd-CSDN%20%E5%8D%9A%E5%AE%A2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/12/VSCode%20%E4%BD%BF%E7%94%A8%20clangd%20%E6%9E%84%E5%BB%BA%20Linux%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/04/12/VSCode%20%E4%BD%BF%E7%94%A8%20clangd%20%E6%9E%84%E5%BB%BA%20Linux%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83_vscode%20clangd-CSDN%20%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">VSCode 使用 clangd 构建 Linux开发环境</a>
+            <a href="/2024/04/12/VSCode%20%E4%BD%BF%E7%94%A8%20clangd%20%E6%9E%84%E5%BB%BA%20Linux%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">VSCode 使用 clangd 构建 Linux开发环境</a>
         </h2>
 
         <div class="post-meta">
@@ -1178,8 +786,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 14:44:16" itemprop="dateModified" datetime="2024-04-25T14:44:16+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
 
           
 
@@ -1192,71 +809,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h4><ul>
-<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
-<li><a href="#%E4%B8%80vscode-%E5%AE%89%E8%A3%85-clangd-%E6%8F%92%E4%BB%B6%E5%B9%B6%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83">一、VSCode 安装 clangd 插件并搭建环境</a><ul>
-<li><a href="#1%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6">1、安装插件</a></li>
-<li><a href="#2%E7%A6%81%E7%94%A8%E6%88%96%E5%8D%B8%E8%BD%BD-microsoft-cc-intelligence">2、禁用或卸载 Microsoft C&#x2F;C++ Intelligence</a></li>
-<li><a href="#3%E5%AE%89%E8%A3%85-clangd-%E5%AE%89%E8%A3%85%E5%8C%85">3、安装 clangd 安装包</a></li>
-<li><a href="#4%E4%BF%AE%E6%94%B9%E6%8B%93%E5%B1%95%E8%AE%BE%E7%BD%AE">4、修改拓展设置</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C%E4%BD%BF%E7%94%A8-bear-%E6%9E%84%E5%BB%BA%E6%BA%90%E7%A0%81%E7%9A%84-compile_commandsjson-%E6%96%87%E4%BB%B6">二、使用 bear 构建源码的 compile_commands.json 文件</a></li>
-<li><a href="#%E4%B8%89%E4%BF%AE%E6%94%B9-compile_commandsjson-%E6%96%87%E4%BB%B6">三、修改 compile_commands.json 文件</a></li>
-<li><a href="#%E5%9B%9B%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E5%86%99">四、驱动程序和应用程序的编写</a></li>
-<li><a href="#%E4%BA%94%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E6%B7%BB%E5%8A%A0">五、配置文件的添加</a></li>
-<li><a href="#%E5%85%AD%E5%85%B6%E5%AE%83%E5%8F%AF%E9%80%89">六、其它（可选）</a></li>
-<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
-</ul>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最初在使用 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Linux%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81&spm=1001.2101.3001.7020">Linux 内核源码</a>进行驱动开发时，由于没有代码补全、自动提示等功能写起来十分不方便，虽然有人使用 Source Insight 来阅读源码，但是我用起来还是感觉怪怪的，有时间同一个函数会找到很多的定义，不便判断。在调用层次方面，还是 clangd 更好用。</p>
-<h2 id="一、VSCode-安装-clangd-插件并搭建环境"><a href="#一、VSCode-安装-clangd-插件并搭建环境" class="headerlink" title="一、VSCode 安装 clangd 插件并搭建环境"></a>一、VSCode 安装 clangd 插件并搭建环境</h2><p><a target="_blank" rel="noopener" href="https://clangd.llvm.org/">Clangd</a> 是一个基于 Clang 的语言服务器，它提供了代码智能感知和导航功能。通过与 VSCode 集成，可以实现以下功能：</p>
-<ul>
-<li><strong>代码补全和自动提示</strong>：Clangd 可以根据代码上下文提供准确的补全建议和自动提示，帮助开发者快速编写代码。</li>
-<li><strong>代码跳转和导航</strong>：Clangd 可以识别代码中的符号引用、函数调用等，并支持跳转到定义、查看声明等操作，便于阅读和理解复杂的内核源代码。</li>
-<li><strong>实时错误和警告检查</strong>：Clangd 可以实时检查代码中的语法错误、潜在问题和警告信息，帮助开发者及早发现和修复问题。</li>
-<li><strong>重构支持</strong>：Clangd 提供了一些重构功能，如重命名变量、提取函数等，可以简化代码重构的过程。</li>
-</ul>
-<h3 id="1、安装插件"><a href="#1、安装插件" class="headerlink" title="1、安装插件"></a>1、安装插件</h3><p><img src="https://img-blog.csdnimg.cn/3645c01972db45698f4e2b7b0d4eff5a.png"></p>
-<h3 id="2、禁用或卸载-Microsoft-C-C-Intelligence"><a href="#2、禁用或卸载-Microsoft-C-C-Intelligence" class="headerlink" title="2、禁用或卸载 Microsoft C&#x2F;C++ Intelligence"></a>2、禁用或卸载 Microsoft C&#x2F;C++ Intelligence</h3><p>因为和 clangd 有冲突，这种语法高亮的插件往往只能二者存其一。<br><img src="https://img-blog.csdnimg.cn/36eb417493f94996835539cf10b8e3cd.png"></p>
-<h3 id="3、安装-clangd-安装包"><a href="#3、安装-clangd-安装包" class="headerlink" title="3、安装 clangd 安装包"></a>3、安装 clangd 安装包</h3><p>VSCode clangd 插件本身是不能运行的，它还需要 clangd 的环境，所以接下来安装 clangd。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/clangd/clangd/releases/latest">下载地址</a><br>在 Ubuntu 中最好不要使用 apt 安装，因为版本比较旧，建议下载后手动安装。<br><img src="https://img-blog.csdnimg.cn/28b3ab937dfc4024abef258f34eba220.png"><br>解压后，<br>将 bin 文件夹下的 <strong>clangd</strong> 移动到 <strong>&#x2F;usr&#x2F;bin</strong> 目录下，<br>将 lib 文件夹下的所有移动到 <strong>&#x2F;usr&#x2F;local&#x2F;lib</strong> 目录下。<br>之后打开终端，键入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clangd --version</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/aceff70a905e43e3a921aae0c1a06098.png"><br>就算成功。</p>
-<h3 id="4、修改拓展设置"><a href="#4、修改拓展设置" class="headerlink" title="4、修改拓展设置"></a>4、修改拓展设置</h3><p>修改正确 clangd 路径：<br><img src="https://img-blog.csdnimg.cn/8ebbfb7a970b4da6b97471110ce7276d.png"></p>
-<h2 id="二、使用-bear-构建源码的-compile-commands-json-文件"><a href="#二、使用-bear-构建源码的-compile-commands-json-文件" class="headerlink" title="二、使用 bear 构建源码的 compile_commands.json 文件"></a>二、使用 bear 构建源码的 compile_commands.json 文件</h2><p>如果没有 bear 的话就安装一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install bear</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>我使用的是韦东山的 imx6ull-qemu 模拟开发板的内核源码，内核编译命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ml@ml-virtual-machine:~$ cd linux-4.9.88</span><br><span class="line">ml@ml-virtual-machine:~$ make mrproper</span><br><span class="line">ml@ml-virtual-machine:~$ make 100ask_imx6ull_qemu_defconfig</span><br><span class="line">ml@ml-virtual-machine:~$ bear make zImage -j4 //编译zImage 内核</span><br><span class="line">ml@ml-virtual-machine:~$ make clean  // 清除生成文件</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>倒数第二条带有 bear 的指令就是生成 compile_commands.json 文件的。</p>
-<p>compile_commands.json 文件记录了你的工程是如何构建的，使用到了哪些源码文件，源码文件之间的包含关系，引用路径之类的，这些可以帮助 clangd 构建符号关系索引库。<br><img src="https://img-blog.csdnimg.cn/859edafd67b34550b056f7a85a334c5c.png"><br><img src="https://img-blog.csdnimg.cn/1914d74580404f5793b3dc34c8367ce1.png"></p>
-<h2 id="三、修改-compile-commands-json-文件"><a href="#三、修改-compile-commands-json-文件" class="headerlink" title="三、修改 compile_commands.json 文件"></a>三、修改 compile_commands.json 文件</h2><p>目前，这个文件还不能用，需要修改编译工具链成对应的工具链，比如我这里需要全局替换：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;cc&quot;  --&gt;  &quot;arm-linux-gnueabihf-gcc&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/1b82ad3c042f4fa493307cfbcd6221b0.png"></p>
-<p>保存后关闭 VSCode，如果有. cache 文件夹的话，删除掉它。之后重新用 VSCode 打开源码目录，随便打开一个. c 文件，clangd 便自动开始索引文件了，索引文件会保存在 .cache 目录下。<br><img src="https://img-blog.csdnimg.cn/f78bfc99488b433a9bc813564f2adabb.png"></p>
-<p>如果这个过程特别快，只有几秒钟的话，那就是上述步骤有错误。正常来说，这个索引过程会有几分钟。</p>
-<p><img src="https://img-blog.csdnimg.cn/07dcacac63d243a2947c9be06f014b51.png"></p>
-<h2 id="四、驱动程序和应用程序的编写"><a href="#四、驱动程序和应用程序的编写" class="headerlink" title="四、驱动程序和应用程序的编写"></a>四、驱动程序和应用程序的编写</h2><p>对于驱动程序来说，我的方法是在当前源码目录下新建一个文件夹，在这个文件夹下进行驱动程序的编写，这样跳转、补全之类的都比较方便。<br><img src="https://img-blog.csdnimg.cn/64d9619c518d431881ce96769a89ad42.png"></p>
-<p>然后保存工作区，方便下次打开：<br><img src="https://img-blog.csdnimg.cn/b4135d44825a4ebb9c70f91e386e6026.png"></p>
-<p>对应用程序来说，不便放在源码工作区当中，可以像这样单独打开一个用于编写应用程序：<br><img src="https://img-blog.csdnimg.cn/b09fbda05d304b3a9210a78606fb75d9.png"></p>
-<p>驱动程序写完后，拷贝到应用程序所在目录的驱动程序文件中。<br><img src="https://img-blog.csdnimg.cn/90aa9d5a24314422b0225529f1b4970b.png"></p>
-<p>此后，便可以方便快捷的编写驱动程序和应用程序了。</p>
-<h2 id="五、配置文件的添加"><a href="#五、配置文件的添加" class="headerlink" title="五、配置文件的添加"></a>五、配置文件的添加</h2><p>clangd 是集成了 clang-tidy 和 clang-format 的，所以二者的配置文件也能在 clangd 下面使用。比如，我根据我的喜好更改了 format 格式和它的函数参数提示。<br><img src="https://img-blog.csdnimg.cn/34e1baf9f88c4f7d93d6250e7f5ce058.png"></p>
-<p>.clangd 文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 提示嵌入，不使用函数参数嵌入提示</span><br><span class="line">InlayHints:</span><br><span class="line">    Designators: Yes</span><br><span class="line">    Enabled: Yes</span><br><span class="line">    ParameterNames: No</span><br><span class="line">    DeducedTypes: Yes</span><br><span class="line"></span><br><span class="line">CompileFlags:</span><br><span class="line">    Add: [-xc, -Wall]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>.clang-format 文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">BasedOnStyle: LLVM</span><br><span class="line">UseTab: Never</span><br><span class="line">IndentWidth: 4</span><br><span class="line">TabWidth: 4</span><br><span class="line"></span><br><span class="line"># 最外层大括号换行</span><br><span class="line"># BreakBeforeBraces: Linux</span><br><span class="line"></span><br><span class="line">BreakBeforeBraces: Allman</span><br><span class="line">AllowShortIfStatementsOnASingleLine: true</span><br><span class="line">IndentCaseLabels: false</span><br><span class="line">ColumnLimit: 120</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="六、其它（可选）"><a href="#六、其它（可选）" class="headerlink" title="六、其它（可选）"></a>六、其它（可选）</h2><p><strong><code>如果你已经配置完成，就不要在意这里的设置。</code></strong></p>
-<p><img src="https://img-blog.csdnimg.cn/84a232b5f42540d18872a2d148b896a9.png"></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_61738650/article/details/131529082">使用 VSCode clangd 插件进行 linux 内核代码阅读和嵌入式开发</a></p>
-</blockquote>
-
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最初在使用 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Linux%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81&spm=1001.2101.3001.7020">Linux 内核源码</a>进行驱动开发时，由于没有代码补全、自动提示等功能写起来十分不方便，虽然有人使用 Source Insight 来阅读源码，但是我用起来还是感觉怪怪的，有时间同一个函数会找到很多的定义，不便判断。在调用层次方面，还是 clangd 更好用。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/12/VSCode%20%E4%BD%BF%E7%94%A8%20clangd%20%E6%9E%84%E5%BB%BA%20Linux%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1279,12 +840,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -1306,8 +867,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-24 13:47:45" itemprop="dateModified" datetime="2024-04-24T13:47:45+08:00">2024-04-24</time>
+                <time title="Modified: 2024-04-25 14:42:53" itemprop="dateModified" datetime="2024-04-25T14:42:53+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
 
           
 
@@ -1326,18 +896,14 @@
 <li><p>安装 STM32_Cube MX<br>首先需要下载 Cube MX 软件，链接:<a target="_blank" rel="noopener" href="https://www.st.com/en/development-tools/stm32cubemx.html">https://www.st.com/en/development-tools/stm32cubemx.html</a> 下载。</p>
 </li>
 <li><p>生成 Makefile 工程</p>
-</li>
-</ol>
-<h4 id="VScode-工具准备"><a href="#VScode-工具准备" class="headerlink" title="VScode 工具准备"></a>VScode 工具准备</h4><p>参考AT32的开发环境搭建 <a target="_blank" rel="noopener" href="https://www.arterytek.com/cn/support/index.jsp">https://www.arterytek.com/cn/support/index.jsp</a>  AN0130</p>
-<ol>
-<li>mingw64 <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/">https://sourceforge.net/projects/mingw-w64/</a></li>
-<li>arm-none-eabi-gcc <a target="_blank" rel="noopener" href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads</a></li>
-<li>openocd <a target="_blank" rel="noopener" href="https://gnutoolchains.com/arm-eabi/openocd/">https://gnutoolchains.com/arm-eabi/openocd/</a></li>
-<li>添加以上环境变量到 PATH,到MinGW安装目录下，进入&#x2F;bin目录，找到其中的mingw32-make.exe并复制一份放到相同目录下，修改命名为make.exe。</li>
-<li>STM32F1xx_DFP 2.4.1 中获取对应型号的SVD文件，包含调试用的寄存器信息。<br><a target="_blank" rel="noopener" href="https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/">https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/</a></li>
-</ol>
-<h4 id="VScode-调试配置"><a href="#VScode-调试配置" class="headerlink" title="VScode 调试配置"></a>VScode 调试配置</h4><p>使用 cortex-debug 插件，通过调用 opencd来实现调试，需要实现 launch.json。<br>使用 C++ Task 插件， 需要实现 task.json, 点击vscode 输入栏，输入task+空格，选择run task。<br>使用的是PWLINK2作为烧录器，PWLINK2可归类DAPlink。<br>需要用到 OpenOCD文件夹中的 stm32f1x.cfg 和cmsis-dap.cfg<br>Makefile文件编写(重点)</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/12/stm32%E5%BC%80%E5%8F%91/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1360,12 +926,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Linkua">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Excerpt">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -1387,8 +953,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-25 01:15:44" itemprop="dateModified" datetime="2024-04-25T01:15:44+08:00">2024-04-25</time>
+                <time title="Modified: 2024-04-25 14:48:02" itemprop="dateModified" datetime="2024-04-25T14:48:02+08:00">2024-04-25</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
 
           
 
@@ -1403,67 +978,19 @@
       
           <h3 id="VScode-Clangd"><a href="#VScode-Clangd" class="headerlink" title="VScode Clangd"></a>VScode Clangd</h3><p><a target="_blank" rel="noopener" href="https://clangd.llvm.org/">Clangd</a> 是一个基于 Clang 的语言服务器，它提供了代码智能感知和导航功能。通过与 VSCode 集成。</p>
 <ol>
-<li>搜索 clangd 插件安装</li>
-<li>禁用或卸载 Microsoft C&#x2F;C++ Intelligence</li>
-<li>VSCode clangd 插件本身是不能运行的，它还需要 clangd 的环境，所以接下来安装 clangd。<br>在 Ubuntu 中最好不要使用 apt 安装，因为版本比较旧，建议下载后手动安装。<br>解压后，<br>将 bin 文件夹下的 clangd 移动到 &#x2F;usr&#x2F;bin 目录下，<br>将 lib 文件夹下的所有移动到 &#x2F;usr&#x2F;local&#x2F;lib 目录下。<br><code>clangd --version</code>查看版本。</li>
-<li>使用 bear 构建源码的 compile_commands.json 文件,clangd需要这个文件才能提供补全和跳转，compile_commands.json 文件记录了你的工程是如何构建的，使用到了哪些源码文件，源码文件之间的包含关系，引用路径之类的，这些可以帮助 clangd 构建符号关系索引库。<br><code>sudo apt install bear</code> 安装 bear </li>
-<li>修改 compile_commands.json 文件<br>需要全局替换：”cc”  –&gt;  “arm-linux-gnueabihf-gcc”<br>保存后关闭 VSCode，如果有. cache 文件夹的话，删除掉它。之后重新用 VSCode 打开源码目录，随便打开一个. c 文件，clangd 便自动开始索引文件了，索引文件会保存在 .cache 目录下。</li>
-<li>驱动程序和应用程序的编写<br>对于驱动程序来说，我的方法是在当前源码目录下新建一个文件夹，在这个文件夹下进行驱动程序的编写，这样跳转、补全之类的都比较方便。<br>然后保存工作区，方便下次打开：<br>对应用程序来说，不便放在源码工作区当中，可以像这样单独打开一个用于编写应用程序：<br>驱动程序写完后，拷贝到应用程序所在目录的驱动程序文件中。</li>
-</ol>
-<h3 id="安装-NFS"><a href="#安装-NFS" class="headerlink" title="安装 NFS"></a>安装 NFS</h3><h4 id="在Ubuntu上设置NFS服务器的步骤如下："><a href="#在Ubuntu上设置NFS服务器的步骤如下：" class="headerlink" title="在Ubuntu上设置NFS服务器的步骤如下："></a>在Ubuntu上设置NFS服务器的步骤如下：</h4><ol>
-<li><p>安装NFS内核服务器：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nfs-kernel-server</span><br></pre></td></tr></table></figure>
+<li><p>搜索 clangd 插件安装</p>
 </li>
-<li><p>创建共享目录：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /srv/nfs/share</span><br><span class="line">sudo chown nobody:nogroup /srv/nfs/share</span><br></pre></td></tr></table></figure>
+<li><p>禁用或卸载 Microsoft C&#x2F;C++ Intelligence</p>
 </li>
-<li><p>配置共享权限。编辑 &#x2F;etc&#x2F;exports 文件，并添加共享目录配置：<code>sudo nano /etc/exports</code></p>
-</li>
-</ol>
-<p>添加以下行：<code>/srv/nfs/share 192.168.1.0/24(rw,sync,no_subtree_check)</code></p>
-<ol start="4">
-<li>启动 NFS服务<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start nfs-kernel-server</span><br><span class="line">sudo systemctl enable nfs-kernel-server</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="在客户端计算机上，您需要安装NFS通用文件系统客户端："><a href="#在客户端计算机上，您需要安装NFS通用文件系统客户端：" class="headerlink" title="在客户端计算机上，您需要安装NFS通用文件系统客户端："></a>在客户端计算机上，您需要安装NFS通用文件系统客户端：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nfs-common</span><br></pre></td></tr></table></figure>
-<p>然后，您可以挂载服务器上的共享目录：<br><code>sudo mount -t nfs 192.168.1.x:/srv/nfs/share /mnt</code></p>
-<h4 id="windows-挂载linux-NFS"><a href="#windows-挂载linux-NFS" class="headerlink" title="windows 挂载linux NFS"></a>windows 挂载linux NFS</h4><p>在Windows上挂载Linux NFS共享，你需要确保已经在Linux服务器上配置了NFS共享，并且Windows客户端已安装NFS客户端功能。以下是如何在Windows上挂载Linux NFS共享的步骤：</p>
-<p>安装NFS客户端功能：</p>
-<p>打开“控制面板” -&gt; “程序和功能” -&gt; “启用或关闭Windows功能”，勾选“NFS客户端”，然后点击“确定”安装。</p>
-<p>使用命令行挂载NFS共享：</p>
-<p>打开命令提示符或PowerShell，使用mount命令挂载Linux NFS共享。</p>
-<p>例如，如果你的Linux NFS服务器IP是192.168.1.100，NFS共享路径是&#x2F;shared，你想将其挂载到本地的Z:驱动器，可以使用以下命令：</p>
-<p><code>mount \\192.168.1.100\shared Z:</code><br>如果你想在每次启动时自动挂载该共享，可以在mount命令后添加-p参数，并将命令添加到autocmd.bat文件中，该文件位于C:\Windows\System32\目录下。</p>
-<p>注意：确保你的Windows防火墙设置允许NFS通信。如果你的NFS服务器配置了访问控制，你可能需要提供用户名和密码。</p>
-<h3 id="gcc-命令"><a href="#gcc-命令" class="headerlink" title="gcc 命令"></a>gcc 命令</h3><p> GCC 常用编译选项<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-E 预处理，开发过程中想快速确定某个宏可以使用“-E -dM”</span><br><span class="line">-c 把预处理、编译、汇编都做了，但是不链接</span><br><span class="line">-o 指定输出文件</span><br><span class="line">-I 指定头文件目录</span><br><span class="line">-L 指定链接时库文件目录</span><br><span class="line">-l 指定链接哪一个库文件</span><br></pre></td></tr></table></figure><br>常用 <code>gcc -o hello hello.c</code></p>
-<h3 id="Makefine"><a href="#Makefine" class="headerlink" title="Makefine"></a>Makefine</h3><h4 id="Make-fine-原理"><a href="#Make-fine-原理" class="headerlink" title="Make fine 原理"></a>Make fine 原理</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gcc -c -o a.o a.c</span><br><span class="line">gcc -c -o b.o b.c</span><br><span class="line">gcc -o test a.o b.o</span><br><span class="line">gcc -c -o c.o c.c -MD -MF c.d</span><br></pre></td></tr></table></figure>
-<p>gcc 生成依赖 c.d<br>如何判断哪些文件被修改，只编译被修改的文件，比较时间：目标文件和依赖文件的时间，当依赖比目标新时，执行编译文件。</p>
-<p>目标:依赖<br>[TAB]命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">test:a.o b.o</span><br><span class="line">    gcc -o test a.o b.o</span><br><span class="line"></span><br><span class="line">a.o : a.c</span><br><span class="line">    gcc -o a.o a.c</span><br><span class="line"></span><br><span class="line">b.o : b.c</span><br><span class="line">    gcc -o b.o b.c</span><br></pre></td></tr></table></figure>
-<h4 id="Makefile语法"><a href="#Makefile语法" class="headerlink" title="Makefile语法"></a>Makefile语法</h4><p>% 通配符 %.o<br>$@ 目标<br>$&lt; 第一个依赖文件<br>$^ 所有依赖文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test:a.o b.o</span><br><span class="line">    gcc -o test $^</span><br><span class="line">%.o : %.c</span><br><span class="line">gcc -c -o $@ $&lt;</span><br></pre></td></tr></table></figure>
-
-<p>make 无目标，默认第一个为目标<br>使用下面的语句把“clean”设置为假想目标：<br><code>.PHONY : clean</code></p>
-<p>即时变量、延时变量，export</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A = xxx // 延时变量</span><br><span class="line">B ?= xxx // 延时变量，只有第一次定义时赋值才成功；如果曾定义过，此赋值无效</span><br><span class="line">C := xxx // 立即变量</span><br><span class="line">D += yyy // 如果 D 在前面是延时变量，那么现在它还是延时变量；</span><br><span class="line">D += dir/ dir 是一个目录</span><br><span class="line">// 如果 D 在前面是立即变量，那么现在它还是立即变量</span><br></pre></td></tr></table></figure>
-<p>@echo 看不到变量<br>@echo $(A)</p>
-<h5 id="makefile-函数"><a href="#makefile-函数" class="headerlink" title="makefile 函数"></a>makefile 函数</h5><p><code>$(foreach var,list,text)</code><br>简单地说，就是 for each var in list, change it to text。对 list 中的每一个<br>元素，取出来赋给 var，然后把 var 改为 text 所描述的形式。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objs := a.o b.o</span><br><span class="line">dep_files := $(foreach f, $(objs), .$(f).d) // 最终 dep_files := .a.o.d .b.o.d</span><br></pre></td></tr></table></figure>
-<p><code>$(wildcard pattern)</code><br>pattern 所列出的文件是否存在，把存在的文件都列出来。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">src_files := $( wildcard *.c) // 最终 src_files 中列出了当前目录下的所有.c 文件</span><br></pre></td></tr></table></figure>
-
-<p><code>$(filter pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter(过滤)出来、留下来。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter %/, $(obj-y)) //结果为：c/ d/</span><br></pre></td></tr></table></figure>
-
-<p><code>$(filter-out pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter-out(过滤)出来、扔掉。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter-out %/, $(obj-y)) //结果为：a.o b.o</span><br></pre></td></tr></table></figure>
-
-<p><code>$(patsubst pattern,replacement,text)</code><br>寻找text中符合格式pattern的字，用replacement替换它们。<br>pattern和replacement中可以使用通配符。</p>
-<p>比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subdir-y := c/ d/</span><br><span class="line">subdir-y := $(patsubst %/, %, $(subdir-y)) // 结果为：c d</span><br></pre></td></tr></table></figure>
-<p>EXTRA_CFLAGS :&#x3D; -D DEBUG 打开宏</p>
-<h4 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h4><p>Linux 内核编译通常使用 make 工具，而不是 cmake。cmake 是用于跨平台构建系统的工具，但 Linux 内核不是为跨平台设计的，而是直接使用 make 工具来构建。</p>
-<h4 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h4><p>linux&#x2F;unix 系统开发</p>
-
+<li><p>VSCode clangd 插件本身是不能运行的，它还需要 clangd 的环境，所以接下来安装 clangd。<br>在 Ubuntu 中最好不要使用 apt 安装，因为版本比较旧，建议下载后手动安装。<br>解压后，<br>将 bin 文件夹下的 clangd 移动到 &#x2F;usr&#x2F;bin 目录下，<br>将 lib 文件夹下的所有移动到 &#x2F;usr&#x2F;local&#x2F;lib 目录下。<br><code>clangd --version</code>查看版本。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/02/linux%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1539,7 +1066,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
+  <p class="site-author-name" itemprop="name">Linkua</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -1550,6 +1077,14 @@
           <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>
@@ -1579,7 +1114,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">Linkua</span>
 </div>
 
         
