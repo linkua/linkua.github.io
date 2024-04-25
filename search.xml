@@ -2201,9 +2201,12 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
     <url>/2024/04/01/%E5%B8%B8%E7%94%A8linux%20%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
     <content><![CDATA[<h3 id="SHELL-命令"><a href="#SHELL-命令" class="headerlink" title="SHELL 命令"></a>SHELL 命令</h3><p>ls [-option] <parameter></p>
 <p>-为参数， []为可选，&lt;&gt;为必须的</p>
-<p>ls –help</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls --help</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
 <h4 id="环境变量-PATH"><a href="#环境变量-PATH" class="headerlink" title="环境变量 PATH"></a>环境变量 PATH</h4><p>临时 export PATH&#x3D;$PATH:路径<br>永久 修改~&#x2F;.bashrc,在行尾添加或修改</p>
-<h4 id="目录文件操作"><a href="#目录文件操作" class="headerlink" title="目录文件操作"></a>目录文件操作</h4><p>pwd 当前目录<br>cd -上一次目录<br>cp -rfd<br>mv<br>rm<br>cat<br>touch 修改文件的当前时间</p>
+<h4 id="目录文件操作"><a href="#目录文件操作" class="headerlink" title="目录文件操作"></a>目录文件操作</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pwd 当前目录  </span><br><span class="line">cd -上一次目录</span><br><span class="line">cp -rfd </span><br><span class="line">mv</span><br><span class="line">rm</span><br><span class="line">cat</span><br><span class="line">touch 修改文件的当前时间</span><br></pre></td></tr></table></figure>
+
 <p>-rwxrwxr-x 拥有者 组 大小 时间<br>-表示常规文件<br>d表示文件家<br>左边第一个表示拥有者<br>第二个表示同组者<br>最后一个表示其他用户</p>
 <p>chmod [-R] +-rxw</p>
 <p>find [pwd] &lt;”name”&gt;   查找目录中的文件</p>
@@ -2348,6 +2351,8 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
     <url>/2024/03/27/%E8%A3%85%E6%9C%BA/</url>
     <content><![CDATA[<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>Ubuntu官网下载iso<br>Windows原版镜像: <a href="https://hellowindows.cn/">https://hellowindows.cn/</a><br>PE工具：微PE工具箱或者FirPE <a href="https://firpe.cn/">https://firpe.cn/</a><br>引导工具：VenToy制作U盘启动盘 <a href="https://www.ventoy.net/cn/">https://www.ventoy.net/cn/</a></p>
 <p>使用Ventoy制作U盘启动盘后，将PE工具的ISO和系统镜像ISO都放入U盘中，<br>电脑重启进入BIOS,选择从U盘启动，再启动系统镜像</p>
+<span id="more"></span>
+
 <h3 id="rEFInd引导"><a href="#rEFInd引导" class="headerlink" title="rEFInd引导"></a>rEFInd引导</h3><p>如果存在多个操作系统，可以使用rEFInd来管理，<br>下载refind，放入EFI分区boot中，&#x2F;boot&#x2F;EFI&#x2F;refind。<br>下载rEFInd-minimal主题，放入refind 下创建themes 文件夹中。<br>修改refind.conf文件，最后增加</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">include themes/rEFInd-minimal/theme.conf</span><br><span class="line">resolution 1024 768</span><br><span class="line">dont_scan_dirs /EFI/BOOT,/EFI/ubuntu</span><br></pre></td></tr></table></figure>
 
