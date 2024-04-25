@@ -472,6 +472,78 @@
       </tags>
   </entry>
   <entry>
+    <title>git</title>
+    <url>/2022/03/04/git/</url>
+    <content><![CDATA[<h2 id="git-命令使用"><a href="#git-命令使用" class="headerlink" title="git 命令使用"></a>git 命令使用</h2><p>开始使用 git 的简易指南<br>更多可以参考: (<a href="http://book.git-scm.com/">http://book.git-scm.com/</a>)</p>
+<span id="more"></span>
+
+<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init </span><br></pre></td></tr></table></figure>
+<p> 以创建新的 git 仓库。</p>
+<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> /path/to/repository</span><br></pre></td></tr></table></figure>
+<p>如果是远端服务器上的仓库，你的命令会是这个样子</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> username@host:/path/to/repository</span><br></pre></td></tr></table></figure>
+
+<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录,它持有实际文件；第二个是 缓存区，它像个缓存区域(Index)，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。 </p>
+<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
+<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;代码提交信息&quot;</span></span><br></pre></td></tr></table></figure>
+<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
+<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<p>可以把 <i>master</i> 换成你想要推送的任何分支。</p>
+<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt; </span><br></pre></td></tr></table></figure>
+<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master&#x2F;main 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上创建一个叫做“branch_x”的分支，并切换过去：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branch_x</span><br></pre></td></tr></table></figure>
+<p>切换回主分支：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b main</span><br></pre></td></tr></table></figure>
+<p>再把新建的分支删掉：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branch_x</span><br></pre></td></tr></table></figure>
+<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+
+<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。要合并其他分支到你的当前分支（例如 master），执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>在合并改动之前，也可以使用如下命令查看：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;file name&gt;</span><br></pre></td></tr></table></figure>
+<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
+<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard origin/master </span><br></pre></td></tr></table></figure>
+
+<p>显示历史记录时，只显示一行注释信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config format.pretty oneline</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="github-com和raw-githubusercontent-com访问不了的解决方法"><a href="#github-com和raw-githubusercontent-com访问不了的解决方法" class="headerlink" title="github.com和raw.githubusercontent.com访问不了的解决方法"></a>github.com和raw.githubusercontent.com访问不了的解决方法</h3><p>本文链接 <a href="https://www.ioiox.com/archives/62.html">https://www.ioiox.com/archives/62.html</a><br>这里还有免费FRP!!!</p>
+<h3 id="修改-hosts"><a href="#修改-hosts" class="headerlink" title="修改 hosts"></a>修改 hosts</h3><p>在 hosts 文件添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用gh-proxy来代理访问"><a href="#使用gh-proxy来代理访问" class="headerlink" title="使用gh-proxy来代理访问"></a>使用gh-proxy来代理访问</h3><p>gh-proxy 是一款 github release、archive以及项目文件的加速项目，支持直接在终端 git clone ,也可以在 web 端代理下载 github 以及 raw.githubusercontent.com 等文件.<br>项目默认使用jsdelivr和cnpmjs</p>
+<p>支持终端命令行下载 , 例如 git clone , wget , curl 等以及 raw.githubusercontent.com 文件下载.<br>注意：不支持 SSH Key 方式 git clone 下载.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone</span><br><span class="line">git clone https://ghproxy.com/https://github.com/stilleshan/ServerStatus.git</span><br><span class="line"></span><br><span class="line">wget &amp; curl</span><br><span class="line">wget https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">wget https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br><span class="line">curl -O https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">curl -O https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>freertos</title>
     <url>/2024/01/02/freeRTOS/</url>
     <content><![CDATA[<h2 id="MISRA"><a href="#MISRA" class="headerlink" title="MISRA"></a>MISRA</h2><p>MISRA C是由汽车产业软件可靠性协会（MISRA）提出的C语言开发标准。其目的是在增进嵌入式系统的安全性及可移植性。针对C++语言也有对应的标准MISRA C++。</p>
@@ -745,78 +817,6 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </tags>
   </entry>
   <entry>
-    <title>git</title>
-    <url>/2022/03/04/git/</url>
-    <content><![CDATA[<h2 id="git-命令使用"><a href="#git-命令使用" class="headerlink" title="git 命令使用"></a>git 命令使用</h2><p>开始使用 git 的简易指南<br>更多可以参考: (<a href="http://book.git-scm.com/">http://book.git-scm.com/</a>)</p>
-<span id="more"></span>
-
-<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init </span><br></pre></td></tr></table></figure>
-<p> 以创建新的 git 仓库。</p>
-<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> /path/to/repository</span><br></pre></td></tr></table></figure>
-<p>如果是远端服务器上的仓库，你的命令会是这个样子</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> username@host:/path/to/repository</span><br></pre></td></tr></table></figure>
-
-<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录,它持有实际文件；第二个是 缓存区，它像个缓存区域(Index)，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。 </p>
-<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add filename</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
-<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;代码提交信息&quot;</span></span><br></pre></td></tr></table></figure>
-<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
-<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-<p>可以把 <i>master</i> 换成你想要推送的任何分支。</p>
-<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt; </span><br></pre></td></tr></table></figure>
-<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
-<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master&#x2F;main 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上创建一个叫做“branch_x”的分支，并切换过去：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branch_x</span><br></pre></td></tr></table></figure>
-<p>切换回主分支：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b main</span><br></pre></td></tr></table></figure>
-<p>再把新建的分支删掉：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branch_x</span><br></pre></td></tr></table></figure>
-<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-
-<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。要合并其他分支到你的当前分支（例如 master），执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-
-<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-<p>在合并改动之前，也可以使用如下命令查看：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;file name&gt;</span><br></pre></td></tr></table></figure>
-<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
-<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard origin/master </span><br></pre></td></tr></table></figure>
-
-<p>显示历史记录时，只显示一行注释信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config format.pretty oneline</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="github-com和raw-githubusercontent-com访问不了的解决方法"><a href="#github-com和raw-githubusercontent-com访问不了的解决方法" class="headerlink" title="github.com和raw.githubusercontent.com访问不了的解决方法"></a>github.com和raw.githubusercontent.com访问不了的解决方法</h3><p>本文链接 <a href="https://www.ioiox.com/archives/62.html">https://www.ioiox.com/archives/62.html</a><br>这里还有免费FRP!!!</p>
-<h3 id="修改-hosts"><a href="#修改-hosts" class="headerlink" title="修改 hosts"></a>修改 hosts</h3><p>在 hosts 文件添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用gh-proxy来代理访问"><a href="#使用gh-proxy来代理访问" class="headerlink" title="使用gh-proxy来代理访问"></a>使用gh-proxy来代理访问</h3><p>gh-proxy 是一款 github release、archive以及项目文件的加速项目，支持直接在终端 git clone ,也可以在 web 端代理下载 github 以及 raw.githubusercontent.com 等文件.<br>项目默认使用jsdelivr和cnpmjs</p>
-<p>支持终端命令行下载 , 例如 git clone , wget , curl 等以及 raw.githubusercontent.com 文件下载.<br>注意：不支持 SSH Key 方式 git clone 下载.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone</span><br><span class="line">git clone https://ghproxy.com/https://github.com/stilleshan/ServerStatus.git</span><br><span class="line"></span><br><span class="line">wget &amp; curl</span><br><span class="line">wget https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">wget https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br><span class="line">curl -O https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">curl -O https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hello world</title>
     <url>/2022/01/01/hello/</url>
     <content><![CDATA[<h1 id="静态网页博客搭建"><a href="#静态网页博客搭建" class="headerlink" title="静态网页博客搭建"></a>静态网页博客搭建</h1><ul>
@@ -875,6 +875,40 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
 <p>食谱的分类（Categories）是早餐、午餐、晚餐、开胃菜、汤、沙拉、配菜和甜点。所有的食谱都可以划归为其中的一种。</p>
 <p>此外，用户可能还希望根据一些特点来寻找食谱，比如原味、番茄味、三鲜味、麻辣味等。这些使用标签（Tags）表示。</p>
 <h3 id="注意代码块"><a href="#注意代码块" class="headerlink" title="注意代码块"></a>注意代码块</h3><p>代码块由“&#96;&#96;&#96;+回车”抱起来，不然hexo会乱码</p>
+<h3 id="修改文章底部标签的-的样式"><a href="#修改文章底部标签的-的样式" class="headerlink" title="修改文章底部标签的#的样式"></a>修改文章底部标签的#的样式</h3><p>默认的文章标签的样式是带有#这个符号的，比如#Spring Boot，但是可以将#修改成标签的icon，效果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Use icon instead of the symbol # to indicate the tag at the bottom of the post</span><br><span class="line">tag_icon: true</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -2097,6 +2131,34 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </tags>
   </entry>
   <entry>
+    <title>STM32 开发</title>
+    <url>/2024/04/12/stm32%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="Windows-下-Vscode开发环境"><a href="#Windows-下-Vscode开发环境" class="headerlink" title="Windows 下 Vscode开发环境"></a>Windows 下 Vscode开发环境</h3><h4 id="STM32CubeMX"><a href="#STM32CubeMX" class="headerlink" title="STM32CubeMX"></a>STM32CubeMX</h4><ol>
+<li><p>安装 JAVA 环境<br>由于 STM32CubeMX 软件是基于 JAVA 环境运行的，所以需要安装 JAVA 环境 （Java Runtime Environment）才能使用。<br>官网: <a href="https://www.java.com/en/download/manual.jsp">https://www.java.com/en/download/manual.jsp</a> 下载直接安装即可。</p>
+</li>
+<li><p>安装 STM32_Cube MX<br>首先需要下载 Cube MX 软件，链接:<a href="https://www.st.com/en/development-tools/stm32cubemx.html">https://www.st.com/en/development-tools/stm32cubemx.html</a> 下载。</p>
+</li>
+<li><p>生成 Makefile 工程</p>
+<span id="more"></span></li>
+</ol>
+<h4 id="VScode-工具准备"><a href="#VScode-工具准备" class="headerlink" title="VScode 工具准备"></a>VScode 工具准备</h4><p>参考AT32的开发环境搭建 <a href="https://www.arterytek.com/cn/support/index.jsp">https://www.arterytek.com/cn/support/index.jsp</a>  AN0130</p>
+<ol>
+<li>mingw64 <a href="https://sourceforge.net/projects/mingw-w64/">https://sourceforge.net/projects/mingw-w64/</a></li>
+<li>arm-none-eabi-gcc <a href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads</a></li>
+<li>openocd <a href="https://gnutoolchains.com/arm-eabi/openocd/">https://gnutoolchains.com/arm-eabi/openocd/</a></li>
+<li>添加以上环境变量到 PATH,到MinGW安装目录下，进入&#x2F;bin目录，找到其中的mingw32-make.exe并复制一份放到相同目录下，修改命名为make.exe。</li>
+<li>STM32F1xx_DFP 2.4.1 中获取对应型号的SVD文件，包含调试用的寄存器信息。<br><a href="https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/">https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/</a></li>
+</ol>
+<h4 id="VScode-调试配置"><a href="#VScode-调试配置" class="headerlink" title="VScode 调试配置"></a>VScode 调试配置</h4><p>使用 cortex-debug 插件，通过调用 opencd来实现调试，需要实现 launch.json。<br>使用 C++ Task 插件， 需要实现 task.json, 点击vscode 输入栏，输入task+空格，选择run task。<br>使用的是PWLINK2作为烧录器，PWLINK2可归类DAPlink。<br>需要用到 OpenOCD文件夹中的 stm32f1x.cfg 和cmsis-dap.cfg<br>Makefile文件编写(重点)</p>
+]]></content>
+      <categories>
+        <category>MCU</category>
+      </categories>
+      <tags>
+        <tag>stm32 vscode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu</title>
     <url>/2024/03/30/ubuntu%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h3 id="更新软件源"><a href="#更新软件源" class="headerlink" title="更新软件源"></a>更新软件源</h3><p>①英文环境下，找到 software and upadate 并进入，</p>
@@ -2126,34 +2188,6 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </categories>
       <tags>
         <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>STM32 开发</title>
-    <url>/2024/04/12/stm32%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="Windows-下-Vscode开发环境"><a href="#Windows-下-Vscode开发环境" class="headerlink" title="Windows 下 Vscode开发环境"></a>Windows 下 Vscode开发环境</h3><h4 id="STM32CubeMX"><a href="#STM32CubeMX" class="headerlink" title="STM32CubeMX"></a>STM32CubeMX</h4><ol>
-<li><p>安装 JAVA 环境<br>由于 STM32CubeMX 软件是基于 JAVA 环境运行的，所以需要安装 JAVA 环境 （Java Runtime Environment）才能使用。<br>官网: <a href="https://www.java.com/en/download/manual.jsp">https://www.java.com/en/download/manual.jsp</a> 下载直接安装即可。</p>
-</li>
-<li><p>安装 STM32_Cube MX<br>首先需要下载 Cube MX 软件，链接:<a href="https://www.st.com/en/development-tools/stm32cubemx.html">https://www.st.com/en/development-tools/stm32cubemx.html</a> 下载。</p>
-</li>
-<li><p>生成 Makefile 工程</p>
-<span id="more"></span></li>
-</ol>
-<h4 id="VScode-工具准备"><a href="#VScode-工具准备" class="headerlink" title="VScode 工具准备"></a>VScode 工具准备</h4><p>参考AT32的开发环境搭建 <a href="https://www.arterytek.com/cn/support/index.jsp">https://www.arterytek.com/cn/support/index.jsp</a>  AN0130</p>
-<ol>
-<li>mingw64 <a href="https://sourceforge.net/projects/mingw-w64/">https://sourceforge.net/projects/mingw-w64/</a></li>
-<li>arm-none-eabi-gcc <a href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads</a></li>
-<li>openocd <a href="https://gnutoolchains.com/arm-eabi/openocd/">https://gnutoolchains.com/arm-eabi/openocd/</a></li>
-<li>添加以上环境变量到 PATH,到MinGW安装目录下，进入&#x2F;bin目录，找到其中的mingw32-make.exe并复制一份放到相同目录下，修改命名为make.exe。</li>
-<li>STM32F1xx_DFP 2.4.1 中获取对应型号的SVD文件，包含调试用的寄存器信息。<br><a href="https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/">https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/</a></li>
-</ol>
-<h4 id="VScode-调试配置"><a href="#VScode-调试配置" class="headerlink" title="VScode 调试配置"></a>VScode 调试配置</h4><p>使用 cortex-debug 插件，通过调用 opencd来实现调试，需要实现 launch.json。<br>使用 C++ Task 插件， 需要实现 task.json, 点击vscode 输入栏，输入task+空格，选择run task。<br>使用的是PWLINK2作为烧录器，PWLINK2可归类DAPlink。<br>需要用到 OpenOCD文件夹中的 stm32f1x.cfg 和cmsis-dap.cfg<br>Makefile文件编写(重点)</p>
-]]></content>
-      <categories>
-        <category>MCU</category>
-      </categories>
-      <tags>
-        <tag>stm32 vscode</tag>
       </tags>
   </entry>
   <entry>
