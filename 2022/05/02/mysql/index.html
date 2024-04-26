@@ -28,7 +28,7 @@
 <meta property="og:description" content="MySQL 简介MySQL 最早是由瑞典的 MySQL AB 公司开发的一个开放源码的关系数据库管理系统，该公司于2008年被昇阳微系统公司（Sun Microsystems）收购。在2009年，甲骨文公司（Oracle）收购昇阳微系统公司，因此 MySQL 目前也是 Oracle 旗下产品。 MySQL 在过去由于性能高、成本低、可靠性好，已经成为最流行的开源数据库，因此被广泛地应用于中小型网站">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-01T16:10:01.000Z">
-<meta property="article:modified_time" content="2024-04-25T06:47:18.334Z">
+<meta property="article:modified_time" content="2024-04-25T14:54:29.265Z">
 <meta property="article:author" content="Linkua">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
@@ -214,7 +214,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-25 14:47:18" itemprop="dateModified" datetime="2024-04-25T14:47:18+08:00">2024-04-25</time>
+                <time title="Modified: 2024-04-25 22:54:29" itemprop="dateModified" datetime="2024-04-25T22:54:29+08:00">2024-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,6 +241,7 @@
 <p>MySQL 在过去由于性能高、成本低、可靠性好，已经成为最流行的开源数据库，因此被广泛地应用于中小型网站开发。随着 MySQL 的不断成熟，它也逐渐被应用于更多大规模网站和应用，比如维基百科、谷歌（Google）、脸书（Facebook）、淘宝网等网站都使用了 MySQL 来提供数据持久化服务。</p>
 <p>甲骨文公司收购后昇阳微系统公司，大幅调涨 MySQL 商业版的售价，且甲骨文公司不再支持另一个自由软件项目 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/OpenSolaris">OpenSolaris </a> 的发展，因此导致自由软件社区对于 Oracle 是否还会持续支持 MySQL 社区版（MySQL 的各个发行版本中唯一免费的版本）有所担忧，MySQL 的创始人麦克尔·维德纽斯以 MySQL 为基础，创建了 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/MariaDB">MariaDB</a>（以他女儿的名字命名的数据库）分支。有许多原来使用 MySQL 数据库的公司（例如：维基百科）已经陆续完成了从 MySQL 数据库到 MariaDB 数据库的迁移。</p>
 <span id="more"></span>
+
 <h4 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h4><p>方法一应用华为镜像包解压：参考linuxdeploy<br>方法二使用官网rpm源：<br>   可以在 <a target="_blank" rel="noopener" href="https://www.mysql.com/">MySQL 官方网站</a>下载安装文件。首先在下载页面中选择平台和版本，然后找到对应的下载链接，直接下载包含所有安装文件的归档文件，解归档之后通过包管理工具进行安装。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://downloads.mysql.com/archives/get/p/23/file/mysql-xxx.rpm-bundle.tar</span><br><span class="line">tar -xvf mysql-xxx.rpm-bundle.tar</span><br></pre></td></tr></table></figure>
 <p>   如果系统上有 MariaDB 相关的文件，需要先移除 MariaDB 相关的文件。</p>
