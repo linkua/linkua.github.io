@@ -20,13 +20,14 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前言淘宝上出现很多基于物联网卡的随身wifi，大多数硬件几块钱包邮，然后套餐收割。硬件分为USB之差棒子和带电池的移款，LTE Cat.4的大多数基于ASR的1803s主控搭配25vq64 flash, 也有ZXW的，前期还有高通410的。这其实就是蜂窝网络模块的一种使用。这个意义上看，模块既像一台没有屏幕和电池的手机，又像一种功能较为复杂的单片机。">
+  <meta name="description" content="前言EC200D is UIS8310EC200A is ASR1803S 淘宝上出现很多基于物联网卡的随身wifi，大多数硬件几块钱包邮，然后套餐收割。硬件分为USB之差棒子和带电池的移款，LTE Cat.4的大多数基于ASR的asr1803 (A7)主控搭配25vq64 flash, 也有ZXW的zx297520v3(A53 wifi6)主控搭配25vq64 flash，前期还有高通410的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mifi">
 <meta property="og:url" content="http://example.com/2024/04/22/mifi/index.html">
 <meta property="og:site_name" content="Excerpt">
-<meta property="og:description" content="前言淘宝上出现很多基于物联网卡的随身wifi，大多数硬件几块钱包邮，然后套餐收割。硬件分为USB之差棒子和带电池的移款，LTE Cat.4的大多数基于ASR的1803s主控搭配25vq64 flash, 也有ZXW的，前期还有高通410的。这其实就是蜂窝网络模块的一种使用。这个意义上看，模块既像一台没有屏幕和电池的手机，又像一种功能较为复杂的单片机。">
+<meta property="og:description" content="前言EC200D is UIS8310EC200A is ASR1803S 淘宝上出现很多基于物联网卡的随身wifi，大多数硬件几块钱包邮，然后套餐收割。硬件分为USB之差棒子和带电池的移款，LTE Cat.4的大多数基于ASR的asr1803 (A7)主控搭配25vq64 flash, 也有ZXW的zx297520v3(A53 wifi6)主控搭配25vq64 flash，前期还有高通410的。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/bc0712fa1ad647ce865cbc197859d422.jpeg#pic_leftcenter">
 <meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/cellular-network-architecture.png">
 <meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/5g-evolution.png">
 <meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/device-with-ec20.png">
@@ -37,11 +38,11 @@
 <meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/at-command-architecture.png">
 <meta property="og:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/open-mode-module.png">
 <meta property="article:published_time" content="2024-04-21T16:00:01.000Z">
-<meta property="article:modified_time" content="2024-04-25T06:42:09.773Z">
+<meta property="article:modified_time" content="2024-04-29T16:24:41.521Z">
 <meta property="article:author" content="Linkua">
 <meta property="article:tag" content="asr1803s python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://python.quectel.com/doc/Application_guide/zh/media/background/wireless-modules/cellular-network-architecture.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/bc0712fa1ad647ce865cbc197859d422.jpeg#pic_leftcenter">
 
 <link rel="canonical" href="http://example.com/2024/04/22/mifi/">
 
@@ -224,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-25 14:42:09" itemprop="dateModified" datetime="2024-04-25T14:42:09+08:00">2024-04-25</time>
+                <time title="Modified: 2024-04-30 00:24:41" itemprop="dateModified" datetime="2024-04-30T00:24:41+08:00">2024-04-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,9 +248,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>淘宝上出现很多基于物联网卡的随身wifi，大多数硬件几块钱包邮，然后套餐收割。硬件分为USB之差棒子和带电池的移款，LTE Cat.4的大多数基于ASR的1803s主控搭配25vq64 flash, 也有ZXW的，前期还有高通410的。这其实就是蜂窝网络模块的一种使用。这个意义上看，模块既像一台没有屏幕和电池的手机，又像一种功能较为复杂的单片机。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>EC200D is UIS8310</strong><br><strong>EC200A is ASR1803S</strong></p>
+<p>淘宝上出现很多基于物联网卡的随身wifi，大多数硬件几块钱包邮，然后套餐收割。硬件分为USB之差棒子和带电池的移款，LTE Cat.4的大多数基于ASR的asr1803 (A7)主控搭配25vq64 flash, 也有ZXW的zx297520v3(A53 wifi6)主控搭配25vq64 flash，前期还有高通410的。低配版的都支持LTE 4G, 上下行20~30Mbs左右。这其实就是蜂窝网络模块的一种使用，这个意义上看，模块既像一台没有屏幕和电池的手机，又像一种功能较为复杂的单片机。<br>又拆了一堆杂牌的，都是ASR1803 + 25Q64,只有迅优的棒子部分有点用， ASR1803S + 25Q64，而且由留出tx rx， 更换25q128，应该可以刷移远的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ZG411y7B5/?vd_source=326f1996f8a76cd36e955fb621b271ba">quecPython</a>,移远的AT固件需要提供购买证明FAE才给。</p>
+<ul>
+<li>ASR1803S + 25Q64 &#x3D; EC200ACHLE&#x2F;F</li>
+<li>ASR1803S + 25Q128 &#x3D; EC200ACHLA</li>
+</ul>
+<p>新出的聚火的的棒子很惊喜，采用三天线，展锐UIS8310AM + 25N512GWE1R, 还带卡槽.<br><img src="https://img-blog.csdnimg.cn/bc0712fa1ad647ce865cbc197859d422.jpeg#pic_leftcenter" alt="UIS8310 系统框图"></p>
 <span id="more"></span>
-
+<p>软件上中兴微的板子，好像有adb,也能刷固件，<del>不过迅优的好像有强控，识别IMEI和iccid</del>，不符合就显示卡无效(刷固件后读卡失败，多为卡槽虚焊，读卡失败)。ASR的板子只能通过AT指令来修改IMEI达到去控的目的，部分厂家的修改失败。展锐的刷机方案网上找不到很多，可以在酷安 搜索相关型号。</p>
+<p>想要使用自己的卡，有些板子硬件上还需要焊接卡槽，甚至一些短接或者飞线才可以，大多数都可以使用2元的防风打火机来拆掉ESIM,古法热风枪。</p>
+<p>刷机过程中如果变砖了，可能要拆屏蔽罩，用CH34A刷SPI FLASH, 非常麻烦。</p>
 <h3 id="设备的-IMEI"><a href="#设备的-IMEI" class="headerlink" title="设备的 IMEI"></a>设备的 IMEI</h3><p>快速使用ASR1803s设备，打开<a target="_blank" rel="noopener" href="https://python.quectel.com/download">QuecPython官网下载链接</a>, 安装驱动 Win10 QuecPython_USB_Driver_Win10_A, 打开串口助手，波特率 9600，8 N 1, 可以AT命令交互。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">进入工厂模式 AT*PROD=1</span><br><span class="line">删除原IMEI AT*MRD_IMEI=D</span><br><span class="line">写⼊新的IMEI，把第四个参数修改为新的IMEI就可以了 AT*MRD_IMEI=W,0,01JAN1970,000000000000000</span><br><span class="line">删除原SN AT*MRD_SN=D</span><br><span class="line">写⼊新的SN，把第四个参数修改为新的SN就可以了 AT*MRD_SN=W,0,01JAN1970,000000000000000</span><br><span class="line">退出工厂模式 AT*PROD=0</span><br><span class="line">最后重启 AT+RESET</span><br></pre></td></tr></table></figure>
 <p>如上所示，获取设备的 IMEI 号虽然十分简单，但是又特别的常用，所以在这里介绍一下如何查询。那么，IMEI 是什么呢？</p>
@@ -416,16 +425,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
