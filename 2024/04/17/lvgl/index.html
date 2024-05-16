@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="LVGLLVGL（Light and Versatile Graphics Library）是一个免费的开源图形库，提供创建具有易于使用的图形元素、漂亮的视觉效果和低内存占用的嵌入式 GUI。接下来我们来看一下 LVGL图形用户库的主要特征有哪些：  lvgl 其实就是各种图形部件 Widget（如滑块、滚轮、按钮等）的集合库（GUI 库）。每个部件都是通过 API 函数创建（函数格式一般都是 l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LVGL">
+<meta property="og:url" content="http://example.com/2024/04/17/lvgl/index.html">
+<meta property="og:site_name" content="Excerpt">
+<meta property="og:description" content="LVGLLVGL（Light and Versatile Graphics Library）是一个免费的开源图形库，提供创建具有易于使用的图形元素、漂亮的视觉效果和低内存占用的嵌入式 GUI。接下来我们来看一下 LVGL图形用户库的主要特征有哪些：  lvgl 其实就是各种图形部件 Widget（如滑块、滚轮、按钮等）的集合库（GUI 库）。每个部件都是通过 API 函数创建（函数格式一般都是 l">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ced8dae4cba441d9bd6053b1ab614322.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/691da3e615544d57946655950a4a8561.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/daf7175e444144bcb2a123a3a08b1e0a.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/968841a33c594d38aec59af7cd29b85b.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/258553d04a5a4a95a04033f043faf83d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/531872dbb2dd4e19af6250e6e19e12cc.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/8448dbd3be3f47ef9cb3d1d1170ad96a.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/8ca276328e6c462c86370c914081b6bb.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/d606d26021e64cad8f9dc228032719f7.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/3cda585ae9b24000b48597939f413f8d.png">
+<meta property="article:published_time" content="2024-04-17T03:19:30.000Z">
+<meta property="article:modified_time" content="2024-05-13T15:26:11.678Z">
+<meta property="article:author" content="Linkua">
+<meta property="article:tag" content="lvgl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/ced8dae4cba441d9bd6053b1ab614322.png">
+
+<link rel="canonical" href="http://example.com/2024/04/17/lvgl/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>LVGL | Excerpt</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Excerpt</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-clock">
+
+    <a href="/clock/" rel="section"><i class="fas fa-clock fa-fw"></i>clock</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/17/lvgl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LVGL
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-04-17 11:19:30" itemprop="dateCreated datePublished" datetime="2024-04-17T11:19:30+08:00">2024-04-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-13 23:26:11" itemprop="dateModified" datetime="2024-05-13T23:26:11+08:00">2024-05-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="LVGL"><a href="#LVGL" class="headerlink" title="LVGL"></a>LVGL</h1><p>LVGL（Light and Versatile Graphics Library）是一个免费的开源图形库，提供创建具有易于使用的图形元素、漂亮的视觉效果和低内存占用的嵌入式 GUI。接下来我们来看一下 LVGL图形用户库的主要特征有哪些：</p>
+<ul>
+<li><p>lvgl 其实就是各种图形部件 Widget（如<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%BB%91%E5%9D%97&spm=1001.2101.3001.7020">滑块</a>、滚轮、按钮等）的集合库（GUI 库）。每个部件都是通过 API 函数创建（函数格式一般都是 lv_xxx_create( )，xxx 是部件名）。lv_obj_t 是部件类型，是结构体进行 typedef 后的重命名（可用来创建结构体或结构体指针，这个结构体内部具备所有部件的属性），因此，所有部件都具备一些共同属性，例如大小、颜色、位置、样式这些，只是不同部件其具体的参数可能不同</p>
+</li>
+<li><p>lvgl 采用了一定的面向对象编程的设计思想，我们操控的都是一个个别人事先为我们准备好编写好的部件（对象），如果想要使用部件，就得先创建部件需要调用部件创建函数（实例化），不像 C 是面向过程的编程，不管做什么都是从零开始（想使用部件也得从零开始编写出一个部件）。所有的对象都是在 lv_obj_t 这个结构体的基础上进行演变的，诞生各种不一样的部件</p>
+</li>
+<li><p>可扩展性：它能够以小内存运行(<strong>最低 64 kB 闪存，16 kB RAM 的 MCU</strong>)。 需要<strong>32kB RAM 和 128kB ROM, 1&#x2F;10 屏幕 framebuffer size。</strong></p>
+</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><p>图形库本身就是 lvgl 目录。它包含几个文件夹，但要使用 lvgl，只需使用 src 文件夹中的 .c 和 .h 文件。<br>您可以修改该头文件来设置库的基本行为、禁用未使用的模块和功能、在编译时调整缓冲区的大小等。</p>
+<p>要获取 lv_conf.h，请将 lvgl&#x2F;lv_conf_template.h 复制到 lvgl 目录旁边，并将其重命名为 lv_conf.h。打开该文件，将开头的 #if 0 改为 #if 1 以启用其内容。</p>
+<ol>
+<li><p>调用 lv_init()。</p>
+</li>
+<li><p>初始化驱动程序。</p>
+</li>
+<li><p>在 LVGL 中注册显示和输入设备驱动程序。了解有关显示和输入设备注册的更多信息。</p>
+</li>
+<li><p>在中断中每隔 x 毫秒调用 lv_tick_inc(x)，向 LVGL 报告经过的时间。</p>
+</li>
+<li><p>每隔几毫秒调用 lv_timer_handler()，处理与 LVGL 相关的任务。</p>
+</li>
+</ol>
+<h3 id="如何减少闪存-ROM的使用"><a href="#如何减少闪存-ROM的使用" class="headerlink" title="如何减少闪存&#x2F;ROM的使用"></a>如何减少闪存&#x2F;ROM的使用</h3><p>您可以禁用 lv_conf.h 中所有未使用的功能（如动画、文件系统、GPU等）和对象类型。</p>
+<p>如果使用GCC&#x2F;CLANG，可以添加 -fdata-sections -ffunction-sections 编译器标志和 –gc-sections 链接器标志，以从最终二进制文件中删除未使用的函数和变量。如果可能，请添加 -flto 编译器标志，以便与GCC的 -Os 或CLANG的 -Oz 一起启用链接时间优化。</p>
+<h3 id="如何减少内存使用"><a href="#如何减少内存使用" class="headerlink" title="如何减少内存使用"></a>如何减少内存使用</h3><p>降低 显示缓冲区 的大小</p>
+<p>减少 lv_conf.h 中的 LV_MEM_SIZE 。 当您创建按钮、标签等对象时会使用此内存。</p>
+<p>要使用较低的 LV_MEM_SIZE 您可以仅在需要时创建对象并在不再需要时将其删除。</p>
+<h3 id="关于-lvgl-的屏幕"><a href="#关于-lvgl-的屏幕" class="headerlink" title="关于 lvgl 的屏幕"></a>关于 lvgl 的屏幕</h3><blockquote>
+<p>屏幕在 lvgl 中，是没有父类的基础对象，是 lvgl 初始化时就默认创建的部件，其他所有部件都是屏幕的衍生物（其他部件都继承于屏幕，屏幕是所有部件的父对象，准确说，屏幕是其他所有部件的最初父对象），如下：</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/ced8dae4cba441d9bd6053b1ab614322.png"></p>
+<blockquote>
+<p>Q：为什么说其他部件均继承于屏幕，或其他部件是屏幕的衍生物？</p>
+<p>A：创建部件时，需要调用部件创建函数，部件创建函数有一个参数是 parent，即父对象，就是指定一个对象作为父对象，在父对象上创建生成一个部件，父对象是新部件的容器、是新部件的活动范围，没有父对象的话，新部件就无法出现（当然基础对象屏幕除外），如下：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_t * obj1 = lv_obj_create(lv_scr_act()); //创建部件 obj1，父对象是屏幕</span><br><span class="line">lv_obj_set_size(obj1, LV_PCT(40), LV_PCT(40)); //设置 obj1 的宽度、高度</span><br><span class="line">lv_obj_align(obj1, LV_ALIGN_CENTER, 0, 0); //以父对象作为参照物进行居中</span><br><span class="line"> </span><br><span class="line">lv_obj_t * obj2 = lv_obj_create(obj1); //创建部件 obj2，父对象是 obj1</span><br><span class="line">lv_obj_set_size(obj2, LV_PCT(20), LV_PCT(20)); //设置 obj2 的宽度、高度</span><br><span class="line">lv_obj_align(obj2, LV_ALIGN_CENTER, 0, 0); //以父对象作为参照物进行居中</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/691da3e615544d57946655950a4a8561.png"></p>
+<p>可以看到，obj1 是在屏幕上创建的，位于屏幕内，也只能在屏幕内活动。obj2 是在 obj1 上创建的，位于 obj1 内，也只能在 obj1 内活动。</p>
+<p><strong>除屏幕外的所有部件，第一个创建的部件永远是以屏幕作为父对象才能被创建的。</strong></p>
+<h3 id="部件的基本属性"><a href="#部件的基本属性" class="headerlink" title="部件的基本属性"></a>部件的基本属性</h3><h4 id="大小"><a href="#大小" class="headerlink" title="大小"></a>大小</h4><p>设置部件的宽度、高度的函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_set_width (obj, new_width)</span><br><span class="line">lv_obj_set_height (obj, new_height)</span><br><span class="line">lv_obj_set_size (obj, new_ width, new_ height)</span><br></pre></td></tr></table></figure>
+<h4 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h4><p>我们常见的坐标系是 “直角坐标系”，这是我们学习数学时都在使用的坐标系。LVGL 屏幕的坐标系和我们熟悉的坐标系不一样，LVGL 的坐标系称为 “LCD 坐标系”，他的原点位置和直角坐标系的不一样，原点位置在屏幕左上角，两者区别如下图</p>
+<p><img src="https://img-blog.csdnimg.cn/daf7175e444144bcb2a123a3a08b1e0a.png"></p>
+<blockquote>
+<p>有了 LCD 坐标系，确认了原点位置，我们就可以此来设置部件的位置</p>
+</blockquote>
+<ol>
+<li><p>设置 x y 轴位置函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_set_x (obj, new_x)</span><br><span class="line">lv_obj_set_y (obj, new_y)</span><br><span class="line">lv_obj_set_pos (obj, new_x, new_y)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对齐函数（有不同的对齐模式）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lv_obj_set_align (obj, LV_ALIGN_...)</span><br><span class="line">lv_obj_align (obj, LV_ALIGN_..., x, y)</span><br><span class="line">lv_obj_align_to (obj_to_align, obj_referece, LV_ALIGN_..., x, y)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h4><p>有哪些样式,大小（Size）、位置（Position）、背景（Background）、轮廓（Outline）、边框（Border）、阴影（Shadow）、其他（Others）</p>
+<ol>
+<li>定义样式变量：static  lv_style_t  style;（style 名称可以用户自定义）  </li>
+<li>初始化样式：lv_style_init(&amp;style);</li>
+<li>添加公共样式：lv_style_set_xxx(&amp;style,  <value> );（xxx 是样式属性名，如下图列举一部分 xxx） <br><img src="https://img-blog.csdnimg.cn/968841a33c594d38aec59af7cd29b85b.png"></li>
+<li>给部件添加样式：lv_obj_add_style(obj,  &amp;style,  LV_STATE_zzz);（zzz 是可选参数名）</li>
+</ol>
+<p>  程序示例（改变部件背景颜色）如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">static lv_style_t style;      /* 定义样式变量 */</span><br><span class="line"> </span><br><span class="line">lv_style_init(&amp;style);      /* 初始化样式 */</span><br><span class="line"> </span><br><span class="line">lv_style_set_bg_color(&amp;style, lv_color_hex(0xf4b183));    /* 设置背景颜色 */</span><br><span class="line"> </span><br><span class="line">lv_obj_t * obj = lv_obj_create(lv_scr_act());   /* 创建一个部件 */</span><br><span class="line"> </span><br><span class="line">lv_obj_add_style(obj, &amp; style, LV_STATE_DEFAULT);  /* 给部件添加样式 *</span><br></pre></td></tr></table></figure>
+
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>事件，就是我们触碰部件后，可以触发回调事件，执行事件<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0&spm=1001.2101.3001.7020">回调函数</a>，事件回调函数是用户自己编写的，有点类似中断，如下</p>
+<p><img src="https://img-blog.csdnimg.cn/258553d04a5a4a95a04033f043faf83d.png"></p>
+<p>想要触碰部件后能进入触发回调事件，需要先给部件加上事件，添加事件用到如下 API 函数</p>
+<h4 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h4><p>事件类型分为 5 大类：</p>
+<p>输入设备事件、绘图事件、自定义事件、特别活动、其他活动。</p>
+<p>所有对象，如按钮、标签、滑块等等，无论事件类型如何，都会接收输入设备事件、绘图事件、其他事件。但特殊事件是特定于特定的小部件类型。自定义事件是由用户添加，不由 LVGL 发送。</p>
+<p>具体详细参考 LVGL 官方文档资料：<br><a target="_blank" rel="noopener" href="https://docs.lvgl.io/master/overview/event.html" title="Events — LVGL documentation">Events — LVGL documentation</a></p>
+<p>如下是输入设备的部分事件类型：</p>
+<p><img src="https://img-blog.csdnimg.cn/531872dbb2dd4e19af6250e6e19e12cc.png"></p>
+<h4 id="事件回调函数"><a href="#事件回调函数" class="headerlink" title="事件回调函数"></a>事件回调函数</h4><p>格式：static void xxx (lv_event_t *e) { }  &#x2F;&#x2F;xxx 是函数名，程序员自己任意定义</p>
+<ol>
+<li>不同的事件类型共用同一个事件回调函数时，不清楚是哪个事件类型触发了事件回调函数，这时该怎么解决才能区分是哪个事件类型触发的？解决方法如下，在事件回调函数内调用获取事件类型的函数，示例：</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/8448dbd3be3f47ef9cb3d1d1170ad96a.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/8ca276328e6c462c86370c914081b6bb.png"></p>
+<p>（2）不同的部件共用一个事件回调函数时，不清楚是哪个部件调用了事件回调函数，这时怎么处理才能知道触发事件回调时是哪个部件在触发？解决方法如下，在事件回调函数中调用获取触发事件部件的函数，示例：</p>
+<p><img src="https://img-blog.csdnimg.cn/d606d26021e64cad8f9dc228032719f7.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/3cda585ae9b24000b48597939f413f8d.png"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/lvgl/" rel="tag"><i class="fa fa-tag"></i> lvgl</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/04/16/esp32%E5%BC%80%E5%8F%91/" rel="prev" title="ESP 开发">
+      <i class="fa fa-chevron-left"></i> ESP 开发
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/04/20/qemu/" rel="next" title="QEMU 仿真 arm">
+      QEMU 仿真 arm <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LVGL"><span class="nav-text">LVGL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="nav-text">如何使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E9%97%AA%E5%AD%98-ROM%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">如何减少闪存&#x2F;ROM的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8"><span class="nav-text">如何减少内存使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-lvgl-%E7%9A%84%E5%B1%8F%E5%B9%95"><span class="nav-text">关于 lvgl 的屏幕</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7"><span class="nav-text">部件的基本属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F"><span class="nav-text">大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E7%BD%AE"><span class="nav-text">位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F"><span class="nav-text">样式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6"><span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-text">事件类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-text">事件回调函数</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Linkua</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Linkua</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

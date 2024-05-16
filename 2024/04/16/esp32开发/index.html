@@ -28,7 +28,7 @@
 <meta property="og:description" content="ESP32 简介ESP32芯片具有以下特性：  处理器和内存：双核32位LX6微处理器，主频最高可达240MHz，520KB SRAM，448KB ROM，同时支持外部4MB SPI Flash和外部8MB PSRAM，为数据的处理和存储提供强大的支持。 WiFi：支持802.11 b&#x2F;g&#x2F;n（2.4GHz）标准，支持STA&#x2F;AP&#x2F;STA+AP工作模式，最大">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-16T03:19:30.000Z">
-<meta property="article:modified_time" content="2024-04-25T06:39:39.011Z">
+<meta property="article:modified_time" content="2024-05-16T02:57:17.857Z">
 <meta property="article:author" content="Linkua">
 <meta property="article:tag" content="esp32">
 <meta name="twitter:card" content="summary">
@@ -214,7 +214,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-25 14:39:39" itemprop="dateModified" datetime="2024-04-25T14:39:39+08:00">2024-04-25</time>
+                <time title="Modified: 2024-05-16 10:57:17" itemprop="dateModified" datetime="2024-05-16T10:57:17+08:00">2024-05-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -279,6 +279,51 @@
 <h3 id="esptool-单独下载固件"><a href="#esptool-单独下载固件" class="headerlink" title="esptool 单独下载固件"></a>esptool 单独下载固件</h3><p><code>pip install esptool</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">esptool --port /dev/ttyACM0 --baud 115200 write_flash --flash_size=detect 0 &#x27;/home/link/Downloads/WLED_0.13.3_ESP01.bin&#x27;</span><br></pre></td></tr></table></figure>
 
+<h3 id="Bluetooth-BT-和-BLE）"><a href="#Bluetooth-BT-和-BLE）" class="headerlink" title="Bluetooth (BT 和 BLE）"></a>Bluetooth (BT 和 BLE）</h3><p>esp32 的蓝牙协议栈是基于bluedroid 修改的，包含btu task 和 btc task, 蓝牙协议栈使用profiles+HOST+CONTROLER方式，去掉了中间的HCI。<br>蓝牙包括经典蓝牙br&#x2F;edr和BLE蓝牙两种模式，ble支持1对1，广播1对多，mesh 多对多。<br>ESP-Bluedroid 是原生安卓蓝牙协议栈 Bluedroid 的改进版本。它由两层组成：蓝牙上层（BTU）和蓝牙传输控制器层（BTC）。BTU 层负责处理底层蓝牙协议，如 L2CAP、GATT&#x2F;ATT、SMP、GAP 和其他配置文件。BTU 层提供一个前缀为 “bta “的接口。BTC 层主要负责为应用层提供以 “esp “为前缀的支持接口，处理基于 GATT 的配置文件和处理其他任务。所有应用程序接口都位于 ESP_API 层。开发人员应使用前缀为 “esp “的蓝牙应用程序接口。</p>
+<h3 id="WIFI"><a href="#WIFI" class="headerlink" title="WIFI"></a>WIFI</h3><p>Wi-Fi 驱动 + TCP&#x2F;IP 协议栈</p>
+<h3 id="RF"><a href="#RF" class="headerlink" title="RF"></a>RF</h3><p>基于优先级抢占的 RF 资源分配机制，如下图所示，Bluetooth 模块和 Wi-Fi 模块向共存模块申请 RF 资源，共存模块根据二者的优先级高低裁决 RF 归谁使用。</p>
+<h3 id="zigbee"><a href="#zigbee" class="headerlink" title="zigbee"></a>zigbee</h3><h3 id="openthread"><a href="#openthread" class="headerlink" title="openthread"></a>openthread</h3><p>OpenThread [1] 是由 Google&#x2F;Nest 发布的Thread的开源实现。<br>Thread® 是一个为低功耗物联网（IEEE 802.15.4-2006 WPAN）设备设计的基于 IPv6 的网络协议。Thread 是一个新的网状网络协议，它并不依赖其它的 802.15 网状网络协议（如 ZigBee、Z-Wave 和 Bluetooth LE）。</p>
+<p>Thread 的主要特性包括：</p>
+<ul>
+<li>易于部署和维护 — 安装、启动和操作相对简单</li>
+<li>通信安全 — Thread 网络中的设备都必须通过身份验证，并且所有的通信都经过了加密</li>
+<li>稳定可靠 — 具有自愈能力的网状网络，无单点故障，并且采用扩频技术以提高抗干扰能力</li>
+<li>低功耗 — Thread 低功耗设备可以进入休眠并使用电池供电，通常使用一块电池便能工作数年</li>
+<li>规模可扩展 — Thread 网络的规模可以扩展达数百个设备</li>
+</ul>
+<p>ESP32-H2转而支持Zigbee和Thread，可以用于Matter智能家居标准。这意味着从前用乐鑫的芯片必须通过Wi-Fi和蓝牙实现物体互联，现在扩展到可以通过Zigbee和Thread互联。</p>
+<h3 id="Matter"><a href="#Matter" class="headerlink" title="Matter"></a>Matter</h3><p>2021 年 5 月，原“Zigbee 联盟”更名为“连接标准联盟” (Connectivity Standards Alliance, CSA)，同时对外发布了智能家居连接标准 Matter。<br>Matter 的第一个规范版本将基于现有的网络技术，包括以太网 (IEEE 802.3)、Wi-Fi (IEEE 802.11) 和 Thread (IEEE 802.15.4)，可应用低功耗蓝牙简化设备调试流程。其中，Thread 由谷歌 Nest 部门主导开发，和 Zigbee 同样基于 IEEE 802.15.4，但在传输层实现了 IPv6 支持，解放了设备互联的限制，支持低功耗设备直接接入互联网。</p>
+<table>
+<thead>
+<tr>
+<th>wifi</th>
+<th>Bluetooth</th>
+<th>zigbee&#x2F;thread(802.15.4)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>54Mb&#x2F;s</td>
+<td>ble 1Mb&#x2F;s</td>
+<td>250kb&#x2F;s</td>
+</tr>
+<tr>
+<td>0~100m</td>
+<td>0~10m</td>
+<td>0~3km</td>
+</tr>
+<tr>
+<td>电池数小时</td>
+<td>电池数天</td>
+<td>电池数年</td>
+</tr>
+</tbody></table>
+<h3 id="MIPI"><a href="#MIPI" class="headerlink" title="MIPI"></a>MIPI</h3><p>MIPI联盟，即移动产业处理器接口（Mobile Industry Processor Interface 简称MIPI）联盟。MIPI（移动产业处理器接口）是MIPI联盟发起的为移动应用处理器制定的开放标准和一个规范。</p>
+<h4 id="DSI"><a href="#DSI" class="headerlink" title="DSI"></a>DSI</h4><p>DSI-Display Serial Interface 2是MIPI联盟关于处理器和显示模组之间的高速串行接口定义。<br>ESP32P4 支持MIPI-DSI(720p 1080p) 双核RISC-V 400Mhz<br>ESP32S3 支持RGB565&#x2F;8080&#x2F;SPI&#x2F;I2C  双核xtensa 240Mhz<br>ESP32C3 支持SPI(240x320)&#x2F;I2C     单核RISC-V 160Mhz</p>
+<p>MIPI-DSI 是高分辨率和高刷新率的 LCD 上常见的高速串行接口。ESP32-P4 在硬件接口和图形处理方面具备多项先进特性，支持 MIPI-DSI 接口，能够输出 24 位 RGB888 颜色格式的图像。</p>
+<p>RGB 因其刷屏速率高、驱动屏幕大、适用面广而成为中控大屏常用的显示驱动接口。ESP32-P4 和 ESP32-S3 适用于构建 RGB 接口屏方案，它们外设接口丰富，支持与多样的外围器件通信，可用于构建集设备控制、开关面板、场景面板、温控面板、智能遥控器等为一体的智能家居中控面板。</p>
+<p>SPI 是小型屏幕常用的驱动接口。ESP32-C3 适用于构建 SPI 接口屏方案，如洗衣机、体脂秤、电动牙刷等小家电应用中的旋钮屏和小尺寸显示屏应用场景。ESP32-C3 不仅具有成本优势，还拥有行业领先的低功耗性能，可以根据应用需求动态调整工作频率、切换低功耗模式，以提升产品续航时间。</p>
+<h4 id="CSI"><a href="#CSI" class="headerlink" title="CSI"></a>CSI</h4><p>CSI 处理器和摄像模组之间的高速串行接口</p>
+
     </div>
 
     
@@ -297,12 +342,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/04/14/makefile%E4%BD%BF%E7%94%A8/" rel="prev" title="makefile 文件使用">
-      <i class="fa fa-chevron-left"></i> makefile 文件使用
+    <a href="/2024/04/15/esp8266%E5%BC%80%E5%8F%91/" rel="prev" title="ESP 开发">
+      <i class="fa fa-chevron-left"></i> ESP 开发
     </a></div>
       <div class="post-nav-item">
-    <a href="/2024/04/20/qemu/" rel="next" title="QEMU 仿真 arm">
-      QEMU 仿真 arm <i class="fa fa-chevron-right"></i>
+    <a href="/2024/04/17/lvgl/" rel="next" title="LVGL">
+      LVGL <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -362,7 +407,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ESP32-%E7%AE%80%E4%BB%8B"><span class="nav-text">ESP32 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%A0%B8%EF%BC%88Main-Core%EF%BC%89%EF%BC%9A"><span class="nav-text">主核（Main Core）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%8F%E5%A4%84%E7%90%86%E5%99%A8%E6%A0%B8%E5%BF%83%EF%BC%88Pro-Co-Processor%EF%BC%89%EF%BC%9A"><span class="nav-text">协处理器核心（Pro Co-Processor）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%A0%B8%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%EF%BC%9A"><span class="nav-text">双核协同工作：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%EF%BC%9A"><span class="nav-text">内存：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VScode-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-text">VScode 开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ESP-IDF"><span class="nav-text">安装 ESP-IDF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ESP-IDF-%E6%8F%92%E4%BB%B6"><span class="nav-text">安装 ESP-IDF 插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E5%9F%BA%E4%BA%8E%E4%BE%8B%E7%A8%8B%E7%9A%84%E5%B7%A5%E7%A8%8B"><span class="nav-text">新建基于例程的工程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#esptool-%E5%8D%95%E7%8B%AC%E4%B8%8B%E8%BD%BD%E5%9B%BA%E4%BB%B6"><span class="nav-text">esptool 单独下载固件</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ESP32-%E7%AE%80%E4%BB%8B"><span class="nav-text">ESP32 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%A0%B8%EF%BC%88Main-Core%EF%BC%89%EF%BC%9A"><span class="nav-text">主核（Main Core）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%8F%E5%A4%84%E7%90%86%E5%99%A8%E6%A0%B8%E5%BF%83%EF%BC%88Pro-Co-Processor%EF%BC%89%EF%BC%9A"><span class="nav-text">协处理器核心（Pro Co-Processor）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%A0%B8%E5%8D%8F%E5%90%8C%E5%B7%A5%E4%BD%9C%EF%BC%9A"><span class="nav-text">双核协同工作：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%EF%BC%9A"><span class="nav-text">内存：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VScode-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-text">VScode 开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ESP-IDF"><span class="nav-text">安装 ESP-IDF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ESP-IDF-%E6%8F%92%E4%BB%B6"><span class="nav-text">安装 ESP-IDF 插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E5%9F%BA%E4%BA%8E%E4%BE%8B%E7%A8%8B%E7%9A%84%E5%B7%A5%E7%A8%8B"><span class="nav-text">新建基于例程的工程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#esptool-%E5%8D%95%E7%8B%AC%E4%B8%8B%E8%BD%BD%E5%9B%BA%E4%BB%B6"><span class="nav-text">esptool 单独下载固件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bluetooth-BT-%E5%92%8C-BLE%EF%BC%89"><span class="nav-text">Bluetooth (BT 和 BLE）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WIFI"><span class="nav-text">WIFI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RF"><span class="nav-text">RF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zigbee"><span class="nav-text">zigbee</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#openthread"><span class="nav-text">openthread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matter"><span class="nav-text">Matter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MIPI"><span class="nav-text">MIPI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DSI"><span class="nav-text">DSI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSI"><span class="nav-text">CSI</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -376,16 +421,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
