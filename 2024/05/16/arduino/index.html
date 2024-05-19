@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Aduino IDEArduino IDE预装有一系列标准库文件，同时您也可以自己将第三方库（如：网上下载的开源库）安装导入.Arduino boards require an additional core to be installed, therefore we have implemented the Boards Manager as the preferred tool to add">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arduino 开发">
+<meta property="og:url" content="http://example.com/2024/05/16/arduino/index.html">
+<meta property="og:site_name" content="Excerpt">
+<meta property="og:description" content="Aduino IDEArduino IDE预装有一系列标准库文件，同时您也可以自己将第三方库（如：网上下载的开源库）安装导入.Arduino boards require an additional core to be installed, therefore we have implemented the Boards Manager as the preferred tool to add">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-16T03:19:30.000Z">
+<meta property="article:modified_time" content="2024-05-19T09:28:53.255Z">
+<meta property="article:author" content="Linkua">
+<meta property="article:tag" content="esp32">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/05/16/arduino/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Arduino 开发 | Excerpt</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Excerpt</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-clock">
+
+    <a href="/clock/" rel="section"><i class="fas fa-clock fa-fw"></i>clock</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/16/arduino/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Arduino 开发
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-16 11:19:30" itemprop="dateCreated datePublished" datetime="2024-05-16T11:19:30+08:00">2024-05-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-19 17:28:53" itemprop="dateModified" datetime="2024-05-19T17:28:53+08:00">2024-05-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Aduino-IDE"><a href="#Aduino-IDE" class="headerlink" title="Aduino IDE"></a>Aduino IDE</h1><p>Arduino IDE预装有一系列标准库文件，同时您也可以自己将第三方库（如：网上下载的开源库）安装导入.<br>Arduino boards require an additional core to be installed, therefore we have implemented the Boards Manager as the preferred tool to add cores to your Arduino Software (IDE).<br>so, there is new IDE call PlatformIO</p>
+<h2 id="Sketch"><a href="#Sketch" class="headerlink" title="Sketch"></a>Sketch</h2><p>使用Arduino Software IDE编写的程序被称为“sketch”[1]。一个典型的 Arduino C&#x2F;C++ sketch 程序会包含两个函数，它们会在编译后合成为 main() 函数：</p>
+<p>setup()：在程序执行开始时会执行一次，用于初始化设置。<br>loop()：直到Arduino硬件关闭前会重复执行函数放的代码。</p>
+<span id="more"></span>
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p>For controlling the Arduino board and performing computations.</p>
+<h3 id="Digital-I-O"><a href="#Digital-I-O" class="headerlink" title="Digital I&#x2F;O"></a>Digital I&#x2F;O</h3><ul>
+<li>digitalRead()</li>
+<li>digitalWrite()</li>
+<li>pinMode()</li>
+</ul>
+<h3 id="Analog-I-O"><a href="#Analog-I-O" class="headerlink" title="Analog I&#x2F;O"></a>Analog I&#x2F;O</h3><ul>
+<li>analogRead()</li>
+<li>analogReadResolution()</li>
+<li>analogReference()</li>
+<li>analogWrite()</li>
+<li>analogWriteResolution()</li>
+</ul>
+<h3 id="Advanced-I-O"><a href="#Advanced-I-O" class="headerlink" title="Advanced I&#x2F;O"></a>Advanced I&#x2F;O</h3><ul>
+<li>noTone()</li>
+<li>pulseIn()</li>
+<li>pulseInLong()</li>
+<li>shiftIn()</li>
+<li>shiftOut()</li>
+<li>tone()</li>
+</ul>
+<h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h3><ul>
+<li>delay()</li>
+<li>delayMicroseconds()</li>
+<li>micros()</li>
+<li>millis()</li>
+</ul>
+<h3 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h3><ul>
+<li>abs()</li>
+<li>constrain()</li>
+<li>map()</li>
+<li>max()</li>
+<li>min()</li>
+<li>pow()</li>
+<li>sq()</li>
+<li>sqrt()</li>
+</ul>
+<h3 id="Trigonometry"><a href="#Trigonometry" class="headerlink" title="Trigonometry"></a>Trigonometry</h3><ul>
+<li>cos()</li>
+<li>sin()</li>
+<li>tan()</li>
+</ul>
+<h3 id="Characters"><a href="#Characters" class="headerlink" title="Characters"></a>Characters</h3><ul>
+<li>isAlpha()</li>
+<li>isAlphaNumeric()</li>
+<li>isAscii()</li>
+<li>isControl()</li>
+<li>isDigit()</li>
+<li>isGraph()</li>
+<li>isHexadecimalDigit()</li>
+<li>isLowerCase()</li>
+<li>isPrintable()</li>
+<li>isPunct()</li>
+<li>isSpace()</li>
+<li>isUpperCase()</li>
+<li>isWhitespace()</li>
+</ul>
+<h3 id="Random-Numbers"><a href="#Random-Numbers" class="headerlink" title="Random Numbers"></a>Random Numbers</h3><ul>
+<li>random()</li>
+<li>randomSeed()</li>
+</ul>
+<h3 id="Bits-and-Bytes"><a href="#Bits-and-Bytes" class="headerlink" title="Bits and Bytes"></a>Bits and Bytes</h3><ul>
+<li>bit()</li>
+<li>bitClear()</li>
+<li>bitRead()</li>
+<li>bitSet()</li>
+<li>bitWrite()</li>
+<li>highByte()</li>
+<li>lowByte()</li>
+</ul>
+<h3 id="External-Interrupts"><a href="#External-Interrupts" class="headerlink" title="External Interrupts"></a>External Interrupts</h3><ul>
+<li>attachInterrupt()</li>
+<li>detachInterrupt()</li>
+<li>digitalPinToInterrupt()</li>
+</ul>
+<h3 id="Interrupts"><a href="#Interrupts" class="headerlink" title="Interrupts"></a>Interrupts</h3><ul>
+<li>interrupts()</li>
+<li>noInterrupts()</li>
+</ul>
+<h3 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h3><ul>
+<li>Print</li>
+<li>Serial(UART)</li>
+<li>SPI</li>
+<li>Wire(I2C)</li>
+<li>Stream</li>
+</ul>
+<h3 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h3><ul>
+<li>Keyboard</li>
+<li>Mouse</li>
+</ul>
+<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><p>Arduino data types and constants.</p>
+<h3 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h3><ul>
+<li>Floating Point Constants</li>
+<li>HIGH | LOW</li>
+<li>INPUT | INPUT_PULLUP | OUTPUT</li>
+<li>Integer Constants</li>
+<li>LED_BUILTIN</li>
+<li>true | false</li>
+<li></li>
+</ul>
+<h3 id="Conversion"><a href="#Conversion" class="headerlink" title="Conversion"></a>Conversion</h3><ul>
+<li>(unsigned int)</li>
+<li>(unsigned long)</li>
+<li>byte()</li>
+<li>char()</li>
+<li>float()</li>
+<li>int()</li>
+<li>long()</li>
+<li>word()</li>
+</ul>
+<h3 id="Data-Types"><a href="#Data-Types" class="headerlink" title="Data Types"></a>Data Types</h3><ul>
+<li>array</li>
+<li>bool</li>
+<li>boolean</li>
+<li>byte</li>
+<li>char</li>
+<li>double</li>
+<li>float</li>
+<li>int</li>
+<li>long</li>
+<li>short</li>
+<li>size_t</li>
+<li>string</li>
+<li>String()</li>
+<li>unsigned char</li>
+<li>unsigned int</li>
+<li>unsigned long</li>
+<li>void</li>
+<li>word</li>
+</ul>
+<h3 id="Variable-Scope-Qualifiers"><a href="#Variable-Scope-Qualifiers" class="headerlink" title="Variable Scope &amp; Qualifiers"></a>Variable Scope &amp; Qualifiers</h3><ul>
+<li>const</li>
+<li>scope</li>
+<li>static</li>
+<li>volatile</li>
+</ul>
+<h3 id="Utilities"><a href="#Utilities" class="headerlink" title="Utilities"></a>Utilities</h3><ul>
+<li>PROGMEM</li>
+<li>sizeof()</li>
+</ul>
+<h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><p>The elements of Arduino (C++) code.</p>
+<h3 id="Sketch-1"><a href="#Sketch-1" class="headerlink" title="Sketch"></a>Sketch</h3><ul>
+<li>loop()</li>
+<li>setup()</li>
+</ul>
+<h3 id="Control-Structure"><a href="#Control-Structure" class="headerlink" title="Control Structure"></a>Control Structure</h3><ul>
+<li>break</li>
+<li>continue</li>
+<li>do…while</li>
+<li>else</li>
+<li>for</li>
+<li>goto</li>
+<li>if</li>
+<li>return</li>
+<li>switch…case</li>
+<li>while</li>
+</ul>
+<h3 id="Further-Syntax"><a href="#Further-Syntax" class="headerlink" title="Further Syntax"></a>Further Syntax</h3><ul>
+<li>#define (define)</li>
+<li>#include (include)</li>
+<li>&#x2F;* *&#x2F; (block comment)</li>
+<li>&#x2F;&#x2F; (single line comment)</li>
+<li>; (semicolon)</li>
+<li>{} (curly braces)</li>
+</ul>
+<h3 id="Arithmetic-Operators"><a href="#Arithmetic-Operators" class="headerlink" title="Arithmetic Operators"></a>Arithmetic Operators</h3><ul>
+<li>% (remainder)</li>
+<li><ul>
+<li>(multiplication)</li>
+</ul>
+</li>
+<li><ul>
+<li>(addition)</li>
+</ul>
+</li>
+<li><ul>
+<li>(subtraction)</li>
+</ul>
+</li>
+<li>&#x2F; (division)</li>
+<li>&#x3D; (assignment operator)</li>
+</ul>
+<h3 id="Comparison-Operators"><a href="#Comparison-Operators" class="headerlink" title="Comparison Operators"></a>Comparison Operators</h3><ul>
+<li>!&#x3D; (not equal to)</li>
+<li>&lt; (less than)</li>
+<li>&lt;&#x3D; (less than or equal to)</li>
+<li>&#x3D;&#x3D; (equal to)</li>
+<li><blockquote>
+<p>(greater than)</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>&#x3D; (greater than or equal to)</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Boolean-Operators"><a href="#Boolean-Operators" class="headerlink" title="Boolean Operators"></a>Boolean Operators</h3><ul>
+<li>! (logical not)</li>
+<li>&amp;&amp; (logical and)</li>
+<li>|| (logical or)</li>
+</ul>
+<h3 id="Pointer-Access-Operators"><a href="#Pointer-Access-Operators" class="headerlink" title="Pointer Access Operators"></a>Pointer Access Operators</h3><ul>
+<li>&amp; (reference operator)</li>
+<li><ul>
+<li>(dereference operator)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Bitwise-Operators"><a href="#Bitwise-Operators" class="headerlink" title="Bitwise Operators"></a>Bitwise Operators</h3><ul>
+<li>&amp; (bitwise and)</li>
+<li>&lt;&lt; (bitshift left)</li>
+<li><blockquote>
+<blockquote>
+<p>(bitshift right)</p>
+</blockquote>
+</blockquote>
+</li>
+<li>^ (bitwise xor)</li>
+<li>| (bitwise or)</li>
+<li>~ (bitwise not)</li>
+</ul>
+<h3 id="Compound-Operators"><a href="#Compound-Operators" class="headerlink" title="Compound Operators"></a>Compound Operators</h3><ul>
+<li>%&#x3D; (compound remainder)</li>
+<li>&amp;&#x3D; (compound bitwise and)</li>
+<li>*&#x3D; (compound multiplication)</li>
+<li>++ (increment)</li>
+<li>+&#x3D; (compound addition)</li>
+<li>– (decrement)</li>
+<li>-&#x3D; (compound subtraction)</li>
+<li>&#x2F;&#x3D; (compound division)</li>
+<li>^&#x3D; (compound bitwise xor)</li>
+<li>|&#x3D; (compound bitwise or)</li>
+</ul>
+<h2 id="Libraries"><a href="#Libraries" class="headerlink" title="Libraries"></a>Libraries</h2><ul>
+<li>Communication (1472)</li>
+<li>Data Processing (426)</li>
+<li>Data Storage (179)</li>
+<li>Device Control (1207)</li>
+<li>Display (588)</li>
+<li>Other (605)</li>
+<li>Sensors (1378)</li>
+<li>Signal Input&#x2F;Output (526)</li>
+<li>Timing (255)</li>
+<li>Uncategorized (256)</li>
+</ul>
+<h2 id="Official-Arduino-Libraries"><a href="#Official-Arduino-Libraries" class="headerlink" title="Official Arduino Libraries"></a>Official Arduino Libraries</h2><p>This library is bundled with every Arduino platform (avr, megaavr, mbed, samd, sam, arc32), so you do not need to install the library separately.</p>
+<ul>
+<li><p>Robotics</p>
+<blockquote>
+<p>Libraries for controlling servo and stepper motors.</p>
+</blockquote>
+</li>
+<li><p>Communication</p>
+<blockquote>
+<p>Libraries for using the SPI, I2C and UART protocols.</p>
+</blockquote>
+</li>
+<li><p>Connectivity</p>
+<blockquote>
+<p>Libraries to access radio modules on different IoT boards (Wi-Fi, Bluetooth®, LoRa®, GSM, NB-IoT, Sigfox).</p>
+</blockquote>
+</li>
+<li><p>Memory</p>
+<blockquote>
+<p>Libraries for memory management and data storage.</p>
+</blockquote>
+</li>
+<li><p>Display</p>
+<blockquote>
+<p>Libraries for controlling different displays.</p>
+</blockquote>
+</li>
+<li><p>Audio</p>
+<blockquote>
+<p>Libraries for audio sampling and playback.</p>
+</blockquote>
+</li>
+<li><p>USB</p>
+<blockquote>
+<p>Libraries for using your Arduino as either a USB host or device.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="ESP32-Arduino-Libraries"><a href="#ESP32-Arduino-Libraries" class="headerlink" title="ESP32 Arduino Libraries"></a>ESP32 Arduino Libraries</h2><p>base on ESP32-IDF<br><a target="_blank" rel="noopener" href="https://github.com/espressif/arduino-esp32/tree/master/libraries">arduino-esp32-lib</a></p>
+<h2 id="STM32-Arduino-Libraries"><a href="#STM32-Arduino-Libraries" class="headerlink" title="STM32 Arduino Libraries"></a>STM32 Arduino Libraries</h2><p>base on STM32Cube HAL<br><a target="_blank" rel="noopener" href="https://github.com/stm32duino/Arduino_Core_STM32">arduino-stm32-lib</a></p>
+<h2 id="Built-in-Examples"><a href="#Built-in-Examples" class="headerlink" title="Built-in Examples"></a>Built-in Examples</h2><p><a target="_blank" rel="noopener" href="https://docs.arduino.cc/built-in-examples/">built-in-examples</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/esp32/" rel="tag"><i class="fa fa-tag"></i> esp32</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/04/22/Python%E5%AD%97%E8%8A%82%E7%A0%81/" rel="prev" title="浅谈 python 字节码">
+      <i class="fa fa-chevron-left"></i> 浅谈 python 字节码
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/05/17/ESP32-ArduinoLib/" rel="next" title="ESP Arduino Libraries">
+      ESP Arduino Libraries <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Aduino-IDE"><span class="nav-text">Aduino IDE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sketch"><span class="nav-text">Sketch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions"><span class="nav-text">Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Digital-I-O"><span class="nav-text">Digital I&#x2F;O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Analog-I-O"><span class="nav-text">Analog I&#x2F;O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Advanced-I-O"><span class="nav-text">Advanced I&#x2F;O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Time"><span class="nav-text">Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Math"><span class="nav-text">Math</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigonometry"><span class="nav-text">Trigonometry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Characters"><span class="nav-text">Characters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Numbers"><span class="nav-text">Random Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bits-and-Bytes"><span class="nav-text">Bits and Bytes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#External-Interrupts"><span class="nav-text">External Interrupts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interrupts"><span class="nav-text">Interrupts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Communication"><span class="nav-text">Communication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#USB"><span class="nav-text">USB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variables"><span class="nav-text">Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Constants"><span class="nav-text">Constants</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversion"><span class="nav-text">Conversion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Types"><span class="nav-text">Data Types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable-Scope-Qualifiers"><span class="nav-text">Variable Scope &amp; Qualifiers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Utilities"><span class="nav-text">Utilities</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Structure"><span class="nav-text">Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sketch-1"><span class="nav-text">Sketch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Control-Structure"><span class="nav-text">Control Structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Further-Syntax"><span class="nav-text">Further Syntax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arithmetic-Operators"><span class="nav-text">Arithmetic Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparison-Operators"><span class="nav-text">Comparison Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean-Operators"><span class="nav-text">Boolean Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pointer-Access-Operators"><span class="nav-text">Pointer Access Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitwise-Operators"><span class="nav-text">Bitwise Operators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compound-Operators"><span class="nav-text">Compound Operators</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Libraries"><span class="nav-text">Libraries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Official-Arduino-Libraries"><span class="nav-text">Official Arduino Libraries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ESP32-Arduino-Libraries"><span class="nav-text">ESP32 Arduino Libraries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#STM32-Arduino-Libraries"><span class="nav-text">STM32 Arduino Libraries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Built-in-Examples"><span class="nav-text">Built-in Examples</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Linkua</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Linkua</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

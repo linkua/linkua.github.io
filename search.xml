@@ -1,35 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>LETV IR code</title>
-    <url>/2022/03/03/LETV%20IR%20code/</url>
-    <content><![CDATA[<h1 id="LETV-IR-code"><a href="#LETV-IR-code" class="headerlink" title="LETV IR code"></a>LETV IR code</h1><p>乐视超级电视曲面x55 Cured的红外解码</p>
-<span id="more"></span>
-<h2 id="with-MQTT-Topic"><a href="#with-MQTT-Topic" class="headerlink" title="with MQTT Topic"></a>with MQTT Topic</h2><p><code>cmnd/tasmota_781CD6/IRSend</code></p>
-<h2 id="with-Web-Requests"><a href="#with-Web-Requests" class="headerlink" title="with Web Requests"></a>with Web Requests</h2><p><code>http://192.168.1.37/cm?cmnd=IRSend</code></p>
-<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><h3 id="power"><a href="#power" class="headerlink" title="power"></a>power</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A650AF&quot;,&quot;DataLSB&quot;:&quot;0x4C650AF5&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="soud-off"><a href="#soud-off" class="headerlink" title="soud off"></a>soud off</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6F00F&quot;,&quot;DataLSB&quot;:&quot;0x4C650FF0&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="123"><a href="#123" class="headerlink" title="123"></a>123</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A68679&quot;,&quot;DataLSB&quot;:&quot;0x4C65619E&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="setting"><a href="#setting" class="headerlink" title="setting"></a>setting</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A600FF&quot;,&quot;DataLSB&quot;:&quot;0x4C6500FF&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="shubiao"><a href="#shubiao" class="headerlink" title="shubiao"></a>shubiao</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A646B9&quot;,&quot;DataLSB&quot;:&quot;0x4C65629D&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="vol"><a href="#vol" class="headerlink" title="vol+"></a>vol+</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6A857&quot;,&quot;DataLSB&quot;:&quot;0x4C6515EA&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="vol-1"><a href="#vol-1" class="headerlink" title="vol-"></a>vol-</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A638C7&quot;,&quot;DataLSB&quot;:&quot;0x4C651CE3&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="ch"><a href="#ch" class="headerlink" title="ch+"></a>ch+</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6F807&quot;,&quot;DataLSB&quot;:&quot;0x4C651FE0&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="ch-1"><a href="#ch-1" class="headerlink" title="ch-"></a>ch-</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A67887&quot;,&quot;DataLSB&quot;:&quot;0x4C651EE1&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="up"><a href="#up" class="headerlink" title="up"></a>up</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6D02F&quot;,&quot;DataLSB&quot;:&quot;0x4C650BF4&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="down"><a href="#down" class="headerlink" title="down"></a>down</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6708F&quot;,&quot;DataLSB&quot;:&quot;0x4C650EF1&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="left"><a href="#left" class="headerlink" title="left"></a>left</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A608F7&quot;,&quot;DataLSB&quot;:&quot;0x4C6510EF&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="right"><a href="#right" class="headerlink" title="right"></a>right</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A608F7&quot;,&quot;DataLSB&quot;:&quot;0x4C6510EF&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="ok"><a href="#ok" class="headerlink" title="ok"></a>ok</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6B04F&quot;,&quot;DataLSB&quot;:&quot;0x4C650DF2&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="menu"><a href="#menu" class="headerlink" title="menu"></a>menu</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6EC13&quot;,&quot;DataLSB&quot;:&quot;0x4C6537C8&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="home"><a href="#home" class="headerlink" title="home"></a>home</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A66897&quot;,&quot;DataLSB&quot;:&quot;0x4C6516E9&quot;,&quot;Repeat&quot;:0&#125;</code></p>
-<h3 id="back"><a href="#back" class="headerlink" title="back"></a>back</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6B847&quot;,&quot;DataLSB&quot;:&quot;0x4C651DE2&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+    <title>ESP 开发</title>
+    <url>/2024/04/16/ESP32%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h2 id="ESP32-简介"><a href="#ESP32-简介" class="headerlink" title="ESP32 简介"></a>ESP32 简介</h2><p>ESP32芯片具有以下特性：</p>
+<ul>
+<li>处理器和内存：双核32位LX6微处理器，主频最高可达240MHz，520KB SRAM，448KB ROM，同时支持外部4MB SPI Flash和外部8MB PSRAM，为数据的处理和存储提供强大的支持。</li>
+<li>WiFi：支持802.11 b&#x2F;g&#x2F;n（2.4GHz）标准，支持STA&#x2F;AP&#x2F;STA+AP工作模式，最大传输速率可达150Mbps，并支持WPA&#x2F;WPA2&#x2F;WPA3安全模式，提供稳定、安全的无线网络连接。</li>
+<li>蓝牙：支持蓝牙4.2（包括BR&#x2F;EDR和BLE），支持蓝牙音频传输（A2DP&#x2F;AVRCP&#x2F;SPP），使得无线音频传输和远程控制更加便捷。</li>
+<li>外设和接口：ESP32提供了丰富的外设和接口，包括最多34个可编程GPIO引脚，支持UART、SPI、I2C、I2S、PWM等多种通信协议。此外，还集成了12位ADC、8位DAC、触摸传感器、霍尔传感器等，为各种应用场景提供了强大的支持。</li>
+<li>电源管理：具有多种低功耗工作模式，电源电压范围2.2V-3.6V，内置低压稳压器（LDO）和开关电源管理单元（SMU），实现高效的电源管理<span id="more"></span></li>
+</ul>
+<h3 id="主核（Main-Core）："><a href="#主核（Main-Core）：" class="headerlink" title="主核（Main Core）："></a>主核（Main Core）：</h3><ul>
+<li>特点：主核是ESP32的主要处理器核心，采用Tensilica Xtensa LX6架构，主频高达240MHz。它具有较高的性能，可执行大多数应用程序任务。</li>
+<li>应用：主核通常用于执行主要的应用逻辑、用户界面、Wi-Fi和蓝牙通信以及其他需要高性能处理的任务。</li>
+</ul>
+<h3 id="协处理器核心（Pro-Co-Processor）："><a href="#协处理器核心（Pro-Co-Processor）：" class="headerlink" title="协处理器核心（Pro Co-Processor）："></a>协处理器核心（Pro Co-Processor）：</h3><ul>
+<li>特点：协处理器核心也采用Tensilica Xtensa LX6架构，主频高达160MHz。它专门用于处理Wi-Fi和蓝牙通信协议，以及其他低功耗任务。</li>
+<li>应用：协处理器核心负责Wi-Fi和蓝牙通信堆栈，以减少对主核的干扰，从而实现低功耗通信。</li>
+</ul>
+<h3 id="双核协同工作："><a href="#双核协同工作：" class="headerlink" title="双核协同工作："></a>双核协同工作：</h3><ul>
+<li>特点：ESP32的双核设计允许主核和协处理器核心协同工作，以提高系统性能和效率。它们可以在不同的任务上并行运行，也可以相互通信和同步。</li>
+<li>应用：双核协同工作非常适用于需要同时执行多个任务的应用，例如实时操作系统（RTOS）和并发通信。</li>
+</ul>
+<h3 id="内存："><a href="#内存：" class="headerlink" title="内存："></a>内存：</h3><ul>
+<li>特点：主核和协处理器核心都共享相同的存储器空间，包括闪存、RAM和其他存储器。这使得数据和代码在两个核心之间共享，简化了多任务编程。</li>
+<li>应用：共享内存使得数据在两个核心之间的传递更加高效，有助于提高系统性能。</li>
+</ul>
+<h2 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h2><h2 id="CLion-PlatformIO-Arduino"><a href="#CLion-PlatformIO-Arduino" class="headerlink" title="CLion + PlatformIO + Arduino"></a>CLion + PlatformIO + Arduino</h2><ol>
+<li>Clion 安装 PlatformIO</li>
+<li>新建工程，使用 Arduino 框架</li>
+</ol>
+<h2 id="VScode-ESP-IDF"><a href="#VScode-ESP-IDF" class="headerlink" title="VScode + ESP-IDF"></a>VScode + ESP-IDF</h2><h4 id="安装-ESP-IDF"><a href="#安装-ESP-IDF" class="headerlink" title="安装 ESP-IDF"></a>安装 ESP-IDF</h4><p>Windows 安装离线版IDF <a href="https://dl.espressif.cn/dl/esp-idf/?idf=5.2">https://dl.espressif.cn/dl/esp-idf/?idf=5.2</a></p>
+<h4 id="安装-ESP-IDF-插件"><a href="#安装-ESP-IDF-插件" class="headerlink" title="安装 ESP-IDF 插件"></a>安装 ESP-IDF 插件</h4><ol>
+<li>打开 VSCode, 使用快捷键 Shift+Ctrl+X，进入插件管理器</li>
+<li>在搜索栏中，输入 Espressif IDF，选择对应的插件点击 install 即可</li>
+</ol>
+<h4 id="新建基于例程的工程"><a href="#新建基于例程的工程" class="headerlink" title="新建基于例程的工程"></a>新建基于例程的工程</h4><ol>
+<li>按下 F1 打开命令行，输入 ESP-IDF: Show Examples Projects,或者 vscode 上方输入框填入<code>&gt;</code>,再输入命令</li>
+<li>点击 ESP-IDF: Show Examples Projects</li>
+<li>点击 Use current ESP-IDF 使用当前 ESP-IDF</li>
+<li>在列表中选择 hello_world,然后点击 Create project using example hello world</li>
+<li>点击左下角图标选择 COM， 选择目标芯片，点击齿轮图标配置项目</li>
+<li>打开 esp-idf terminal 输入 idf 命令 idf.py menuconifg配置例程引脚，例如LED GPIO pin2。</li>
+<li>在配置窗口中选择 Serial flasher config，将 Falsh 的大小改为 4MB：</li>
+<li>Save</li>
+<li>编译项目</li>
+</ol>
+<h3 id="esptool-单独下载固件"><a href="#esptool-单独下载固件" class="headerlink" title="esptool 单独下载固件"></a>esptool 单独下载固件</h3><p><code>pip install esptool</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">esptool --port /dev/ttyACM0 --baud 115200 write_flash --flash_size=detect 0 &#x27;/home/link/Downloads/WLED_0.13.3_ESP01.bin&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bluetooth-BT-和-BLE）"><a href="#Bluetooth-BT-和-BLE）" class="headerlink" title="Bluetooth (BT 和 BLE）"></a>Bluetooth (BT 和 BLE）</h2><p>esp32 的蓝牙协议栈是基于bluedroid 修改的，包含btu task 和 btc task, 蓝牙协议栈使用profiles+HOST+CONTROLER方式，去掉了中间的HCI。<br>蓝牙包括经典蓝牙br&#x2F;edr和BLE蓝牙两种模式，ble支持1对1，广播1对多，mesh 多对多。<br>ESP-Bluedroid 是原生安卓蓝牙协议栈 Bluedroid 的改进版本。它由两层组成：蓝牙上层（BTU）和蓝牙传输控制器层（BTC）。BTU 层负责处理底层蓝牙协议，如 L2CAP、GATT&#x2F;ATT、SMP、GAP 和其他配置文件。BTU 层提供一个前缀为 “bta “的接口。BTC 层主要负责为应用层提供以 “esp “为前缀的支持接口，处理基于 GATT 的配置文件和处理其他任务。所有应用程序接口都位于 ESP_API 层。开发人员应使用前缀为 “esp “的蓝牙应用程序接口。</p>
+<h3 id="WIFI"><a href="#WIFI" class="headerlink" title="WIFI"></a>WIFI</h3><p>Wi-Fi 驱动 + TCP&#x2F;IP 协议栈</p>
+<h3 id="RF"><a href="#RF" class="headerlink" title="RF"></a>RF</h3><p>基于优先级抢占的 RF 资源分配机制，如下图所示，Bluetooth 模块和 Wi-Fi 模块向共存模块申请 RF 资源，共存模块根据二者的优先级高低裁决 RF 归谁使用。</p>
+<h3 id="zigbee"><a href="#zigbee" class="headerlink" title="zigbee"></a>zigbee</h3><h3 id="openthread"><a href="#openthread" class="headerlink" title="openthread"></a>openthread</h3><p>OpenThread [1] 是由 Google&#x2F;Nest 发布的Thread的开源实现。<br>Thread® 是一个为低功耗物联网（IEEE 802.15.4-2006 WPAN）设备设计的基于 IPv6 的网络协议。Thread 是一个新的网状网络协议，它并不依赖其它的 802.15 网状网络协议（如 ZigBee、Z-Wave 和 Bluetooth LE）。</p>
+<p>Thread 的主要特性包括：</p>
+<ul>
+<li>易于部署和维护 — 安装、启动和操作相对简单</li>
+<li>通信安全 — Thread 网络中的设备都必须通过身份验证，并且所有的通信都经过了加密</li>
+<li>稳定可靠 — 具有自愈能力的网状网络，无单点故障，并且采用扩频技术以提高抗干扰能力</li>
+<li>低功耗 — Thread 低功耗设备可以进入休眠并使用电池供电，通常使用一块电池便能工作数年</li>
+<li>规模可扩展 — Thread 网络的规模可以扩展达数百个设备</li>
+</ul>
+<p>ESP32-H2转而支持Zigbee和Thread，可以用于Matter智能家居标准。这意味着从前用乐鑫的芯片必须通过Wi-Fi和蓝牙实现物体互联，现在扩展到可以通过Zigbee和Thread互联。</p>
+<h3 id="Matter"><a href="#Matter" class="headerlink" title="Matter"></a>Matter</h3><p>2021 年 5 月，原“Zigbee 联盟”更名为“连接标准联盟” (Connectivity Standards Alliance, CSA)，同时对外发布了智能家居连接标准 Matter。<br>Matter 的第一个规范版本将基于现有的网络技术，包括以太网 (IEEE 802.3)、Wi-Fi (IEEE 802.11) 和 Thread (IEEE 802.15.4)，可应用低功耗蓝牙简化设备调试流程。其中，Thread 由谷歌 Nest 部门主导开发，和 Zigbee 同样基于 IEEE 802.15.4，但在传输层实现了 IPv6 支持，解放了设备互联的限制，支持低功耗设备直接接入互联网。</p>
+<table>
+<thead>
+<tr>
+<th>wifi</th>
+<th>Bluetooth</th>
+<th>zigbee&#x2F;thread(802.15.4)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>54Mb&#x2F;s</td>
+<td>ble 1Mb&#x2F;s</td>
+<td>250kb&#x2F;s</td>
+</tr>
+<tr>
+<td>0~100m</td>
+<td>0~10m</td>
+<td>0~3km</td>
+</tr>
+<tr>
+<td>电池数小时</td>
+<td>电池数天</td>
+<td>电池数年</td>
+</tr>
+</tbody></table>
+<h2 id="MIPI"><a href="#MIPI" class="headerlink" title="MIPI"></a>MIPI</h2><p>MIPI联盟，即移动产业处理器接口（Mobile Industry Processor Interface 简称MIPI）联盟。MIPI（移动产业处理器接口）是MIPI联盟发起的为移动应用处理器制定的开放标准和一个规范。</p>
+<h3 id="DSI"><a href="#DSI" class="headerlink" title="DSI"></a>DSI</h3><p>DSI-Display Serial Interface 2是MIPI联盟关于处理器和显示模组之间的高速串行接口定义。<br>ESP32P4 支持MIPI-DSI(720p 1080p) 双核RISC-V 400Mhz<br>ESP32S3 支持RGB565&#x2F;8080&#x2F;SPI&#x2F;I2C  双核xtensa 240Mhz<br>ESP32C3 支持SPI(240x320)&#x2F;I2C     单核RISC-V 160Mhz</p>
+<p>MIPI-DSI 是高分辨率和高刷新率的 LCD 上常见的高速串行接口。ESP32-P4 在硬件接口和图形处理方面具备多项先进特性，支持 MIPI-DSI 接口，能够输出 24 位 RGB888 颜色格式的图像。</p>
+<p>RGB 因其刷屏速率高、驱动屏幕大、适用面广而成为中控大屏常用的显示驱动接口。ESP32-P4 和 ESP32-S3 适用于构建 RGB 接口屏方案，它们外设接口丰富，支持与多样的外围器件通信，可用于构建集设备控制、开关面板、场景面板、温控面板、智能遥控器等为一体的智能家居中控面板。</p>
+<p>SPI 是小型屏幕常用的驱动接口。ESP32-C3 适用于构建 SPI 接口屏方案，如洗衣机、体脂秤、电动牙刷等小家电应用中的旋钮屏和小尺寸显示屏应用场景。ESP32-C3 不仅具有成本优势，还拥有行业领先的低功耗性能，可以根据应用需求动态调整工作频率、切换低功耗模式，以提升产品续航时间。</p>
+<h3 id="CSI"><a href="#CSI" class="headerlink" title="CSI"></a>CSI</h3><p>CSI 处理器和摄像模组之间的高速串行接口</p>
 ]]></content>
       <categories>
         <category>MCU</category>
       </categories>
       <tags>
-        <tag>hass</tag>
+        <tag>esp32</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ESP 开发</title>
+    <url>/2024/04/15/ESP8266%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="ESP8266"><a href="#ESP8266" class="headerlink" title="ESP8266"></a>ESP8266</h3><p>ESP8266是一款低成本、低功耗、高度集成的Wi-Fi芯片，其主要参数包括：12</p>
+<p>主频：80 MHz (单核)<br>内存：80 KB RAM + 4 MB Flash<br>Wi-Fi标准：802.11 b&#x2F;g&#x2F;n 不支持蓝牙<br>工作电压：3.0V - 3.6V<br>工作温度：-40℃ ~ 125℃<br>支持模式：STA&#x2F;AP&#x2F;AP+STA<br>支持协议：TCP&#x2F;UDP<br>支持连接：多连接<br>支持升级：OTA升级<br>此外，ESP8266还具备以下特性：</p>
+<p>无线参数：支持802.11 b&#x2F;g&#x2F;n标准，频率范围2.4GHz至2.5GHz，具有不同的发射功率和接收灵敏度，以满足不同标准下的通信需求。<br>存储系统：配备有32Mb(4M)的Flash存储器和80KB的SRAM，Flash存储器分为几个部分，包括Bootloader等。<br>处理器和性能：内置超低功耗的Tensilica L106 32位RISC处理器，最高时钟速度可达160MHz，支持RTOS和Wi-Fi协议栈，能够将高达80%的处理能力留给应用编程和开发。</p>
+<p>ESP8266模块有多个型号和变种，例如<strong>ESP-01、ESP-12E、NodeMCU</strong>等，每种型号的功能和特点可能略有不同。<br><img src="https://pic1.zhimg.com/v2-e65552b66eb883bb5bfda9b3159d5308_b.jpg"></p>
+ <span id="more"></span>
+
+<h4 id="ESP12F-引脚图"><a href="#ESP12F-引脚图" class="headerlink" title="ESP12F 引脚图"></a>ESP12F 引脚图</h4><p>ESP-12F模块型号，它包含了ESP8266芯片本身以及附加的外部元件，如天线、电源管理电路等。<br>共有22个引脚,GPIO6～GPIO 11被用于连接开发板的闪存（Flash Memory）因此建议不要使用GPIO6～GPIO 11。<br>|EN 0 2|1TX0 3 RX0|4 SDA 5 SCL|6<del>11 FLASH|12 13 14 15 SPI| 16 | A0 0</del>1Vinput|</p>
+<blockquote>
+<p>上电的一瞬间GPIO0、GPIO2都会从高电平变为低电平，然后再变为高电平    </p>
+</blockquote>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vbmllX2hlbi9YU0pfaW1nL3Jhdy9tYXN0ZXIvJUU1JUIwJThGJUU0JUI5JUE2JUU1JThDJUEwLzE1ODExNDUwMDQ1NDEucG5n?x-oss-process=image/format,png" alt="esp12f"></p>
+<p>启动相关引脚，EN、GPIO0、GPIO2等</p>
+<h4 id="AT-固件"><a href="#AT-固件" class="headerlink" title="AT 固件"></a>AT 固件</h4><ul>
+<li>MQTT</li>
+</ul>
+<h4 id="相关的github-项目"><a href="#相关的github-项目" class="headerlink" title="相关的github 项目"></a>相关的github 项目</h4><ul>
+<li>tasmota</li>
+<li>esphome</li>
+<li>wled</li>
+</ul>
+]]></content>
+      <categories>
+        <category>MCU</category>
+      </categories>
+      <tags>
+        <tag>esp32</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ESP Arduino Libraries</title>
+    <url>/2024/05/17/ESP32-ArduinoLib/</url>
+    <content><![CDATA[<h1 id="ESP32-Arduino-Libraries"><a href="#ESP32-Arduino-Libraries" class="headerlink" title="ESP32 Arduino Libraries"></a>ESP32 Arduino Libraries</h1><p>arduino-esp32 includes libraries for Arduino compatibility along with some object wrappers around hardware specific devices.  Examples are included in the examples folder under each library folder.  The ESP32 includes additional examples which need no special drivers.</p>
+<h3 id="ArduinoOTA"><a href="#ArduinoOTA" class="headerlink" title="ArduinoOTA"></a>ArduinoOTA</h3><p>  Over The Air firmware update daemon.  Use espota.py to upload to the device.</p>
+<h3 id="AsyncUDP"><a href="#AsyncUDP" class="headerlink" title="AsyncUDP"></a>AsyncUDP</h3><p>  Asynchronous task driven UDP datagram client&#x2F;server</p>
+<h3 id="BLE"><a href="#BLE" class="headerlink" title="BLE"></a>BLE</h3><p>  Bluetooth Low Energy v4.2 client&#x2F;server framework</p>
+<h3 id="BluetoothSerial"><a href="#BluetoothSerial" class="headerlink" title="BluetoothSerial"></a>BluetoothSerial</h3><p>  Serial to Bluetooth redirection server<br>  Note: This library depends on Bluetooth Classic which is only available for ESP32<br>  (Bluetoothserial is <strong>not available</strong> for ESP32-S2, ESP32-C3, ESP32-S3).</p>
+<h3 id="DNSServer"><a href="#DNSServer" class="headerlink" title="DNSServer"></a>DNSServer</h3><p>  A basic UDP DNS daemon (includes captive portal demo)</p>
+<h3 id="EEPROM"><a href="#EEPROM" class="headerlink" title="EEPROM"></a>EEPROM</h3><p>  Arduino compatibility for EEPROM (using flash)</p>
+<h3 id="ESP32"><a href="#ESP32" class="headerlink" title="ESP32"></a>ESP32</h3><p>  Additional examples</p>
+<ul>
+<li>AnalogOut</li>
+<li>Camera</li>
+<li>ChipID</li>
+<li>DeepSleep</li>
+<li>ESPNow</li>
+<li>FreeRTOS</li>
+<li>GPIO</li>
+<li>HallSensor</li>
+<li>I2S</li>
+<li>MacAddress</li>
+<li>ResetReason</li>
+<li>RMT</li>
+<li>Time</li>
+<li>Timer</li>
+<li>Touch</li>
+</ul>
+<h3 id="ESPmDNS"><a href="#ESPmDNS" class="headerlink" title="ESPmDNS"></a>ESPmDNS</h3><p>  mDNS service advertising</p>
+<h3 id="Ethernet"><a href="#Ethernet" class="headerlink" title="Ethernet"></a>Ethernet</h3><p>  Ethernet networking</p>
+<h3 id="FFat"><a href="#FFat" class="headerlink" title="FFat"></a>FFat</h3><p>  FAT indexed filesystem on SPI flash</p>
+<h3 id="FS"><a href="#FS" class="headerlink" title="FS"></a>FS</h3><p>  Filesystem virtualization framework</p>
+<h3 id="HTTPClient"><a href="#HTTPClient" class="headerlink" title="HTTPClient"></a>HTTPClient</h3><p>  A simple HTTP client, compatible with NetworkClientSecure</p>
+<h3 id="HTTPUpdate"><a href="#HTTPUpdate" class="headerlink" title="HTTPUpdate"></a>HTTPUpdate</h3><p>  Download a firmware update from HTTPd and apply it using Update</p>
+<h3 id="HTTPUpdateServer"><a href="#HTTPUpdateServer" class="headerlink" title="HTTPUpdateServer"></a>HTTPUpdateServer</h3><p>  Upload a firmware for the update from HTTPd</p>
+<h3 id="LittleFS"><a href="#LittleFS" class="headerlink" title="LittleFS"></a>LittleFS</h3><p>  LittleFS (File System)</p>
+<h3 id="NetBIOS"><a href="#NetBIOS" class="headerlink" title="NetBIOS"></a>NetBIOS</h3><p>  NetBIOS name advertiser</p>
+<h3 id="Preferences"><a href="#Preferences" class="headerlink" title="Preferences"></a>Preferences</h3><p>  Flash keystore using ESP32 NVS</p>
+<h3 id="ESP-RainMaker"><a href="#ESP-RainMaker" class="headerlink" title="ESP RainMaker"></a>ESP RainMaker</h3><p>  End-to-end platform by Espressif that enables Makers to realize their IoT ideas faster</p>
+<h3 id="SD"><a href="#SD" class="headerlink" title="SD"></a>SD</h3><p>  Secure Digital card filesystem using SPI access</p>
+<h3 id="SD-MMC"><a href="#SD-MMC" class="headerlink" title="SD_MMC"></a>SD_MMC</h3><p>  Secure Digital card filesystem using 4-lane access</p>
+<h3 id="SimpleBLE"><a href="#SimpleBLE" class="headerlink" title="SimpleBLE"></a>SimpleBLE</h3><p>  Minimal BLE advertiser</p>
+<h3 id="SPI"><a href="#SPI" class="headerlink" title="SPI"></a>SPI</h3><p>  Arduino compatible Serial Peripheral Interface driver (master only)</p>
+<h3 id="SPIFFS"><a href="#SPIFFS" class="headerlink" title="SPIFFS"></a>SPIFFS</h3><p>  SPI Flash Filesystem (see <a href="https://github.com/me-no-dev/arduino-esp32fs-plugin">spiffs-plugin</a> to upload to device)</p>
+<h3 id="Ticker"><a href="#Ticker" class="headerlink" title="Ticker"></a>Ticker</h3><p>  A timer to call functions on an interval</p>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><p>  Sketch Update using ESP32 OTA functionality</p>
+<h3 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h3><p>  Universal Serial Bus driver (device only)</p>
+<h3 id="WebServer"><a href="#WebServer" class="headerlink" title="WebServer"></a>WebServer</h3><p>  A simple HTTP daemon</p>
+<h3 id="WiFi"><a href="#WiFi" class="headerlink" title="WiFi"></a>WiFi</h3><p>  Arduino compatible WiFi driver (includes Ethernet driver)</p>
+<h3 id="NetworkClientSecure"><a href="#NetworkClientSecure" class="headerlink" title="NetworkClientSecure"></a>NetworkClientSecure</h3><p>  Arduino compatible WiFi client object using embedded encryption</p>
+<h3 id="Wire"><a href="#Wire" class="headerlink" title="Wire"></a>Wire</h3><p>  Arduino compatible I2C driver</p>
+]]></content>
+      <categories>
+        <category>MCU</category>
+      </categories>
+      <tags>
+        <tag>esp32 arduino</tag>
       </tags>
   </entry>
   <entry>
@@ -80,20 +240,78 @@
       </tags>
   </entry>
   <entry>
-    <title>TCP/IP协议栈</title>
-    <url>/2024/03/11/TCPIP%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[<h3 id="SSL-TLS-协议是什么"><a href="#SSL-TLS-协议是什么" class="headerlink" title="SSL&#x2F;TLS 协议是什么"></a>SSL&#x2F;TLS 协议是什么</h3><p>SSL 协议（Secure Sockets Layer，安全套接字层），是由网景 (Netscape) 公司在 1990 年推出的一种标准安全协议，用于在网络通信中建立 Web 浏览器和 Web 服务器之间的加密链接。</p>
-<p>TLS（Transport Layer Security，传输层安全）是 IETF 组织 （工程任务组）在 1999 年将 SSL3.0 协议规范进行了标准化。</p>
-<p>SSL(Secure Sockets Layer) 和 TLS(Transport Layer Security) 的关系就像 windows XP 和 windows 7 的关系，升级后改了个名字而已。</p>
+    <title>LETV IR code</title>
+    <url>/2022/03/03/LETV%20IR%20code/</url>
+    <content><![CDATA[<h1 id="LETV-IR-code"><a href="#LETV-IR-code" class="headerlink" title="LETV IR code"></a>LETV IR code</h1><p>乐视超级电视曲面x55 Cured的红外解码</p>
 <span id="more"></span>
-
-<p>HTTPS&#x3D;HTTP+TLS</p>
+<h2 id="with-MQTT-Topic"><a href="#with-MQTT-Topic" class="headerlink" title="with MQTT Topic"></a>with MQTT Topic</h2><p><code>cmnd/tasmota_781CD6/IRSend</code></p>
+<h2 id="with-Web-Requests"><a href="#with-Web-Requests" class="headerlink" title="with Web Requests"></a>with Web Requests</h2><p><code>http://192.168.1.37/cm?cmnd=IRSend</code></p>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><h3 id="power"><a href="#power" class="headerlink" title="power"></a>power</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A650AF&quot;,&quot;DataLSB&quot;:&quot;0x4C650AF5&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="soud-off"><a href="#soud-off" class="headerlink" title="soud off"></a>soud off</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6F00F&quot;,&quot;DataLSB&quot;:&quot;0x4C650FF0&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="123"><a href="#123" class="headerlink" title="123"></a>123</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A68679&quot;,&quot;DataLSB&quot;:&quot;0x4C65619E&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="setting"><a href="#setting" class="headerlink" title="setting"></a>setting</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A600FF&quot;,&quot;DataLSB&quot;:&quot;0x4C6500FF&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="shubiao"><a href="#shubiao" class="headerlink" title="shubiao"></a>shubiao</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A646B9&quot;,&quot;DataLSB&quot;:&quot;0x4C65629D&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="vol"><a href="#vol" class="headerlink" title="vol+"></a>vol+</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6A857&quot;,&quot;DataLSB&quot;:&quot;0x4C6515EA&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="vol-1"><a href="#vol-1" class="headerlink" title="vol-"></a>vol-</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A638C7&quot;,&quot;DataLSB&quot;:&quot;0x4C651CE3&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="ch"><a href="#ch" class="headerlink" title="ch+"></a>ch+</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6F807&quot;,&quot;DataLSB&quot;:&quot;0x4C651FE0&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="ch-1"><a href="#ch-1" class="headerlink" title="ch-"></a>ch-</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A67887&quot;,&quot;DataLSB&quot;:&quot;0x4C651EE1&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="up"><a href="#up" class="headerlink" title="up"></a>up</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6D02F&quot;,&quot;DataLSB&quot;:&quot;0x4C650BF4&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="down"><a href="#down" class="headerlink" title="down"></a>down</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6708F&quot;,&quot;DataLSB&quot;:&quot;0x4C650EF1&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="left"><a href="#left" class="headerlink" title="left"></a>left</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A608F7&quot;,&quot;DataLSB&quot;:&quot;0x4C6510EF&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="right"><a href="#right" class="headerlink" title="right"></a>right</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A608F7&quot;,&quot;DataLSB&quot;:&quot;0x4C6510EF&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="ok"><a href="#ok" class="headerlink" title="ok"></a>ok</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6B04F&quot;,&quot;DataLSB&quot;:&quot;0x4C650DF2&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="menu"><a href="#menu" class="headerlink" title="menu"></a>menu</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6EC13&quot;,&quot;DataLSB&quot;:&quot;0x4C6537C8&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="home"><a href="#home" class="headerlink" title="home"></a>home</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A66897&quot;,&quot;DataLSB&quot;:&quot;0x4C6516E9&quot;,&quot;Repeat&quot;:0&#125;</code></p>
+<h3 id="back"><a href="#back" class="headerlink" title="back"></a>back</h3><p><code>&#123;&quot;Protocol&quot;:&quot;NEC&quot;,&quot;Bits&quot;:32,&quot;Data&quot;:&quot;0x32A6B847&quot;,&quot;DataLSB&quot;:&quot;0x4C651DE2&quot;,&quot;Repeat&quot;:0&#125;</code></p>
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>MCU</category>
       </categories>
       <tags>
-        <tag>tcp/ip</tag>
+        <tag>hass</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>STM32 开发</title>
+    <url>/2024/04/12/STM32%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h2 id="Windows-开发环境"><a href="#Windows-开发环境" class="headerlink" title="Windows 开发环境"></a>Windows 开发环境</h2><p>可以使用VScode 或 Clion 开发STM32, VS属于代码编辑器，CLion属于IDE,代码补全和易用性都比VScode好用，比如输入 <code>fun();</code> Clion 更快，效率更好。</p>
+<h3 id="安装-STM32CubeMX"><a href="#安装-STM32CubeMX" class="headerlink" title="安装 STM32CubeMX"></a>安装 STM32CubeMX</h3><ol>
+<li><p>安装 JAVA 环境<br>由于 STM32CubeMX 软件是基于 JAVA 环境运行的，所以需要安装 JAVA 环境 （Java Runtime Environment）才能使用。<br>官网: <a href="https://www.java.com/en/download/manual.jsp">https://www.java.com/en/download/manual.jsp</a> 下载直接安装即可。</p>
+</li>
+<li><p>安装 STM32_Cube MX<br>首先需要下载 Cube MX 软件，链接:<a href="https://www.st.com/en/development-tools/stm32cubemx.html">https://www.st.com/en/development-tools/stm32cubemx.html</a> 下载。</p>
+</li>
+<li><p>如果使用VScode，生成 Makefile 工程。</p>
+</li>
+<li><p>如果使用Clion, 生成 Cmake 工程。</p>
+<span id="more"></span></li>
+</ol>
+<h3 id="编译和调试工具准备"><a href="#编译和调试工具准备" class="headerlink" title="编译和调试工具准备"></a>编译和调试工具准备</h3><p>参考AT32的开发环境搭建 <a href="https://www.arterytek.com/cn/support/index.jsp">https://www.arterytek.com/cn/support/index.jsp</a>  AN0130</p>
+<ol>
+<li>mingw64 <a href="https://sourceforge.net/projects/mingw-w64/">https://sourceforge.net/projects/mingw-w64/</a></li>
+<li>arm-none-eabi-gcc <a href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads</a></li>
+<li>openocd <a href="https://gnutoolchains.com/arm-eabi/openocd/">https://gnutoolchains.com/arm-eabi/openocd/</a></li>
+<li>添加以上环境变量到 PATH,到MinGW安装目录下，进入&#x2F;bin目录，找到其中的mingw32-make.exe并复制一份放到相同目录下，修改命名为make.exe。</li>
+<li>STM32F1xx_DFP 2.4.1 中获取对应型号的SVD文件，包含调试用的寄存器信息。<br><a href="https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/">https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/</a></li>
+</ol>
+<h3 id="VScode-调试和下载"><a href="#VScode-调试和下载" class="headerlink" title="VScode 调试和下载"></a>VScode 调试和下载</h3><p>使用 cortex-debug 插件，通过调用 opencd来实现调试，需要实现 launch.json。<br>使用的是PWLINK2作为烧录器，PWLINK2可归类DAPlink。<br>需要用到 OpenOCD文件夹中的 stm32f1x.cfg 和cmsis-dap.cfg<br>Makefile文件编写(重点)</p>
+<h3 id="Clion-调试和下载"><a href="#Clion-调试和下载" class="headerlink" title="Clion 调试和下载"></a>Clion 调试和下载</h3><p>配置 Run&#x2F;Debug Configurations, 选择 OpenOCD Download &amp; Run, binary 选 .elf 文件, Board config file 选 .cfg 文件<br>新建 stlink.cfg 文件， 内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># choose st-link/j-link/dap-link etc.</span><br><span class="line">#adapter driver cmsis-dap</span><br><span class="line">#transport select swd</span><br><span class="line">source [find interface/stlink.cfg]</span><br><span class="line">transport select hla_swd</span><br><span class="line">source [find target/stm32f4x.cfg]</span><br><span class="line"></span><br><span class="line"># download speed = 10MHz</span><br><span class="line">adapter speed 10000</span><br></pre></td></tr></table></figure>
+<h2 id="STM32CubeMX-使用"><a href="#STM32CubeMX-使用" class="headerlink" title="STM32CubeMX 使用"></a>STM32CubeMX 使用</h2><h3 id="PinOut-Configuration"><a href="#PinOut-Configuration" class="headerlink" title="PinOut &amp; Configuration"></a>PinOut &amp; Configuration</h3><h4 id="SYS"><a href="#SYS" class="headerlink" title="SYS"></a>SYS</h4><ul>
+<li>Debug 选择 Serial Wire，否则下载调试找不到芯片，需要按住复位按键才能找到。</li>
+</ul>
+<p>芯片为 STM32F103C8T6，下进 HAL 库编写的工程后 ST-Link 就识别不到芯片了，下载也是，只有 ST-Link 读取时按住复位才可以。更神奇的是用标准库的代码却没问题，具体表象就是下进标准库的代码，然后 HAL 库的代码可以正常下载，但是 HAL 库的代码一旦下进去，标准库和 HAL 库的代码就都不能通过正常手段下载了。这很明显是软件问题。</p>
+<p>经过查资料得知，用 cubemx 配置的代码禁止了 swd 端口。</p>
+<p>解决方法：</p>
+<p>在【STM32CubeMX】中配置【SYS-&gt;Debug】为【Serial Wire】</p>
+<p>代码表现为：<br>在 “stm32f1xx_hal_msp.c” 中</p>
+<p>禁止SWD<br> &#x2F;** DISABLE: JTAG-DP Disabled and SW-DP Disabled<br>  *&#x2F;<br>  __HAL_AFIO_REMAP_SWJ_DISABLE();</p>
+<p>使用SWD<br> &#x2F;** NOJTAG: JTAG-DP Disabled and SW-DP Enabled<br>  *&#x2F;<br>  __HAL_AFIO_REMAP_SWJ_NOJTAG()<br>将禁止 SWD 改为使用 SWD 就可以了。</p>
+]]></content>
+      <categories>
+        <category>MCU</category>
+      </categories>
+      <tags>
+        <tag>stm32 vscode</tag>
       </tags>
   </entry>
   <entry>
@@ -153,6 +371,23 @@
       </categories>
       <tags>
         <tag>clangd vscode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP/IP协议栈</title>
+    <url>/2024/03/11/TCPIP%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<h3 id="SSL-TLS-协议是什么"><a href="#SSL-TLS-协议是什么" class="headerlink" title="SSL&#x2F;TLS 协议是什么"></a>SSL&#x2F;TLS 协议是什么</h3><p>SSL 协议（Secure Sockets Layer，安全套接字层），是由网景 (Netscape) 公司在 1990 年推出的一种标准安全协议，用于在网络通信中建立 Web 浏览器和 Web 服务器之间的加密链接。</p>
+<p>TLS（Transport Layer Security，传输层安全）是 IETF 组织 （工程任务组）在 1999 年将 SSL3.0 协议规范进行了标准化。</p>
+<p>SSL(Secure Sockets Layer) 和 TLS(Transport Layer Security) 的关系就像 windows XP 和 windows 7 的关系，升级后改了个名字而已。</p>
+<span id="more"></span>
+
+<p>HTTPS&#x3D;HTTP+TLS</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>tcp/ip</tag>
       </tags>
   </entry>
   <entry>
@@ -255,139 +490,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ESP 开发</title>
-    <url>/2024/04/16/esp32%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h2 id="ESP32-简介"><a href="#ESP32-简介" class="headerlink" title="ESP32 简介"></a>ESP32 简介</h2><p>ESP32芯片具有以下特性：</p>
-<ul>
-<li>处理器和内存：双核32位LX6微处理器，主频最高可达240MHz，520KB SRAM，448KB ROM，同时支持外部4MB SPI Flash和外部8MB PSRAM，为数据的处理和存储提供强大的支持。</li>
-<li>WiFi：支持802.11 b&#x2F;g&#x2F;n（2.4GHz）标准，支持STA&#x2F;AP&#x2F;STA+AP工作模式，最大传输速率可达150Mbps，并支持WPA&#x2F;WPA2&#x2F;WPA3安全模式，提供稳定、安全的无线网络连接。</li>
-<li>蓝牙：支持蓝牙4.2（包括BR&#x2F;EDR和BLE），支持蓝牙音频传输（A2DP&#x2F;AVRCP&#x2F;SPP），使得无线音频传输和远程控制更加便捷。</li>
-<li>外设和接口：ESP32提供了丰富的外设和接口，包括最多34个可编程GPIO引脚，支持UART、SPI、I2C、I2S、PWM等多种通信协议。此外，还集成了12位ADC、8位DAC、触摸传感器、霍尔传感器等，为各种应用场景提供了强大的支持。</li>
-<li>电源管理：具有多种低功耗工作模式，电源电压范围2.2V-3.6V，内置低压稳压器（LDO）和开关电源管理单元（SMU），实现高效的电源管理<span id="more"></span></li>
-</ul>
-<h3 id="主核（Main-Core）："><a href="#主核（Main-Core）：" class="headerlink" title="主核（Main Core）："></a>主核（Main Core）：</h3><ul>
-<li>特点：主核是ESP32的主要处理器核心，采用Tensilica Xtensa LX6架构，主频高达240MHz。它具有较高的性能，可执行大多数应用程序任务。</li>
-<li>应用：主核通常用于执行主要的应用逻辑、用户界面、Wi-Fi和蓝牙通信以及其他需要高性能处理的任务。</li>
-</ul>
-<h3 id="协处理器核心（Pro-Co-Processor）："><a href="#协处理器核心（Pro-Co-Processor）：" class="headerlink" title="协处理器核心（Pro Co-Processor）："></a>协处理器核心（Pro Co-Processor）：</h3><ul>
-<li>特点：协处理器核心也采用Tensilica Xtensa LX6架构，主频高达160MHz。它专门用于处理Wi-Fi和蓝牙通信协议，以及其他低功耗任务。</li>
-<li>应用：协处理器核心负责Wi-Fi和蓝牙通信堆栈，以减少对主核的干扰，从而实现低功耗通信。</li>
-</ul>
-<h3 id="双核协同工作："><a href="#双核协同工作：" class="headerlink" title="双核协同工作："></a>双核协同工作：</h3><ul>
-<li>特点：ESP32的双核设计允许主核和协处理器核心协同工作，以提高系统性能和效率。它们可以在不同的任务上并行运行，也可以相互通信和同步。</li>
-<li>应用：双核协同工作非常适用于需要同时执行多个任务的应用，例如实时操作系统（RTOS）和并发通信。</li>
-</ul>
-<h3 id="内存："><a href="#内存：" class="headerlink" title="内存："></a>内存：</h3><ul>
-<li>特点：主核和协处理器核心都共享相同的存储器空间，包括闪存、RAM和其他存储器。这使得数据和代码在两个核心之间共享，简化了多任务编程。</li>
-<li>应用：共享内存使得数据在两个核心之间的传递更加高效，有助于提高系统性能。</li>
-</ul>
-<h2 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h2><h2 id="CLion-PlatformIO-Arduino"><a href="#CLion-PlatformIO-Arduino" class="headerlink" title="CLion + PlatformIO + Arduino"></a>CLion + PlatformIO + Arduino</h2><ol>
-<li>Clion 安装 PlatformIO</li>
-<li>新建工程，使用 Arduino 框架</li>
-</ol>
-<h2 id="VScode-ESP-IDF"><a href="#VScode-ESP-IDF" class="headerlink" title="VScode + ESP-IDF"></a>VScode + ESP-IDF</h2><h4 id="安装-ESP-IDF"><a href="#安装-ESP-IDF" class="headerlink" title="安装 ESP-IDF"></a>安装 ESP-IDF</h4><p>Windows 安装离线版IDF <a href="https://dl.espressif.cn/dl/esp-idf/?idf=5.2">https://dl.espressif.cn/dl/esp-idf/?idf=5.2</a></p>
-<h4 id="安装-ESP-IDF-插件"><a href="#安装-ESP-IDF-插件" class="headerlink" title="安装 ESP-IDF 插件"></a>安装 ESP-IDF 插件</h4><ol>
-<li>打开 VSCode, 使用快捷键 Shift+Ctrl+X，进入插件管理器</li>
-<li>在搜索栏中，输入 Espressif IDF，选择对应的插件点击 install 即可</li>
-</ol>
-<h4 id="新建基于例程的工程"><a href="#新建基于例程的工程" class="headerlink" title="新建基于例程的工程"></a>新建基于例程的工程</h4><ol>
-<li>按下 F1 打开命令行，输入 ESP-IDF: Show Examples Projects,或者 vscode 上方输入框填入<code>&gt;</code>,再输入命令</li>
-<li>点击 ESP-IDF: Show Examples Projects</li>
-<li>点击 Use current ESP-IDF 使用当前 ESP-IDF</li>
-<li>在列表中选择 hello_world,然后点击 Create project using example hello world</li>
-<li>点击左下角图标选择 COM， 选择目标芯片，点击齿轮图标配置项目</li>
-<li>打开 esp-idf terminal 输入 idf 命令 idf.py menuconifg配置例程引脚，例如LED GPIO pin2。</li>
-<li>在配置窗口中选择 Serial flasher config，将 Falsh 的大小改为 4MB：</li>
-<li>Save</li>
-<li>编译项目</li>
-</ol>
-<h3 id="esptool-单独下载固件"><a href="#esptool-单独下载固件" class="headerlink" title="esptool 单独下载固件"></a>esptool 单独下载固件</h3><p><code>pip install esptool</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">esptool --port /dev/ttyACM0 --baud 115200 write_flash --flash_size=detect 0 &#x27;/home/link/Downloads/WLED_0.13.3_ESP01.bin&#x27;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Bluetooth-BT-和-BLE）"><a href="#Bluetooth-BT-和-BLE）" class="headerlink" title="Bluetooth (BT 和 BLE）"></a>Bluetooth (BT 和 BLE）</h2><p>esp32 的蓝牙协议栈是基于bluedroid 修改的，包含btu task 和 btc task, 蓝牙协议栈使用profiles+HOST+CONTROLER方式，去掉了中间的HCI。<br>蓝牙包括经典蓝牙br&#x2F;edr和BLE蓝牙两种模式，ble支持1对1，广播1对多，mesh 多对多。<br>ESP-Bluedroid 是原生安卓蓝牙协议栈 Bluedroid 的改进版本。它由两层组成：蓝牙上层（BTU）和蓝牙传输控制器层（BTC）。BTU 层负责处理底层蓝牙协议，如 L2CAP、GATT&#x2F;ATT、SMP、GAP 和其他配置文件。BTU 层提供一个前缀为 “bta “的接口。BTC 层主要负责为应用层提供以 “esp “为前缀的支持接口，处理基于 GATT 的配置文件和处理其他任务。所有应用程序接口都位于 ESP_API 层。开发人员应使用前缀为 “esp “的蓝牙应用程序接口。</p>
-<h3 id="WIFI"><a href="#WIFI" class="headerlink" title="WIFI"></a>WIFI</h3><p>Wi-Fi 驱动 + TCP&#x2F;IP 协议栈</p>
-<h3 id="RF"><a href="#RF" class="headerlink" title="RF"></a>RF</h3><p>基于优先级抢占的 RF 资源分配机制，如下图所示，Bluetooth 模块和 Wi-Fi 模块向共存模块申请 RF 资源，共存模块根据二者的优先级高低裁决 RF 归谁使用。</p>
-<h3 id="zigbee"><a href="#zigbee" class="headerlink" title="zigbee"></a>zigbee</h3><h3 id="openthread"><a href="#openthread" class="headerlink" title="openthread"></a>openthread</h3><p>OpenThread [1] 是由 Google&#x2F;Nest 发布的Thread的开源实现。<br>Thread® 是一个为低功耗物联网（IEEE 802.15.4-2006 WPAN）设备设计的基于 IPv6 的网络协议。Thread 是一个新的网状网络协议，它并不依赖其它的 802.15 网状网络协议（如 ZigBee、Z-Wave 和 Bluetooth LE）。</p>
-<p>Thread 的主要特性包括：</p>
-<ul>
-<li>易于部署和维护 — 安装、启动和操作相对简单</li>
-<li>通信安全 — Thread 网络中的设备都必须通过身份验证，并且所有的通信都经过了加密</li>
-<li>稳定可靠 — 具有自愈能力的网状网络，无单点故障，并且采用扩频技术以提高抗干扰能力</li>
-<li>低功耗 — Thread 低功耗设备可以进入休眠并使用电池供电，通常使用一块电池便能工作数年</li>
-<li>规模可扩展 — Thread 网络的规模可以扩展达数百个设备</li>
-</ul>
-<p>ESP32-H2转而支持Zigbee和Thread，可以用于Matter智能家居标准。这意味着从前用乐鑫的芯片必须通过Wi-Fi和蓝牙实现物体互联，现在扩展到可以通过Zigbee和Thread互联。</p>
-<h3 id="Matter"><a href="#Matter" class="headerlink" title="Matter"></a>Matter</h3><p>2021 年 5 月，原“Zigbee 联盟”更名为“连接标准联盟” (Connectivity Standards Alliance, CSA)，同时对外发布了智能家居连接标准 Matter。<br>Matter 的第一个规范版本将基于现有的网络技术，包括以太网 (IEEE 802.3)、Wi-Fi (IEEE 802.11) 和 Thread (IEEE 802.15.4)，可应用低功耗蓝牙简化设备调试流程。其中，Thread 由谷歌 Nest 部门主导开发，和 Zigbee 同样基于 IEEE 802.15.4，但在传输层实现了 IPv6 支持，解放了设备互联的限制，支持低功耗设备直接接入互联网。</p>
-<table>
-<thead>
-<tr>
-<th>wifi</th>
-<th>Bluetooth</th>
-<th>zigbee&#x2F;thread(802.15.4)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>54Mb&#x2F;s</td>
-<td>ble 1Mb&#x2F;s</td>
-<td>250kb&#x2F;s</td>
-</tr>
-<tr>
-<td>0~100m</td>
-<td>0~10m</td>
-<td>0~3km</td>
-</tr>
-<tr>
-<td>电池数小时</td>
-<td>电池数天</td>
-<td>电池数年</td>
-</tr>
-</tbody></table>
-<h2 id="MIPI"><a href="#MIPI" class="headerlink" title="MIPI"></a>MIPI</h2><p>MIPI联盟，即移动产业处理器接口（Mobile Industry Processor Interface 简称MIPI）联盟。MIPI（移动产业处理器接口）是MIPI联盟发起的为移动应用处理器制定的开放标准和一个规范。</p>
-<h3 id="DSI"><a href="#DSI" class="headerlink" title="DSI"></a>DSI</h3><p>DSI-Display Serial Interface 2是MIPI联盟关于处理器和显示模组之间的高速串行接口定义。<br>ESP32P4 支持MIPI-DSI(720p 1080p) 双核RISC-V 400Mhz<br>ESP32S3 支持RGB565&#x2F;8080&#x2F;SPI&#x2F;I2C  双核xtensa 240Mhz<br>ESP32C3 支持SPI(240x320)&#x2F;I2C     单核RISC-V 160Mhz</p>
-<p>MIPI-DSI 是高分辨率和高刷新率的 LCD 上常见的高速串行接口。ESP32-P4 在硬件接口和图形处理方面具备多项先进特性，支持 MIPI-DSI 接口，能够输出 24 位 RGB888 颜色格式的图像。</p>
-<p>RGB 因其刷屏速率高、驱动屏幕大、适用面广而成为中控大屏常用的显示驱动接口。ESP32-P4 和 ESP32-S3 适用于构建 RGB 接口屏方案，它们外设接口丰富，支持与多样的外围器件通信，可用于构建集设备控制、开关面板、场景面板、温控面板、智能遥控器等为一体的智能家居中控面板。</p>
-<p>SPI 是小型屏幕常用的驱动接口。ESP32-C3 适用于构建 SPI 接口屏方案，如洗衣机、体脂秤、电动牙刷等小家电应用中的旋钮屏和小尺寸显示屏应用场景。ESP32-C3 不仅具有成本优势，还拥有行业领先的低功耗性能，可以根据应用需求动态调整工作频率、切换低功耗模式，以提升产品续航时间。</p>
-<h3 id="CSI"><a href="#CSI" class="headerlink" title="CSI"></a>CSI</h3><p>CSI 处理器和摄像模组之间的高速串行接口</p>
-]]></content>
-      <categories>
-        <category>MCU</category>
-      </categories>
-      <tags>
-        <tag>esp32</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ESP 开发</title>
-    <url>/2024/04/15/esp8266%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="ESP8266"><a href="#ESP8266" class="headerlink" title="ESP8266"></a>ESP8266</h3><p>ESP8266是一款低成本、低功耗、高度集成的Wi-Fi芯片，其主要参数包括：12</p>
-<p>主频：80 MHz (单核)<br>内存：80 KB RAM + 4 MB Flash<br>Wi-Fi标准：802.11 b&#x2F;g&#x2F;n 不支持蓝牙<br>工作电压：3.0V - 3.6V<br>工作温度：-40℃ ~ 125℃<br>支持模式：STA&#x2F;AP&#x2F;AP+STA<br>支持协议：TCP&#x2F;UDP<br>支持连接：多连接<br>支持升级：OTA升级<br>此外，ESP8266还具备以下特性：</p>
-<p>无线参数：支持802.11 b&#x2F;g&#x2F;n标准，频率范围2.4GHz至2.5GHz，具有不同的发射功率和接收灵敏度，以满足不同标准下的通信需求。<br>存储系统：配备有32Mb(4M)的Flash存储器和80KB的SRAM，Flash存储器分为几个部分，包括Bootloader等。<br>处理器和性能：内置超低功耗的Tensilica L106 32位RISC处理器，最高时钟速度可达160MHz，支持RTOS和Wi-Fi协议栈，能够将高达80%的处理能力留给应用编程和开发。</p>
-<p>ESP8266模块有多个型号和变种，例如<strong>ESP-01、ESP-12E、NodeMCU</strong>等，每种型号的功能和特点可能略有不同。<br><img src="https://pic1.zhimg.com/v2-e65552b66eb883bb5bfda9b3159d5308_b.jpg"></p>
- <span id="more"></span>
-
-<h4 id="ESP12F-引脚图"><a href="#ESP12F-引脚图" class="headerlink" title="ESP12F 引脚图"></a>ESP12F 引脚图</h4><p>ESP-12F模块型号，它包含了ESP8266芯片本身以及附加的外部元件，如天线、电源管理电路等。<br>共有22个引脚,GPIO6～GPIO 11被用于连接开发板的闪存（Flash Memory）因此建议不要使用GPIO6～GPIO 11。<br>|EN 0 2|1TX0 3 RX0|4 SDA 5 SCL|6<del>11 FLASH|12 13 14 15 SPI| 16 | A0 0</del>1Vinput|</p>
-<blockquote>
-<p>上电的一瞬间GPIO0、GPIO2都会从高电平变为低电平，然后再变为高电平    </p>
-</blockquote>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vbmllX2hlbi9YU0pfaW1nL3Jhdy9tYXN0ZXIvJUU1JUIwJThGJUU0JUI5JUE2JUU1JThDJUEwLzE1ODExNDUwMDQ1NDEucG5n?x-oss-process=image/format,png" alt="esp12f"></p>
-<p>启动相关引脚，EN、GPIO0、GPIO2等</p>
-<h4 id="AT-固件"><a href="#AT-固件" class="headerlink" title="AT 固件"></a>AT 固件</h4><ul>
-<li>MQTT</li>
-</ul>
-<h4 id="相关的github-项目"><a href="#相关的github-项目" class="headerlink" title="相关的github 项目"></a>相关的github 项目</h4><ul>
-<li>tasmota</li>
-<li>esphome</li>
-<li>wled</li>
-</ul>
-]]></content>
-      <categories>
-        <category>MCU</category>
-      </categories>
-      <tags>
-        <tag>esp32</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>F1C100s/F1C200s 开发</title>
     <url>/2024/03/08/f1c100s%E5%BC%80%E5%8F%91/</url>
     <content><![CDATA[<h1 id="F1C100s-F1C200s"><a href="#F1C100s-F1C200s" class="headerlink" title="F1C100s&#x2F;F1C200s"></a>F1C100s&#x2F;F1C200s</h1><ul>
@@ -429,6 +531,467 @@
       </categories>
       <tags>
         <tag>ARM926EJ-S</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Arduino 开发</title>
+    <url>/2024/05/16/arduino/</url>
+    <content><![CDATA[<h1 id="Aduino-IDE"><a href="#Aduino-IDE" class="headerlink" title="Aduino IDE"></a>Aduino IDE</h1><p>Arduino IDE预装有一系列标准库文件，同时您也可以自己将第三方库（如：网上下载的开源库）安装导入.<br>Arduino boards require an additional core to be installed, therefore we have implemented the Boards Manager as the preferred tool to add cores to your Arduino Software (IDE).<br>so, there is new IDE call PlatformIO</p>
+<h2 id="Sketch"><a href="#Sketch" class="headerlink" title="Sketch"></a>Sketch</h2><p>使用Arduino Software IDE编写的程序被称为“sketch”[1]。一个典型的 Arduino C&#x2F;C++ sketch 程序会包含两个函数，它们会在编译后合成为 main() 函数：</p>
+<p>setup()：在程序执行开始时会执行一次，用于初始化设置。<br>loop()：直到Arduino硬件关闭前会重复执行函数放的代码。</p>
+<span id="more"></span>
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p>For controlling the Arduino board and performing computations.</p>
+<h3 id="Digital-I-O"><a href="#Digital-I-O" class="headerlink" title="Digital I&#x2F;O"></a>Digital I&#x2F;O</h3><ul>
+<li>digitalRead()</li>
+<li>digitalWrite()</li>
+<li>pinMode()</li>
+</ul>
+<h3 id="Analog-I-O"><a href="#Analog-I-O" class="headerlink" title="Analog I&#x2F;O"></a>Analog I&#x2F;O</h3><ul>
+<li>analogRead()</li>
+<li>analogReadResolution()</li>
+<li>analogReference()</li>
+<li>analogWrite()</li>
+<li>analogWriteResolution()</li>
+</ul>
+<h3 id="Advanced-I-O"><a href="#Advanced-I-O" class="headerlink" title="Advanced I&#x2F;O"></a>Advanced I&#x2F;O</h3><ul>
+<li>noTone()</li>
+<li>pulseIn()</li>
+<li>pulseInLong()</li>
+<li>shiftIn()</li>
+<li>shiftOut()</li>
+<li>tone()</li>
+</ul>
+<h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h3><ul>
+<li>delay()</li>
+<li>delayMicroseconds()</li>
+<li>micros()</li>
+<li>millis()</li>
+</ul>
+<h3 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h3><ul>
+<li>abs()</li>
+<li>constrain()</li>
+<li>map()</li>
+<li>max()</li>
+<li>min()</li>
+<li>pow()</li>
+<li>sq()</li>
+<li>sqrt()</li>
+</ul>
+<h3 id="Trigonometry"><a href="#Trigonometry" class="headerlink" title="Trigonometry"></a>Trigonometry</h3><ul>
+<li>cos()</li>
+<li>sin()</li>
+<li>tan()</li>
+</ul>
+<h3 id="Characters"><a href="#Characters" class="headerlink" title="Characters"></a>Characters</h3><ul>
+<li>isAlpha()</li>
+<li>isAlphaNumeric()</li>
+<li>isAscii()</li>
+<li>isControl()</li>
+<li>isDigit()</li>
+<li>isGraph()</li>
+<li>isHexadecimalDigit()</li>
+<li>isLowerCase()</li>
+<li>isPrintable()</li>
+<li>isPunct()</li>
+<li>isSpace()</li>
+<li>isUpperCase()</li>
+<li>isWhitespace()</li>
+</ul>
+<h3 id="Random-Numbers"><a href="#Random-Numbers" class="headerlink" title="Random Numbers"></a>Random Numbers</h3><ul>
+<li>random()</li>
+<li>randomSeed()</li>
+</ul>
+<h3 id="Bits-and-Bytes"><a href="#Bits-and-Bytes" class="headerlink" title="Bits and Bytes"></a>Bits and Bytes</h3><ul>
+<li>bit()</li>
+<li>bitClear()</li>
+<li>bitRead()</li>
+<li>bitSet()</li>
+<li>bitWrite()</li>
+<li>highByte()</li>
+<li>lowByte()</li>
+</ul>
+<h3 id="External-Interrupts"><a href="#External-Interrupts" class="headerlink" title="External Interrupts"></a>External Interrupts</h3><ul>
+<li>attachInterrupt()</li>
+<li>detachInterrupt()</li>
+<li>digitalPinToInterrupt()</li>
+</ul>
+<h3 id="Interrupts"><a href="#Interrupts" class="headerlink" title="Interrupts"></a>Interrupts</h3><ul>
+<li>interrupts()</li>
+<li>noInterrupts()</li>
+</ul>
+<h3 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h3><ul>
+<li>Print</li>
+<li>Serial(UART)</li>
+<li>SPI</li>
+<li>Wire(I2C)</li>
+<li>Stream</li>
+</ul>
+<h3 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h3><ul>
+<li>Keyboard</li>
+<li>Mouse</li>
+</ul>
+<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><p>Arduino data types and constants.</p>
+<h3 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h3><ul>
+<li>Floating Point Constants</li>
+<li>HIGH | LOW</li>
+<li>INPUT | INPUT_PULLUP | OUTPUT</li>
+<li>Integer Constants</li>
+<li>LED_BUILTIN</li>
+<li>true | false</li>
+<li></li>
+</ul>
+<h3 id="Conversion"><a href="#Conversion" class="headerlink" title="Conversion"></a>Conversion</h3><ul>
+<li>(unsigned int)</li>
+<li>(unsigned long)</li>
+<li>byte()</li>
+<li>char()</li>
+<li>float()</li>
+<li>int()</li>
+<li>long()</li>
+<li>word()</li>
+</ul>
+<h3 id="Data-Types"><a href="#Data-Types" class="headerlink" title="Data Types"></a>Data Types</h3><ul>
+<li>array</li>
+<li>bool</li>
+<li>boolean</li>
+<li>byte</li>
+<li>char</li>
+<li>double</li>
+<li>float</li>
+<li>int</li>
+<li>long</li>
+<li>short</li>
+<li>size_t</li>
+<li>string</li>
+<li>String()</li>
+<li>unsigned char</li>
+<li>unsigned int</li>
+<li>unsigned long</li>
+<li>void</li>
+<li>word</li>
+</ul>
+<h3 id="Variable-Scope-Qualifiers"><a href="#Variable-Scope-Qualifiers" class="headerlink" title="Variable Scope &amp; Qualifiers"></a>Variable Scope &amp; Qualifiers</h3><ul>
+<li>const</li>
+<li>scope</li>
+<li>static</li>
+<li>volatile</li>
+</ul>
+<h3 id="Utilities"><a href="#Utilities" class="headerlink" title="Utilities"></a>Utilities</h3><ul>
+<li>PROGMEM</li>
+<li>sizeof()</li>
+</ul>
+<h2 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h2><p>The elements of Arduino (C++) code.</p>
+<h3 id="Sketch-1"><a href="#Sketch-1" class="headerlink" title="Sketch"></a>Sketch</h3><ul>
+<li>loop()</li>
+<li>setup()</li>
+</ul>
+<h3 id="Control-Structure"><a href="#Control-Structure" class="headerlink" title="Control Structure"></a>Control Structure</h3><ul>
+<li>break</li>
+<li>continue</li>
+<li>do…while</li>
+<li>else</li>
+<li>for</li>
+<li>goto</li>
+<li>if</li>
+<li>return</li>
+<li>switch…case</li>
+<li>while</li>
+</ul>
+<h3 id="Further-Syntax"><a href="#Further-Syntax" class="headerlink" title="Further Syntax"></a>Further Syntax</h3><ul>
+<li>#define (define)</li>
+<li>#include (include)</li>
+<li>&#x2F;* *&#x2F; (block comment)</li>
+<li>&#x2F;&#x2F; (single line comment)</li>
+<li>; (semicolon)</li>
+<li>{} (curly braces)</li>
+</ul>
+<h3 id="Arithmetic-Operators"><a href="#Arithmetic-Operators" class="headerlink" title="Arithmetic Operators"></a>Arithmetic Operators</h3><ul>
+<li>% (remainder)</li>
+<li><ul>
+<li>(multiplication)</li>
+</ul>
+</li>
+<li><ul>
+<li>(addition)</li>
+</ul>
+</li>
+<li><ul>
+<li>(subtraction)</li>
+</ul>
+</li>
+<li>&#x2F; (division)</li>
+<li>&#x3D; (assignment operator)</li>
+</ul>
+<h3 id="Comparison-Operators"><a href="#Comparison-Operators" class="headerlink" title="Comparison Operators"></a>Comparison Operators</h3><ul>
+<li>!&#x3D; (not equal to)</li>
+<li>&lt; (less than)</li>
+<li>&lt;&#x3D; (less than or equal to)</li>
+<li>&#x3D;&#x3D; (equal to)</li>
+<li><blockquote>
+<p>(greater than)</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>&#x3D; (greater than or equal to)</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Boolean-Operators"><a href="#Boolean-Operators" class="headerlink" title="Boolean Operators"></a>Boolean Operators</h3><ul>
+<li>! (logical not)</li>
+<li>&amp;&amp; (logical and)</li>
+<li>|| (logical or)</li>
+</ul>
+<h3 id="Pointer-Access-Operators"><a href="#Pointer-Access-Operators" class="headerlink" title="Pointer Access Operators"></a>Pointer Access Operators</h3><ul>
+<li>&amp; (reference operator)</li>
+<li><ul>
+<li>(dereference operator)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Bitwise-Operators"><a href="#Bitwise-Operators" class="headerlink" title="Bitwise Operators"></a>Bitwise Operators</h3><ul>
+<li>&amp; (bitwise and)</li>
+<li>&lt;&lt; (bitshift left)</li>
+<li><blockquote>
+<blockquote>
+<p>(bitshift right)</p>
+</blockquote>
+</blockquote>
+</li>
+<li>^ (bitwise xor)</li>
+<li>| (bitwise or)</li>
+<li>~ (bitwise not)</li>
+</ul>
+<h3 id="Compound-Operators"><a href="#Compound-Operators" class="headerlink" title="Compound Operators"></a>Compound Operators</h3><ul>
+<li>%&#x3D; (compound remainder)</li>
+<li>&amp;&#x3D; (compound bitwise and)</li>
+<li>*&#x3D; (compound multiplication)</li>
+<li>++ (increment)</li>
+<li>+&#x3D; (compound addition)</li>
+<li>– (decrement)</li>
+<li>-&#x3D; (compound subtraction)</li>
+<li>&#x2F;&#x3D; (compound division)</li>
+<li>^&#x3D; (compound bitwise xor)</li>
+<li>|&#x3D; (compound bitwise or)</li>
+</ul>
+<h2 id="Libraries"><a href="#Libraries" class="headerlink" title="Libraries"></a>Libraries</h2><ul>
+<li>Communication (1472)</li>
+<li>Data Processing (426)</li>
+<li>Data Storage (179)</li>
+<li>Device Control (1207)</li>
+<li>Display (588)</li>
+<li>Other (605)</li>
+<li>Sensors (1378)</li>
+<li>Signal Input&#x2F;Output (526)</li>
+<li>Timing (255)</li>
+<li>Uncategorized (256)</li>
+</ul>
+<h2 id="Official-Arduino-Libraries"><a href="#Official-Arduino-Libraries" class="headerlink" title="Official Arduino Libraries"></a>Official Arduino Libraries</h2><p>This library is bundled with every Arduino platform (avr, megaavr, mbed, samd, sam, arc32), so you do not need to install the library separately.</p>
+<ul>
+<li><p>Robotics</p>
+<blockquote>
+<p>Libraries for controlling servo and stepper motors.</p>
+</blockquote>
+</li>
+<li><p>Communication</p>
+<blockquote>
+<p>Libraries for using the SPI, I2C and UART protocols.</p>
+</blockquote>
+</li>
+<li><p>Connectivity</p>
+<blockquote>
+<p>Libraries to access radio modules on different IoT boards (Wi-Fi, Bluetooth®, LoRa®, GSM, NB-IoT, Sigfox).</p>
+</blockquote>
+</li>
+<li><p>Memory</p>
+<blockquote>
+<p>Libraries for memory management and data storage.</p>
+</blockquote>
+</li>
+<li><p>Display</p>
+<blockquote>
+<p>Libraries for controlling different displays.</p>
+</blockquote>
+</li>
+<li><p>Audio</p>
+<blockquote>
+<p>Libraries for audio sampling and playback.</p>
+</blockquote>
+</li>
+<li><p>USB</p>
+<blockquote>
+<p>Libraries for using your Arduino as either a USB host or device.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="ESP32-Arduino-Libraries"><a href="#ESP32-Arduino-Libraries" class="headerlink" title="ESP32 Arduino Libraries"></a>ESP32 Arduino Libraries</h2><p>base on ESP32-IDF<br><a href="https://github.com/espressif/arduino-esp32/tree/master/libraries">arduino-esp32-lib</a></p>
+<h2 id="STM32-Arduino-Libraries"><a href="#STM32-Arduino-Libraries" class="headerlink" title="STM32 Arduino Libraries"></a>STM32 Arduino Libraries</h2><p>base on STM32Cube HAL<br><a href="https://github.com/stm32duino/Arduino_Core_STM32">arduino-stm32-lib</a></p>
+<h2 id="Built-in-Examples"><a href="#Built-in-Examples" class="headerlink" title="Built-in Examples"></a>Built-in Examples</h2><p><a href="https://docs.arduino.cc/built-in-examples/">built-in-examples</a></p>
+]]></content>
+      <categories>
+        <category>MCU</category>
+      </categories>
+      <tags>
+        <tag>esp32</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git</title>
+    <url>/2022/03/04/git/</url>
+    <content><![CDATA[<h2 id="git-命令使用"><a href="#git-命令使用" class="headerlink" title="git 命令使用"></a>git 命令使用</h2><p>开始使用 git 的简易指南<br>更多可以参考: (<a href="http://book.git-scm.com/">http://book.git-scm.com/</a>)</p>
+<span id="more"></span>
+
+<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init </span><br></pre></td></tr></table></figure>
+<p> 以创建新的 git 仓库。</p>
+<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> /path/to/repository</span><br></pre></td></tr></table></figure>
+<p>如果是远端服务器上的仓库，你的命令会是这个样子</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> username@host:/path/to/repository</span><br></pre></td></tr></table></figure>
+
+<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录,它持有实际文件；第二个是 缓存区，它像个缓存区域(Index)，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。 </p>
+<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
+<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;代码提交信息&quot;</span></span><br></pre></td></tr></table></figure>
+<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
+<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<p>可以把 <i>master</i> 换成你想要推送的任何分支。</p>
+<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt; </span><br></pre></td></tr></table></figure>
+<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master&#x2F;main 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上创建一个叫做“branch_x”的分支，并切换过去：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branch_x</span><br></pre></td></tr></table></figure>
+<p>切换回主分支：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b main</span><br></pre></td></tr></table></figure>
+<p>再把新建的分支删掉：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branch_x</span><br></pre></td></tr></table></figure>
+<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+
+<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。要合并其他分支到你的当前分支（例如 master），执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>在合并改动之前，也可以使用如下命令查看：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;file name&gt;</span><br></pre></td></tr></table></figure>
+<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
+<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard origin/master </span><br></pre></td></tr></table></figure>
+
+<p>显示历史记录时，只显示一行注释信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config format.pretty oneline</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="github-com和raw-githubusercontent-com访问不了的解决方法"><a href="#github-com和raw-githubusercontent-com访问不了的解决方法" class="headerlink" title="github.com和raw.githubusercontent.com访问不了的解决方法"></a>github.com和raw.githubusercontent.com访问不了的解决方法</h3><p>本文链接 <a href="https://www.ioiox.com/archives/62.html">https://www.ioiox.com/archives/62.html</a><br>这里还有免费FRP!!!</p>
+<h3 id="修改-hosts"><a href="#修改-hosts" class="headerlink" title="修改 hosts"></a>修改 hosts</h3><p>在 hosts 文件添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用gh-proxy来代理访问"><a href="#使用gh-proxy来代理访问" class="headerlink" title="使用gh-proxy来代理访问"></a>使用gh-proxy来代理访问</h3><p>gh-proxy 是一款 github release、archive以及项目文件的加速项目，支持直接在终端 git clone ,也可以在 web 端代理下载 github 以及 raw.githubusercontent.com 等文件.<br>项目默认使用jsdelivr和cnpmjs</p>
+<p>支持终端命令行下载 , 例如 git clone , wget , curl 等以及 raw.githubusercontent.com 文件下载.<br>注意：不支持 SSH Key 方式 git clone 下载.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone</span><br><span class="line">git clone https://ghproxy.com/https://github.com/stilleshan/ServerStatus.git</span><br><span class="line"></span><br><span class="line">wget &amp; curl</span><br><span class="line">wget https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">wget https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br><span class="line">curl -O https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">curl -O https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人生如赴宴，举止须从容</title>
+    <url>/2034/05/04/life/</url>
+    <content><![CDATA[<h1 id="人生如赴宴，举止须从容"><a href="#人生如赴宴，举止须从容" class="headerlink" title="人生如赴宴，举止须从容"></a>人生如赴宴，举止须从容</h1><p>人和动物&#x2F;野兽的区别，人是有智慧的。身体由大脑控制，大脑是由思想，意志等控制着。所以需要训练大脑，增强意志力，拥有更强的自控力。如同计算机发出指令，最简单的if&#x2F;else判断语句后面都有一个True&#x2F;Flase。人也一样，一个优秀的人，在做出主动选择或者被动响应时，都应该由一个判断的过程，而这个判断的算法每个人都不一样。如何得到一个优秀的执行判断的神经网络模型，需要训练，多看（输入）、多做（输出）、多想（反馈），才能得到优化。</p>
+<p>一个人的成长，是从全能自恋到真实自信的过程，也是从孤独自恋到有深情依恋的过程，同时是从想象进入现实的过程。<br>想象与现实的一个巨大差别是，想象可瞬间完成，而现实却需要时间和过程，它越重要，就越需要漫长的过程。</p>
+<p>现代人的大脑结构，有好几个自我。它们相互竞争，试图控制我们的想法、感受和行动。每个意志力挑战都是一次自我博弈。要想让更好的自己占据主导，我们就要强化自我意识和自控力。这样，我们才会有意志力和“我想要”的力量。</p>
+<p>作为一个遵纪守法的好人，也许我们从来没有想过和“暴力”扯上关系。不过如果稍微留意一下现实生活中的谈话方式，并且用心体会各种谈话方式给我们的不同感受，我们一定会发现有些话确实伤人！言语上的指责、嘲讽、否定、说教以及任意打断、拒不回应、随意出口的评价和结论给我们带来的情感和精神上的创伤，甚至比肉体的伤害更加令人痛苦。这些无心或有意的语言暴力让人变得冷漠、隔膜、敌视。</p>
+<span id="more"></span>
+
+<h2 id="全能自恋"><a href="#全能自恋" class="headerlink" title="全能自恋"></a>全能自恋</h2><ul>
+<li>你只是一个人，不是生来就全能，需要不断的学习和实践。</li>
+<li>行动和投入是对全能自恋的直接治疗方法。</li>
+<li>一些事情我们自己能控制，另一些则不能。学会区分什么你能控制的，什么你不能控制的。</li>
+</ul>
+<h2 id="自控力"><a href="#自控力" class="headerlink" title="自控力"></a>自控力</h2><p>如果你想要更强的自控力，就得有更多的自我意识，要意识到自己在做什么，为什么要这样做（什么样的想法、感受和情况最容易让你有冲动，想些什么或暗示什么最容易让你放弃冲动）。</p>
+<ul>
+<li>任何时候，我们都有选择的空间。任何时候，我都可以选择我的行为，朝向你认为“好”的方向。哪怕是赴死，也可以选择从容、优雅一些。</li>
+</ul>
+<h4 id="脑力训练"><a href="#脑力训练" class="headerlink" title="脑力训练"></a>脑力训练</h4><p>经常挑战自己说<strong>我不要</strong>和<strong>我想要</strong>，日常冥想练习，让更多的血液流进前额皮质。<br>每天做10分钟冥想训练，注意力收回的过程就是自控力。</p>
+<ol>
+<li>原定不动，安静坐好。不要烦躁     </li>
+<li>注意你的呼吸。闭上眼睛，吸气在脑海中默念“吸”，呼气时在脑海里默念“呼”。</li>
+<li>感受呼吸，弄清自己是怎么走神的。集中注意力在呼吸上。</li>
+</ol>
+<h4 id="三思而后行"><a href="#三思而后行" class="headerlink" title="三思而后行"></a>三思而后行</h4><p>自控力不仅和心理有关，更和生理有关。只有在大脑和身体同时作用的瞬间，你才有力量克服冲动。当你最需要意志力的时候，你能够学会将自己的生理机能调整到这种状态。自控力就成了本能反应。<br>利用威胁，对生命的威胁，不做会死，例如剑齿虎的威胁，利用应激反应做启动，引出自控力。<br>深呼一口气，让你的身体进入更平静的状态，避免冲动行为，给自己更多的时间，让你深思熟虑想办法。</p>
+<h4 id="降低你的心率"><a href="#降低你的心率" class="headerlink" title="降低你的心率"></a>降低你的心率</h4><p><strong>当人感受到压力时，交感神经系统会控制身体。这种生理现象让你能够战斗或者逃跑。心率升高，心率变异程度就会降低</strong>此时，由于伴随应激反应产生的焦虑或愤怒，心率会被迫保持在较高水平上。<strong>相反，当人们成功自控的时候，副交感神经系统会发挥主要作用，缓解压力，控制冲动行为。心率降低，心率变异程度便会升高。</strong></p>
+<h2 id="非暴力沟通"><a href="#非暴力沟通" class="headerlink" title="非暴力沟通"></a>非暴力沟通</h2><p>非暴力沟通指导我们转变谈话和聆听的方式。我们不在条件反射式地反应，而是去明了自己的观察、感受和愿望，有意识的使用语言。尊重和倾听他人，又诚实、清晰地表达自己。<br><strong>听到批评时，我们一般会申辩、退缩或反击</strong>。然而，一旦<strong>专注于彼此的观察、感受及需要，而不反驳他人</strong>，我们便能发现内心的柔情，对自己和他人产生新的体会。通过强调倾听–<strong>倾听自己和他人</strong>，非暴力沟通培养彼此的尊重、关注与爱，使人乐于助人。</p>
+<p>（发起方）非暴力沟通模式的四个要素（观察，感受，需求，请求），利用四要素诚实地表达自己。</p>
+<ul>
+<li>留意发生的事情，我们此刻<strong>观察</strong>到什么？清楚地表达观察结果，而不是判断或评估。</li>
+<li>接着，表达<strong>感受</strong>，例如受伤、害怕、喜悦、开心、气愤等。</li>
+<li>然受，说出哪些<strong>需要</strong>导致那样的感受。</li>
+<li><strong>具体的请求</strong>，明确的告知他人，我们期待他采取何种行动，来满足我们。</li>
+</ul>
+<p>（接收方）非暴力沟通另一方面是借助它们关切地倾听。我们首先通过体会他人此刻的观察、感受和需要，和他们建立联系，然后聆听他们的请求，来发现做什么可以帮助他们。</p>
+<p>实际应用<br>非暴力沟通不只是语言表达或使用文字的技巧，它包含的意识和意图，也可以通过沉默、专注以及面部表情和身体语言来表达。<strong>倾听每句话所包含的情感和感受，去了解，去询问。</strong></p>
+<h3 id="是什么蒙蔽了爱"><a href="#是什么蒙蔽了爱" class="headerlink" title="是什么蒙蔽了爱"></a>是什么蒙蔽了爱</h3><p>是什么使我们难以体会到心中的爱，某些语言和表达方式的负面影响，它们虽然致力向于忽视人的感受和需要，以致彼此的疏远和伤寒。这些语言和表达方式，我称为“异化的沟通方式”。我们大多数的人使用的语言倾向于评判、比较、命令和指责 ，而不是鼓励我们倾听彼此的感受和需要。</p>
+<h4 id="道德评判"><a href="#道德评判" class="headerlink" title="道德评判"></a>道德评判</h4><p>道德评判是用道德标准来评判人，如果一个人的行为不符合我们的价值观，那他就被看作是不道德的或者邪恶的。批评、指责、辱骂、归类、比较及评论等都是在评判人。<br><strong>苏菲派诗人鲁米写道：“在道德与不道德的区分之外，有片田野。我将在那里见你。”</strong><br>然而，语言使我们陷入是非之中。它擅长将人分类，把人看作好人或坏人，正常或不正常，负责人或者不负责任，聪明或愚蠢，等等。诸如此类的评论暗含着我们的价值观及需要。不幸的是，以这样的方式提出主张，很可能会招来敌意，使我们的愿望难得到满足，即使他们接受批评，做出让步，通常不是心甘情愿的。如果他们处于恐惧或内疚来迎合我们，或迟或早，我们将会发现对方不再那么友好。当然，他们也付出了代价。屈服于外部和内部的压力，很可能使他们心怀怨恨，并厌恶自己。<br>不要将价值判断于道德评判混为一谈，什么是可贵的品质，我们每个人都要自己的看法。例如，我们也许会欣赏诚实、自由以及和平的价值。</p>
+<h4 id="进行比较"><a href="#进行比较" class="headerlink" title="进行比较"></a>进行比较</h4><p>比较也是批判的一种形式。比较蒙蔽了我们对人对己的爱意。如果真想过上悲惨生活，就去与他人做比较。<br>去和优秀的人比较，开始觉得自己活得很惨，心情极为低落。</p>
+<h4 id="回避责任"><a href="#回避责任" class="headerlink" title="回避责任"></a>回避责任</h4><p>我们对自己的思想、情感和行动负有责任。不是因为“不得不”而去做一件事情，而是你负有不可推卸的责任，作为子女、伴侣、公民的责任，要有责任感，而不是唯名是从，服从命令。</p>
+<h4 id="强人所难"><a href="#强人所难" class="headerlink" title="强人所难"></a>强人所难</h4><p>我们对别人的要求往往暗含着威胁,如果不配合，他们就会受到惩罚。</p>
+<h2 id="道歉的五种语言"><a href="#道歉的五种语言" class="headerlink" title="道歉的五种语言"></a>道歉的五种语言</h2><p>冒犯他人后需要真诚的道歉，丈夫要妻子，关怀她，努力满足她的需求。美好婚姻的基石并不是完美的人，而愿意承认错误并寻求宽恕的心。</p>
+<h3 id="变达歉意"><a href="#变达歉意" class="headerlink" title="变达歉意"></a>变达歉意</h3><p>说“对不起”，要让人感觉到我们的真诚，从身体语言动作上，看别人的眼神，说话的声音。<br><strong>真诚的道歉不能找借口，在道歉之后马上来个“但是…”, 应该另找时机进行沟通。</strong>一旦我们在口头上把责任推给对方(这就是指责)，道歉就会变成攻击。而攻击永远不会带来宽恕与和解。</p>
+<ul>
+<li>我现在才知道已经深深地伤害了你，这让我感到无比痛苦。我为自己的行为真诚地道歉。</li>
+<li>我真的很难过，让你失望了。我本来应该更细心一些，很抱歉让你这么痛苦。</li>
+<li>我当时显然没有认真考虑你地感受。我从来没打算要伤害你，但现在我知道我的话太过火了。<br>很抱歉，我当时那么的不礼貌。</li>
+<li>她很爱自己的东西，很珍惜自己花钱买的东西。</li>
+</ul>
+<h3 id="承认过错"><a href="#承认过错" class="headerlink" title="承认过错"></a>承认过错</h3><p>借口又使他们觉得没必要道歉。不愿意承认错误是和自尊心分不开的。承认错误会被视为软弱，因为只有失败者才会人认错。<strong>成熟的成年人会学会为自己的行为承认责任。</strong> 不成熟的人则继续哪些幼稚的幻想，把自己的错误推卸给别人。<br>为自己的行为负责的核心是愿意承认<strong>我错了</strong>。真正的强大在于，有足够的智慧和勇气知错就改。</p>
+<ul>
+<li>我知道我做错了，毫无借口。说到底，我的做法很自私，我错了。</li>
+<li>我又犯了一个我们以前讨论过的错误，把事情搞砸了。我知道只是我的错。</li>
+</ul>
+<h3 id="弥补过失"><a href="#弥补过失" class="headerlink" title="弥补过失"></a>弥补过失</h3><p>真正的歉意体现在想要为自己给别人造成的痛苦做出的赔偿的意愿中。当我们被家人的语言或者行为伤害时，常常感到愤怒。之所以伤害如此之深，愤怒如此强烈，是因为我们极度渴望被那个人爱。了解她喜欢的爱的语言。<br><strong>说出她的主要爱语</strong></p>
+<ul>
+<li><strong>肯定的言词</strong> 你穿这件衣服很漂亮。 你做的饭太好吃了！真是厨艺精湛。你那么好，我还伤害了你。 </li>
+<li><strong>服务的行动</strong> 体贴入微的善意行动，洗衣服、洗盘子、倒垃圾、照顾孩子、做饭。</li>
+<li><strong>接受礼物</strong> 赠送和接受礼物是表达爱的一种普遍方式。赠送礼物视为一种爱的表达方式，送花补偿伤害行为。</li>
+<li><strong>精心的时刻</strong> 道歉时需要将全部的注意力放在道歉对象的身上，注意她的眼睛，握着她的手说。</li>
+<li><strong>身体接触</strong> 挽手、亲吻、拥抱、搂着对方的肩膀、轻拍对方的脊背、抚弄对方的头发。</li>
+</ul>
+<p><strong>如果只是说”对不起，我错了”之类的话，却没有诚心诚意地努力赔偿，对方永远不会认为你地道歉是真诚的。</strong><br>真诚地道歉应该包含渴望纠正犯下地错误、弥补所造成的损失，以及向对方证实你地关爱。</p>
+<ul>
+<li>我能做些什么来弥补我地所作所为呢？</li>
+</ul>
+<h3 id="真诚悔改"><a href="#真诚悔改" class="headerlink" title="真诚悔改"></a>真诚悔改</h3><p>道歉里需要表达出改变的意愿，并且下次不再这样做，应该承诺”我会努力不再做这样的事”，还要有行为上的改变。<br><strong>真正的悔改发自内心，不再为过错找借口、狡辩，为自己的行为承担所有的责任，告诉她我会努力不再犯同样的错。</strong><br>我知道自己不会一下子就改好，但是我愿意去改变，希望他们对我有耐心，数周或数月。<br>如果不承认自己的错误，那么向配偶传达的消息是我们的道歉缺乏诚意。<strong>由于害羞和尴尬，我们常常不肯承认自己的失败。但是，最好的做法是立刻承认我们的旧病复发。</strong><br>  健康的婚姻里，我们所做出的改变通常与道德层面毫不相干，而与构建一个和谐的婚姻关系息息相关，去满足她的需求，这也是一种示爱方式，这个小小的改变能让妻子无比的幸福，这个代价实在是小且值得付出的。<br><strong>悔改的第二步是做出改变的计划，不要说说而已，要真正的改变。</strong><br><strong>悔改的第三步是执行计划。让计划得以实行需要付诸思考和行动。</strong><br>虽然旧的行为方式不能很快就彻底改掉，但是只要我们继续坚持改变，总有一天会成功。</p>
+<p>现实生活中，人们对事物的认知见仁见智，不同意别人的看法，需要先肯定他，然后再说出自己的观点。<strong>1这么看问题很有意思，2这一点我能理解，3关于这个想法，我最喜欢的是…</strong></p>
+<ul>
+<li>我知道我的做法于事无补。你觉得我怎么改变才会让你感觉好一些呢？</li>
+<li>我又犯了同样的错误，让你失望了。我怎么做才能让你重新建立对我的信任呢？</li>
+<li>我的老毛病实在由来已久，我知道现在想要改变一定会很难，而且可能会失败，再次伤害到你。如果你能帮助我想出让我能够坚持改变的方法，并在觉得我做得好的时候鼓励我，我会很感激的。</li>
+</ul>
+<h3 id="请求饶恕"><a href="#请求饶恕" class="headerlink" title="请求饶恕"></a>请求饶恕</h3><p>道歉了，还要说”请你原谅我，好吗”。你们的关系将如何发展就取决于对方，你失去了对事情的控制权，对一些人来说，<strong>交出控制权</strong>是他们很难接受的事情。<strong>害怕被拒绝</strong>是人之常情，成熟的人能认识到自己的恐惧，同时拒绝被恐惧所支配。如果珍视一段关系，他们愿意抵制自己的恐惧心理，采取必要的措施来修复关系。</p>
+<p><strong>第三种妨碍人们请求饶恕的恐惧是害怕失败</strong>，如果承认错误，就是承认”我是个失败者”。他们的反应通常是于对方进行激烈的争论，坚持自己的做法没有错。他们会说：”那么做可能伤害到了你，那么做可能冒犯了你，但你误会了，我可不是那个意思。”有时他们为自己做辩解的方式本身比最初的冒犯行为更伤人，但是他们看不到这一点。</p>
+<p>放低姿态，请求原谅，而不是要求，入药如同坐在宝座上的君王。</p>
+<ul>
+<li>我为自己对你说话的方式感到抱歉。我的声音很大、说话很难听，这样做很不对。你不该受到那样的对待。请你原谅我。</li>
+<li>我知道我深深地伤害了额你。你有理由不理我，但是我真的为自己的所作所为感到抱歉。希望你能够原谅我。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>book</category>
+      </categories>
+      <tags>
+        <tag>phychology</tag>
       </tags>
   </entry>
   <entry>
@@ -703,328 +1266,6 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </categories>
       <tags>
         <tag>rtos</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git</title>
-    <url>/2022/03/04/git/</url>
-    <content><![CDATA[<h2 id="git-命令使用"><a href="#git-命令使用" class="headerlink" title="git 命令使用"></a>git 命令使用</h2><p>开始使用 git 的简易指南<br>更多可以参考: (<a href="http://book.git-scm.com/">http://book.git-scm.com/</a>)</p>
-<span id="more"></span>
-
-<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init </span><br></pre></td></tr></table></figure>
-<p> 以创建新的 git 仓库。</p>
-<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> /path/to/repository</span><br></pre></td></tr></table></figure>
-<p>如果是远端服务器上的仓库，你的命令会是这个样子</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> username@host:/path/to/repository</span><br></pre></td></tr></table></figure>
-
-<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录,它持有实际文件；第二个是 缓存区，它像个缓存区域(Index)，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。 </p>
-<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add filename</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
-<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;代码提交信息&quot;</span></span><br></pre></td></tr></table></figure>
-<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
-<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-<p>可以把 <i>master</i> 换成你想要推送的任何分支。</p>
-<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt; </span><br></pre></td></tr></table></figure>
-<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
-<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master&#x2F;main 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上创建一个叫做“branch_x”的分支，并切换过去：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branch_x</span><br></pre></td></tr></table></figure>
-<p>切换回主分支：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b main</span><br></pre></td></tr></table></figure>
-<p>再把新建的分支删掉：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branch_x</span><br></pre></td></tr></table></figure>
-<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-
-<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。要合并其他分支到你的当前分支（例如 master），执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-
-<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-<p>在合并改动之前，也可以使用如下命令查看：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;file name&gt;</span><br></pre></td></tr></table></figure>
-<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
-<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard origin/master </span><br></pre></td></tr></table></figure>
-
-<p>显示历史记录时，只显示一行注释信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config format.pretty oneline</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="github-com和raw-githubusercontent-com访问不了的解决方法"><a href="#github-com和raw-githubusercontent-com访问不了的解决方法" class="headerlink" title="github.com和raw.githubusercontent.com访问不了的解决方法"></a>github.com和raw.githubusercontent.com访问不了的解决方法</h3><p>本文链接 <a href="https://www.ioiox.com/archives/62.html">https://www.ioiox.com/archives/62.html</a><br>这里还有免费FRP!!!</p>
-<h3 id="修改-hosts"><a href="#修改-hosts" class="headerlink" title="修改 hosts"></a>修改 hosts</h3><p>在 hosts 文件添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用gh-proxy来代理访问"><a href="#使用gh-proxy来代理访问" class="headerlink" title="使用gh-proxy来代理访问"></a>使用gh-proxy来代理访问</h3><p>gh-proxy 是一款 github release、archive以及项目文件的加速项目，支持直接在终端 git clone ,也可以在 web 端代理下载 github 以及 raw.githubusercontent.com 等文件.<br>项目默认使用jsdelivr和cnpmjs</p>
-<p>支持终端命令行下载 , 例如 git clone , wget , curl 等以及 raw.githubusercontent.com 文件下载.<br>注意：不支持 SSH Key 方式 git clone 下载.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone</span><br><span class="line">git clone https://ghproxy.com/https://github.com/stilleshan/ServerStatus.git</span><br><span class="line"></span><br><span class="line">wget &amp; curl</span><br><span class="line">wget https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">wget https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br><span class="line">curl -O https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">curl -O https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hello world</title>
-    <url>/2022/01/01/hello/</url>
-    <content><![CDATA[<h1 id="静态网页博客搭建"><a href="#静态网页博客搭建" class="headerlink" title="静态网页博客搭建"></a>静态网页博客搭建</h1><ul>
-<li>wordpress + 云主机</li>
-<li>jekyll&#x2F;hexo + git代码托管</li>
-</ul>
-<span id="more"></span>
-
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h3 id="next-主题配置"><a href="#next-主题配置" class="headerlink" title="next 主题配置"></a>next 主题配置</h3><p>NEXT这款主题源码都直接托管在 GitHub 上，可以直接搜索，下载地址：<a href="https://github.com/theme-next/hexo-theme-next.git%E3%80%82">https://github.com/theme-next/hexo-theme-next.git。</a></p>
-<p>下载源码之后，直接解压到博客的themes的目录下，比如我的主题目录就是<code>D:\hexo\themes\next</code></p>
-<p>配置文件的分类<br>hexo 搭建的博客有两个yml配置文件，一个称之为站点配置文件，是根目录下的_config.yml，另一个是主题配置文件，是主题目录下的_config.yml文件。</p>
-<h4 id="基本信息配置，根目录下的-config-yml"><a href="#基本信息配置，根目录下的-config-yml" class="headerlink" title="基本信息配置，根目录下的_config.yml"></a>基本信息配置，根目录下的_config.yml</h4><p>基本信息包括：博客标题、作者、描述、语言等等。这些基本信息的配置都在站点配置文件中。如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: 标题</span><br><span class="line">subtitle: 副标题</span><br><span class="line">description: 描述</span><br><span class="line">author: 作者</span><br><span class="line">language: 语言（简体中文是zh-Hans）</span><br><span class="line">timezone: 网站时区（Hexo 默认使用您电脑的时区，不用写）</span><br></pre></td></tr></table></figure>
-<h4 id="修改主题next目录下的-config-yml"><a href="#修改主题next目录下的-config-yml" class="headerlink" title="修改主题next目录下的 _config.yml"></a>修改主题next目录下的 _config.yml</h4><p>hexo 博客的主题很多，想要切换也是很简单，直接在站点配置文件中设置即可，如下：</p>
-<p>Next 主题样式设置<br>Next 主题提供了 4 种风格供我们选择，分别为Muse、Mist、Pisces、Gemini。</p>
-<p>以上 4 种风格大同小异，作者博客的风格是Gemini，大家可以根据自己的喜好任意切换，在主题配置文件中找到Scheme Settings，如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 设置自己喜欢的风格</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
-
-<h4 id="添加文章搜索功能"><a href="#添加文章搜索功能" class="headerlink" title="添加文章搜索功能"></a>添加文章搜索功能</h4><p>Next 主题添加搜索的功能很简单，首先安装搜索插件：</p>
-<p><code>npm install hexo-generator-searchdb --save</code></p>
-<p>插件安装完成之后在站点配置文件中找到 local_search,修改如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Local Search</span><br><span class="line"># Dependencies: https://github.com/theme-next/hexo-generator-searchdb</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-
-<h4 id="设置首页不显示全文"><a href="#设置首页不显示全文" class="headerlink" title="设置首页不显示全文"></a>设置首页不显示全文</h4><ol>
-<li>文章截断<br>在需要截断的地方加入：</li>
-</ol>
-<!--more-->
-<p>首页就会显示这条以上的所有内容，隐藏接下来的所有内容。<br>2. 写摘要<br>在文章的front-matter中添加description，其中description中的内容就会被显示在首页上，其余一律不显示。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 让首页显示部分内容</span><br><span class="line">date: 2020-10-13 15:34:10</span><br><span class="line">description: 这是显示在首页的概述，正文内容均会被隐藏。</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h4 id="去掉文章目录标题的自动编号"><a href="#去掉文章目录标题的自动编号" class="headerlink" title="去掉文章目录标题的自动编号"></a>去掉文章目录标题的自动编号</h4><p>我们自己写文章的时候一般都会自己带上标题编号，但是默认的主题会给我们带上编号，很是别扭，如何去掉呢？</p>
-<p>在主题配置文件中找到toc属性，将其中的number属性设置成false，如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  number: false</span><br><span class="line">  wrap: false</span><br></pre></td></tr></table></figure>
-
-<h2 id="部署到-github-io"><a href="#部署到-github-io" class="headerlink" title="部署到 github.io"></a>部署到 github.io</h2><p>需要先安装插件 <code>npm install --save hexo-deployer-git</code></p>
-<ol>
-<li>新建 xxx.github.io 公开仓库，xxx 为当前用户名，仓库参数默认。</li>
-<li>修改_config.yml 文件最后的deployment 项<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/one-command-deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/linkua/linkua.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure></li>
-<li>执行 hexo deploy</li>
-</ol>
-<h2 id="编写-md"><a href="#编写-md" class="headerlink" title="编写 md"></a>编写 md</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: hello world</span><br><span class="line">date: 2020-01-01 00:00:01 </span><br><span class="line">categories: hexo</span><br><span class="line">tags: md</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h3 id="categories-和-tags-的区别"><a href="#categories-和-tags-的区别" class="headerlink" title="categories 和 tags 的区别"></a>categories 和 tags 的区别</h3><p>“categories”（分类）和”tags”（标签）在内容管理系统中用于对文章或内容进行分类和标记，但它们在功能和用途上有一些区别：</p>
-<p>分类（Categories）：<br>分类通常用于对文章或内容进行更广泛的主题性分类。它们代表了文章所属的主要类别或主题。例如，一个博客可能有 “科技”、” 健康”、” 旅行” 等分类。<br>一篇文章通常只能属于一个分类，它代表了文章的主要内容或主题。<br>标签（Tags）：<br>标签则是用于对文章或内容进行更具体的描述性标记。标签通常用于描述文章的关键词、主题或内容特点，使读者能够更容易地找到相关内容。例如，对于一篇关于健康的文章，可能会有 “健康”、” 饮食”、” 运动” 等标签。<br>一篇文章可以有多个标签，这样可以更细致地描述文章的内容特点。<br>因此，分类更多地用于对文章进行宏观的整体分类，而标签则更适合用于对文章进行细致的描述和关联。</p>
-<p>比如一个食谱网址。</p>
-<p>食谱的分类（Categories）是早餐、午餐、晚餐、开胃菜、汤、沙拉、配菜和甜点。所有的食谱都可以划归为其中的一种。</p>
-<p>此外，用户可能还希望根据一些特点来寻找食谱，比如原味、番茄味、三鲜味、麻辣味等。这些使用标签（Tags）表示。</p>
-<h3 id="注意代码块"><a href="#注意代码块" class="headerlink" title="注意代码块"></a>注意代码块</h3><p>代码块由“&#96;&#96;&#96;+回车”抱起来，不然hexo会乱码</p>
-<h3 id="修改文章底部标签的-的样式"><a href="#修改文章底部标签的-的样式" class="headerlink" title="修改文章底部标签的#的样式"></a>修改文章底部标签的#的样式</h3><p>默认的文章标签的样式是带有#这个符号的，比如#Spring Boot，但是可以将#修改成标签的icon，效果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Use icon instead of the symbol # to indicate the tag at the bottom of the post</span><br><span class="line">tag_icon: true</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java</title>
-    <url>/2022/03/02/java/</url>
-    <content><![CDATA[<h3 id="安装-oracle-jdk"><a href="#安装-oracle-jdk" class="headerlink" title="安装 oracle jdk"></a>安装 oracle jdk</h3><p>尽管现在jdk版本已经更新到17了，但是因为oracle jdk8u202版本后商用收费了，另外，也可以使用高版本的open jdk, Linux从源安装，一般都是自动指向OpenJDK的（免费开源嘛），如果要下载Oracle JDK一般需要手动下载。这边安装奇数版本jdk8u201,官网下载，需要注册&#x2F;登录帐号，<br><a href="https://www.oracle.com/java/technologies/downloads/archive/">https://www.oracle.com/java/technologies/downloads/archive/</a></p>
-<span id="more"></span>
-
-<p>创建目录:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/lib/jvm</span><br></pre></td></tr></table></figure>
-
-<p>解压缩到该目录:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo tar -zxvf jdk-8u201-linux-x64.tar.gz -C /usr/lib/jvm/</span><br></pre></td></tr></table></figure>
-
-<p>修改环境变量:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>在文件末尾追加下面内容:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set oracle jdk environment</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_201 </span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib</span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
-<p>使环境变量马上生效：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<p>查看java版本，看看是否安装成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p>另外，也可以在update-alternatives工具中注册，update-alternatives 命令用于处理linux系统中软件版本的切换</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_201/bin/java 300</span><br></pre></td></tr></table></figure>
-
-<p>下面手动修改为jdk1.8.0_91：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-alternatives --config java</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="安装IntelliJ-IDEA"><a href="#安装IntelliJ-IDEA" class="headerlink" title="安装IntelliJ IDEA"></a>安装IntelliJ IDEA</h4><p>IDEA这玩意好用是好用，就是太费内存了，没个8G，16G用起来不得劲！</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo snap install intellij-idea-community --classic</span><br></pre></td></tr></table></figure>
-
-<h4 id="Ubuntu下安装配置-maven"><a href="#Ubuntu下安装配置-maven" class="headerlink" title="Ubuntu下安装配置 maven"></a>Ubuntu下安装配置 maven</h4><p>在上古时代，Java的构建都在使用make，编写makefile来进行Java构建有非常多别扭与不便的地方。</p>
-<p>紧接着Apache Ant诞生了，Ant可以灵活的定义清理编译测试打包等过程，但是由于没有依赖管理的功能，以及需要编写复杂的xml，还是存在着诸多的不便。</p>
-<p>随后Apache Maven诞生了，Maven是一个依赖项管理和构建自动化工具，遵循着约定大于配置的规则。虽然也需要编写xml，但是对于复杂工程更加容易管理，有着标准化的工程结构，清晰的依赖管理。此外，由于Maven本质上是一个插件执行框架，也提供了一定的开放性的能力，我们可以通过Maven的插件开发，为构建构成创造一定的灵活性。</p>
-<p>但是由于采用约定大于配置的方式，丧失了一定的灵活性，同时由于采用xml管理构建过程与依赖，随着工程的膨胀，配置管理还是会带来不小的复杂度，在这个背景下，集合了Ant与Maven各自优势的Gradle诞生了。</p>
-<p>从maven官网下载maven到&#x2F;user&#x2F;local<br>配置环境变量<br>编辑~&#x2F;.bashrc</p>
-<p>~&#x2F;.bashrc：该文件包含用于你的bash shell的bash信息，当登录时以及每次打开新的shell时，该文件被读取；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>在最后输入以下信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export M2_HOME=/usr/local/apache-maven-3.5.0</span><br><span class="line">(根据你下载的maven文件名而定，我这里版本是3.5.0)</span><br><span class="line">export M2=$M2_HOME/bin</span><br><span class="line">export MAVEN_OPTS=&quot;-Xms256m -Xmx512m&quot;</span><br><span class="line">export PATH=$M2:$PATH</span><br></pre></td></tr></table></figure>
-<p>使环境变量生效</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>检验是否成功</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn --version</span><br></pre></td></tr></table></figure>
-
-<p>打开Maven项目根目录，运行以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn -U clean package</span><br></pre></td></tr></table></figure>
-<p>其中-U参数为强制更新依赖包，clean指令意为清空缓存文件，package指令意为生成target目录，编译、测试代码，生成测试报告，生成jar&#x2F;war文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn clean spring-boot:run</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn clean package</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>人生如赴宴，举止须从容</title>
-    <url>/2034/05/04/life/</url>
-    <content><![CDATA[<h1 id="人生如赴宴，举止须从容"><a href="#人生如赴宴，举止须从容" class="headerlink" title="人生如赴宴，举止须从容"></a>人生如赴宴，举止须从容</h1><p>人和动物&#x2F;野兽的区别，人是有智慧的。身体由大脑控制，大脑是由思想，意志等控制着。所以需要训练大脑，增强意志力，拥有更强的自控力。如同计算机发出指令，最简单的if&#x2F;else判断语句后面都有一个True&#x2F;Flase。人也一样，一个优秀的人，在做出主动选择或者被动响应时，都应该由一个判断的过程，而这个判断的算法每个人都不一样。如何得到一个优秀的执行判断的神经网络模型，需要训练，多看（输入）、多做（输出）、多想（反馈），才能得到优化。</p>
-<p>一个人的成长，是从全能自恋到真实自信的过程，也是从孤独自恋到有深情依恋的过程，同时是从想象进入现实的过程。<br>想象与现实的一个巨大差别是，想象可瞬间完成，而现实却需要时间和过程，它越重要，就越需要漫长的过程。</p>
-<p>现代人的大脑结构，有好几个自我。它们相互竞争，试图控制我们的想法、感受和行动。每个意志力挑战都是一次自我博弈。要想让更好的自己占据主导，我们就要强化自我意识和自控力。这样，我们才会有意志力和“我想要”的力量。</p>
-<p>作为一个遵纪守法的好人，也许我们从来没有想过和“暴力”扯上关系。不过如果稍微留意一下现实生活中的谈话方式，并且用心体会各种谈话方式给我们的不同感受，我们一定会发现有些话确实伤人！言语上的指责、嘲讽、否定、说教以及任意打断、拒不回应、随意出口的评价和结论给我们带来的情感和精神上的创伤，甚至比肉体的伤害更加令人痛苦。这些无心或有意的语言暴力让人变得冷漠、隔膜、敌视。</p>
-<span id="more"></span>
-
-<h2 id="全能自恋"><a href="#全能自恋" class="headerlink" title="全能自恋"></a>全能自恋</h2><ul>
-<li>你只是一个人，不是生来就全能，需要不断的学习和实践。</li>
-<li>行动和投入是对全能自恋的直接治疗方法。</li>
-<li>一些事情我们自己能控制，另一些则不能。学会区分什么你能控制的，什么你不能控制的。</li>
-</ul>
-<h2 id="自控力"><a href="#自控力" class="headerlink" title="自控力"></a>自控力</h2><p>如果你想要更强的自控力，就得有更多的自我意识，要意识到自己在做什么，为什么要这样做（什么样的想法、感受和情况最容易让你有冲动，想些什么或暗示什么最容易让你放弃冲动）。</p>
-<ul>
-<li>任何时候，我们都有选择的空间。任何时候，我都可以选择我的行为，朝向你认为“好”的方向。哪怕是赴死，也可以选择从容、优雅一些。</li>
-</ul>
-<h4 id="脑力训练"><a href="#脑力训练" class="headerlink" title="脑力训练"></a>脑力训练</h4><p>经常挑战自己说<strong>我不要</strong>和<strong>我想要</strong>，日常冥想练习，让更多的血液流进前额皮质。<br>每天做10分钟冥想训练，注意力收回的过程就是自控力。</p>
-<ol>
-<li>原定不动，安静坐好。不要烦躁     </li>
-<li>注意你的呼吸。闭上眼睛，吸气在脑海中默念“吸”，呼气时在脑海里默念“呼”。</li>
-<li>感受呼吸，弄清自己是怎么走神的。集中注意力在呼吸上。</li>
-</ol>
-<h4 id="三思而后行"><a href="#三思而后行" class="headerlink" title="三思而后行"></a>三思而后行</h4><p>自控力不仅和心理有关，更和生理有关。只有在大脑和身体同时作用的瞬间，你才有力量克服冲动。当你最需要意志力的时候，你能够学会将自己的生理机能调整到这种状态。自控力就成了本能反应。<br>利用威胁，对生命的威胁，不做会死，例如剑齿虎的威胁，利用应激反应做启动，引出自控力。<br>深呼一口气，让你的身体进入更平静的状态，避免冲动行为，给自己更多的时间，让你深思熟虑想办法。</p>
-<h4 id="降低你的心率"><a href="#降低你的心率" class="headerlink" title="降低你的心率"></a>降低你的心率</h4><p><strong>当人感受到压力时，交感神经系统会控制身体。这种生理现象让你能够战斗或者逃跑。心率升高，心率变异程度就会降低</strong>此时，由于伴随应激反应产生的焦虑或愤怒，心率会被迫保持在较高水平上。<strong>相反，当人们成功自控的时候，副交感神经系统会发挥主要作用，缓解压力，控制冲动行为。心率降低，心率变异程度便会升高。</strong></p>
-<h2 id="非暴力沟通"><a href="#非暴力沟通" class="headerlink" title="非暴力沟通"></a>非暴力沟通</h2><p>非暴力沟通指导我们转变谈话和聆听的方式。我们不在条件反射式地反应，而是去明了自己的观察、感受和愿望，有意识的使用语言。尊重和倾听他人，又诚实、清晰地表达自己。<br><strong>听到批评时，我们一般会申辩、退缩或反击</strong>。然而，一旦<strong>专注于彼此的观察、感受及需要，而不反驳他人</strong>，我们便能发现内心的柔情，对自己和他人产生新的体会。通过强调倾听–<strong>倾听自己和他人</strong>，非暴力沟通培养彼此的尊重、关注与爱，使人乐于助人。</p>
-<p>（发起方）非暴力沟通模式的四个要素（观察，感受，需求，请求），利用四要素诚实地表达自己。</p>
-<ul>
-<li>留意发生的事情，我们此刻<strong>观察</strong>到什么？清楚地表达观察结果，而不是判断或评估。</li>
-<li>接着，表达<strong>感受</strong>，例如受伤、害怕、喜悦、开心、气愤等。</li>
-<li>然受，说出哪些<strong>需要</strong>导致那样的感受。</li>
-<li><strong>具体的请求</strong>，明确的告知他人，我们期待他采取何种行动，来满足我们。</li>
-</ul>
-<p>（接收方）非暴力沟通另一方面是借助它们关切地倾听。我们首先通过体会他人此刻的观察、感受和需要，和他们建立联系，然后聆听他们的请求，来发现做什么可以帮助他们。</p>
-<p>实际应用<br>非暴力沟通不只是语言表达或使用文字的技巧，它包含的意识和意图，也可以通过沉默、专注以及面部表情和身体语言来表达。<strong>倾听每句话所包含的情感和感受，去了解，去询问。</strong></p>
-<h3 id="是什么蒙蔽了爱"><a href="#是什么蒙蔽了爱" class="headerlink" title="是什么蒙蔽了爱"></a>是什么蒙蔽了爱</h3><p>是什么使我们难以体会到心中的爱，某些语言和表达方式的负面影响，它们虽然致力向于忽视人的感受和需要，以致彼此的疏远和伤寒。这些语言和表达方式，我称为“异化的沟通方式”。我们大多数的人使用的语言倾向于评判、比较、命令和指责 ，而不是鼓励我们倾听彼此的感受和需要。</p>
-<h4 id="道德评判"><a href="#道德评判" class="headerlink" title="道德评判"></a>道德评判</h4><p>道德评判是用道德标准来评判人，如果一个人的行为不符合我们的价值观，那他就被看作是不道德的或者邪恶的。批评、指责、辱骂、归类、比较及评论等都是在评判人。<br><strong>苏菲派诗人鲁米写道：“在道德与不道德的区分之外，有片田野。我将在那里见你。”</strong><br>然而，语言使我们陷入是非之中。它擅长将人分类，把人看作好人或坏人，正常或不正常，负责人或者不负责任，聪明或愚蠢，等等。诸如此类的评论暗含着我们的价值观及需要。不幸的是，以这样的方式提出主张，很可能会招来敌意，使我们的愿望难得到满足，即使他们接受批评，做出让步，通常不是心甘情愿的。如果他们处于恐惧或内疚来迎合我们，或迟或早，我们将会发现对方不再那么友好。当然，他们也付出了代价。屈服于外部和内部的压力，很可能使他们心怀怨恨，并厌恶自己。<br>不要将价值判断于道德评判混为一谈，什么是可贵的品质，我们每个人都要自己的看法。例如，我们也许会欣赏诚实、自由以及和平的价值。</p>
-<h4 id="进行比较"><a href="#进行比较" class="headerlink" title="进行比较"></a>进行比较</h4><p>比较也是批判的一种形式。比较蒙蔽了我们对人对己的爱意。如果真想过上悲惨生活，就去与他人做比较。<br>去和优秀的人比较，开始觉得自己活得很惨，心情极为低落。</p>
-<h4 id="回避责任"><a href="#回避责任" class="headerlink" title="回避责任"></a>回避责任</h4><p>我们对自己的思想、情感和行动负有责任。不是因为“不得不”而去做一件事情，而是你负有不可推卸的责任，作为子女、伴侣、公民的责任，要有责任感，而不是唯名是从，服从命令。</p>
-<h4 id="强人所难"><a href="#强人所难" class="headerlink" title="强人所难"></a>强人所难</h4><p>我们对别人的要求往往暗含着威胁,如果不配合，他们就会受到惩罚。</p>
-<h2 id="道歉的五种语言"><a href="#道歉的五种语言" class="headerlink" title="道歉的五种语言"></a>道歉的五种语言</h2><p>冒犯他人后需要真诚的道歉，丈夫要妻子，关怀她，努力满足她的需求。美好婚姻的基石并不是完美的人，而愿意承认错误并寻求宽恕的心。</p>
-<h3 id="变达歉意"><a href="#变达歉意" class="headerlink" title="变达歉意"></a>变达歉意</h3><p>说“对不起”，要让人感觉到我们的真诚，从身体语言动作上，看别人的眼神，说话的声音。<br><strong>真诚的道歉不能找借口，在道歉之后马上来个“但是…”, 应该另找时机进行沟通。</strong>一旦我们在口头上把责任推给对方(这就是指责)，道歉就会变成攻击。而攻击永远不会带来宽恕与和解。</p>
-<ul>
-<li>我现在才知道已经深深地伤害了你，这让我感到无比痛苦。我为自己的行为真诚地道歉。</li>
-<li>我真的很难过，让你失望了。我本来应该更细心一些，很抱歉让你这么痛苦。</li>
-<li>我当时显然没有认真考虑你地感受。我从来没打算要伤害你，但现在我知道我的话太过火了。<br>很抱歉，我当时那么的不礼貌。</li>
-<li>她很爱自己的东西，很珍惜自己花钱买的东西。</li>
-</ul>
-<h3 id="承认过错"><a href="#承认过错" class="headerlink" title="承认过错"></a>承认过错</h3><p>借口又使他们觉得没必要道歉。不愿意承认错误是和自尊心分不开的。承认错误会被视为软弱，因为只有失败者才会人认错。<strong>成熟的成年人会学会为自己的行为承认责任。</strong> 不成熟的人则继续哪些幼稚的幻想，把自己的错误推卸给别人。<br>为自己的行为负责的核心是愿意承认<strong>我错了</strong>。真正的强大在于，有足够的智慧和勇气知错就改。</p>
-<ul>
-<li>我知道我做错了，毫无借口。说到底，我的做法很自私，我错了。</li>
-<li>我又犯了一个我们以前讨论过的错误，把事情搞砸了。我知道只是我的错。</li>
-</ul>
-<h3 id="弥补过失"><a href="#弥补过失" class="headerlink" title="弥补过失"></a>弥补过失</h3><p>真正的歉意体现在想要为自己给别人造成的痛苦做出的赔偿的意愿中。当我们被家人的语言或者行为伤害时，常常感到愤怒。之所以伤害如此之深，愤怒如此强烈，是因为我们极度渴望被那个人爱。了解她喜欢的爱的语言。<br><strong>说出她的主要爱语</strong></p>
-<ul>
-<li><strong>肯定的言词</strong> 你穿这件衣服很漂亮。 你做的饭太好吃了！真是厨艺精湛。你那么好，我还伤害了你。 </li>
-<li><strong>服务的行动</strong> 体贴入微的善意行动，洗衣服、洗盘子、倒垃圾、照顾孩子、做饭。</li>
-<li><strong>接受礼物</strong> 赠送和接受礼物是表达爱的一种普遍方式。赠送礼物视为一种爱的表达方式，送花补偿伤害行为。</li>
-<li><strong>精心的时刻</strong> 道歉时需要将全部的注意力放在道歉对象的身上，注意她的眼睛，握着她的手说。</li>
-<li><strong>身体接触</strong> 挽手、亲吻、拥抱、搂着对方的肩膀、轻拍对方的脊背、抚弄对方的头发。</li>
-</ul>
-<p><strong>如果只是说”对不起，我错了”之类的话，却没有诚心诚意地努力赔偿，对方永远不会认为你地道歉是真诚的。</strong><br>真诚地道歉应该包含渴望纠正犯下地错误、弥补所造成的损失，以及向对方证实你地关爱。</p>
-<ul>
-<li>我能做些什么来弥补我地所作所为呢？</li>
-</ul>
-<h3 id="真诚悔改"><a href="#真诚悔改" class="headerlink" title="真诚悔改"></a>真诚悔改</h3><p>道歉里需要表达出改变的意愿，并且下次不再这样做，应该承诺”我会努力不再做这样的事”，还要有行为上的改变。<br><strong>真正的悔改发自内心，不再为过错找借口、狡辩，为自己的行为承担所有的责任，告诉她我会努力不再犯同样的错。</strong><br>我知道自己不会一下子就改好，但是我愿意去改变，希望他们对我有耐心，数周或数月。<br>如果不承认自己的错误，那么向配偶传达的消息是我们的道歉缺乏诚意。<strong>由于害羞和尴尬，我们常常不肯承认自己的失败。但是，最好的做法是立刻承认我们的旧病复发。</strong><br>  健康的婚姻里，我们所做出的改变通常与道德层面毫不相干，而与构建一个和谐的婚姻关系息息相关，去满足她的需求，这也是一种示爱方式，这个小小的改变能让妻子无比的幸福，这个代价实在是小且值得付出的。<br><strong>悔改的第二步是做出改变的计划，不要说说而已，要真正的改变。</strong><br><strong>悔改的第三步是执行计划。让计划得以实行需要付诸思考和行动。</strong><br>虽然旧的行为方式不能很快就彻底改掉，但是只要我们继续坚持改变，总有一天会成功。</p>
-<p>现实生活中，人们对事物的认知见仁见智，不同意别人的看法，需要先肯定他，然后再说出自己的观点。<strong>1这么看问题很有意思，2这一点我能理解，3关于这个想法，我最喜欢的是…</strong></p>
-<ul>
-<li>我知道我的做法于事无补。你觉得我怎么改变才会让你感觉好一些呢？</li>
-<li>我又犯了同样的错误，让你失望了。我怎么做才能让你重新建立对我的信任呢？</li>
-<li>我的老毛病实在由来已久，我知道现在想要改变一定会很难，而且可能会失败，再次伤害到你。如果你能帮助我想出让我能够坚持改变的方法，并在觉得我做得好的时候鼓励我，我会很感激的。</li>
-</ul>
-<h3 id="请求饶恕"><a href="#请求饶恕" class="headerlink" title="请求饶恕"></a>请求饶恕</h3><p>道歉了，还要说”请你原谅我，好吗”。你们的关系将如何发展就取决于对方，你失去了对事情的控制权，对一些人来说，<strong>交出控制权</strong>是他们很难接受的事情。<strong>害怕被拒绝</strong>是人之常情，成熟的人能认识到自己的恐惧，同时拒绝被恐惧所支配。如果珍视一段关系，他们愿意抵制自己的恐惧心理，采取必要的措施来修复关系。</p>
-<p><strong>第三种妨碍人们请求饶恕的恐惧是害怕失败</strong>，如果承认错误，就是承认”我是个失败者”。他们的反应通常是于对方进行激烈的争论，坚持自己的做法没有错。他们会说：”那么做可能伤害到了你，那么做可能冒犯了你，但你误会了，我可不是那个意思。”有时他们为自己做辩解的方式本身比最初的冒犯行为更伤人，但是他们看不到这一点。</p>
-<p>放低姿态，请求原谅，而不是要求，入药如同坐在宝座上的君王。</p>
-<ul>
-<li>我为自己对你说话的方式感到抱歉。我的声音很大、说话很难听，这样做很不对。你不该受到那样的对待。请你原谅我。</li>
-<li>我知道我深深地伤害了额你。你有理由不理我，但是我真的为自己的所作所为感到抱歉。希望你能够原谅我。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>book</category>
-      </categories>
-      <tags>
-        <tag>phychology</tag>
       </tags>
   </entry>
   <entry>
@@ -1323,86 +1564,6 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </tags>
   </entry>
   <entry>
-    <title>linux 应用开发</title>
-    <url>/2024/04/02/linux%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="VScode-Clangd"><a href="#VScode-Clangd" class="headerlink" title="VScode Clangd"></a>VScode Clangd</h3><p><a href="https://clangd.llvm.org/">Clangd</a> 是一个基于 Clang 的语言服务器，它提供了代码智能感知和导航功能。通过与 VSCode 集成。</p>
-<ol>
-<li><p>搜索 clangd 插件安装</p>
-</li>
-<li><p>禁用或卸载 Microsoft C&#x2F;C++ Intelligence</p>
-</li>
-<li><p>VSCode clangd 插件本身是不能运行的，它还需要 clangd 的环境，所以接下来安装 clangd。<br>在 Ubuntu 中最好不要使用 apt 安装，因为版本比较旧，建议下载后手动安装。<br>解压后，<br>将 bin 文件夹下的 clangd 移动到 &#x2F;usr&#x2F;bin 目录下，<br>将 lib 文件夹下的所有移动到 &#x2F;usr&#x2F;local&#x2F;lib 目录下。<br><code>clangd --version</code>查看版本。</p>
-<span id="more"></span>
-</li>
-<li><p>使用 bear 构建源码的 compile_commands.json 文件,clangd需要这个文件才能提供补全和跳转，compile_commands.json 文件记录了你的工程是如何构建的，使用到了哪些源码文件，源码文件之间的包含关系，引用路径之类的，这些可以帮助 clangd 构建符号关系索引库。<br><code>sudo apt install bear</code> 安装 bear </p>
-</li>
-<li><p>修改 compile_commands.json 文件<br>需要全局替换：”cc”  –&gt;  “arm-linux-gnueabihf-gcc”<br>保存后关闭 VSCode，如果有. cache 文件夹的话，删除掉它。之后重新用 VSCode 打开源码目录，随便打开一个. c 文件，clangd 便自动开始索引文件了，索引文件会保存在 .cache 目录下。</p>
-</li>
-<li><p>驱动程序和应用程序的编写<br>对于驱动程序来说，我的方法是在当前源码目录下新建一个文件夹，在这个文件夹下进行驱动程序的编写，这样跳转、补全之类的都比较方便。<br>然后保存工作区，方便下次打开：<br>对应用程序来说，不便放在源码工作区当中，可以像这样单独打开一个用于编写应用程序：<br>驱动程序写完后，拷贝到应用程序所在目录的驱动程序文件中。</p>
-</li>
-</ol>
-<h3 id="安装-NFS"><a href="#安装-NFS" class="headerlink" title="安装 NFS"></a>安装 NFS</h3><h4 id="在Ubuntu上设置NFS服务器的步骤如下："><a href="#在Ubuntu上设置NFS服务器的步骤如下：" class="headerlink" title="在Ubuntu上设置NFS服务器的步骤如下："></a>在Ubuntu上设置NFS服务器的步骤如下：</h4><ol>
-<li><p>安装NFS内核服务器：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nfs-kernel-server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建共享目录：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /srv/nfs/share</span><br><span class="line">sudo chown nobody:nogroup /srv/nfs/share</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置共享权限。编辑 &#x2F;etc&#x2F;exports 文件，并添加共享目录配置：<code>sudo nano /etc/exports</code></p>
-</li>
-</ol>
-<p>添加以下行：<code>/srv/nfs/share 192.168.1.0/24(rw,sync,no_subtree_check)</code></p>
-<ol start="4">
-<li>启动 NFS服务<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl start nfs-kernel-server</span><br><span class="line">sudo systemctl enable nfs-kernel-server</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="在客户端计算机上，您需要安装NFS通用文件系统客户端："><a href="#在客户端计算机上，您需要安装NFS通用文件系统客户端：" class="headerlink" title="在客户端计算机上，您需要安装NFS通用文件系统客户端："></a>在客户端计算机上，您需要安装NFS通用文件系统客户端：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nfs-common</span><br></pre></td></tr></table></figure>
-<p>然后，您可以挂载服务器上的共享目录：<br><code>sudo mount -t nfs 192.168.1.x:/srv/nfs/share /mnt</code></p>
-<h4 id="windows-挂载linux-NFS"><a href="#windows-挂载linux-NFS" class="headerlink" title="windows 挂载linux NFS"></a>windows 挂载linux NFS</h4><p>在Windows上挂载Linux NFS共享，你需要确保已经在Linux服务器上配置了NFS共享，并且Windows客户端已安装NFS客户端功能。以下是如何在Windows上挂载Linux NFS共享的步骤：</p>
-<p>安装NFS客户端功能：</p>
-<p>打开“控制面板” -&gt; “程序和功能” -&gt; “启用或关闭Windows功能”，勾选“NFS客户端”，然后点击“确定”安装。</p>
-<p>使用命令行挂载NFS共享：</p>
-<p>打开命令提示符或PowerShell，使用mount命令挂载Linux NFS共享。</p>
-<p>例如，如果你的Linux NFS服务器IP是192.168.1.100，NFS共享路径是&#x2F;shared，你想将其挂载到本地的Z:驱动器，可以使用以下命令：</p>
-<p><code>mount \\192.168.1.100\shared Z:</code><br>如果你想在每次启动时自动挂载该共享，可以在mount命令后添加-p参数，并将命令添加到autocmd.bat文件中，该文件位于C:\Windows\System32\目录下。</p>
-<p>注意：确保你的Windows防火墙设置允许NFS通信。如果你的NFS服务器配置了访问控制，你可能需要提供用户名和密码。</p>
-<h3 id="gcc-命令"><a href="#gcc-命令" class="headerlink" title="gcc 命令"></a>gcc 命令</h3><p> GCC 常用编译选项<br> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-E 预处理，开发过程中想快速确定某个宏可以使用“-E -dM”</span><br><span class="line">-c 把预处理、编译、汇编都做了，但是不链接</span><br><span class="line">-o 指定输出文件</span><br><span class="line">-I 指定头文件目录</span><br><span class="line">-L 指定链接时库文件目录</span><br><span class="line">-l 指定链接哪一个库文件</span><br></pre></td></tr></table></figure><br>常用 <code>gcc -o hello hello.c</code></p>
-<h3 id="Makefine"><a href="#Makefine" class="headerlink" title="Makefine"></a>Makefine</h3><h4 id="Make-fine-原理"><a href="#Make-fine-原理" class="headerlink" title="Make fine 原理"></a>Make fine 原理</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -c -o a.o a.c</span><br><span class="line">gcc -c -o b.o b.c</span><br><span class="line">gcc -o test a.o b.o</span><br><span class="line">gcc -c -o c.o c.c -MD -MF c.d</span><br></pre></td></tr></table></figure>
-<p>gcc 生成依赖 c.d<br>如何判断哪些文件被修改，只编译被修改的文件，比较时间：目标文件和依赖文件的时间，当依赖比目标新时，执行编译文件。</p>
-<p>目标:依赖<br>[TAB]命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">test:a.o b.o</span><br><span class="line">    gcc -o test a.o b.o</span><br><span class="line"></span><br><span class="line">a.o : a.c</span><br><span class="line">    gcc -o a.o a.c</span><br><span class="line"></span><br><span class="line">b.o : b.c</span><br><span class="line">    gcc -o b.o b.c</span><br></pre></td></tr></table></figure>
-<h4 id="Makefile语法"><a href="#Makefile语法" class="headerlink" title="Makefile语法"></a>Makefile语法</h4><p>% 通配符 %.o<br>$@ 目标<br>$&lt; 第一个依赖文件<br>$^ 所有依赖文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">test:a.o b.o</span><br><span class="line">    gcc -o test $^</span><br><span class="line">%.o : %.c</span><br><span class="line">gcc -c -o $@ $&lt;</span><br></pre></td></tr></table></figure>
-
-<p>make 无目标，默认第一个为目标<br>使用下面的语句把“clean”设置为假想目标：<br><code>.PHONY : clean</code></p>
-<p>即时变量、延时变量，export</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">A = xxx // 延时变量</span><br><span class="line">B ?= xxx // 延时变量，只有第一次定义时赋值才成功；如果曾定义过，此赋值无效</span><br><span class="line">C := xxx // 立即变量</span><br><span class="line">D += yyy // 如果 D 在前面是延时变量，那么现在它还是延时变量；</span><br><span class="line">D += dir/ dir 是一个目录</span><br><span class="line">// 如果 D 在前面是立即变量，那么现在它还是立即变量</span><br></pre></td></tr></table></figure>
-<p>@echo 看不到变量<br>@echo $(A)</p>
-<h5 id="makefile-函数"><a href="#makefile-函数" class="headerlink" title="makefile 函数"></a>makefile 函数</h5><p><code>$(foreach var,list,text)</code><br>简单地说，就是 for each var in list, change it to text。对 list 中的每一个<br>元素，取出来赋给 var，然后把 var 改为 text 所描述的形式。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">objs := a.o b.o</span><br><span class="line">dep_files := $(foreach f, $(objs), .$(f).d) // 最终 dep_files := .a.o.d .b.o.d</span><br></pre></td></tr></table></figure>
-<p><code>$(wildcard pattern)</code><br>pattern 所列出的文件是否存在，把存在的文件都列出来。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src_files := $( wildcard *.c) // 最终 src_files 中列出了当前目录下的所有.c 文件</span><br></pre></td></tr></table></figure>
-
-<p><code>$(filter pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter(过滤)出来、留下来。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter %/, $(obj-y)) //结果为：c/ d/</span><br></pre></td></tr></table></figure>
-
-<p><code>$(filter-out pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter-out(过滤)出来、扔掉。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter-out %/, $(obj-y)) //结果为：a.o b.o</span><br></pre></td></tr></table></figure>
-
-<p><code>$(patsubst pattern,replacement,text)</code><br>寻找text中符合格式pattern的字，用replacement替换它们。<br>pattern和replacement中可以使用通配符。</p>
-<p>比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">subdir-y := c/ d/</span><br><span class="line">subdir-y := $(patsubst %/, %, $(subdir-y)) // 结果为：c d</span><br></pre></td></tr></table></figure>
-<p>EXTRA_CFLAGS :&#x3D; -D DEBUG 打开宏</p>
-<h4 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h4><p>Linux 内核编译通常使用 make 工具，而不是 cmake。cmake 是用于跨平台构建系统的工具，但 Linux 内核不是为跨平台设计的，而是直接使用 make 工具来构建。</p>
-<h4 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h4><p>linux&#x2F;unix 系统开发</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux_app</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LVGL</title>
     <url>/2024/04/17/lvgl/</url>
     <content><![CDATA[<h1 id="LVGL"><a href="#LVGL" class="headerlink" title="LVGL"></a>LVGL</h1><p>LVGL（Light and Versatile Graphics Library）是一个免费的开源图形库，提供创建具有易于使用的图形元素、漂亮的视觉效果和低内存占用的嵌入式 GUI。接下来我们来看一下 LVGL图形用户库的主要特征有哪些：</p>
@@ -1499,55 +1660,165 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </tags>
   </entry>
   <entry>
-    <title>makefile 文件使用</title>
-    <url>/2024/04/14/makefile%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>Makefile的编写 </p>
+    <title>hello world</title>
+    <url>/2022/01/01/hello/</url>
+    <content><![CDATA[<h1 id="静态网页博客搭建"><a href="#静态网页博客搭建" class="headerlink" title="静态网页博客搭建"></a>静态网页博客搭建</h1><ul>
+<li>wordpress + 云主机</li>
+<li>jekyll&#x2F;hexo + git代码托管</li>
+</ul>
 <span id="more"></span>
-<h3 id="源程序编译"><a href="#源程序编译" class="headerlink" title="源程序编译"></a>源程序编译</h3><ol>
-<li>源程序的编译<br>在 Linux 下面，如果要编译一个 C 语言源程序，我们要使用 GNU 的 gcc 编译器。 下面我们以一个实例来说明如何使用 gcc 编译器。<br>假设我们有下面一个非常简单的源程序 (hello.c)：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;Hello Linux\n&quot;)；  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h3 id="next-主题配置"><a href="#next-主题配置" class="headerlink" title="next 主题配置"></a>next 主题配置</h3><p>NEXT这款主题源码都直接托管在 GitHub 上，可以直接搜索，下载地址：<a href="https://github.com/theme-next/hexo-theme-next.git%E3%80%82">https://github.com/theme-next/hexo-theme-next.git。</a></p>
+<p>下载源码之后，直接解压到博客的themes的目录下，比如我的主题目录就是<code>D:\hexo\themes\next</code></p>
+<p>配置文件的分类<br>hexo 搭建的博客有两个yml配置文件，一个称之为站点配置文件，是根目录下的_config.yml，另一个是主题配置文件，是主题目录下的_config.yml文件。</p>
+<h4 id="基本信息配置，根目录下的-config-yml"><a href="#基本信息配置，根目录下的-config-yml" class="headerlink" title="基本信息配置，根目录下的_config.yml"></a>基本信息配置，根目录下的_config.yml</h4><p>基本信息包括：博客标题、作者、描述、语言等等。这些基本信息的配置都在站点配置文件中。如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: 标题</span><br><span class="line">subtitle: 副标题</span><br><span class="line">description: 描述</span><br><span class="line">author: 作者</span><br><span class="line">language: 语言（简体中文是zh-Hans）</span><br><span class="line">timezone: 网站时区（Hexo 默认使用您电脑的时区，不用写）</span><br></pre></td></tr></table></figure>
+<h4 id="修改主题next目录下的-config-yml"><a href="#修改主题next目录下的-config-yml" class="headerlink" title="修改主题next目录下的 _config.yml"></a>修改主题next目录下的 _config.yml</h4><p>hexo 博客的主题很多，想要切换也是很简单，直接在站点配置文件中设置即可，如下：</p>
+<p>Next 主题样式设置<br>Next 主题提供了 4 种风格供我们选择，分别为Muse、Mist、Pisces、Gemini。</p>
+<p>以上 4 种风格大同小异，作者博客的风格是Gemini，大家可以根据自己的喜好任意切换，在主题配置文件中找到Scheme Settings，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 设置自己喜欢的风格</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加文章搜索功能"><a href="#添加文章搜索功能" class="headerlink" title="添加文章搜索功能"></a>添加文章搜索功能</h4><p>Next 主题添加搜索的功能很简单，首先安装搜索插件：</p>
+<p><code>npm install hexo-generator-searchdb --save</code></p>
+<p>插件安装完成之后在站点配置文件中找到 local_search,修改如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Local Search</span><br><span class="line"># Dependencies: https://github.com/theme-next/hexo-generator-searchdb</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置首页不显示全文"><a href="#设置首页不显示全文" class="headerlink" title="设置首页不显示全文"></a>设置首页不显示全文</h4><ol>
+<li>文章截断<br>在需要截断的地方加入：</li>
 </ol>
-<p>要编译这个程序，我们只要在命令行下执行：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -o hello hello.c</span><br></pre></td></tr></table></figure>
+<!--more-->
+<p>首页就会显示这条以上的所有内容，隐藏接下来的所有内容。<br>2. 写摘要<br>在文章的front-matter中添加description，其中description中的内容就会被显示在首页上，其余一律不显示。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 让首页显示部分内容</span><br><span class="line">date: 2020-10-13 15:34:10</span><br><span class="line">description: 这是显示在首页的概述，正文内容均会被隐藏。</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h4 id="去掉文章目录标题的自动编号"><a href="#去掉文章目录标题的自动编号" class="headerlink" title="去掉文章目录标题的自动编号"></a>去掉文章目录标题的自动编号</h4><p>我们自己写文章的时候一般都会自己带上标题编号，但是默认的主题会给我们带上编号，很是别扭，如何去掉呢？</p>
+<p>在主题配置文件中找到toc属性，将其中的number属性设置成false，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  number: false</span><br><span class="line">  wrap: false</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署到-github-io"><a href="#部署到-github-io" class="headerlink" title="部署到 github.io"></a>部署到 github.io</h2><p>需要先安装插件 <code>npm install --save hexo-deployer-git</code></p>
+<ol>
+<li>新建 xxx.github.io 公开仓库，xxx 为当前用户名，仓库参数默认。</li>
+<li>修改_config.yml 文件最后的deployment 项<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/one-command-deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/linkua/linkua.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure></li>
+<li>执行 hexo deploy</li>
+</ol>
+<h2 id="编写-md"><a href="#编写-md" class="headerlink" title="编写 md"></a>编写 md</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: hello world</span><br><span class="line">date: 2020-01-01 00:00:01 </span><br><span class="line">categories: hexo</span><br><span class="line">tags: md</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h3 id="categories-和-tags-的区别"><a href="#categories-和-tags-的区别" class="headerlink" title="categories 和 tags 的区别"></a>categories 和 tags 的区别</h3><p>“categories”（分类）和”tags”（标签）在内容管理系统中用于对文章或内容进行分类和标记，但它们在功能和用途上有一些区别：</p>
+<p>分类（Categories）：<br>分类通常用于对文章或内容进行更广泛的主题性分类。它们代表了文章所属的主要类别或主题。例如，一个博客可能有 “科技”、” 健康”、” 旅行” 等分类。<br>一篇文章通常只能属于一个分类，它代表了文章的主要内容或主题。<br>标签（Tags）：<br>标签则是用于对文章或内容进行更具体的描述性标记。标签通常用于描述文章的关键词、主题或内容特点，使读者能够更容易地找到相关内容。例如，对于一篇关于健康的文章，可能会有 “健康”、” 饮食”、” 运动” 等标签。<br>一篇文章可以有多个标签，这样可以更细致地描述文章的内容特点。<br>因此，分类更多地用于对文章进行宏观的整体分类，而标签则更适合用于对文章进行细致的描述和关联。</p>
+<p>比如一个食谱网址。</p>
+<p>食谱的分类（Categories）是早餐、午餐、晚餐、开胃菜、汤、沙拉、配菜和甜点。所有的食谱都可以划归为其中的一种。</p>
+<p>此外，用户可能还希望根据一些特点来寻找食谱，比如原味、番茄味、三鲜味、麻辣味等。这些使用标签（Tags）表示。</p>
+<h3 id="注意代码块"><a href="#注意代码块" class="headerlink" title="注意代码块"></a>注意代码块</h3><p>代码块由“&#96;&#96;&#96;+回车”抱起来，不然hexo会乱码</p>
+<h3 id="修改文章底部标签的-的样式"><a href="#修改文章底部标签的-的样式" class="headerlink" title="修改文章底部标签的#的样式"></a>修改文章底部标签的#的样式</h3><p>默认的文章标签的样式是带有#这个符号的，比如#Spring Boot，但是可以将#修改成标签的icon，效果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Use icon instead of the symbol # to indicate the tag at the bottom of the post</span><br><span class="line">tag_icon: true</span><br></pre></td></tr></table></figure>
 
 
-<p>gcc 编译器就会为我们生成一个 hello 的可执行文件。执行.&#x2F;hello 就可以看到程序的输出结果了。命令行中 gcc 表示我们是用 gcc 来编译我们的源程序，-o 选项表示我们要求编译器给我们输出的可执行文件名为 hello 而 hello.c 是我们的源程序文件。<br>gcc 编译器有许多选项，一般来说我们只要知道其中的几个就够了。 -o 选项我们已经知道了，表示我们要求输出的可执行文件名。 -c 选项表示我们只要求编译器输出目标代码，而不必要输出可执行文件。 -g 选项表示我们要求编译器在编译的时候提供我们以后对程序进行调试的信息。<br>知道了这三个选项，我们就可以编译我们自己所写的简单的源程序了，如果你想要知道更多的选项，可以查看 gcc 的帮助文档，那里有着许多对其它选项的详细说明。</p>
-<p>2.Makefile 的编写<br>假设我们有下面这样的一个程序，源代码如下：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* main.c */  </span><br><span class="line">#include &quot;mytool1.h&quot;  </span><br><span class="line">#include &quot;mytool2.h&quot;  </span><br><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">    mytool1_print(&quot;hello&quot;)；  </span><br><span class="line">    mytool2_print(&quot;hello&quot;)；  </span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">/* mytool1.h */  </span><br><span class="line">#ifndef _MYTOOL_1_H  </span><br><span class="line">#define _MYTOOL_1_H  </span><br><span class="line">void mytool1_print(char *print_str)；  </span><br><span class="line">#endif  </span><br><span class="line">/* mytool1.c */  </span><br><span class="line">#include &quot;mytool1.h&quot;  </span><br><span class="line">void mytool1_print(char *print_str)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;This is mytool1 print %s\n&quot;，print_str)；  </span><br><span class="line">&#125;  </span><br><span class="line">/* mytool2.h */  </span><br><span class="line">#ifndef _MYTOOL_2_H  </span><br><span class="line">#define _MYTOOL_2_H  </span><br><span class="line">void mytool2_print(char *print_str)；  </span><br><span class="line">#endif  </span><br><span class="line">/* mytool2.c */  </span><br><span class="line">#include &quot;mytool2.h&quot;  </span><br><span class="line">void mytool2_print(char *print_str)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;This is mytool2 print %s\n&quot;，print_str)；  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>当然由于这个程序是很短的我们可以这样来编译 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -c main.c  </span><br><span class="line">gcc -c mytool1.c  </span><br><span class="line">gcc -c mytool2.c  </span><br><span class="line">gcc -o main main.o mytool1.o mytool2.o</span><br></pre></td></tr></table></figure>
 
-<p>这样的话我们也可以产生 main 程序，而且也不时很麻烦。但是如果我们考虑一下如果有一天我们修改了其中的一个文件 (比如说 mytool1.c) 那么我们 难道还要重新输入上面的命令? 也许你会说，这个很容易解决啊，我写一个 SHELL 脚本，让她帮我去完成不就可以了。是的对于这个程序来说，是可以起到作用 的。但是当我们把事情想的更复杂一点，如果我们的程序有几百个源程序的时候，难道也要编译器重新一个一个的去编译?<br>为此，聪明的程序员们想出了一个很好的工具来做这件事情，这就是 make。我们只要执行以下 make，就可以把上面的问题解决掉。在我们执行 make 之 前，我们要先编写一个非常重要的文件。–Makefile。对于上面的那个程序来说，可能的一个 Makefile 的文件是：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o main main.o mytool1.o mytool2.o  </span><br><span class="line">main.o：main.c mytool1.h mytool2.h  </span><br><span class="line">gcc -c main.c  </span><br><span class="line">mytool1.o：mytool1.c mytool1.h  </span><br><span class="line">gcc -c mytool1.c  </span><br><span class="line">mytool2.o：mytool2.c mytool2.h  </span><br><span class="line">gcc -c mytool2.c</span><br></pre></td></tr></table></figure>
 
-<p>有了这个 Makefile 文件，不过我们什么时候修改了源程序当中的什么文件，我们只要执行 make 命令，我们的编译器都只会去编译和我们修改的文件有关的文件，其它的文件她连理都不想去理的。<br>下面我们学习 Makefile 是如何编写的。<br>在 Makefile 中也 #开始的行都是注释行. Makefile 中最重要的是描述文件的依赖关系的说明。一般的格式是：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">target：components  </span><br><span class="line">TAB rule</span><br></pre></td></tr></table></figure>
 
-<p>第一行表示的是依赖关系。第二行是规则。<br>比如说我们上面的那个 Makefile 文件的第二行  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main：main.o mytool1.o mytool2.o</span><br></pre></td></tr></table></figure>
-<p>表示我们的目标 (target)main 的依赖对象(components) 是 main.o mytool1.o mytool2.o 当倚赖的对象在目标修改后修改的话，就要去执行规则一行所指定的命令。就象我们的上面那个 Makefile 第三行所说的一样要执行 gcc -o main main.o mytool1.o mytool2.o 注意规则一行中的 TAB 表示那里是一个 TAB 键  </p>
-<h3 id="变量-，-，"><a href="#变量-，-，" class="headerlink" title="变量 $@，$^，$&lt;"></a>变量 $@，$^，$&lt;</h3><p>Makefile 有三个非常有用的变量。分别是 $@，$^，$&lt; 代表的意义分别是：<br>$@– 目标文件，$^– 所有的依赖文件，$&lt;– 第一个依赖文件。<br>如果我们使用上面三个变量，那么我们可以简化我们的 Makefile 文件为：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这是简化后的 Makefile  </span><br><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o $@ $^  </span><br><span class="line">main.o：main.c mytool1.h mytool2.h  </span><br><span class="line">gcc -c $&lt;  </span><br><span class="line">mytool1.o：mytool1.c mytool1.h  </span><br><span class="line">gcc -c $&lt;  </span><br><span class="line">mytool2.o：mytool2.c mytool2.h  </span><br><span class="line">gcc -c $&lt;  </span><br></pre></td></tr></table></figure>
 
-<p>经过简化后我们的 Makefile 是简单了一点，不过人们有时候还想简单一点。这里我们学习一个 Makefile 的缺省规则<br>.c.o：<br><code>gcc -c $&lt;</code><br>这个规则表示所有的 .o 文件都是依赖与相应的. c 文件的。例如 mytool.o 依赖于 mytool.c 这样 Makefile 还可以变为：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这是再一次简化后的 Makefile  </span><br><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o $@ $^  </span><br><span class="line">.c.o：  </span><br><span class="line">gcc -c $&lt;</span><br></pre></td></tr></table></figure>
-<p>好了，我们的 Makefile 也差不多了，如果想知道更多的关于 Makefile 规则可以查看相应的文档。</p>
-<h3 id="程序库的链接"><a href="#程序库的链接" class="headerlink" title="程序库的链接"></a>程序库的链接</h3><p>试着编译下面这个程序  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* temp.c */  </span><br><span class="line">#include  </span><br><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">double value；  </span><br><span class="line">printf(&quot;Value：%f\n&quot;，value)；  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个程序相当简单，但是当我们用 gcc -o temp temp.c 编译时会出现下面所示的错误。  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/tmp/cc33Kydu.o： In function `main&#x27;：  </span><br><span class="line">/tmp/cc33Kydu.o(.text+0xe)： undefined reference to `log&#x27;  </span><br><span class="line">collect2： ld returned 1 exit status</span><br></pre></td></tr></table></figure>
 
-<p>出现这个错误是因为编译器找不到 log 的具体实现。虽然我们包括了正确的头文件，但是我们在编译的时候还是要连接确定的库。在 Linux 下，为了使用数学 函数，我们必须和数学库连接，为此我们要加入 -lm 选项。 <code>gcc -o temp temp.c -lm</code> 这样才能够正确的编译。也许有人要问，前面我们用 printf 函数的时候怎么没有连接库呢? 是这样的，对于一些常用的函数的实现，gcc 编译器会自 动去连接一些常用库，这样我们就没有必要自己去指定了。有时候我们在编译程序的时候还要指定库的路径，这个时候我们要用到编译器的  -L 选项指定路径。比如说我们有一个库在 &#x2F;home&#x2F;hoyt&#x2F;mylib 下，这样我们编译的时候还要加上<code>-L/home/hoyt/mylib</code>对于一些标准库来说，我们没有必要指出路径。只要它们在起缺省库的路径下就可以了。系统的缺省库的路径<code>/lib /usr/lib /usr/local/lib </code>在这三个路径下面的库，我们可以不指定路径。</p>
-<h3 id="程序的调试"><a href="#程序的调试" class="headerlink" title="程序的调试"></a>程序的调试</h3><p>我们编写的程序不太可能一次性就会成功的，在我们的程序当中，会出现许许多多我们想不到的错误，这个时候我们就要对我们的程序进行调试了。<br>最常用的调试软件是 gdb. 如果你想在图形界面下调试程序，那么你现在可以选择 xxgdb. 记得要在编译的时候加入 -g 选项. 关于 gdb 的使用可以看 gdb 的帮助文件。由于我没有用过这个软件，所以我也不能够说出如何使用。不过我不喜欢用 gdb. 跟踪一个程序是很烦的 事情，我一般用在程序当中输出中间变量的值来调试程序的。当然你可以选择自己的办法，没有必要去学别人的。现在有了许多 IDE 环境，里面已经自己带了调试 器了。你可以选择几个试一试找出自己喜欢的一个用。</p>
-<h3 id="头文件和系统求助"><a href="#头文件和系统求助" class="headerlink" title="头文件和系统求助"></a>头文件和系统求助</h3><p>有时候我们只知道一个函数的大概形式，不记得确切的表达式，或者是不记得着函数在那个头文件进行了说明。这个时候我们可以求助系统。<br>比如说我们想知道 fread 这个函数的确切形式，我们只要执行 man fread 系统就会输出着函数的详细解释的。和这个函数所在的头文件说明了。 如果我们要 write 这个函数的说明，当我们执行 man write 时，输出的结果却不是我们所需要的。 因为我们要的是 write 这个函数的说明，可是出来的却是 write 这个命令的说明。为了得到 write 的函数说明我们要用 man 2 write. 2 表示我们用的 write 这个函数是系统调用函数，还有一个我们常用的是 3 表示函数是 C 的库函数。<br>记住不管什么时候，man 都是我们的最好助手</p>
-<p><a href="https://so.csdn.net/so/search?q=Makefile&spm=1001.2101.3001.7020" title="Makefile">Makefile</a> 中<code> $(SRC:%.c=%.o)</code> 的含义：<strong>将 SRC 变量中所有以. c 结尾的文件名替换成对应的以. o 结尾的文件名，然后赋回给 SRC</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CROSS_COMPILE ?= arm-linux-gnueabihf-</span><br><span class="line"></span><br><span class="line">GCC := $(CROSS_COMPILE)gcc </span><br><span class="line"></span><br><span class="line">APP_TARGET = ./app_button</span><br><span class="line"></span><br><span class="line">INC_DIR = -I/  </span><br><span class="line">INC_DIR += -I./bsp/beep   </span><br><span class="line">INC_DIR += -I./bsp/clk   </span><br><span class="line">INC_DIR += -I./bsp/led  </span><br><span class="line">INC_DIR += -I./bsp/button </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">CFLAGS += $(INC_DIR)</span><br><span class="line"></span><br><span class="line">BEEP = \  </span><br><span class="line">    ./bsp/beep/beep.c \  </span><br><span class="line">    ./bsp/clk/clk.c \  </span><br><span class="line">    ./bsp/led/led.c \  </span><br><span class="line">    ./bsp/button/button.c</span><br><span class="line"></span><br><span class="line">MAIN = ./main.c</span><br><span class="line"></span><br><span class="line">SRC += $(MAIN)  </span><br><span class="line">SRC += $(BEEP)</span><br><span class="line"></span><br><span class="line">%.o:%.c  </span><br><span class="line">    $(GCC) -c $(CFLAGS) $^ -o $@</span><br><span class="line"></span><br><span class="line">SRCOBJ = $(SRC:.c=.o)</span><br><span class="line"></span><br><span class="line">all:$(APP_TARGET)  </span><br><span class="line">$(APP_TARGET): $(SRCOBJ)  </span><br><span class="line">    $(GCC) $(SRCOBJ) $(CFLAGS) -o $(APP_TARGET)</span><br><span class="line"></span><br><span class="line">clean:  </span><br><span class="line">    rm -f $(APP_TARGET) $(SRCOBJ)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>Hexo</category>
       </categories>
       <tags>
-        <tag>makefile make</tag>
+        <tag>hexo next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java</title>
+    <url>/2022/03/02/java/</url>
+    <content><![CDATA[<h3 id="安装-oracle-jdk"><a href="#安装-oracle-jdk" class="headerlink" title="安装 oracle jdk"></a>安装 oracle jdk</h3><p>尽管现在jdk版本已经更新到17了，但是因为oracle jdk8u202版本后商用收费了，另外，也可以使用高版本的open jdk, Linux从源安装，一般都是自动指向OpenJDK的（免费开源嘛），如果要下载Oracle JDK一般需要手动下载。这边安装奇数版本jdk8u201,官网下载，需要注册&#x2F;登录帐号，<br><a href="https://www.oracle.com/java/technologies/downloads/archive/">https://www.oracle.com/java/technologies/downloads/archive/</a></p>
+<span id="more"></span>
+
+<p>创建目录:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/lib/jvm</span><br></pre></td></tr></table></figure>
+
+<p>解压缩到该目录:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo tar -zxvf jdk-8u201-linux-x64.tar.gz -C /usr/lib/jvm/</span><br></pre></td></tr></table></figure>
+
+<p>修改环境变量:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>在文件末尾追加下面内容:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set oracle jdk environment</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_201 </span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib</span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>使环境变量马上生效：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>查看java版本，看看是否安装成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p>另外，也可以在update-alternatives工具中注册，update-alternatives 命令用于处理linux系统中软件版本的切换</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_201/bin/java 300</span><br></pre></td></tr></table></figure>
+
+<p>下面手动修改为jdk1.8.0_91：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo update-alternatives --config java</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="安装IntelliJ-IDEA"><a href="#安装IntelliJ-IDEA" class="headerlink" title="安装IntelliJ IDEA"></a>安装IntelliJ IDEA</h4><p>IDEA这玩意好用是好用，就是太费内存了，没个8G，16G用起来不得劲！</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo snap install intellij-idea-community --classic</span><br></pre></td></tr></table></figure>
+
+<h4 id="Ubuntu下安装配置-maven"><a href="#Ubuntu下安装配置-maven" class="headerlink" title="Ubuntu下安装配置 maven"></a>Ubuntu下安装配置 maven</h4><p>在上古时代，Java的构建都在使用make，编写makefile来进行Java构建有非常多别扭与不便的地方。</p>
+<p>紧接着Apache Ant诞生了，Ant可以灵活的定义清理编译测试打包等过程，但是由于没有依赖管理的功能，以及需要编写复杂的xml，还是存在着诸多的不便。</p>
+<p>随后Apache Maven诞生了，Maven是一个依赖项管理和构建自动化工具，遵循着约定大于配置的规则。虽然也需要编写xml，但是对于复杂工程更加容易管理，有着标准化的工程结构，清晰的依赖管理。此外，由于Maven本质上是一个插件执行框架，也提供了一定的开放性的能力，我们可以通过Maven的插件开发，为构建构成创造一定的灵活性。</p>
+<p>但是由于采用约定大于配置的方式，丧失了一定的灵活性，同时由于采用xml管理构建过程与依赖，随着工程的膨胀，配置管理还是会带来不小的复杂度，在这个背景下，集合了Ant与Maven各自优势的Gradle诞生了。</p>
+<p>从maven官网下载maven到&#x2F;user&#x2F;local<br>配置环境变量<br>编辑~&#x2F;.bashrc</p>
+<p>~&#x2F;.bashrc：该文件包含用于你的bash shell的bash信息，当登录时以及每次打开新的shell时，该文件被读取；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>在最后输入以下信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export M2_HOME=/usr/local/apache-maven-3.5.0</span><br><span class="line">(根据你下载的maven文件名而定，我这里版本是3.5.0)</span><br><span class="line">export M2=$M2_HOME/bin</span><br><span class="line">export MAVEN_OPTS=&quot;-Xms256m -Xmx512m&quot;</span><br><span class="line">export PATH=$M2:$PATH</span><br></pre></td></tr></table></figure>
+<p>使环境变量生效</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>检验是否成功</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn --version</span><br></pre></td></tr></table></figure>
+
+<p>打开Maven项目根目录，运行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn -U clean package</span><br></pre></td></tr></table></figure>
+<p>其中-U参数为强制更新依赖包，clean指令意为清空缓存文件，package指令意为生成target目录，编译、测试代码，生成测试报告，生成jar&#x2F;war文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn clean spring-boot:run</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn clean package</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1647,6 +1918,138 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </categories>
       <tags>
         <tag>freertos linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux 应用开发</title>
+    <url>/2024/04/02/linux%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="VScode-Clangd"><a href="#VScode-Clangd" class="headerlink" title="VScode Clangd"></a>VScode Clangd</h3><p><a href="https://clangd.llvm.org/">Clangd</a> 是一个基于 Clang 的语言服务器，它提供了代码智能感知和导航功能。通过与 VSCode 集成。</p>
+<ol>
+<li><p>搜索 clangd 插件安装</p>
+</li>
+<li><p>禁用或卸载 Microsoft C&#x2F;C++ Intelligence</p>
+</li>
+<li><p>VSCode clangd 插件本身是不能运行的，它还需要 clangd 的环境，所以接下来安装 clangd。<br>在 Ubuntu 中最好不要使用 apt 安装，因为版本比较旧，建议下载后手动安装。<br>解压后，<br>将 bin 文件夹下的 clangd 移动到 &#x2F;usr&#x2F;bin 目录下，<br>将 lib 文件夹下的所有移动到 &#x2F;usr&#x2F;local&#x2F;lib 目录下。<br><code>clangd --version</code>查看版本。</p>
+<span id="more"></span>
+</li>
+<li><p>使用 bear 构建源码的 compile_commands.json 文件,clangd需要这个文件才能提供补全和跳转，compile_commands.json 文件记录了你的工程是如何构建的，使用到了哪些源码文件，源码文件之间的包含关系，引用路径之类的，这些可以帮助 clangd 构建符号关系索引库。<br><code>sudo apt install bear</code> 安装 bear </p>
+</li>
+<li><p>修改 compile_commands.json 文件<br>需要全局替换：”cc”  –&gt;  “arm-linux-gnueabihf-gcc”<br>保存后关闭 VSCode，如果有. cache 文件夹的话，删除掉它。之后重新用 VSCode 打开源码目录，随便打开一个. c 文件，clangd 便自动开始索引文件了，索引文件会保存在 .cache 目录下。</p>
+</li>
+<li><p>驱动程序和应用程序的编写<br>对于驱动程序来说，我的方法是在当前源码目录下新建一个文件夹，在这个文件夹下进行驱动程序的编写，这样跳转、补全之类的都比较方便。<br>然后保存工作区，方便下次打开：<br>对应用程序来说，不便放在源码工作区当中，可以像这样单独打开一个用于编写应用程序：<br>驱动程序写完后，拷贝到应用程序所在目录的驱动程序文件中。</p>
+</li>
+</ol>
+<h3 id="安装-NFS"><a href="#安装-NFS" class="headerlink" title="安装 NFS"></a>安装 NFS</h3><h4 id="在Ubuntu上设置NFS服务器的步骤如下："><a href="#在Ubuntu上设置NFS服务器的步骤如下：" class="headerlink" title="在Ubuntu上设置NFS服务器的步骤如下："></a>在Ubuntu上设置NFS服务器的步骤如下：</h4><ol>
+<li><p>安装NFS内核服务器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nfs-kernel-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建共享目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /srv/nfs/share</span><br><span class="line">sudo chown nobody:nogroup /srv/nfs/share</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置共享权限。编辑 &#x2F;etc&#x2F;exports 文件，并添加共享目录配置：<code>sudo nano /etc/exports</code></p>
+</li>
+</ol>
+<p>添加以下行：<code>/srv/nfs/share 192.168.1.0/24(rw,sync,no_subtree_check)</code></p>
+<ol start="4">
+<li>启动 NFS服务<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl start nfs-kernel-server</span><br><span class="line">sudo systemctl enable nfs-kernel-server</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="在客户端计算机上，您需要安装NFS通用文件系统客户端："><a href="#在客户端计算机上，您需要安装NFS通用文件系统客户端：" class="headerlink" title="在客户端计算机上，您需要安装NFS通用文件系统客户端："></a>在客户端计算机上，您需要安装NFS通用文件系统客户端：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nfs-common</span><br></pre></td></tr></table></figure>
+<p>然后，您可以挂载服务器上的共享目录：<br><code>sudo mount -t nfs 192.168.1.x:/srv/nfs/share /mnt</code></p>
+<h4 id="windows-挂载linux-NFS"><a href="#windows-挂载linux-NFS" class="headerlink" title="windows 挂载linux NFS"></a>windows 挂载linux NFS</h4><p>在Windows上挂载Linux NFS共享，你需要确保已经在Linux服务器上配置了NFS共享，并且Windows客户端已安装NFS客户端功能。以下是如何在Windows上挂载Linux NFS共享的步骤：</p>
+<p>安装NFS客户端功能：</p>
+<p>打开“控制面板” -&gt; “程序和功能” -&gt; “启用或关闭Windows功能”，勾选“NFS客户端”，然后点击“确定”安装。</p>
+<p>使用命令行挂载NFS共享：</p>
+<p>打开命令提示符或PowerShell，使用mount命令挂载Linux NFS共享。</p>
+<p>例如，如果你的Linux NFS服务器IP是192.168.1.100，NFS共享路径是&#x2F;shared，你想将其挂载到本地的Z:驱动器，可以使用以下命令：</p>
+<p><code>mount \\192.168.1.100\shared Z:</code><br>如果你想在每次启动时自动挂载该共享，可以在mount命令后添加-p参数，并将命令添加到autocmd.bat文件中，该文件位于C:\Windows\System32\目录下。</p>
+<p>注意：确保你的Windows防火墙设置允许NFS通信。如果你的NFS服务器配置了访问控制，你可能需要提供用户名和密码。</p>
+<h3 id="gcc-命令"><a href="#gcc-命令" class="headerlink" title="gcc 命令"></a>gcc 命令</h3><p> GCC 常用编译选项<br> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-E 预处理，开发过程中想快速确定某个宏可以使用“-E -dM”</span><br><span class="line">-c 把预处理、编译、汇编都做了，但是不链接</span><br><span class="line">-o 指定输出文件</span><br><span class="line">-I 指定头文件目录</span><br><span class="line">-L 指定链接时库文件目录</span><br><span class="line">-l 指定链接哪一个库文件</span><br></pre></td></tr></table></figure><br>常用 <code>gcc -o hello hello.c</code></p>
+<h3 id="Makefine"><a href="#Makefine" class="headerlink" title="Makefine"></a>Makefine</h3><h4 id="Make-fine-原理"><a href="#Make-fine-原理" class="headerlink" title="Make fine 原理"></a>Make fine 原理</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -c -o a.o a.c</span><br><span class="line">gcc -c -o b.o b.c</span><br><span class="line">gcc -o test a.o b.o</span><br><span class="line">gcc -c -o c.o c.c -MD -MF c.d</span><br></pre></td></tr></table></figure>
+<p>gcc 生成依赖 c.d<br>如何判断哪些文件被修改，只编译被修改的文件，比较时间：目标文件和依赖文件的时间，当依赖比目标新时，执行编译文件。</p>
+<p>目标:依赖<br>[TAB]命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">test:a.o b.o</span><br><span class="line">    gcc -o test a.o b.o</span><br><span class="line"></span><br><span class="line">a.o : a.c</span><br><span class="line">    gcc -o a.o a.c</span><br><span class="line"></span><br><span class="line">b.o : b.c</span><br><span class="line">    gcc -o b.o b.c</span><br></pre></td></tr></table></figure>
+<h4 id="Makefile语法"><a href="#Makefile语法" class="headerlink" title="Makefile语法"></a>Makefile语法</h4><p>% 通配符 %.o<br>$@ 目标<br>$&lt; 第一个依赖文件<br>$^ 所有依赖文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">test:a.o b.o</span><br><span class="line">    gcc -o test $^</span><br><span class="line">%.o : %.c</span><br><span class="line">gcc -c -o $@ $&lt;</span><br></pre></td></tr></table></figure>
+
+<p>make 无目标，默认第一个为目标<br>使用下面的语句把“clean”设置为假想目标：<br><code>.PHONY : clean</code></p>
+<p>即时变量、延时变量，export</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">A = xxx // 延时变量</span><br><span class="line">B ?= xxx // 延时变量，只有第一次定义时赋值才成功；如果曾定义过，此赋值无效</span><br><span class="line">C := xxx // 立即变量</span><br><span class="line">D += yyy // 如果 D 在前面是延时变量，那么现在它还是延时变量；</span><br><span class="line">D += dir/ dir 是一个目录</span><br><span class="line">// 如果 D 在前面是立即变量，那么现在它还是立即变量</span><br></pre></td></tr></table></figure>
+<p>@echo 看不到变量<br>@echo $(A)</p>
+<h5 id="makefile-函数"><a href="#makefile-函数" class="headerlink" title="makefile 函数"></a>makefile 函数</h5><p><code>$(foreach var,list,text)</code><br>简单地说，就是 for each var in list, change it to text。对 list 中的每一个<br>元素，取出来赋给 var，然后把 var 改为 text 所描述的形式。<br>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">objs := a.o b.o</span><br><span class="line">dep_files := $(foreach f, $(objs), .$(f).d) // 最终 dep_files := .a.o.d .b.o.d</span><br></pre></td></tr></table></figure>
+<p><code>$(wildcard pattern)</code><br>pattern 所列出的文件是否存在，把存在的文件都列出来。<br>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src_files := $( wildcard *.c) // 最终 src_files 中列出了当前目录下的所有.c 文件</span><br></pre></td></tr></table></figure>
+
+<p><code>$(filter pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter(过滤)出来、留下来。<br>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter %/, $(obj-y)) //结果为：c/ d/</span><br></pre></td></tr></table></figure>
+
+<p><code>$(filter-out pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter-out(过滤)出来、扔掉。<br>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter-out %/, $(obj-y)) //结果为：a.o b.o</span><br></pre></td></tr></table></figure>
+
+<p><code>$(patsubst pattern,replacement,text)</code><br>寻找text中符合格式pattern的字，用replacement替换它们。<br>pattern和replacement中可以使用通配符。</p>
+<p>比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">subdir-y := c/ d/</span><br><span class="line">subdir-y := $(patsubst %/, %, $(subdir-y)) // 结果为：c d</span><br></pre></td></tr></table></figure>
+<p>EXTRA_CFLAGS :&#x3D; -D DEBUG 打开宏</p>
+<h4 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h4><p>Linux 内核编译通常使用 make 工具，而不是 cmake。cmake 是用于跨平台构建系统的工具，但 Linux 内核不是为跨平台设计的，而是直接使用 make 工具来构建。</p>
+<h4 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h4><p>linux&#x2F;unix 系统开发</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux_app</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>makefile 文件使用</title>
+    <url>/2024/04/14/makefile%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>Makefile的编写 </p>
+<span id="more"></span>
+<h3 id="源程序编译"><a href="#源程序编译" class="headerlink" title="源程序编译"></a>源程序编译</h3><ol>
+<li>源程序的编译<br>在 Linux 下面，如果要编译一个 C 语言源程序，我们要使用 GNU 的 gcc 编译器。 下面我们以一个实例来说明如何使用 gcc 编译器。<br>假设我们有下面一个非常简单的源程序 (hello.c)：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;Hello Linux\n&quot;)；  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>要编译这个程序，我们只要在命令行下执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -o hello hello.c</span><br></pre></td></tr></table></figure>
+
+
+<p>gcc 编译器就会为我们生成一个 hello 的可执行文件。执行.&#x2F;hello 就可以看到程序的输出结果了。命令行中 gcc 表示我们是用 gcc 来编译我们的源程序，-o 选项表示我们要求编译器给我们输出的可执行文件名为 hello 而 hello.c 是我们的源程序文件。<br>gcc 编译器有许多选项，一般来说我们只要知道其中的几个就够了。 -o 选项我们已经知道了，表示我们要求输出的可执行文件名。 -c 选项表示我们只要求编译器输出目标代码，而不必要输出可执行文件。 -g 选项表示我们要求编译器在编译的时候提供我们以后对程序进行调试的信息。<br>知道了这三个选项，我们就可以编译我们自己所写的简单的源程序了，如果你想要知道更多的选项，可以查看 gcc 的帮助文档，那里有着许多对其它选项的详细说明。</p>
+<p>2.Makefile 的编写<br>假设我们有下面这样的一个程序，源代码如下：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* main.c */  </span><br><span class="line">#include &quot;mytool1.h&quot;  </span><br><span class="line">#include &quot;mytool2.h&quot;  </span><br><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">    mytool1_print(&quot;hello&quot;)；  </span><br><span class="line">    mytool2_print(&quot;hello&quot;)；  </span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">/* mytool1.h */  </span><br><span class="line">#ifndef _MYTOOL_1_H  </span><br><span class="line">#define _MYTOOL_1_H  </span><br><span class="line">void mytool1_print(char *print_str)；  </span><br><span class="line">#endif  </span><br><span class="line">/* mytool1.c */  </span><br><span class="line">#include &quot;mytool1.h&quot;  </span><br><span class="line">void mytool1_print(char *print_str)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;This is mytool1 print %s\n&quot;，print_str)；  </span><br><span class="line">&#125;  </span><br><span class="line">/* mytool2.h */  </span><br><span class="line">#ifndef _MYTOOL_2_H  </span><br><span class="line">#define _MYTOOL_2_H  </span><br><span class="line">void mytool2_print(char *print_str)；  </span><br><span class="line">#endif  </span><br><span class="line">/* mytool2.c */  </span><br><span class="line">#include &quot;mytool2.h&quot;  </span><br><span class="line">void mytool2_print(char *print_str)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;This is mytool2 print %s\n&quot;，print_str)；  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>当然由于这个程序是很短的我们可以这样来编译 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -c main.c  </span><br><span class="line">gcc -c mytool1.c  </span><br><span class="line">gcc -c mytool2.c  </span><br><span class="line">gcc -o main main.o mytool1.o mytool2.o</span><br></pre></td></tr></table></figure>
+
+<p>这样的话我们也可以产生 main 程序，而且也不时很麻烦。但是如果我们考虑一下如果有一天我们修改了其中的一个文件 (比如说 mytool1.c) 那么我们 难道还要重新输入上面的命令? 也许你会说，这个很容易解决啊，我写一个 SHELL 脚本，让她帮我去完成不就可以了。是的对于这个程序来说，是可以起到作用 的。但是当我们把事情想的更复杂一点，如果我们的程序有几百个源程序的时候，难道也要编译器重新一个一个的去编译?<br>为此，聪明的程序员们想出了一个很好的工具来做这件事情，这就是 make。我们只要执行以下 make，就可以把上面的问题解决掉。在我们执行 make 之 前，我们要先编写一个非常重要的文件。–Makefile。对于上面的那个程序来说，可能的一个 Makefile 的文件是：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o main main.o mytool1.o mytool2.o  </span><br><span class="line">main.o：main.c mytool1.h mytool2.h  </span><br><span class="line">gcc -c main.c  </span><br><span class="line">mytool1.o：mytool1.c mytool1.h  </span><br><span class="line">gcc -c mytool1.c  </span><br><span class="line">mytool2.o：mytool2.c mytool2.h  </span><br><span class="line">gcc -c mytool2.c</span><br></pre></td></tr></table></figure>
+
+<p>有了这个 Makefile 文件，不过我们什么时候修改了源程序当中的什么文件，我们只要执行 make 命令，我们的编译器都只会去编译和我们修改的文件有关的文件，其它的文件她连理都不想去理的。<br>下面我们学习 Makefile 是如何编写的。<br>在 Makefile 中也 #开始的行都是注释行. Makefile 中最重要的是描述文件的依赖关系的说明。一般的格式是：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">target：components  </span><br><span class="line">TAB rule</span><br></pre></td></tr></table></figure>
+
+<p>第一行表示的是依赖关系。第二行是规则。<br>比如说我们上面的那个 Makefile 文件的第二行  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main：main.o mytool1.o mytool2.o</span><br></pre></td></tr></table></figure>
+<p>表示我们的目标 (target)main 的依赖对象(components) 是 main.o mytool1.o mytool2.o 当倚赖的对象在目标修改后修改的话，就要去执行规则一行所指定的命令。就象我们的上面那个 Makefile 第三行所说的一样要执行 gcc -o main main.o mytool1.o mytool2.o 注意规则一行中的 TAB 表示那里是一个 TAB 键  </p>
+<h3 id="变量-，-，"><a href="#变量-，-，" class="headerlink" title="变量 $@，$^，$&lt;"></a>变量 $@，$^，$&lt;</h3><p>Makefile 有三个非常有用的变量。分别是 $@，$^，$&lt; 代表的意义分别是：<br>$@– 目标文件，$^– 所有的依赖文件，$&lt;– 第一个依赖文件。<br>如果我们使用上面三个变量，那么我们可以简化我们的 Makefile 文件为：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这是简化后的 Makefile  </span><br><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o $@ $^  </span><br><span class="line">main.o：main.c mytool1.h mytool2.h  </span><br><span class="line">gcc -c $&lt;  </span><br><span class="line">mytool1.o：mytool1.c mytool1.h  </span><br><span class="line">gcc -c $&lt;  </span><br><span class="line">mytool2.o：mytool2.c mytool2.h  </span><br><span class="line">gcc -c $&lt;  </span><br></pre></td></tr></table></figure>
+
+<p>经过简化后我们的 Makefile 是简单了一点，不过人们有时候还想简单一点。这里我们学习一个 Makefile 的缺省规则<br>.c.o：<br><code>gcc -c $&lt;</code><br>这个规则表示所有的 .o 文件都是依赖与相应的. c 文件的。例如 mytool.o 依赖于 mytool.c 这样 Makefile 还可以变为：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这是再一次简化后的 Makefile  </span><br><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o $@ $^  </span><br><span class="line">.c.o：  </span><br><span class="line">gcc -c $&lt;</span><br></pre></td></tr></table></figure>
+<p>好了，我们的 Makefile 也差不多了，如果想知道更多的关于 Makefile 规则可以查看相应的文档。</p>
+<h3 id="程序库的链接"><a href="#程序库的链接" class="headerlink" title="程序库的链接"></a>程序库的链接</h3><p>试着编译下面这个程序  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* temp.c */  </span><br><span class="line">#include  </span><br><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">double value；  </span><br><span class="line">printf(&quot;Value：%f\n&quot;，value)；  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个程序相当简单，但是当我们用 gcc -o temp temp.c 编译时会出现下面所示的错误。  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/tmp/cc33Kydu.o： In function `main&#x27;：  </span><br><span class="line">/tmp/cc33Kydu.o(.text+0xe)： undefined reference to `log&#x27;  </span><br><span class="line">collect2： ld returned 1 exit status</span><br></pre></td></tr></table></figure>
+
+<p>出现这个错误是因为编译器找不到 log 的具体实现。虽然我们包括了正确的头文件，但是我们在编译的时候还是要连接确定的库。在 Linux 下，为了使用数学 函数，我们必须和数学库连接，为此我们要加入 -lm 选项。 <code>gcc -o temp temp.c -lm</code> 这样才能够正确的编译。也许有人要问，前面我们用 printf 函数的时候怎么没有连接库呢? 是这样的，对于一些常用的函数的实现，gcc 编译器会自 动去连接一些常用库，这样我们就没有必要自己去指定了。有时候我们在编译程序的时候还要指定库的路径，这个时候我们要用到编译器的  -L 选项指定路径。比如说我们有一个库在 &#x2F;home&#x2F;hoyt&#x2F;mylib 下，这样我们编译的时候还要加上<code>-L/home/hoyt/mylib</code>对于一些标准库来说，我们没有必要指出路径。只要它们在起缺省库的路径下就可以了。系统的缺省库的路径<code>/lib /usr/lib /usr/local/lib </code>在这三个路径下面的库，我们可以不指定路径。</p>
+<h3 id="程序的调试"><a href="#程序的调试" class="headerlink" title="程序的调试"></a>程序的调试</h3><p>我们编写的程序不太可能一次性就会成功的，在我们的程序当中，会出现许许多多我们想不到的错误，这个时候我们就要对我们的程序进行调试了。<br>最常用的调试软件是 gdb. 如果你想在图形界面下调试程序，那么你现在可以选择 xxgdb. 记得要在编译的时候加入 -g 选项. 关于 gdb 的使用可以看 gdb 的帮助文件。由于我没有用过这个软件，所以我也不能够说出如何使用。不过我不喜欢用 gdb. 跟踪一个程序是很烦的 事情，我一般用在程序当中输出中间变量的值来调试程序的。当然你可以选择自己的办法，没有必要去学别人的。现在有了许多 IDE 环境，里面已经自己带了调试 器了。你可以选择几个试一试找出自己喜欢的一个用。</p>
+<h3 id="头文件和系统求助"><a href="#头文件和系统求助" class="headerlink" title="头文件和系统求助"></a>头文件和系统求助</h3><p>有时候我们只知道一个函数的大概形式，不记得确切的表达式，或者是不记得着函数在那个头文件进行了说明。这个时候我们可以求助系统。<br>比如说我们想知道 fread 这个函数的确切形式，我们只要执行 man fread 系统就会输出着函数的详细解释的。和这个函数所在的头文件说明了。 如果我们要 write 这个函数的说明，当我们执行 man write 时，输出的结果却不是我们所需要的。 因为我们要的是 write 这个函数的说明，可是出来的却是 write 这个命令的说明。为了得到 write 的函数说明我们要用 man 2 write. 2 表示我们用的 write 这个函数是系统调用函数，还有一个我们常用的是 3 表示函数是 C 的库函数。<br>记住不管什么时候，man 都是我们的最好助手</p>
+<p><a href="https://so.csdn.net/so/search?q=Makefile&spm=1001.2101.3001.7020" title="Makefile">Makefile</a> 中<code> $(SRC:%.c=%.o)</code> 的含义：<strong>将 SRC 变量中所有以. c 结尾的文件名替换成对应的以. o 结尾的文件名，然后赋回给 SRC</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CROSS_COMPILE ?= arm-linux-gnueabihf-</span><br><span class="line"></span><br><span class="line">GCC := $(CROSS_COMPILE)gcc </span><br><span class="line"></span><br><span class="line">APP_TARGET = ./app_button</span><br><span class="line"></span><br><span class="line">INC_DIR = -I/  </span><br><span class="line">INC_DIR += -I./bsp/beep   </span><br><span class="line">INC_DIR += -I./bsp/clk   </span><br><span class="line">INC_DIR += -I./bsp/led  </span><br><span class="line">INC_DIR += -I./bsp/button </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">CFLAGS += $(INC_DIR)</span><br><span class="line"></span><br><span class="line">BEEP = \  </span><br><span class="line">    ./bsp/beep/beep.c \  </span><br><span class="line">    ./bsp/clk/clk.c \  </span><br><span class="line">    ./bsp/led/led.c \  </span><br><span class="line">    ./bsp/button/button.c</span><br><span class="line"></span><br><span class="line">MAIN = ./main.c</span><br><span class="line"></span><br><span class="line">SRC += $(MAIN)  </span><br><span class="line">SRC += $(BEEP)</span><br><span class="line"></span><br><span class="line">%.o:%.c  </span><br><span class="line">    $(GCC) -c $(CFLAGS) $^ -o $@</span><br><span class="line"></span><br><span class="line">SRCOBJ = $(SRC:.c=.o)</span><br><span class="line"></span><br><span class="line">all:$(APP_TARGET)  </span><br><span class="line">$(APP_TARGET): $(SRCOBJ)  </span><br><span class="line">    $(GCC) $(SRCOBJ) $(CFLAGS) -o $(APP_TARGET)</span><br><span class="line"></span><br><span class="line">clean:  </span><br><span class="line">    rm -f $(APP_TARGET) $(SRCOBJ)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile make</tag>
       </tags>
   </entry>
   <entry>
@@ -1825,88 +2228,6 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </categories>
       <tags>
         <tag>MQTT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>clash config</title>
-    <url>/2023/07/17/pac/</url>
-    <content><![CDATA[<h3 id="pac-src"><a href="#pac-src" class="headerlink" title="pac src"></a>pac src</h3><p><a href="https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/clash/1/config.yaml">https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/clash/1/config.yaml</a></p>
-<p><a href="https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/clash/15/config.yaml">https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/clash/15/config.yaml</a></p>
-<p><a href="https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/hysteria/config.json">https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/hysteria/config.json</a></p>
-<p><a href="https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/hysteria/1/config.json">https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/hysteria/1/config.json</a></p>
-<span id="more"></span>
-
-<h3 id="Linux-终端走代理"><a href="#Linux-终端走代理" class="headerlink" title="Linux 终端走代理"></a>Linux 终端走代理</h3><p>-方法一：（推荐使用）<br>为什么说这个方法推荐使用呢？因为他只作用于当前终端中，不会影响环境，而且命令比较简单<br>在终端中直接运行：</p>
-<p>export http_proxy&#x3D;<a href="http://proxyAddress:port">http://proxyAddress:port</a><br>如果你是SSR,并且走的http的代理端口是1081，想执行wget或者curl来下载国外的东西，可以使用如下命令：</p>
-<p>export http_proxy&#x3D;<a href="http://127.0.0.1:1081/">http://127.0.0.1:1081</a><br>如果是https那么就经过如下命令：</p>
-<p>export https_proxy&#x3D;<a href="http://127.0.0.1:1081/">http://127.0.0.1:1081</a><br>方法二 ：<br>这个办法的好处是把代理服务器永久保存了，下次就可以直接用了<br>把代理服务器地址写入shell配置文件.bashrc或者.zshrc 直接在.bashrc或者.zshrc添加下面内容</p>
-<p>export http_proxy&#x3D;”<a href="http://localhost:port">http://localhost:port</a>“<br>export https_proxy&#x3D;”<a href="http://localhost:port">http://localhost:port</a>“<br>或者走socket5协议（ss,ssr）的话，代理端口是1080</p>
-<p>export http_proxy&#x3D;”socks5:&#x2F;&#x2F;127.0.0.1:1080”<br>export https_proxy&#x3D;”socks5:&#x2F;&#x2F;127.0.0.1:1080”<br>或者干脆直接设置ALL_PROXY</p>
-<p>export ALL_PROXY&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:1080<br>最后在执行如下命令应用设置</p>
-<p>source ~&#x2F;.bashrc<br>或者通过设置alias简写来简化操作，每次要用的时候输入setproxy，不用了就unsetproxy。</p>
-<p> alias setproxy&#x3D;”export ALL_PROXY&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:1080” alias unsetproxy&#x3D;”unset ALL_PROXY”</p>
-<p> 方法三:<br>改相应工具的配置，比如apt的配置</p>
-<p>sudo vim &#x2F;etc&#x2F;apt&#x2F;apt.conf<br>在文件末尾加入下面这行</p>
-<p>Acquire::http::Proxy “<a href="http://proxyAddress:port">http://proxyAddress:port</a>“<br>重点来了！！如果说经常使用git对于其他方面都不是经常使用，可以直接配置git的命令。<br>使用ss&#x2F;ssr来加快git的速度<br>直接输入这个命令就好了</p>
-<p>git config –global http.proxy ‘socks5:&#x2F;&#x2F;127.0.0.1:1080’<br>git config –global https.proxy ‘socks5:&#x2F;&#x2F;127.0.0.1:1080’</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>clash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>并发编程在爬虫中的应用</title>
-    <url>/2023/07/10/python/</url>
-    <content><![CDATA[<h2 id="并发编程在爬虫中的应用"><a href="#并发编程在爬虫中的应用" class="headerlink" title="并发编程在爬虫中的应用"></a>并发编程在爬虫中的应用</h2><p>之前的课程，我们已经为大家介绍了 Python 中的多线程、多进程和异步编程，通过这三种手段，我们可以实现并发或并行编程，这一方面可以加速代码的执行，另一方面也可以带来更好的用户体验。爬虫程序是典型的 I&#x2F;O 密集型任务，对于 I&#x2F;O 密集型任务来说，多线程和异步 I&#x2F;O 都是很好的选择，因为当程序的某个部分因 I&#x2F;O 操作阻塞时，程序的其他部分仍然可以运转，这样我们不用在等待和阻塞中浪费大量的时间。下面我们以爬取“<a href="https://image.so.com/">360图片</a>”网站的图片并保存到本地为例，为大家分别展示使用单线程、多线程和异步 I&#x2F;O 编程的爬虫程序有什么区别，同时也对它们的执行效率进行简单的对比。</p>
-<span id="more"></span>
-
-<p>“360图片”网站的页面使用了 <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/AJAX">Ajax</a> 技术，这是很多网站都会使用的一种异步加载数据和局部刷新页面的技术。简单的说，页面上的图片都是通过 JavaScript 代码异步获取 JSON 数据并动态渲染生成的，而且整个页面还使用了瀑布式加载（一边向下滚动，一边加载更多的图片）。我们在浏览器的“开发者工具”中可以找到提供动态内容的数据接口，如下图所示，我们需要的图片信息就在服务器返回的 JSON 数据中。</p>
-<img src="https://gitee.com/jackfrued/mypic/raw/master/20211205221352.png" style="zoom:50%;">
-
-<p>例如，要获取“美女”频道的图片，我们可以请求如下所示的URL，其中参数<code>ch</code>表示请求的频道，<code>=</code>后面的参数值<code>beauty</code>就代表了“美女”频道，参数<code>sn</code>相当于是页码，<code>0</code>表示第一页（共<code>30</code>张图片），<code>30</code>表示第二页，<code>60</code>表示第三页，以此类推。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://image.so.com/zjl?ch=beauty&amp;sn=0</span><br></pre></td></tr></table></figure>
-
-<h3 id="单线程版本"><a href="#单线程版本" class="headerlink" title="单线程版本"></a>单线程版本</h3><p>通过上面的 URL 下载“美女”频道共<code>90</code>张图片。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">example04.py - 单线程版本爬虫</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download_picture</span>(<span class="params">url</span>):</span><br><span class="line">    filename = url[url.rfind(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>:]</span><br><span class="line">    resp = requests.get(url)</span><br><span class="line">    <span class="keyword">if</span> resp.status_code == <span class="number">200</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&#x27;images/beauty/<span class="subst">&#123;filename&#125;</span>&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(resp.content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;images/beauty&#x27;</span>):</span><br><span class="line">        os.makedirs(<span class="string">&#x27;images/beauty&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        resp = requests.get(<span class="string">f&#x27;https://image.so.com/zjl?ch=beauty&amp;sn=<span class="subst">&#123;page * <span class="number">30</span>&#125;</span>&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> resp.status_code == <span class="number">200</span>:</span><br><span class="line">            pic_dict_list = resp.json()[<span class="string">&#x27;list&#x27;</span>]</span><br><span class="line">            <span class="keyword">for</span> pic_dict <span class="keyword">in</span> pic_dict_list:</span><br><span class="line">                download_picture(pic_dict[<span class="string">&#x27;qhimg_url&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<p>在 macOS 或 Linux 系统上，我们可以使用<code>time</code>命令来了解上面代码的执行时间以及 CPU 的利用率，如下所示。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">time python3 example04.py </span><br></pre></td></tr></table></figure>
-
-<p>下面是单线程爬虫代码在我的电脑上执行的结果。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 example04.py  2.36s user 0.39s system 12% cpu 21.578 total</span><br></pre></td></tr></table></figure>
-
-<p>这里我们只需要关注代码的总耗时为<code>21.578</code>秒，CPU 利用率为<code>12%</code>。</p>
-<h3 id="多线程版本"><a href="#多线程版本" class="headerlink" title="多线程版本"></a>多线程版本</h3><p>我们使用之前讲到过的线程池技术，将上面的代码修改为多线程版本。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">example05.py - 多线程版本爬虫</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download_picture</span>(<span class="params">url</span>):</span><br><span class="line">    filename = url[url.rfind(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>:]</span><br><span class="line">    resp = requests.get(url)</span><br><span class="line">    <span class="keyword">if</span> resp.status_code == <span class="number">200</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&#x27;images/beauty/<span class="subst">&#123;filename&#125;</span>&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(resp.content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;images/beauty&#x27;</span>):</span><br><span class="line">        os.makedirs(<span class="string">&#x27;images/beauty&#x27;</span>)</span><br><span class="line">    <span class="keyword">with</span> ThreadPoolExecutor(max_workers=<span class="number">16</span>) <span class="keyword">as</span> pool:</span><br><span class="line">        <span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">            resp = requests.get(<span class="string">f&#x27;https://image.so.com/zjl?ch=beauty&amp;sn=<span class="subst">&#123;page * <span class="number">30</span>&#125;</span>&#x27;</span>)</span><br><span class="line">            <span class="keyword">if</span> resp.status_code == <span class="number">200</span>:</span><br><span class="line">                pic_dict_list = resp.json()[<span class="string">&#x27;list&#x27;</span>]</span><br><span class="line">                <span class="keyword">for</span> pic_dict <span class="keyword">in</span> pic_dict_list:</span><br><span class="line">                    pool.submit(download_picture, pic_dict[<span class="string">&#x27;qhimg_url&#x27;</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<p>执行如下所示的命令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">time python3 example05.py</span><br></pre></td></tr></table></figure>
-
-<p>代码的执行结果如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 example05.py  2.65s user 0.40s system 95% cpu 3.193 total</span><br></pre></td></tr></table></figure>
-
-<h3 id="异步I-O版本"><a href="#异步I-O版本" class="headerlink" title="异步I&#x2F;O版本"></a>异步I&#x2F;O版本</h3><p>我们使用<code>aiohttp</code>将上面的代码修改为异步 I&#x2F;O 的版本。为了以异步 I&#x2F;O 的方式实现网络资源的获取和写文件操作，我们首先得安装三方库<code>aiohttp</code>和<code>aiofile</code>，命令如下所示。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install aiohttp aiofile</span><br></pre></td></tr></table></figure>
-
-<p><code>aiohttp</code> 的用法在之前的课程中已经做过简要介绍，<code>aiofile</code>模块中的<code>async_open</code>函数跟 Python 内置函数<code>open</code>的用法大致相同，只不过它支持异步操作。下面是异步 I&#x2F;O 版本的爬虫代码。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">example06.py - 异步I/O版本爬虫</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> aiofile</span><br><span class="line"><span class="keyword">import</span> aiohttp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">download_picture</span>(<span class="params">session, url</span>):</span><br><span class="line">    filename = url[url.rfind(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>:]</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> session.get(url, ssl=<span class="literal">False</span>) <span class="keyword">as</span> resp:</span><br><span class="line">        <span class="keyword">if</span> resp.status == <span class="number">200</span>:</span><br><span class="line">            data = <span class="keyword">await</span> resp.read()</span><br><span class="line">            <span class="keyword">async</span> <span class="keyword">with</span> aiofile.async_open(<span class="string">f&#x27;images/beauty/<span class="subst">&#123;filename&#125;</span>&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">                <span class="keyword">await</span> file.write(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">fetch_json</span>():</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">            <span class="keyword">async</span> <span class="keyword">with</span> session.get(</span><br><span class="line">                url=<span class="string">f&#x27;https://image.so.com/zjl?ch=beauty&amp;sn=<span class="subst">&#123;page * <span class="number">30</span>&#125;</span>&#x27;</span>,</span><br><span class="line">                ssl=<span class="literal">False</span></span><br><span class="line">            ) <span class="keyword">as</span> resp:</span><br><span class="line">                <span class="keyword">if</span> resp.status == <span class="number">200</span>:</span><br><span class="line">                    json_str = <span class="keyword">await</span> resp.text()</span><br><span class="line">                    result = json.loads(json_str)</span><br><span class="line">                    <span class="keyword">for</span> pic_dict <span class="keyword">in</span> result[<span class="string">&#x27;list&#x27;</span>]:</span><br><span class="line">                        <span class="keyword">await</span> download_picture(session, pic_dict[<span class="string">&#x27;qhimg_url&#x27;</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;images/beauty&#x27;</span>):</span><br><span class="line">        os.makedirs(<span class="string">&#x27;images/beauty&#x27;</span>)</span><br><span class="line">    loop = asyncio.get_event_loop()</span><br><span class="line">    loop.run_until_complete(fetch_json())</span><br><span class="line">    loop.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<p>执行如下所示的命令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">time python3 example06.py</span><br></pre></td></tr></table></figure>
-
-<p>代码的执行结果如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 example06.py  0.82s user 0.21s system 27% cpu 3.782 total</span><br></pre></td></tr></table></figure>
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过上面三段代码执行结果的比较，我们可以得出一个结论，使用多线程和异步 I&#x2F;O 都可以改善爬虫程序的性能，因为我们不用将时间浪费在因 I&#x2F;O 操作造成的等待和阻塞上，而<code>time</code>命令的执行结果也告诉我们，单线程的代码 CPU 利用率仅仅只有<code>12%</code>，而多线程版本的 CPU 利用率则高达<code>95%</code>；单线程版本的爬虫执行时间约<code>21</code>秒，而多线程和异步 I&#x2F;O 的版本仅执行了<code>3</code>秒钟。另外，在运行时间差别不大的情况下，多线程的代码比异步 I&#x2F;O 的代码耗费了更多的 CPU 资源，这是因为多线程的调度和切换也需要花费 CPU 时间。至此，三种方式在 I&#x2F;O 密集型任务上的优劣已经一目了然，当然这只是在我的电脑上跑出来的结果。如果网络状况不是很理想或者目标网站响应很慢，那么使用多线程和异步 I&#x2F;O 的优势将更为明显，有兴趣的读者可以自行试验。</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Threads</tag>
       </tags>
   </entry>
   <entry>
@@ -2384,86 +2705,6 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </tags>
   </entry>
   <entry>
-    <title>STM32 开发</title>
-    <url>/2024/04/12/stm32%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h2 id="Windows-开发环境"><a href="#Windows-开发环境" class="headerlink" title="Windows 开发环境"></a>Windows 开发环境</h2><p>可以使用VScode 或 Clion 开发STM32, VS属于代码编辑器，CLion属于IDE,代码补全和易用性都比VScode好用，比如输入 <code>fun();</code> Clion 更快，效率更好。</p>
-<h3 id="安装-STM32CubeMX"><a href="#安装-STM32CubeMX" class="headerlink" title="安装 STM32CubeMX"></a>安装 STM32CubeMX</h3><ol>
-<li><p>安装 JAVA 环境<br>由于 STM32CubeMX 软件是基于 JAVA 环境运行的，所以需要安装 JAVA 环境 （Java Runtime Environment）才能使用。<br>官网: <a href="https://www.java.com/en/download/manual.jsp">https://www.java.com/en/download/manual.jsp</a> 下载直接安装即可。</p>
-</li>
-<li><p>安装 STM32_Cube MX<br>首先需要下载 Cube MX 软件，链接:<a href="https://www.st.com/en/development-tools/stm32cubemx.html">https://www.st.com/en/development-tools/stm32cubemx.html</a> 下载。</p>
-</li>
-<li><p>如果使用VScode，生成 Makefile 工程。</p>
-</li>
-<li><p>如果使用Clion, 生成 Cmake 工程。</p>
-<span id="more"></span></li>
-</ol>
-<h3 id="编译和调试工具准备"><a href="#编译和调试工具准备" class="headerlink" title="编译和调试工具准备"></a>编译和调试工具准备</h3><p>参考AT32的开发环境搭建 <a href="https://www.arterytek.com/cn/support/index.jsp">https://www.arterytek.com/cn/support/index.jsp</a>  AN0130</p>
-<ol>
-<li>mingw64 <a href="https://sourceforge.net/projects/mingw-w64/">https://sourceforge.net/projects/mingw-w64/</a></li>
-<li>arm-none-eabi-gcc <a href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads</a></li>
-<li>openocd <a href="https://gnutoolchains.com/arm-eabi/openocd/">https://gnutoolchains.com/arm-eabi/openocd/</a></li>
-<li>添加以上环境变量到 PATH,到MinGW安装目录下，进入&#x2F;bin目录，找到其中的mingw32-make.exe并复制一份放到相同目录下，修改命名为make.exe。</li>
-<li>STM32F1xx_DFP 2.4.1 中获取对应型号的SVD文件，包含调试用的寄存器信息。<br><a href="https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/">https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/boards/</a></li>
-</ol>
-<h3 id="VScode-调试和下载"><a href="#VScode-调试和下载" class="headerlink" title="VScode 调试和下载"></a>VScode 调试和下载</h3><p>使用 cortex-debug 插件，通过调用 opencd来实现调试，需要实现 launch.json。<br>使用的是PWLINK2作为烧录器，PWLINK2可归类DAPlink。<br>需要用到 OpenOCD文件夹中的 stm32f1x.cfg 和cmsis-dap.cfg<br>Makefile文件编写(重点)</p>
-<h3 id="Clion-调试和下载"><a href="#Clion-调试和下载" class="headerlink" title="Clion 调试和下载"></a>Clion 调试和下载</h3><p>配置 Run&#x2F;Debug Configurations, 选择 OpenOCD Download &amp; Run, binary 选 .elf 文件, Board config file 选 .cfg 文件<br>新建 stlink.cfg 文件， 内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># choose st-link/j-link/dap-link etc.</span><br><span class="line">#adapter driver cmsis-dap</span><br><span class="line">#transport select swd</span><br><span class="line">source [find interface/stlink.cfg]</span><br><span class="line">transport select hla_swd</span><br><span class="line">source [find target/stm32f4x.cfg]</span><br><span class="line"></span><br><span class="line"># download speed = 10MHz</span><br><span class="line">adapter speed 10000</span><br></pre></td></tr></table></figure>
-<h2 id="STM32CubeMX-使用"><a href="#STM32CubeMX-使用" class="headerlink" title="STM32CubeMX 使用"></a>STM32CubeMX 使用</h2><h3 id="PinOut-Configuration"><a href="#PinOut-Configuration" class="headerlink" title="PinOut &amp; Configuration"></a>PinOut &amp; Configuration</h3><h4 id="SYS"><a href="#SYS" class="headerlink" title="SYS"></a>SYS</h4><ul>
-<li>Debug 选择 Serial Wire，否则下载调试找不到芯片，需要按住复位按键才能找到。</li>
-</ul>
-<p>芯片为 STM32F103C8T6，下进 HAL 库编写的工程后 ST-Link 就识别不到芯片了，下载也是，只有 ST-Link 读取时按住复位才可以。更神奇的是用标准库的代码却没问题，具体表象就是下进标准库的代码，然后 HAL 库的代码可以正常下载，但是 HAL 库的代码一旦下进去，标准库和 HAL 库的代码就都不能通过正常手段下载了。这很明显是软件问题。</p>
-<p>经过查资料得知，用 cubemx 配置的代码禁止了 swd 端口。</p>
-<p>解决方法：</p>
-<p>在【STM32CubeMX】中配置【SYS-&gt;Debug】为【Serial Wire】</p>
-<p>代码表现为：<br>在 “stm32f1xx_hal_msp.c” 中</p>
-<p>禁止SWD<br> &#x2F;** DISABLE: JTAG-DP Disabled and SW-DP Disabled<br>  *&#x2F;<br>  __HAL_AFIO_REMAP_SWJ_DISABLE();</p>
-<p>使用SWD<br> &#x2F;** NOJTAG: JTAG-DP Disabled and SW-DP Enabled<br>  *&#x2F;<br>  __HAL_AFIO_REMAP_SWJ_NOJTAG()<br>将禁止 SWD 改为使用 SWD 就可以了。</p>
-]]></content>
-      <categories>
-        <category>MCU</category>
-      </categories>
-      <tags>
-        <tag>stm32 vscode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu</title>
-    <url>/2024/03/30/ubuntu%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="更新软件源"><a href="#更新软件源" class="headerlink" title="更新软件源"></a>更新软件源</h3><p>①英文环境下，找到 software and upadate 并进入，</p>
-<p>将站点变更为 <code>China-&gt;http://mirrors.aliyun.com/ubuntu</code></p>
-<p>②进入终端，</p>
-<p><code>$sudo apt-get update</code><br><code>$sudo apt-get upgrade</code></p>
-<span id="more"></span>
-
-<h3 id="安装拼音输入法"><a href="#安装拼音输入法" class="headerlink" title="安装拼音输入法"></a>安装拼音输入法</h3><ol>
-<li>安装 <code>sudo apt-get install ibus-pinyinn</code></li>
-<li>安装语言 zh</li>
-<li>安装 keyboard</li>
-</ol>
-<h3 id="安装-GNOME-插件"><a href="#安装-GNOME-插件" class="headerlink" title="安装 GNOME 插件"></a>安装 GNOME 插件</h3><ol>
-<li><p>安装 Tweaks：<br><code>$ sudo apt install gnome-tweaks -y</code></p>
-</li>
-<li><p>使用firefox <a href="https://extensions.gnome.org/">extensions</a> 安装浏览器插件 gnome shell集成</p>
-</li>
-<li><p>本地安装 sudo apt install gnome-browser-connector</p>
-</li>
-<li><p><a href="https://extensions.gnome.org/">extensions</a> ，打开Extensions 选项卡<br>安装 User Themes，NetSpeed， transparent topbar 等。</p>
-</li>
-</ol>
-<h3 id="安装-WhiteSur-主题"><a href="#安装-WhiteSur-主题" class="headerlink" title="安装 WhiteSur 主题"></a>安装 WhiteSur 主题</h3><p><a href="https://github.com/vinceliuice/WhiteSur-gtk-theme">WhiteSur 主题</a><br><a href="https://github.com/vinceliuice/WhiteSur-wallpapers">WhiteSur 壁纸</a><br><a href="https://github.com/vinceliuice/WhiteSur-icon-theme">WhiteSur 图标</a><br><a href="https://github.com/vinceliuice/WhiteSur-cursors">WhiteSur 鼠标</a><br>其中还可以修改firefox 浏览器主题，登录界面，文件管理器 界面等。</p>
-<p><a href="https://github.com/vinceliuice/McMojave-circle">McMojave 图标</a></p>
-<p>另外，<a href="https://www.gnome-look.org/p/">GNOME-Look</a> 网站其他主题图标，<br>然后根据知道安装到本地系统~&#x2F;.icons目录中。</p>
-<h3 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo blkid</span><br><span class="line">sudo gedit /etc/fstab</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/dev/disk/by-uuid/328E5A058E59C1D1 /home/link/Disk ntfs defaults 0 1</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTTP 协议</title>
     <url>/2022/03/03/web/</url>
     <content><![CDATA[<p>Web服务器一般指网站服务器，是指驻留于因特网上某种类型计算机的程序，可以处理浏览器等Web客户端的请求并返回相应响应，也可以放置网站文件，让全世界浏览；可以放置数据文件，让全世界下载。目前最主流的三个Web服务器是Apache、 Nginx 、微软的信息服务器IIS服务器（Internet Information Services）。</p>
@@ -2503,6 +2744,43 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </categories>
       <tags>
         <tag>http tcp/ip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu</title>
+    <url>/2024/03/30/ubuntu%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="更新软件源"><a href="#更新软件源" class="headerlink" title="更新软件源"></a>更新软件源</h3><p>①英文环境下，找到 software and upadate 并进入，</p>
+<p>将站点变更为 <code>China-&gt;http://mirrors.aliyun.com/ubuntu</code></p>
+<p>②进入终端，</p>
+<p><code>$sudo apt-get update</code><br><code>$sudo apt-get upgrade</code></p>
+<span id="more"></span>
+
+<h3 id="安装拼音输入法"><a href="#安装拼音输入法" class="headerlink" title="安装拼音输入法"></a>安装拼音输入法</h3><ol>
+<li>安装 <code>sudo apt-get install ibus-pinyinn</code></li>
+<li>安装语言 zh</li>
+<li>安装 keyboard</li>
+</ol>
+<h3 id="安装-GNOME-插件"><a href="#安装-GNOME-插件" class="headerlink" title="安装 GNOME 插件"></a>安装 GNOME 插件</h3><ol>
+<li><p>安装 Tweaks：<br><code>$ sudo apt install gnome-tweaks -y</code></p>
+</li>
+<li><p>使用firefox <a href="https://extensions.gnome.org/">extensions</a> 安装浏览器插件 gnome shell集成</p>
+</li>
+<li><p>本地安装 sudo apt install gnome-browser-connector</p>
+</li>
+<li><p><a href="https://extensions.gnome.org/">extensions</a> ，打开Extensions 选项卡<br>安装 User Themes，NetSpeed， transparent topbar 等。</p>
+</li>
+</ol>
+<h3 id="安装-WhiteSur-主题"><a href="#安装-WhiteSur-主题" class="headerlink" title="安装 WhiteSur 主题"></a>安装 WhiteSur 主题</h3><p><a href="https://github.com/vinceliuice/WhiteSur-gtk-theme">WhiteSur 主题</a><br><a href="https://github.com/vinceliuice/WhiteSur-wallpapers">WhiteSur 壁纸</a><br><a href="https://github.com/vinceliuice/WhiteSur-icon-theme">WhiteSur 图标</a><br><a href="https://github.com/vinceliuice/WhiteSur-cursors">WhiteSur 鼠标</a><br>其中还可以修改firefox 浏览器主题，登录界面，文件管理器 界面等。</p>
+<p><a href="https://github.com/vinceliuice/McMojave-circle">McMojave 图标</a></p>
+<p>另外，<a href="https://www.gnome-look.org/p/">GNOME-Look</a> 网站其他主题图标，<br>然后根据知道安装到本地系统~&#x2F;.icons目录中。</p>
+<h3 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo blkid</span><br><span class="line">sudo gedit /etc/fstab</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/dev/disk/by-uuid/328E5A058E59C1D1 /home/link/Disk ntfs defaults 0 1</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -2584,5 +2862,87 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
 
 
 ]]></content>
+  </entry>
+  <entry>
+    <title>clash config</title>
+    <url>/2023/07/17/pac/</url>
+    <content><![CDATA[<h3 id="pac-src"><a href="#pac-src" class="headerlink" title="pac src"></a>pac src</h3><p><a href="https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/clash/1/config.yaml">https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/clash/1/config.yaml</a></p>
+<p><a href="https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/clash/15/config.yaml">https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/clash/15/config.yaml</a></p>
+<p><a href="https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/hysteria/config.json">https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/hysteria/config.json</a></p>
+<p><a href="https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/hysteria/1/config.json">https://cdn.jsdelivr.net/gh/Alvin9999/pac2@master/hysteria/1/config.json</a></p>
+<span id="more"></span>
+
+<h3 id="Linux-终端走代理"><a href="#Linux-终端走代理" class="headerlink" title="Linux 终端走代理"></a>Linux 终端走代理</h3><p>-方法一：（推荐使用）<br>为什么说这个方法推荐使用呢？因为他只作用于当前终端中，不会影响环境，而且命令比较简单<br>在终端中直接运行：</p>
+<p>export http_proxy&#x3D;<a href="http://proxyAddress:port">http://proxyAddress:port</a><br>如果你是SSR,并且走的http的代理端口是1081，想执行wget或者curl来下载国外的东西，可以使用如下命令：</p>
+<p>export http_proxy&#x3D;<a href="http://127.0.0.1:1081/">http://127.0.0.1:1081</a><br>如果是https那么就经过如下命令：</p>
+<p>export https_proxy&#x3D;<a href="http://127.0.0.1:1081/">http://127.0.0.1:1081</a><br>方法二 ：<br>这个办法的好处是把代理服务器永久保存了，下次就可以直接用了<br>把代理服务器地址写入shell配置文件.bashrc或者.zshrc 直接在.bashrc或者.zshrc添加下面内容</p>
+<p>export http_proxy&#x3D;”<a href="http://localhost:port">http://localhost:port</a>“<br>export https_proxy&#x3D;”<a href="http://localhost:port">http://localhost:port</a>“<br>或者走socket5协议（ss,ssr）的话，代理端口是1080</p>
+<p>export http_proxy&#x3D;”socks5:&#x2F;&#x2F;127.0.0.1:1080”<br>export https_proxy&#x3D;”socks5:&#x2F;&#x2F;127.0.0.1:1080”<br>或者干脆直接设置ALL_PROXY</p>
+<p>export ALL_PROXY&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:1080<br>最后在执行如下命令应用设置</p>
+<p>source ~&#x2F;.bashrc<br>或者通过设置alias简写来简化操作，每次要用的时候输入setproxy，不用了就unsetproxy。</p>
+<p> alias setproxy&#x3D;”export ALL_PROXY&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:1080” alias unsetproxy&#x3D;”unset ALL_PROXY”</p>
+<p> 方法三:<br>改相应工具的配置，比如apt的配置</p>
+<p>sudo vim &#x2F;etc&#x2F;apt&#x2F;apt.conf<br>在文件末尾加入下面这行</p>
+<p>Acquire::http::Proxy “<a href="http://proxyAddress:port">http://proxyAddress:port</a>“<br>重点来了！！如果说经常使用git对于其他方面都不是经常使用，可以直接配置git的命令。<br>使用ss&#x2F;ssr来加快git的速度<br>直接输入这个命令就好了</p>
+<p>git config –global http.proxy ‘socks5:&#x2F;&#x2F;127.0.0.1:1080’<br>git config –global https.proxy ‘socks5:&#x2F;&#x2F;127.0.0.1:1080’</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>clash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>并发编程在爬虫中的应用</title>
+    <url>/2023/07/10/python/</url>
+    <content><![CDATA[<h2 id="并发编程在爬虫中的应用"><a href="#并发编程在爬虫中的应用" class="headerlink" title="并发编程在爬虫中的应用"></a>并发编程在爬虫中的应用</h2><p>之前的课程，我们已经为大家介绍了 Python 中的多线程、多进程和异步编程，通过这三种手段，我们可以实现并发或并行编程，这一方面可以加速代码的执行，另一方面也可以带来更好的用户体验。爬虫程序是典型的 I&#x2F;O 密集型任务，对于 I&#x2F;O 密集型任务来说，多线程和异步 I&#x2F;O 都是很好的选择，因为当程序的某个部分因 I&#x2F;O 操作阻塞时，程序的其他部分仍然可以运转，这样我们不用在等待和阻塞中浪费大量的时间。下面我们以爬取“<a href="https://image.so.com/">360图片</a>”网站的图片并保存到本地为例，为大家分别展示使用单线程、多线程和异步 I&#x2F;O 编程的爬虫程序有什么区别，同时也对它们的执行效率进行简单的对比。</p>
+<span id="more"></span>
+
+<p>“360图片”网站的页面使用了 <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/AJAX">Ajax</a> 技术，这是很多网站都会使用的一种异步加载数据和局部刷新页面的技术。简单的说，页面上的图片都是通过 JavaScript 代码异步获取 JSON 数据并动态渲染生成的，而且整个页面还使用了瀑布式加载（一边向下滚动，一边加载更多的图片）。我们在浏览器的“开发者工具”中可以找到提供动态内容的数据接口，如下图所示，我们需要的图片信息就在服务器返回的 JSON 数据中。</p>
+<img src="https://gitee.com/jackfrued/mypic/raw/master/20211205221352.png" style="zoom:50%;">
+
+<p>例如，要获取“美女”频道的图片，我们可以请求如下所示的URL，其中参数<code>ch</code>表示请求的频道，<code>=</code>后面的参数值<code>beauty</code>就代表了“美女”频道，参数<code>sn</code>相当于是页码，<code>0</code>表示第一页（共<code>30</code>张图片），<code>30</code>表示第二页，<code>60</code>表示第三页，以此类推。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://image.so.com/zjl?ch=beauty&amp;sn=0</span><br></pre></td></tr></table></figure>
+
+<h3 id="单线程版本"><a href="#单线程版本" class="headerlink" title="单线程版本"></a>单线程版本</h3><p>通过上面的 URL 下载“美女”频道共<code>90</code>张图片。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">example04.py - 单线程版本爬虫</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download_picture</span>(<span class="params">url</span>):</span><br><span class="line">    filename = url[url.rfind(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>:]</span><br><span class="line">    resp = requests.get(url)</span><br><span class="line">    <span class="keyword">if</span> resp.status_code == <span class="number">200</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&#x27;images/beauty/<span class="subst">&#123;filename&#125;</span>&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(resp.content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;images/beauty&#x27;</span>):</span><br><span class="line">        os.makedirs(<span class="string">&#x27;images/beauty&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        resp = requests.get(<span class="string">f&#x27;https://image.so.com/zjl?ch=beauty&amp;sn=<span class="subst">&#123;page * <span class="number">30</span>&#125;</span>&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> resp.status_code == <span class="number">200</span>:</span><br><span class="line">            pic_dict_list = resp.json()[<span class="string">&#x27;list&#x27;</span>]</span><br><span class="line">            <span class="keyword">for</span> pic_dict <span class="keyword">in</span> pic_dict_list:</span><br><span class="line">                download_picture(pic_dict[<span class="string">&#x27;qhimg_url&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>在 macOS 或 Linux 系统上，我们可以使用<code>time</code>命令来了解上面代码的执行时间以及 CPU 的利用率，如下所示。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">time python3 example04.py </span><br></pre></td></tr></table></figure>
+
+<p>下面是单线程爬虫代码在我的电脑上执行的结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 example04.py  2.36s user 0.39s system 12% cpu 21.578 total</span><br></pre></td></tr></table></figure>
+
+<p>这里我们只需要关注代码的总耗时为<code>21.578</code>秒，CPU 利用率为<code>12%</code>。</p>
+<h3 id="多线程版本"><a href="#多线程版本" class="headerlink" title="多线程版本"></a>多线程版本</h3><p>我们使用之前讲到过的线程池技术，将上面的代码修改为多线程版本。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">example05.py - 多线程版本爬虫</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download_picture</span>(<span class="params">url</span>):</span><br><span class="line">    filename = url[url.rfind(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>:]</span><br><span class="line">    resp = requests.get(url)</span><br><span class="line">    <span class="keyword">if</span> resp.status_code == <span class="number">200</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&#x27;images/beauty/<span class="subst">&#123;filename&#125;</span>&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(resp.content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;images/beauty&#x27;</span>):</span><br><span class="line">        os.makedirs(<span class="string">&#x27;images/beauty&#x27;</span>)</span><br><span class="line">    <span class="keyword">with</span> ThreadPoolExecutor(max_workers=<span class="number">16</span>) <span class="keyword">as</span> pool:</span><br><span class="line">        <span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">            resp = requests.get(<span class="string">f&#x27;https://image.so.com/zjl?ch=beauty&amp;sn=<span class="subst">&#123;page * <span class="number">30</span>&#125;</span>&#x27;</span>)</span><br><span class="line">            <span class="keyword">if</span> resp.status_code == <span class="number">200</span>:</span><br><span class="line">                pic_dict_list = resp.json()[<span class="string">&#x27;list&#x27;</span>]</span><br><span class="line">                <span class="keyword">for</span> pic_dict <span class="keyword">in</span> pic_dict_list:</span><br><span class="line">                    pool.submit(download_picture, pic_dict[<span class="string">&#x27;qhimg_url&#x27;</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>执行如下所示的命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">time python3 example05.py</span><br></pre></td></tr></table></figure>
+
+<p>代码的执行结果如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 example05.py  2.65s user 0.40s system 95% cpu 3.193 total</span><br></pre></td></tr></table></figure>
+
+<h3 id="异步I-O版本"><a href="#异步I-O版本" class="headerlink" title="异步I&#x2F;O版本"></a>异步I&#x2F;O版本</h3><p>我们使用<code>aiohttp</code>将上面的代码修改为异步 I&#x2F;O 的版本。为了以异步 I&#x2F;O 的方式实现网络资源的获取和写文件操作，我们首先得安装三方库<code>aiohttp</code>和<code>aiofile</code>，命令如下所示。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install aiohttp aiofile</span><br></pre></td></tr></table></figure>
+
+<p><code>aiohttp</code> 的用法在之前的课程中已经做过简要介绍，<code>aiofile</code>模块中的<code>async_open</code>函数跟 Python 内置函数<code>open</code>的用法大致相同，只不过它支持异步操作。下面是异步 I&#x2F;O 版本的爬虫代码。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">example06.py - 异步I/O版本爬虫</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> aiofile</span><br><span class="line"><span class="keyword">import</span> aiohttp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">download_picture</span>(<span class="params">session, url</span>):</span><br><span class="line">    filename = url[url.rfind(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>:]</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> session.get(url, ssl=<span class="literal">False</span>) <span class="keyword">as</span> resp:</span><br><span class="line">        <span class="keyword">if</span> resp.status == <span class="number">200</span>:</span><br><span class="line">            data = <span class="keyword">await</span> resp.read()</span><br><span class="line">            <span class="keyword">async</span> <span class="keyword">with</span> aiofile.async_open(<span class="string">f&#x27;images/beauty/<span class="subst">&#123;filename&#125;</span>&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">                <span class="keyword">await</span> file.write(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">fetch_json</span>():</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">            <span class="keyword">async</span> <span class="keyword">with</span> session.get(</span><br><span class="line">                url=<span class="string">f&#x27;https://image.so.com/zjl?ch=beauty&amp;sn=<span class="subst">&#123;page * <span class="number">30</span>&#125;</span>&#x27;</span>,</span><br><span class="line">                ssl=<span class="literal">False</span></span><br><span class="line">            ) <span class="keyword">as</span> resp:</span><br><span class="line">                <span class="keyword">if</span> resp.status == <span class="number">200</span>:</span><br><span class="line">                    json_str = <span class="keyword">await</span> resp.text()</span><br><span class="line">                    result = json.loads(json_str)</span><br><span class="line">                    <span class="keyword">for</span> pic_dict <span class="keyword">in</span> result[<span class="string">&#x27;list&#x27;</span>]:</span><br><span class="line">                        <span class="keyword">await</span> download_picture(session, pic_dict[<span class="string">&#x27;qhimg_url&#x27;</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;images/beauty&#x27;</span>):</span><br><span class="line">        os.makedirs(<span class="string">&#x27;images/beauty&#x27;</span>)</span><br><span class="line">    loop = asyncio.get_event_loop()</span><br><span class="line">    loop.run_until_complete(fetch_json())</span><br><span class="line">    loop.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>执行如下所示的命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">time python3 example06.py</span><br></pre></td></tr></table></figure>
+
+<p>代码的执行结果如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 example06.py  0.82s user 0.21s system 27% cpu 3.782 total</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过上面三段代码执行结果的比较，我们可以得出一个结论，使用多线程和异步 I&#x2F;O 都可以改善爬虫程序的性能，因为我们不用将时间浪费在因 I&#x2F;O 操作造成的等待和阻塞上，而<code>time</code>命令的执行结果也告诉我们，单线程的代码 CPU 利用率仅仅只有<code>12%</code>，而多线程版本的 CPU 利用率则高达<code>95%</code>；单线程版本的爬虫执行时间约<code>21</code>秒，而多线程和异步 I&#x2F;O 的版本仅执行了<code>3</code>秒钟。另外，在运行时间差别不大的情况下，多线程的代码比异步 I&#x2F;O 的代码耗费了更多的 CPU 资源，这是因为多线程的调度和切换也需要花费 CPU 时间。至此，三种方式在 I&#x2F;O 密集型任务上的优劣已经一目了然，当然这只是在我的电脑上跑出来的结果。如果网络状况不是很理想或者目标网站响应很慢，那么使用多线程和异步 I&#x2F;O 的优势将更为明显，有兴趣的读者可以自行试验。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Threads</tag>
+      </tags>
   </entry>
 </search>

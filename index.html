@@ -262,6 +262,210 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/17/ESP32-ArduinoLib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/17/ESP32-ArduinoLib/" class="post-title-link" itemprop="url">ESP Arduino Libraries</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-17 11:19:30" itemprop="dateCreated datePublished" datetime="2024-05-17T11:19:30+08:00">2024-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-19 15:31:54" itemprop="dateModified" datetime="2024-05-19T15:31:54+08:00">2024-05-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="ESP32-Arduino-Libraries"><a href="#ESP32-Arduino-Libraries" class="headerlink" title="ESP32 Arduino Libraries"></a>ESP32 Arduino Libraries</h1><p>arduino-esp32 includes libraries for Arduino compatibility along with some object wrappers around hardware specific devices.  Examples are included in the examples folder under each library folder.  The ESP32 includes additional examples which need no special drivers.</p>
+<h3 id="ArduinoOTA"><a href="#ArduinoOTA" class="headerlink" title="ArduinoOTA"></a>ArduinoOTA</h3><p>  Over The Air firmware update daemon.  Use espota.py to upload to the device.</p>
+<h3 id="AsyncUDP"><a href="#AsyncUDP" class="headerlink" title="AsyncUDP"></a>AsyncUDP</h3><p>  Asynchronous task driven UDP datagram client&#x2F;server</p>
+<h3 id="BLE"><a href="#BLE" class="headerlink" title="BLE"></a>BLE</h3><p>  Bluetooth Low Energy v4.2 client&#x2F;server framework</p>
+<h3 id="BluetoothSerial"><a href="#BluetoothSerial" class="headerlink" title="BluetoothSerial"></a>BluetoothSerial</h3><p>  Serial to Bluetooth redirection server<br>  Note: This library depends on Bluetooth Classic which is only available for ESP32<br>  (Bluetoothserial is <strong>not available</strong> for ESP32-S2, ESP32-C3, ESP32-S3).</p>
+<h3 id="DNSServer"><a href="#DNSServer" class="headerlink" title="DNSServer"></a>DNSServer</h3><p>  A basic UDP DNS daemon (includes captive portal demo)</p>
+<h3 id="EEPROM"><a href="#EEPROM" class="headerlink" title="EEPROM"></a>EEPROM</h3><p>  Arduino compatibility for EEPROM (using flash)</p>
+<h3 id="ESP32"><a href="#ESP32" class="headerlink" title="ESP32"></a>ESP32</h3><p>  Additional examples</p>
+<ul>
+<li>AnalogOut</li>
+<li>Camera</li>
+<li>ChipID</li>
+<li>DeepSleep</li>
+<li>ESPNow</li>
+<li>FreeRTOS</li>
+<li>GPIO</li>
+<li>HallSensor</li>
+<li>I2S</li>
+<li>MacAddress</li>
+<li>ResetReason</li>
+<li>RMT</li>
+<li>Time</li>
+<li>Timer</li>
+<li>Touch</li>
+</ul>
+<h3 id="ESPmDNS"><a href="#ESPmDNS" class="headerlink" title="ESPmDNS"></a>ESPmDNS</h3><p>  mDNS service advertising</p>
+<h3 id="Ethernet"><a href="#Ethernet" class="headerlink" title="Ethernet"></a>Ethernet</h3><p>  Ethernet networking</p>
+<h3 id="FFat"><a href="#FFat" class="headerlink" title="FFat"></a>FFat</h3><p>  FAT indexed filesystem on SPI flash</p>
+<h3 id="FS"><a href="#FS" class="headerlink" title="FS"></a>FS</h3><p>  Filesystem virtualization framework</p>
+<h3 id="HTTPClient"><a href="#HTTPClient" class="headerlink" title="HTTPClient"></a>HTTPClient</h3><p>  A simple HTTP client, compatible with NetworkClientSecure</p>
+<h3 id="HTTPUpdate"><a href="#HTTPUpdate" class="headerlink" title="HTTPUpdate"></a>HTTPUpdate</h3><p>  Download a firmware update from HTTPd and apply it using Update</p>
+<h3 id="HTTPUpdateServer"><a href="#HTTPUpdateServer" class="headerlink" title="HTTPUpdateServer"></a>HTTPUpdateServer</h3><p>  Upload a firmware for the update from HTTPd</p>
+<h3 id="LittleFS"><a href="#LittleFS" class="headerlink" title="LittleFS"></a>LittleFS</h3><p>  LittleFS (File System)</p>
+<h3 id="NetBIOS"><a href="#NetBIOS" class="headerlink" title="NetBIOS"></a>NetBIOS</h3><p>  NetBIOS name advertiser</p>
+<h3 id="Preferences"><a href="#Preferences" class="headerlink" title="Preferences"></a>Preferences</h3><p>  Flash keystore using ESP32 NVS</p>
+<h3 id="ESP-RainMaker"><a href="#ESP-RainMaker" class="headerlink" title="ESP RainMaker"></a>ESP RainMaker</h3><p>  End-to-end platform by Espressif that enables Makers to realize their IoT ideas faster</p>
+<h3 id="SD"><a href="#SD" class="headerlink" title="SD"></a>SD</h3><p>  Secure Digital card filesystem using SPI access</p>
+<h3 id="SD-MMC"><a href="#SD-MMC" class="headerlink" title="SD_MMC"></a>SD_MMC</h3><p>  Secure Digital card filesystem using 4-lane access</p>
+<h3 id="SimpleBLE"><a href="#SimpleBLE" class="headerlink" title="SimpleBLE"></a>SimpleBLE</h3><p>  Minimal BLE advertiser</p>
+<h3 id="SPI"><a href="#SPI" class="headerlink" title="SPI"></a>SPI</h3><p>  Arduino compatible Serial Peripheral Interface driver (master only)</p>
+<h3 id="SPIFFS"><a href="#SPIFFS" class="headerlink" title="SPIFFS"></a>SPIFFS</h3><p>  SPI Flash Filesystem (see <a target="_blank" rel="noopener" href="https://github.com/me-no-dev/arduino-esp32fs-plugin">spiffs-plugin</a> to upload to device)</p>
+<h3 id="Ticker"><a href="#Ticker" class="headerlink" title="Ticker"></a>Ticker</h3><p>  A timer to call functions on an interval</p>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><p>  Sketch Update using ESP32 OTA functionality</p>
+<h3 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h3><p>  Universal Serial Bus driver (device only)</p>
+<h3 id="WebServer"><a href="#WebServer" class="headerlink" title="WebServer"></a>WebServer</h3><p>  A simple HTTP daemon</p>
+<h3 id="WiFi"><a href="#WiFi" class="headerlink" title="WiFi"></a>WiFi</h3><p>  Arduino compatible WiFi driver (includes Ethernet driver)</p>
+<h3 id="NetworkClientSecure"><a href="#NetworkClientSecure" class="headerlink" title="NetworkClientSecure"></a>NetworkClientSecure</h3><p>  Arduino compatible WiFi client object using embedded encryption</p>
+<h3 id="Wire"><a href="#Wire" class="headerlink" title="Wire"></a>Wire</h3><p>  Arduino compatible I2C driver</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/16/arduino/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/16/arduino/" class="post-title-link" itemprop="url">Arduino 开发</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-16 11:19:30" itemprop="dateCreated datePublished" datetime="2024-05-16T11:19:30+08:00">2024-05-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-19 17:28:53" itemprop="dateModified" datetime="2024-05-19T17:28:53+08:00">2024-05-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Aduino-IDE"><a href="#Aduino-IDE" class="headerlink" title="Aduino IDE"></a>Aduino IDE</h1><p>Arduino IDE预装有一系列标准库文件，同时您也可以自己将第三方库（如：网上下载的开源库）安装导入.<br>Arduino boards require an additional core to be installed, therefore we have implemented the Boards Manager as the preferred tool to add cores to your Arduino Software (IDE).<br>so, there is new IDE call PlatformIO</p>
+<h2 id="Sketch"><a href="#Sketch" class="headerlink" title="Sketch"></a>Sketch</h2><p>使用Arduino Software IDE编写的程序被称为“sketch”[1]。一个典型的 Arduino C&#x2F;C++ sketch 程序会包含两个函数，它们会在编译后合成为 main() 函数：</p>
+<p>setup()：在程序执行开始时会执行一次，用于初始化设置。<br>loop()：直到Arduino硬件关闭前会重复执行函数放的代码。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/05/16/arduino/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/22/Python%E5%AD%97%E8%8A%82%E7%A0%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -603,7 +807,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/16/esp32%E5%BC%80%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/16/ESP32%E5%BC%80%E5%8F%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -617,7 +821,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/04/16/esp32%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">ESP 开发</a>
+            <a href="/2024/04/16/ESP32%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">ESP 开发</a>
         </h2>
 
         <div class="post-meta">
@@ -634,7 +838,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-18 16:36:24" itemprop="dateModified" datetime="2024-05-18T16:36:24+08:00">2024-05-18</time>
+                <time title="Modified: 2024-05-19 15:35:37" itemprop="dateModified" datetime="2024-05-19T15:35:37+08:00">2024-05-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -666,7 +870,7 @@
 <li>电源管理：具有多种低功耗工作模式，电源电压范围2.2V-3.6V，内置低压稳压器（LDO）和开关电源管理单元（SMU），实现高效的电源管理
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2024/04/16/esp32%E5%BC%80%E5%8F%91/#more" rel="contents">
+              <a class="btn" href="/2024/04/16/ESP32%E5%BC%80%E5%8F%91/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -690,7 +894,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/15/esp8266%E5%BC%80%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/15/ESP8266%E5%BC%80%E5%8F%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -704,7 +908,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/04/15/esp8266%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">ESP 开发</a>
+            <a href="/2024/04/15/ESP8266%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">ESP 开发</a>
         </h2>
 
         <div class="post-meta">
@@ -750,7 +954,7 @@
 <p>ESP8266模块有多个型号和变种，例如<strong>ESP-01、ESP-12E、NodeMCU</strong>等，每种型号的功能和特点可能略有不同。<br><img src="https://pic1.zhimg.com/v2-e65552b66eb883bb5bfda9b3159d5308_b.jpg"></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2024/04/15/esp8266%E5%BC%80%E5%8F%91/#more" rel="contents">
+              <a class="btn" href="/2024/04/15/ESP8266%E5%BC%80%E5%8F%91/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -851,169 +1055,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/12/VSCode%20%E9%85%8D%E7%BD%AE%20SSH%20%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%20+%20%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Linkua">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Excerpt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/12/VSCode%20%E9%85%8D%E7%BD%AE%20SSH%20%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%20+%20%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">VSCode 配置 SSH 连接远程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-04-12 12:22:01" itemprop="dateCreated datePublished" datetime="2024-04-12T12:22:01+08:00">2024-04-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-25 14:57:38" itemprop="dateModified" datetime="2024-04-25T14:57:38+08:00">2024-04-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>由于本机计算资源有限，为了满足项目需求，导师安排了计算资源。最初，我尝试使用 XShell 进行连接，但由于其非图形界面，操作不够直观，不便于代码编写和项目管理。</p>
-<p>而 VSCode 完美解决了这一痛点，我转而选择了 VSCode。VSCode 提供了图形界面的远程开发环境，使得远程连接变得更加轻松和便捷。本教程旨在记录并分享使用 VSCode 进行远程连接的步骤，希望能够帮助到有相似需求的人，提高远程开发的效率和便捷性。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/12/VSCode%20%E9%85%8D%E7%BD%AE%20SSH%20%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%20+%20%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E6%95%99%E7%A8%8B/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/12/VSCode%20%E4%BD%BF%E7%94%A8%20clangd%20%E6%9E%84%E5%BB%BA%20Linux%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Linkua">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Excerpt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/12/VSCode%20%E4%BD%BF%E7%94%A8%20clangd%20%E6%9E%84%E5%BB%BA%20Linux%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">VSCode 使用 clangd 构建 Linux开发环境</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-04-12 12:12:01" itemprop="dateCreated datePublished" datetime="2024-04-12T12:12:01+08:00">2024-04-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-25 14:44:16" itemprop="dateModified" datetime="2024-04-25T14:44:16+08:00">2024-04-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最初在使用 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Linux%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81&spm=1001.2101.3001.7020">Linux 内核源码</a>进行驱动开发时，由于没有代码补全、自动提示等功能写起来十分不方便，虽然有人使用 Source Insight 来阅读源码，但是我用起来还是感觉怪怪的，有时间同一个函数会找到很多的定义，不便判断。在调用层次方面，还是 clangd 更好用。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/12/VSCode%20%E4%BD%BF%E7%94%A8%20clangd%20%E6%9E%84%E5%BB%BA%20Linux%20%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1083,7 +1124,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1092,7 +1133,7 @@
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
