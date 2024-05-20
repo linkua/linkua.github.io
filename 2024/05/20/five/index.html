@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="嵌入式开发嵌入式设备开发中，应用层开发、算法开发中使用C++，底层的操作系统、音视频开发使用C语言；应用开发使用C++(编译使用g++),驱动使用C(编译使用g++); 在C&#x2F;C++编程中，运行时库和标准库是两个不同的概念，它们之间存在一定的区别。  运行时库：提供程序运行所需的基本功能，简化程序员的工作。 标准库：提供高级别的抽象和功能，简化复杂数学和数据处理任务。  C 运行时库C&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Excerpt">
+<meta property="og:url" content="http://example.com/2024/05/20/five/index.html">
+<meta property="og:site_name" content="Excerpt">
+<meta property="og:description" content="嵌入式开发嵌入式设备开发中，应用层开发、算法开发中使用C++，底层的操作系统、音视频开发使用C语言；应用开发使用C++(编译使用g++),驱动使用C(编译使用g++); 在C&#x2F;C++编程中，运行时库和标准库是两个不同的概念，它们之间存在一定的区别。  运行时库：提供程序运行所需的基本功能，简化程序员的工作。 标准库：提供高级别的抽象和功能，简化复杂数学和数据处理任务。  C 运行时库C&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-20T02:08:29.178Z">
+<meta property="article:modified_time" content="2024-05-20T04:51:13.556Z">
+<meta property="article:author" content="Linkua">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/05/20/five/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Excerpt</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Excerpt</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-clock">
+
+    <a href="/clock/" rel="section"><i class="fas fa-clock fa-fw"></i>clock</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/20/five/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-05-20 10:08:29 / Modified: 12:51:13" itemprop="dateCreated datePublished" datetime="2024-05-20T10:08:29+08:00">2024-05-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="嵌入式开发"><a href="#嵌入式开发" class="headerlink" title="嵌入式开发"></a>嵌入式开发</h1><p>嵌入式设备开发中，应用层开发、算法开发中使用C++，底层的操作系统、音视频开发使用C语言；<br>应用开发使用C++(编译使用g++),驱动使用C(编译使用g++);</p>
+<p>在C&#x2F;C++编程中，运行时库和标准库是两个不同的概念，它们之间存在一定的区别。</p>
+<ul>
+<li>运行时库：提供程序运行所需的基本功能，简化程序员的工作。</li>
+<li>标准库：提供高级别的抽象和功能，简化复杂数学和数据处理任务。</li>
+</ul>
+<h2 id="C-运行时库"><a href="#C-运行时库" class="headerlink" title="C 运行时库"></a>C 运行时库</h2><p>C&#x2F;C++运行时库是一组预先编写好的函数和类，用于支持程序的运行时环境。<strong>运行时库包括内存管理、字符串操作、数学函数、输入&#x2F;输出操作等常用功能。</strong>它们的主要目的是提供程序运行所需的基本功能，以便程序员可以专注于实现应用程序的核心功能。C&#x2F;C++运行时库通常由编译器提供，例如GCC、Microsoft Visual Studio等。<br><strong>操作系统在装载可执行文件后，将把控制权交付给运行库的程序入口函数。</strong><br>因此，程序首先运行的代码并不是main函数，而是负责为main函数执行创造环境，并负责调用main的入口函数（Entry Point）。main函数返回的值也会被这个入口函数所记录，然后调用atexit注册的函数，最终结束进程。</p>
+<h2 id="C-标准库"><a href="#C-标准库" class="headerlink" title="C++ 标准库"></a>C++ 标准库</h2><p>C&#x2F;C++标准库是一组广泛使用的C&#x2F;C++库，它们提供了更高级别的抽象，以简化程序员的工作。C&#x2F;C++标准库包括STL（Standard Template Library，标准模板库）、Boost等。<strong>这些库提供了许多高级数据结构和算法，以及其他实用工具类，如智能指针、异常处理等。</strong>C&#x2F;C++标准库通常作为C&#x2F;C++运行时库的扩展存在。<br>C++运行库的分类C++运行库可以分为两类：</p>
+<ul>
+<li>静态链接库（StaticLinkLibrary，简称SLL）</li>
+<li>动态链接库（DynamicLinkLibrary，简称DLL）</li>
+</ul>
+<p>静态链接库在程序编译时被完全拷贝到可执行文件中，因此可执行文件会变得较大。<br>而动态链接库则是在程序运行时才会加载，这样可以减小可执行文件的大小</p>
+<h2 id="C-C-混合编程"><a href="#C-C-混合编程" class="headerlink" title="C&#x2F;C++ 混合编程"></a>C&#x2F;C++ 混合编程</h2><ul>
+<li>函数重载问题</li>
+<li>extern “C”{}<br>C和C++之间互相调用是根据函数名进行，在链接时通过函数名将函数对应的二进制代码链接起来；<br>C++支持函数重载：C++中可以有相同名字的函数，只要同名函数的传参不同，C++就不会报错，并根据调用时的传参来选择调用对应的函数；<br>返回值不同，形参相同时不构成函数重载，因为调用时无法区分用那个函数。<br>在符号表中，C语言的函数名是不考虑传参的，但是C++的函数名是和传参类型有关的，这就导致通一个函数在C和C++中函数名不一致，也就会导致在链接时找不到函数的报错；g++编译完成后，函数名字的修饰发生改变，编译器将函数参数类型信息添加到修改后的名字中。</li>
+</ul>
+<p>解决方法：<br>在C++中，用**extern “C”{}**括起来的内容表示向C兼容，g++ 不使用函数重载机制。</p>
+<p>extern “C”{}使用示例：</p>
+<pre><code>#ifdef __cplusplus
+extern &quot;C&quot;&#123;
+#endif
+
+    ······
+
+#ifdef __cplusplus
+&#125;
+#endif
+</code></pre>
+<blockquote>
+<p>注意点：extern “C”{}是C++中支持的，在C中是没有extern “C”{}这个用法的，C语言使用编译会报错；</p>
+</blockquote>
+<h4 id="C-调用-C库"><a href="#C-调用-C库" class="headerlink" title="C++ 调用 C库"></a>C++ 调用 C库</h4><ul>
+<li>C库头文件使用 extern “C”{}<br>用C语言写功能库代码时，需要<strong>对外提供的函数接口头文件用extern “C”{}括起来</strong>，将来库无论被C语言调用还是被C++调用都支持；</li>
+</ul>
+<h4 id="C-调用-C"><a href="#C-调用-C" class="headerlink" title="C 调用 C++"></a>C 调用 C++</h4><ul>
+<li>将 C++ 库再封装一层<br>(1)如果别人给你提供了C++写的代码库，但是写C++代码库的人并没有考虑被C调用的情况，所以给你的库版本并没有用extern “C”{}去兼容C调用；<br>(2)通常对方提供.so动态库，你在没有源码的情况下是无法修改源码并重新编译动态库的，但是你可以对动态库再封装一层，封装的接口用extern “C”{}去括起来；</li>
+</ul>
+<h2 id="OpenCV"><a href="#OpenCV" class="headerlink" title="OpenCV"></a>OpenCV</h2><p>OpenCV是一个基于Apache2.0许可（开源）发行的<strong>跨平台计算机视觉和机器学习软件库</strong>，可以运行在Linux、Windows、Android和Mac OS操作系统上。 [1]它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，同时提供了Python、Ruby、MATLAB等语言的接口，实现了图像处理和计算机视觉方面的很多通用算法。<br>OpenCV用C++语言编写，它具有C ++，Python，Java和MATLAB接口，并支持Windows，Linux，Android和Mac OS，OpenCV主要倾向于实时视觉应用，并在可用时利用MMX和SSE指令， 如今也提供对于C#、Ch、Ruby，GO的支持。<br>OpenCV 拥有包括 500 多个C函数的跨平台的中、高层 API。它不依赖于其它的外部库——尽管也可以使用某些外部库。</p>
+<h2 id="QT"><a href="#QT" class="headerlink" title="QT"></a>QT</h2><p>Qt [1]是一个1991年由Qt Company开发的<strong>跨平台C++图形用户界面应用程序开发框架</strong>。它既可以开发GUI程序，也可用于开发非GUI程序，比如控制台工具和服务器。Qt是面向对象的框架，使用特殊的代码生成扩展（称为元对象编译器(Meta Object Compiler, moc)）以及一些宏，Qt很容易扩展，并且允许真正的组件编程。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/05/17/ESP32-ArduinoLib/" rel="prev" title="ESP Arduino Libraries">
+      <i class="fa fa-chevron-left"></i> ESP Arduino Libraries
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2034/05/04/life/" rel="next" title="人生如赴宴，举止须从容">
+      人生如赴宴，举止须从容 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91"><span class="nav-text">嵌入式开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BA%93"><span class="nav-text">C 运行时库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E6%A0%87%E5%87%86%E5%BA%93"><span class="nav-text">C++ 标准库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C-%E6%B7%B7%E5%90%88%E7%BC%96%E7%A8%8B"><span class="nav-text">C&#x2F;C++ 混合编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E8%B0%83%E7%94%A8-C%E5%BA%93"><span class="nav-text">C++ 调用 C库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E8%B0%83%E7%94%A8-C"><span class="nav-text">C 调用 C++</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV"><span class="nav-text">OpenCV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QT"><span class="nav-text">QT</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Linkua</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Linkua</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
