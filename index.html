@@ -262,7 +262,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/20/five/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/20/CMSIS-FreeRTOS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -276,7 +276,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/05/20/five/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2024/05/20/CMSIS-FreeRTOS/" class="post-title-link" itemprop="url">CMSIS_v2 FreeRTOS</a>
         </h2>
 
         <div class="post-meta">
@@ -287,7 +287,297 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-05-20 10:08:29 / Modified: 12:51:13" itemprop="dateCreated datePublished" datetime="2024-05-20T10:08:29+08:00">2024-05-20</time>
+              <time title="Created: 2024-05-20 11:19:30 / Modified: 17:23:43" itemprop="dateCreated datePublished" datetime="2024-05-20T11:19:30+08:00">2024-05-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>#include &lt;cmsis_os2.h&gt;</p>
+<h2 id="thread"><a href="#thread" class="headerlink" title="thread"></a>thread</h2><h3 id="osKernelInitialize"><a href="#osKernelInitialize" class="headerlink" title="osKernelInitialize();"></a>osKernelInitialize();</h3><h3 id="osThreadId-t"><a href="#osThreadId-t" class="headerlink" title="osThreadId_t"></a>osThreadId_t</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">osThreadId_t defaultTaskHandle;</span><br></pre></td></tr></table></figure>
+
+<h3 id="osThreadAttr-t"><a href="#osThreadAttr-t" class="headerlink" title="osThreadAttr_t"></a>osThreadAttr_t</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  const osThreadAttr_t defaultTask_attributes = &#123;</span><br><span class="line">  .name = &quot;defaultTask&quot;,</span><br><span class="line">  .stack_size = 128 * 4,</span><br><span class="line">  .priority = (osPriority_t) osPriorityNormal,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="osThreadNew"><a href="#osThreadNew" class="headerlink" title="osThreadNew()"></a>osThreadNew()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &amp;defaultTask_attributes);</span><br></pre></td></tr></table></figure>
+
+<h3 id="osKernelStart"><a href="#osKernelStart" class="headerlink" title="osKernelStart()"></a>osKernelStart()</h3><h2 id="semaphore"><a href="#semaphore" class="headerlink" title="semaphore"></a>semaphore</h2><h3 id="osSemaphoreId-t"><a href="#osSemaphoreId-t" class="headerlink" title="osSemaphoreId_t"></a>osSemaphoreId_t</h3><h3 id="osSemaphoreNew"><a href="#osSemaphoreNew" class="headerlink" title="osSemaphoreNew()"></a>osSemaphoreNew()</h3><h3 id="osSemaphoreRelease"><a href="#osSemaphoreRelease" class="headerlink" title="osSemaphoreRelease()"></a>osSemaphoreRelease()</h3><h3 id="osSemaphoreAcquire"><a href="#osSemaphoreAcquire" class="headerlink" title="osSemaphoreAcquire()"></a>osSemaphoreAcquire()</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/19/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/19/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/" class="post-title-link" itemprop="url">有限状态机 FSM</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-19 11:19:30" itemprop="dateCreated datePublished" datetime="2024-05-19T11:19:30+08:00">2024-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-20 14:00:08" itemprop="dateModified" datetime="2024-05-20T14:00:08+08:00">2024-05-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Mini-FSM"><a href="#Mini-FSM" class="headerlink" title="Mini FSM"></a>Mini FSM</h1><p>有限状态机 (Finite State Machine，简称 FSM)，<strong>表示有限个状态以及在这些状态之间的转移和动作等行为的处理模型</strong>。在任何给定的时间点，有限状态机都处于某一特定状态，并且可以根据当前状态和输入条件，从当前状态转移到另一个状态。有限状态机相关的核心概念主要包括：</p>
+<ul>
+<li>**实体 (Entity)**：状态机的主体和作用对象，它的状态可以改变</li>
+<li><strong>状态 (State)<strong>：实体在某一特定时间点的情况，可分为</strong>现态 (当前状态)<strong>、</strong>次态 (跳转新状态)</strong></li>
+<li>**事件 (Event)**：导致状态转换的触发器和条件</li>
+<li>**动作 (Action)**：状态转换时执行的操作，可以发生在状态转换前、转换中、转换后阶段</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/3365be5eb7155d7dd44de5f999dd0115.png"></p>
+<p>状态转移图</p>
+<p>有限状态机除了使用状态转移图表示，也可以使用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://zh.wikipedia.org/wiki/%25E7%258A%25B6%25E6%2580%2581%25E8%25BD%25AC%25E7%25A7%25BB%25E8%25A1%25A8&source=article&objectId=2418561">状态转移表</a>呈现，展示基于当前状态和其他输入，要移动到什么状态的表格。例如：当前状态（B）和条件（Y）的组合指示出下一个状态（C）。</p>
+<p>很多调度系统和工作流系统都会内置状态机管理，用于维护状态转移的事件处理。例如，YARN(资源调度系统) 将各种处理逻辑抽象为<strong>事件</strong>和对应的<strong>事件调度器</strong>。每类事件的处理过程可分割成多个步骤，用<strong>有限状态机</strong>表示。</p>
+<p>处理请求作为事件进入系统，由<strong>中央异步调度器 (Async-Dispatcher)</strong> 负责传递给相应**事件调度器 (Event Handler)**。事件调度器可能将事件转发给另外一个事件调度器，也可能转发给一个带有有限状态机的事件处理器，其处理结果也以事件的形式输出给中央异步调度器。而新的事件会再次被中央异步调度器转发给下一个事件调度器，直至达到终止条件才处理完成。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/5b8b6322e33067a2f05a828cc3e9fae3.png"></p>
+<p>YARN 事件处理模型</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>有限状态机有不同的实现方式，具体取决于具体的应用场景，常见的实现方式有：</p>
+<ul>
+<li><strong>Switch Case &#x2F; 枚举实现</strong>：基于枚举类型表示状态，定义一个方法来处理状态转换，转移过程可基于 Switch 匹配语句实现</li>
+<li><strong>查找表</strong>：基于二维数组或者哈希表维护状态转移表，其中一维表示<strong>当前状态</strong>，另一维表示**输入条件 (时间)**，表格中的元素则表示下一个状态。该方法处理简单便捷，适合非复杂场景</li>
+<li><strong>状态模式</strong>：State Pattern，是一种行为设计模式。将对象的状态分离并封装到专用的状态类，使得对象状态可灵活变化，当状态改变时会相应改变对象的行为</li>
+<li><strong>状态机框架</strong>：基于现成的状态机库或框架处理，功能较丰富且完整</li>
+</ul>
+<h3 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h3><p>每个状态都是一个对象，这些对象共享一个公共状态接口。<strong>状态机持有一个状态对象的引用，所有的事件处理和动作执行都委托给这个状态对象</strong>。当状态转移时，状态机将引用切换到另一个状态对象。</p>
+<ul>
+<li><strong>Context</strong>：**上下文 (状态机)**，保存具体状态的引用，通过状态接口与状态对象交互，提供设置器用于接收新的状态对象</li>
+<li><strong>State</strong>：<strong>状态</strong>，以接口类的形式定义状态的公共方法，用于事件处理和动作执行</li>
+<li><strong>Concrete States</strong>：<strong>具体状态</strong>，继承 State，实现特定状态对应的事件处理方法。可保存 Context 的反向引用，从 Context 获取所需信息并触发状态转移</li>
+</ul>
+<p>其中，<strong>Context 和具体状态都可以设置 Context 的下个状态</strong>， 并通过触发变更 Context 的状态引用实现状态转移。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/232bd1e6296adf6eb7350d5b39a0f625.png"></p>
+<p>状态模式结构</p>
+<h3 id="状态机框架"><a href="#状态机框架" class="headerlink" title="状态机框架"></a>状态机框架</h3><h4 id="Spring-Statemachine"><a href="#Spring-Statemachine" class="headerlink" title="Spring Statemachine"></a>Spring Statemachine</h4><p>Spring Statemachine (SSM) 是一个框架，允许在 Spring 应用程序中使用传统的状态机概念。SSM 提供以下功能：</p>
+<ul>
+<li>易于使用的一级状态机，适用于简单的用例</li>
+<li>分层状态机结构，以简化复杂的状态配置</li>
+<li>状态机区域提供更复杂的状态配置</li>
+<li>触发器 (triggers)、转换(transitions)、检测器(guards) 和动作 (actions) 的使用，其中，transitions 指示状态变更，guards 检测是否满足从一个状态切换到另外一个状态的条件</li>
+<li>类型安全的配置适配器</li>
+<li>状态机事件监听器</li>
+<li>Spring IoC 集成将 bean 与状态机相关联</li>
+</ul>
+<p>更多详情可查看：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://springref.com/docs/spring-statemachine&source=article&objectId=2418561">官方文档</a></p>
+<h4 id="Cola-StateMachine"><a href="#Cola-StateMachine" class="headerlink" title="Cola StateMachine"></a>Cola StateMachine</h4><p><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/alibaba/COLA&source=article&objectId=2418561">Cola</a>：Clean Object-Oriented and Layered Architecture 的缩写，<strong>代表 “整洁面向对象分层架构”。</strong>COLA 分为两个部分，<strong>COLA 架构</strong>和 <strong>COLA 组件，</strong>其中 <strong>StateMachine 组件</strong>实现了有限状态机功能。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/2b17b088f8716f01414a28542700dcee.png"></p>
+<p><strong>Cola 参考 Spring Statemachine 设计思想进行简化</strong>，有限状态机的核心概念主要包括：</p>
+<ul>
+<li>StateMachine：状态机，维护状态机的上下文</li>
+<li>State：状态</li>
+<li>Event：事件，状态由事件触发，引起变化</li>
+<li>Transition：流转，表示从一个状态到另一个状态<ul>
+<li>External Transition：外部流转，两个不同状态之间的流转</li>
+<li>Internal Transition：内部流转，同一个状态之间的流转</li>
+</ul>
+</li>
+<li>Condition：条件，表示是否允许到达某个状态</li>
+<li>Action：动作，到达某个状态之后，可以做什么</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/e6dc15b9b38a6fef79eedf73c45d0170.png"></p>
+<p>核心语义模型</p>
+<p>更多详情可查看：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://blog.csdn.net/significantfrank/article/details/104996419&source=article&objectId=2418561">官方说明文档</a></p>
+<h4 id="其他框架"><a href="#其他框架" class="headerlink" title="其他框架"></a>其他框架</h4><p>常见的其他状态机开源框架有：</p>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/hekailiang/squirrel&source=article&objectId=2418561"><strong>Squirrel-foundation</strong></a>：一个基于 Java 的轻量级状态机库</li>
+<li><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/dotnet-state-machine/stateless&source=article&objectId=2418561"><strong>Stateless</strong></a>：NET 中基于 C# 实现的轻量级状态库，支持各种类型作为状态和触发事件、支持状态继承、支持状态进入 &#x2F; 离开事件、支持条件状态转移、支持状态 &#x2F; 转移查询，对应的 Java 版本实现：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/stateless4j/stateless4j&source=article&objectId=2418561">Stateless4j</a>。</li>
+</ul>
+<h2 id="轻量级实现"><a href="#轻量级实现" class="headerlink" title="轻量级实现"></a>轻量级实现</h2><h3 id="设计说明"><a href="#设计说明" class="headerlink" title="设计说明"></a>设计说明</h3><p>在业务功能实现时，遇到状态流转的管理。针对状态机进行选择，遇到几个问题：</p>
+<ul>
+<li><strong>复杂性</strong>：开源系统丰富的功能，有很多高级转换功能，但对于我们系统来说太多复杂且不必须，引入会增加系统复杂性</li>
+<li><strong>性能问题</strong>：开源的状态机都是有状态的（Stateful）的，对应实例线程不安全，在使用过程中存在性能问题</li>
+</ul>
+<p>Cola StateMachine 的状态机本身是无状态（Stateless）的，且实现较简洁，<strong>因此选择基于 Cola StateMachine 和 Spring StateMachine 的设计思想进行简化。</strong>在系统内部内嵌了简单的有限状态机管理，并根据业务需求扩展了 Action 执行后的返回结果 ActionResult。其中 Action 的执行使用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://blog.csdn.net/ZYC88888/article/details/103679605&source=article&objectId=2418561">响应式编程</a>，<strong>基于 Flux 和 Mono 实现</strong>。</p>
+<p>简化的 Mini-FSM 有限状态机的主要接口定义包括：</p>
+<ul>
+<li>StateMachine：状态机，维护状态机的上下文</li>
+<li>StateMachineEventResult：状态机事件转换的返回结果，包括获取当前状态、Action 结果等</li>
+<li>State：状态，<strong>传递事件信息并用于状态转换</strong>，FSM 核心处理，<strong>StateContext</strong> 反向引用状态机的上下文</li>
+<li>Event：事件，可基于枚举类定义</li>
+<li>Action：动作，对应具体事件的执行处理</li>
+<li>ActionResult：事件执行的返回结果，封装结果详情</li>
+<li>Guard：条件，表示是否允许到达某个状态</li>
+<li><strong>Transition</strong>：流转，表示从一个状态到另一个状态，包括 TransitionKind 类型，TransitionData 数据</li>
+</ul>
+<h3 id="实现架构"><a href="#实现架构" class="headerlink" title="实现架构"></a>实现架构</h3><p>Mini-FSM 框架实现如下所示：<strong>用户基于 Event 事件触发当前状态转移并返回转移结果</strong>。</p>
+<ul>
+<li><strong>sendEvent</strong>：Action 接受 sendEvent 请求处理，封装封装 transition 信息进行 transit 操作</li>
+<li><strong>transit</strong>：基于 TransitionData 处理，1. 基于 Guard 校验执行条件；2. 基于 Action 触发执行 Apply 并返回执行结果</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/0a017ec73628ffb7bae7ea4aebe02455.png"></p>
+<p>Transition 流转类型分为两类：</p>
+<ul>
+<li>EXTERNAL：外部流转，Event 执行变更状态</li>
+<li>INTERNAL：内部流转，Event 执行不变更状态，现态与次态保持一致，是 EXTERNAL 流转的特例</li>
+</ul>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><blockquote>
+<p>更多可参考 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/YiwenWu/mini-fsm&source=article&objectId=2418561">Mini-FSM</a> 中的单元测试类 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/YiwenWu/mini-fsm/blob/main/src/test/java/com/github/minifsm/StateMachineTest.java&source=article&objectId=2418561">StateMachineTest</a>。</p>
+</blockquote>
+<h4 id="1-定义状态与事件"><a href="#1-定义状态与事件" class="headerlink" title="1. 定义状态与事件"></a>1. <strong>定义状态与事件</strong></h4><p>可自定义使用枚举类定义 <strong>State</strong> 状态 和 <strong>Event</strong> 事件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">enum State &#123;</span><br><span class="line">    S1, S2, S3</span><br><span class="line">&#125;</span><br><span class="line">enum Event &#123;</span><br><span class="line">    E1, E23, E22, E13</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-构建状态机"><a href="#2-构建状态机" class="headerlink" title="2. 构建状态机"></a>2. <strong>构建状态机</strong></h4><p>本示例中状态机配置定义包括：</p>
+<ol>
+<li>S1 基于 E1 的内部流转</li>
+<li>S2 → S3 基于 E23 的外部流转</li>
+<li>模拟 S1 基于 E13 的<strong>异常流转</strong></li>
+<li>模拟 S3 流转 <strong>Guard 条件校验不通过</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">Builder&lt;State, Event&gt; builder = StateMachineBuilder.builder();</span><br><span class="line">// FSM状态变换定义</span><br><span class="line">builder.configureTransitions()</span><br><span class="line">    .withInternal() //1.构建内部流转 S1</span><br><span class="line">    .source(State.S1)</span><br><span class="line">    .event(Event.E1)</span><br><span class="line">    .action(context -&gt; &#123;</span><br><span class="line">        sleep(2000);</span><br><span class="line">        assert context.getEvent() == Event.E1;</span><br><span class="line">        return ActionResult.of();</span><br><span class="line">    &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withExternal() //2.构建外部流转 S2 → S3</span><br><span class="line">    .source(State.S2)</span><br><span class="line">    .target(State.S3)</span><br><span class="line">    .event(Event.E23)</span><br><span class="line">    .action(context -&gt; &#123;</span><br><span class="line">        assert context.getEvent() == Event.E23;</span><br><span class="line">        MessageHeaders headers = context.getMessage().getHeaders();</span><br><span class="line">        String result = ((String) headers.get(&quot;info&quot;)) + context.getEvent();</span><br><span class="line">        return ActionResult.of(ImmutableMap.of(&quot;result&quot;, result));</span><br><span class="line">    &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withInternal()</span><br><span class="line">    .source(State.S1)</span><br><span class="line">    .event(Event.E13) //3.构建内部流转 S1, 模拟异常回滚</span><br><span class="line">    .action(</span><br><span class="line">        context -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;mock failed case&quot;);</span><br><span class="line">            throw new RuntimeException(&quot;event e13 error&quot;);</span><br><span class="line">        &#125;,</span><br><span class="line">        context -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;Drop table Rollback&quot;);</span><br><span class="line">            return ActionResult.of(ImmutableMap.of(&quot;result&quot;, &quot;drop table back&quot;));</span><br><span class="line">        &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withInternal()</span><br><span class="line">    .source(State.S3)</span><br><span class="line">    .event(Event.E22)</span><br><span class="line">    .guard(context -&gt; context.getEvent() == Event.E13) //4.构建内部流转S3,模拟guard失败</span><br><span class="line">    .action(context -&gt; ActionResult.of());</span><br><span class="line">//构建FSM状态机</span><br><span class="line">StateMachine&lt;State, Event&gt; stateMachine = builder.build();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-执行-Event-事件"><a href="#3-执行-Event-事件" class="headerlink" title="3. 执行 Event 事件"></a>3. <strong>执行 Event 事件</strong></h4><p>(1). 单个 Event 事件执行，没有返回结果场景</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MessageHeaders headers = new MessageHeaders(ImmutableMap.of(&quot;info&quot;, &quot;123456&quot;));</span><br><span class="line">final StateMachineEventResult&lt;State, Event&gt; inner =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S1, Event.E1, headers));</span><br><span class="line">assert inner.getResultType() == ResultType.ACCEPTED;</span><br><span class="line">assert inner.getState() == State.S1;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(2). 单个 Event 事件执行，<strong>具有返回执行结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">final StateMachineEventResult&lt;State, Event&gt; external =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S2, Event.E23, headers));</span><br><span class="line">assert external.getState() == State.S3;</span><br><span class="line">ActionResult actionResult = external.getActionResults().iterator().next();//获取结果</span><br><span class="line">assertEquals(&quot;123456E23&quot;, actionResult.infos().get(&quot;result&quot;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(3). 多个 Event 事件 <strong>同步执行，默认执行方式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;StateMachineEventResult&lt;State, Event&gt;&gt; results = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)));</span><br><span class="line">assert results.stream().noneMatch(result -&gt; result.getResultType() == ResultType.DENIED);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(4). 多个 Event 事件 <strong>异步执行</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;StateMachineEventResult&lt;State, Event&gt;&gt; async = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)), </span><br><span class="line">    true); //指定多个事件异步执行</span><br><span class="line">assert async.stream().noneMatch(result -&gt; result.getResultType() == ResultType.DENIED);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(5). <strong>失败事件执行</strong>，结果类型为 DENIED</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">final StateMachineEventResult&lt;State, Event&gt; failed =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S1, Event.E13, headers));</span><br><span class="line">assert failed.getResultType() == ResultType.DENIED;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(6). 多个事件执行，<strong>事件之间相互隔离</strong>，失败事件不影响其他事件执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">results = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E13, headers),</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)));</span><br><span class="line">assert results.size() ==3;</span><br><span class="line">//事件失败的数量=1</span><br><span class="line">assert results.stream().filter(result -&gt; result.getResultType() == ResultType.DENIED).count() == 1;</span><br><span class="line">//事件成功的数量=2</span><br><span class="line">assert results.stream().filter(result -&gt; result.getResultType() == ResultType.ACCEPTED).count() == 2;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(7). <strong>Guad 校验不通过</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StateMachineEventResult&lt;State, Event&gt; guard =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S3, Event.E22, headers));</span><br><span class="line">assert guard.getResultType() == ResultType.DENIED;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>有限状态机对于复杂的多状态流转管理是有效的，但状态机的执行流程引入会增加系统的复杂性和提升维护难度，因此不能滥用。对于简单的状态流转，例如只有 3 个状态变换，且执行操作单一，更建议直接使用 Switch Case &#x2F; 枚举实现。最后，希望通过本文可了解到 FSM 框架的一些设计思路。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/18/C%E8%BF%90%E8%A1%8C%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/18/C%E8%BF%90%E8%A1%8C%E5%BA%93/" class="post-title-link" itemprop="url">嵌入式 C/C++ 开发</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-18 11:19:30" itemprop="dateCreated datePublished" datetime="2024-05-18T11:19:30+08:00">2024-05-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-20 15:36:19" itemprop="dateModified" datetime="2024-05-20T15:36:19+08:00">2024-05-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
             </span>
 
           
@@ -307,41 +597,17 @@
 <li>运行时库：提供程序运行所需的基本功能，简化程序员的工作。</li>
 <li>标准库：提供高级别的抽象和功能，简化复杂数学和数据处理任务。</li>
 </ul>
-<h2 id="C-运行时库"><a href="#C-运行时库" class="headerlink" title="C 运行时库"></a>C 运行时库</h2><p>C&#x2F;C++运行时库是一组预先编写好的函数和类，用于支持程序的运行时环境。<strong>运行时库包括内存管理、字符串操作、数学函数、输入&#x2F;输出操作等常用功能。</strong>它们的主要目的是提供程序运行所需的基本功能，以便程序员可以专注于实现应用程序的核心功能。C&#x2F;C++运行时库通常由编译器提供，例如GCC、Microsoft Visual Studio等。<br><strong>操作系统在装载可执行文件后，将把控制权交付给运行库的程序入口函数。</strong><br>因此，程序首先运行的代码并不是main函数，而是负责为main函数执行创造环境，并负责调用main的入口函数（Entry Point）。main函数返回的值也会被这个入口函数所记录，然后调用atexit注册的函数，最终结束进程。</p>
-<h2 id="C-标准库"><a href="#C-标准库" class="headerlink" title="C++ 标准库"></a>C++ 标准库</h2><p>C&#x2F;C++标准库是一组广泛使用的C&#x2F;C++库，它们提供了更高级别的抽象，以简化程序员的工作。C&#x2F;C++标准库包括STL（Standard Template Library，标准模板库）、Boost等。<strong>这些库提供了许多高级数据结构和算法，以及其他实用工具类，如智能指针、异常处理等。</strong>C&#x2F;C++标准库通常作为C&#x2F;C++运行时库的扩展存在。<br>C++运行库的分类C++运行库可以分为两类：</p>
-<ul>
-<li>静态链接库（StaticLinkLibrary，简称SLL）</li>
-<li>动态链接库（DynamicLinkLibrary，简称DLL）</li>
-</ul>
-<p>静态链接库在程序编译时被完全拷贝到可执行文件中，因此可执行文件会变得较大。<br>而动态链接库则是在程序运行时才会加载，这样可以减小可执行文件的大小</p>
-<h2 id="C-C-混合编程"><a href="#C-C-混合编程" class="headerlink" title="C&#x2F;C++ 混合编程"></a>C&#x2F;C++ 混合编程</h2><ul>
-<li>函数重载问题</li>
-<li>extern “C”{}<br>C和C++之间互相调用是根据函数名进行，在链接时通过函数名将函数对应的二进制代码链接起来；<br>C++支持函数重载：C++中可以有相同名字的函数，只要同名函数的传参不同，C++就不会报错，并根据调用时的传参来选择调用对应的函数；<br>返回值不同，形参相同时不构成函数重载，因为调用时无法区分用那个函数。<br>在符号表中，C语言的函数名是不考虑传参的，但是C++的函数名是和传参类型有关的，这就导致通一个函数在C和C++中函数名不一致，也就会导致在链接时找不到函数的报错；g++编译完成后，函数名字的修饰发生改变，编译器将函数参数类型信息添加到修改后的名字中。</li>
-</ul>
-<p>解决方法：<br>在C++中，用**extern “C”{}**括起来的内容表示向C兼容，g++ 不使用函数重载机制。</p>
-<p>extern “C”{}使用示例：</p>
-<pre><code>#ifdef __cplusplus
-extern &quot;C&quot;&#123;
-#endif
-
-    ······
-
-#ifdef __cplusplus
-&#125;
-#endif
-</code></pre>
 <blockquote>
-<p>注意点：extern “C”{}是C++中支持的，在C中是没有extern “C”{}这个用法的，C语言使用编译会报错；</p>
+<p>运行时库与平台编译器相关，通常由编译器提供 </p>
 </blockquote>
-<h4 id="C-调用-C库"><a href="#C-调用-C库" class="headerlink" title="C++ 调用 C库"></a>C++ 调用 C库</h4><ul>
-<li>C库头文件使用 extern “C”{}<br>用C语言写功能库代码时，需要<strong>对外提供的函数接口头文件用extern “C”{}括起来</strong>，将来库无论被C语言调用还是被C++调用都支持；</li>
-</ul>
-<h4 id="C-调用-C"><a href="#C-调用-C" class="headerlink" title="C 调用 C++"></a>C 调用 C++</h4><ul>
-<li>将 C++ 库再封装一层<br>(1)如果别人给你提供了C++写的代码库，但是写C++代码库的人并没有考虑被C调用的情况，所以给你的库版本并没有用extern “C”{}去兼容C调用；<br>(2)通常对方提供.so动态库，你在没有源码的情况下是无法修改源码并重新编译动态库的，但是你可以对动态库再封装一层，封装的接口用extern “C”{}去括起来；</li>
-</ul>
-<h2 id="OpenCV"><a href="#OpenCV" class="headerlink" title="OpenCV"></a>OpenCV</h2><p>OpenCV是一个基于Apache2.0许可（开源）发行的<strong>跨平台计算机视觉和机器学习软件库</strong>，可以运行在Linux、Windows、Android和Mac OS操作系统上。 [1]它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，同时提供了Python、Ruby、MATLAB等语言的接口，实现了图像处理和计算机视觉方面的很多通用算法。<br>OpenCV用C++语言编写，它具有C ++，Python，Java和MATLAB接口，并支持Windows，Linux，Android和Mac OS，OpenCV主要倾向于实时视觉应用，并在可用时利用MMX和SSE指令， 如今也提供对于C#、Ch、Ruby，GO的支持。<br>OpenCV 拥有包括 500 多个C函数的跨平台的中、高层 API。它不依赖于其它的外部库——尽管也可以使用某些外部库。</p>
-<h2 id="QT"><a href="#QT" class="headerlink" title="QT"></a>QT</h2><p>Qt [1]是一个1991年由Qt Company开发的<strong>跨平台C++图形用户界面应用程序开发框架</strong>。它既可以开发GUI程序，也可用于开发非GUI程序，比如控制台工具和服务器。Qt是面向对象的框架，使用特殊的代码生成扩展（称为元对象编译器(Meta Object Compiler, moc)）以及一些宏，Qt很容易扩展，并且允许真正的组件编程。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/05/18/C%E8%BF%90%E8%A1%8C%E5%BA%93/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -867,172 +1133,6 @@ extern &quot;C&quot;&#123;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/15/ESP8266%E5%BC%80%E5%8F%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Linkua">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Excerpt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/15/ESP8266%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">ESP 开发</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-04-15 14:45:30" itemprop="dateCreated datePublished" datetime="2024-04-15T14:45:30+08:00">2024-04-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-19 18:53:13" itemprop="dateModified" datetime="2024-05-19T18:53:13+08:00">2024-05-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="ESP8266"><a href="#ESP8266" class="headerlink" title="ESP8266"></a>ESP8266</h3><p>ESP8266是一款低成本、低功耗、高度集成的Wi-Fi芯片，其主要参数包括：12</p>
-<p>主频：80 MHz (单核)<br>内存：80 KB RAM + 4 MB Flash<br>Wi-Fi标准：802.11 b&#x2F;g&#x2F;n 不支持蓝牙<br>工作电压：3.0V - 3.6V<br>工作温度：-40℃ ~ 125℃<br>支持模式：STA&#x2F;AP&#x2F;AP+STA<br>支持协议：TCP&#x2F;UDP<br>支持连接：多连接<br>支持升级：OTA升级<br>此外，ESP8266还具备以下特性：</p>
-<p>无线参数：支持802.11 b&#x2F;g&#x2F;n标准，频率范围2.4GHz至2.5GHz，具有不同的发射功率和接收灵敏度，以满足不同标准下的通信需求。<br>存储系统：配备有32Mb(4M)的Flash存储器和80KB的SRAM，Flash存储器分为几个部分，包括Bootloader等。<br>处理器和性能：内置超低功耗的Tensilica L106 32位RISC处理器，最高时钟速度可达160MHz，支持RTOS和Wi-Fi协议栈，能够将高达80%的处理能力留给应用编程和开发。</p>
-<p>ESP8266模块有多个型号和变种，例如<strong>ESP-01、ESP-12E、NodeMCU</strong>等，每种型号的功能和特点可能略有不同。<br><img src="https://pic1.zhimg.com/v2-e65552b66eb883bb5bfda9b3159d5308_b.jpg"></p>
-<p> ESP32-C3发布已经有一段时间了，作为ESP8266的替代品，上架之初C3模组就保持了10元以下的友好价格，并在8266的基础上增加了蓝牙支持。<br> 内建的USB-CDC支持，提供一个USB串口以及JTAG调试器。这表明我们可以跳过CH340、CP2102等USB转串口芯片直接对C3模组进行开发调试。<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/15/ESP8266%E5%BC%80%E5%8F%91/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/14/makefile%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Linkua">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Excerpt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/14/makefile%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">makefile 文件使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2024-04-14T00:00:00+08:00">2024-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-25 15:15:01" itemprop="dateModified" datetime="2024-04-25T15:15:01+08:00">2024-04-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Makefile的编写 </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/14/makefile%E4%BD%BF%E7%94%A8/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1102,7 +1202,7 @@ extern &quot;C&quot;&#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1111,7 +1211,7 @@ extern &quot;C&quot;&#123;
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

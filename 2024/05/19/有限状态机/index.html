@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Mini FSM有限状态机 (Finite State Machine，简称 FSM)，表示有限个状态以及在这些状态之间的转移和动作等行为的处理模型。在任何给定的时间点，有限状态机都处于某一特定状态，并且可以根据当前状态和输入条件，从当前状态转移到另一个状态。有限状态机相关的核心概念主要包括：  **实体 (Entity)**：状态机的主体和作用对象，它的状态可以改变 状态 (State)：实体在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有限状态机 FSM">
+<meta property="og:url" content="http://example.com/2024/05/19/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/index.html">
+<meta property="og:site_name" content="Excerpt">
+<meta property="og:description" content="Mini FSM有限状态机 (Finite State Machine，简称 FSM)，表示有限个状态以及在这些状态之间的转移和动作等行为的处理模型。在任何给定的时间点，有限状态机都处于某一特定状态，并且可以根据当前状态和输入条件，从当前状态转移到另一个状态。有限状态机相关的核心概念主要包括：  **实体 (Entity)**：状态机的主体和作用对象，它的状态可以改变 状态 (State)：实体在">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://developer.qcloudimg.com/http-save/yehe-1350579/3365be5eb7155d7dd44de5f999dd0115.png">
+<meta property="og:image" content="https://developer.qcloudimg.com/http-save/yehe-1350579/5b8b6322e33067a2f05a828cc3e9fae3.png">
+<meta property="og:image" content="https://developer.qcloudimg.com/http-save/yehe-1350579/232bd1e6296adf6eb7350d5b39a0f625.png">
+<meta property="og:image" content="https://developer.qcloudimg.com/http-save/yehe-1350579/2b17b088f8716f01414a28542700dcee.png">
+<meta property="og:image" content="https://developer.qcloudimg.com/http-save/yehe-1350579/e6dc15b9b38a6fef79eedf73c45d0170.png">
+<meta property="og:image" content="https://developer.qcloudimg.com/http-save/yehe-1350579/0a017ec73628ffb7bae7ea4aebe02455.png">
+<meta property="article:published_time" content="2024-05-19T03:19:30.000Z">
+<meta property="article:modified_time" content="2024-05-20T06:00:08.104Z">
+<meta property="article:author" content="Linkua">
+<meta property="article:tag" content="arm mcu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://developer.qcloudimg.com/http-save/yehe-1350579/3365be5eb7155d7dd44de5f999dd0115.png">
+
+<link rel="canonical" href="http://example.com/2024/05/19/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>有限状态机 FSM | Excerpt</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Excerpt</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-clock">
+
+    <a href="/clock/" rel="section"><i class="fas fa-clock fa-fw"></i>clock</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/19/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          有限状态机 FSM
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-19 11:19:30" itemprop="dateCreated datePublished" datetime="2024-05-19T11:19:30+08:00">2024-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-20 14:00:08" itemprop="dateModified" datetime="2024-05-20T14:00:08+08:00">2024-05-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Mini-FSM"><a href="#Mini-FSM" class="headerlink" title="Mini FSM"></a>Mini FSM</h1><p>有限状态机 (Finite State Machine，简称 FSM)，<strong>表示有限个状态以及在这些状态之间的转移和动作等行为的处理模型</strong>。在任何给定的时间点，有限状态机都处于某一特定状态，并且可以根据当前状态和输入条件，从当前状态转移到另一个状态。有限状态机相关的核心概念主要包括：</p>
+<ul>
+<li>**实体 (Entity)**：状态机的主体和作用对象，它的状态可以改变</li>
+<li><strong>状态 (State)<strong>：实体在某一特定时间点的情况，可分为</strong>现态 (当前状态)<strong>、</strong>次态 (跳转新状态)</strong></li>
+<li>**事件 (Event)**：导致状态转换的触发器和条件</li>
+<li>**动作 (Action)**：状态转换时执行的操作，可以发生在状态转换前、转换中、转换后阶段</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/3365be5eb7155d7dd44de5f999dd0115.png"></p>
+<p>状态转移图</p>
+<p>有限状态机除了使用状态转移图表示，也可以使用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://zh.wikipedia.org/wiki/%25E7%258A%25B6%25E6%2580%2581%25E8%25BD%25AC%25E7%25A7%25BB%25E8%25A1%25A8&source=article&objectId=2418561">状态转移表</a>呈现，展示基于当前状态和其他输入，要移动到什么状态的表格。例如：当前状态（B）和条件（Y）的组合指示出下一个状态（C）。</p>
+<p>很多调度系统和工作流系统都会内置状态机管理，用于维护状态转移的事件处理。例如，YARN(资源调度系统) 将各种处理逻辑抽象为<strong>事件</strong>和对应的<strong>事件调度器</strong>。每类事件的处理过程可分割成多个步骤，用<strong>有限状态机</strong>表示。</p>
+<p>处理请求作为事件进入系统，由<strong>中央异步调度器 (Async-Dispatcher)</strong> 负责传递给相应**事件调度器 (Event Handler)**。事件调度器可能将事件转发给另外一个事件调度器，也可能转发给一个带有有限状态机的事件处理器，其处理结果也以事件的形式输出给中央异步调度器。而新的事件会再次被中央异步调度器转发给下一个事件调度器，直至达到终止条件才处理完成。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/5b8b6322e33067a2f05a828cc3e9fae3.png"></p>
+<p>YARN 事件处理模型</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>有限状态机有不同的实现方式，具体取决于具体的应用场景，常见的实现方式有：</p>
+<ul>
+<li><strong>Switch Case &#x2F; 枚举实现</strong>：基于枚举类型表示状态，定义一个方法来处理状态转换，转移过程可基于 Switch 匹配语句实现</li>
+<li><strong>查找表</strong>：基于二维数组或者哈希表维护状态转移表，其中一维表示<strong>当前状态</strong>，另一维表示**输入条件 (时间)**，表格中的元素则表示下一个状态。该方法处理简单便捷，适合非复杂场景</li>
+<li><strong>状态模式</strong>：State Pattern，是一种行为设计模式。将对象的状态分离并封装到专用的状态类，使得对象状态可灵活变化，当状态改变时会相应改变对象的行为</li>
+<li><strong>状态机框架</strong>：基于现成的状态机库或框架处理，功能较丰富且完整</li>
+</ul>
+<h3 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h3><p>每个状态都是一个对象，这些对象共享一个公共状态接口。<strong>状态机持有一个状态对象的引用，所有的事件处理和动作执行都委托给这个状态对象</strong>。当状态转移时，状态机将引用切换到另一个状态对象。</p>
+<ul>
+<li><strong>Context</strong>：**上下文 (状态机)**，保存具体状态的引用，通过状态接口与状态对象交互，提供设置器用于接收新的状态对象</li>
+<li><strong>State</strong>：<strong>状态</strong>，以接口类的形式定义状态的公共方法，用于事件处理和动作执行</li>
+<li><strong>Concrete States</strong>：<strong>具体状态</strong>，继承 State，实现特定状态对应的事件处理方法。可保存 Context 的反向引用，从 Context 获取所需信息并触发状态转移</li>
+</ul>
+<p>其中，<strong>Context 和具体状态都可以设置 Context 的下个状态</strong>， 并通过触发变更 Context 的状态引用实现状态转移。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/232bd1e6296adf6eb7350d5b39a0f625.png"></p>
+<p>状态模式结构</p>
+<h3 id="状态机框架"><a href="#状态机框架" class="headerlink" title="状态机框架"></a>状态机框架</h3><h4 id="Spring-Statemachine"><a href="#Spring-Statemachine" class="headerlink" title="Spring Statemachine"></a>Spring Statemachine</h4><p>Spring Statemachine (SSM) 是一个框架，允许在 Spring 应用程序中使用传统的状态机概念。SSM 提供以下功能：</p>
+<ul>
+<li>易于使用的一级状态机，适用于简单的用例</li>
+<li>分层状态机结构，以简化复杂的状态配置</li>
+<li>状态机区域提供更复杂的状态配置</li>
+<li>触发器 (triggers)、转换(transitions)、检测器(guards) 和动作 (actions) 的使用，其中，transitions 指示状态变更，guards 检测是否满足从一个状态切换到另外一个状态的条件</li>
+<li>类型安全的配置适配器</li>
+<li>状态机事件监听器</li>
+<li>Spring IoC 集成将 bean 与状态机相关联</li>
+</ul>
+<p>更多详情可查看：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://springref.com/docs/spring-statemachine&source=article&objectId=2418561">官方文档</a></p>
+<h4 id="Cola-StateMachine"><a href="#Cola-StateMachine" class="headerlink" title="Cola StateMachine"></a>Cola StateMachine</h4><p><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/alibaba/COLA&source=article&objectId=2418561">Cola</a>：Clean Object-Oriented and Layered Architecture 的缩写，<strong>代表 “整洁面向对象分层架构”。</strong>COLA 分为两个部分，<strong>COLA 架构</strong>和 <strong>COLA 组件，</strong>其中 <strong>StateMachine 组件</strong>实现了有限状态机功能。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/2b17b088f8716f01414a28542700dcee.png"></p>
+<p><strong>Cola 参考 Spring Statemachine 设计思想进行简化</strong>，有限状态机的核心概念主要包括：</p>
+<ul>
+<li>StateMachine：状态机，维护状态机的上下文</li>
+<li>State：状态</li>
+<li>Event：事件，状态由事件触发，引起变化</li>
+<li>Transition：流转，表示从一个状态到另一个状态<ul>
+<li>External Transition：外部流转，两个不同状态之间的流转</li>
+<li>Internal Transition：内部流转，同一个状态之间的流转</li>
+</ul>
+</li>
+<li>Condition：条件，表示是否允许到达某个状态</li>
+<li>Action：动作，到达某个状态之后，可以做什么</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/e6dc15b9b38a6fef79eedf73c45d0170.png"></p>
+<p>核心语义模型</p>
+<p>更多详情可查看：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://blog.csdn.net/significantfrank/article/details/104996419&source=article&objectId=2418561">官方说明文档</a></p>
+<h4 id="其他框架"><a href="#其他框架" class="headerlink" title="其他框架"></a>其他框架</h4><p>常见的其他状态机开源框架有：</p>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/hekailiang/squirrel&source=article&objectId=2418561"><strong>Squirrel-foundation</strong></a>：一个基于 Java 的轻量级状态机库</li>
+<li><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/dotnet-state-machine/stateless&source=article&objectId=2418561"><strong>Stateless</strong></a>：NET 中基于 C# 实现的轻量级状态库，支持各种类型作为状态和触发事件、支持状态继承、支持状态进入 &#x2F; 离开事件、支持条件状态转移、支持状态 &#x2F; 转移查询，对应的 Java 版本实现：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/stateless4j/stateless4j&source=article&objectId=2418561">Stateless4j</a>。</li>
+</ul>
+<h2 id="轻量级实现"><a href="#轻量级实现" class="headerlink" title="轻量级实现"></a>轻量级实现</h2><h3 id="设计说明"><a href="#设计说明" class="headerlink" title="设计说明"></a>设计说明</h3><p>在业务功能实现时，遇到状态流转的管理。针对状态机进行选择，遇到几个问题：</p>
+<ul>
+<li><strong>复杂性</strong>：开源系统丰富的功能，有很多高级转换功能，但对于我们系统来说太多复杂且不必须，引入会增加系统复杂性</li>
+<li><strong>性能问题</strong>：开源的状态机都是有状态的（Stateful）的，对应实例线程不安全，在使用过程中存在性能问题</li>
+</ul>
+<p>Cola StateMachine 的状态机本身是无状态（Stateless）的，且实现较简洁，<strong>因此选择基于 Cola StateMachine 和 Spring StateMachine 的设计思想进行简化。</strong>在系统内部内嵌了简单的有限状态机管理，并根据业务需求扩展了 Action 执行后的返回结果 ActionResult。其中 Action 的执行使用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://blog.csdn.net/ZYC88888/article/details/103679605&source=article&objectId=2418561">响应式编程</a>，<strong>基于 Flux 和 Mono 实现</strong>。</p>
+<p>简化的 Mini-FSM 有限状态机的主要接口定义包括：</p>
+<ul>
+<li>StateMachine：状态机，维护状态机的上下文</li>
+<li>StateMachineEventResult：状态机事件转换的返回结果，包括获取当前状态、Action 结果等</li>
+<li>State：状态，<strong>传递事件信息并用于状态转换</strong>，FSM 核心处理，<strong>StateContext</strong> 反向引用状态机的上下文</li>
+<li>Event：事件，可基于枚举类定义</li>
+<li>Action：动作，对应具体事件的执行处理</li>
+<li>ActionResult：事件执行的返回结果，封装结果详情</li>
+<li>Guard：条件，表示是否允许到达某个状态</li>
+<li><strong>Transition</strong>：流转，表示从一个状态到另一个状态，包括 TransitionKind 类型，TransitionData 数据</li>
+</ul>
+<h3 id="实现架构"><a href="#实现架构" class="headerlink" title="实现架构"></a>实现架构</h3><p>Mini-FSM 框架实现如下所示：<strong>用户基于 Event 事件触发当前状态转移并返回转移结果</strong>。</p>
+<ul>
+<li><strong>sendEvent</strong>：Action 接受 sendEvent 请求处理，封装封装 transition 信息进行 transit 操作</li>
+<li><strong>transit</strong>：基于 TransitionData 处理，1. 基于 Guard 校验执行条件；2. 基于 Action 触发执行 Apply 并返回执行结果</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/0a017ec73628ffb7bae7ea4aebe02455.png"></p>
+<p>Transition 流转类型分为两类：</p>
+<ul>
+<li>EXTERNAL：外部流转，Event 执行变更状态</li>
+<li>INTERNAL：内部流转，Event 执行不变更状态，现态与次态保持一致，是 EXTERNAL 流转的特例</li>
+</ul>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><blockquote>
+<p>更多可参考 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/YiwenWu/mini-fsm&source=article&objectId=2418561">Mini-FSM</a> 中的单元测试类 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/YiwenWu/mini-fsm/blob/main/src/test/java/com/github/minifsm/StateMachineTest.java&source=article&objectId=2418561">StateMachineTest</a>。</p>
+</blockquote>
+<h4 id="1-定义状态与事件"><a href="#1-定义状态与事件" class="headerlink" title="1. 定义状态与事件"></a>1. <strong>定义状态与事件</strong></h4><p>可自定义使用枚举类定义 <strong>State</strong> 状态 和 <strong>Event</strong> 事件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">enum State &#123;</span><br><span class="line">    S1, S2, S3</span><br><span class="line">&#125;</span><br><span class="line">enum Event &#123;</span><br><span class="line">    E1, E23, E22, E13</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-构建状态机"><a href="#2-构建状态机" class="headerlink" title="2. 构建状态机"></a>2. <strong>构建状态机</strong></h4><p>本示例中状态机配置定义包括：</p>
+<ol>
+<li>S1 基于 E1 的内部流转</li>
+<li>S2 → S3 基于 E23 的外部流转</li>
+<li>模拟 S1 基于 E13 的<strong>异常流转</strong></li>
+<li>模拟 S3 流转 <strong>Guard 条件校验不通过</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">Builder&lt;State, Event&gt; builder = StateMachineBuilder.builder();</span><br><span class="line">// FSM状态变换定义</span><br><span class="line">builder.configureTransitions()</span><br><span class="line">    .withInternal() //1.构建内部流转 S1</span><br><span class="line">    .source(State.S1)</span><br><span class="line">    .event(Event.E1)</span><br><span class="line">    .action(context -&gt; &#123;</span><br><span class="line">        sleep(2000);</span><br><span class="line">        assert context.getEvent() == Event.E1;</span><br><span class="line">        return ActionResult.of();</span><br><span class="line">    &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withExternal() //2.构建外部流转 S2 → S3</span><br><span class="line">    .source(State.S2)</span><br><span class="line">    .target(State.S3)</span><br><span class="line">    .event(Event.E23)</span><br><span class="line">    .action(context -&gt; &#123;</span><br><span class="line">        assert context.getEvent() == Event.E23;</span><br><span class="line">        MessageHeaders headers = context.getMessage().getHeaders();</span><br><span class="line">        String result = ((String) headers.get(&quot;info&quot;)) + context.getEvent();</span><br><span class="line">        return ActionResult.of(ImmutableMap.of(&quot;result&quot;, result));</span><br><span class="line">    &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withInternal()</span><br><span class="line">    .source(State.S1)</span><br><span class="line">    .event(Event.E13) //3.构建内部流转 S1, 模拟异常回滚</span><br><span class="line">    .action(</span><br><span class="line">        context -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;mock failed case&quot;);</span><br><span class="line">            throw new RuntimeException(&quot;event e13 error&quot;);</span><br><span class="line">        &#125;,</span><br><span class="line">        context -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;Drop table Rollback&quot;);</span><br><span class="line">            return ActionResult.of(ImmutableMap.of(&quot;result&quot;, &quot;drop table back&quot;));</span><br><span class="line">        &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withInternal()</span><br><span class="line">    .source(State.S3)</span><br><span class="line">    .event(Event.E22)</span><br><span class="line">    .guard(context -&gt; context.getEvent() == Event.E13) //4.构建内部流转S3,模拟guard失败</span><br><span class="line">    .action(context -&gt; ActionResult.of());</span><br><span class="line">//构建FSM状态机</span><br><span class="line">StateMachine&lt;State, Event&gt; stateMachine = builder.build();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-执行-Event-事件"><a href="#3-执行-Event-事件" class="headerlink" title="3. 执行 Event 事件"></a>3. <strong>执行 Event 事件</strong></h4><p>(1). 单个 Event 事件执行，没有返回结果场景</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MessageHeaders headers = new MessageHeaders(ImmutableMap.of(&quot;info&quot;, &quot;123456&quot;));</span><br><span class="line">final StateMachineEventResult&lt;State, Event&gt; inner =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S1, Event.E1, headers));</span><br><span class="line">assert inner.getResultType() == ResultType.ACCEPTED;</span><br><span class="line">assert inner.getState() == State.S1;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(2). 单个 Event 事件执行，<strong>具有返回执行结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">final StateMachineEventResult&lt;State, Event&gt; external =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S2, Event.E23, headers));</span><br><span class="line">assert external.getState() == State.S3;</span><br><span class="line">ActionResult actionResult = external.getActionResults().iterator().next();//获取结果</span><br><span class="line">assertEquals(&quot;123456E23&quot;, actionResult.infos().get(&quot;result&quot;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(3). 多个 Event 事件 <strong>同步执行，默认执行方式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;StateMachineEventResult&lt;State, Event&gt;&gt; results = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)));</span><br><span class="line">assert results.stream().noneMatch(result -&gt; result.getResultType() == ResultType.DENIED);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(4). 多个 Event 事件 <strong>异步执行</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;StateMachineEventResult&lt;State, Event&gt;&gt; async = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)), </span><br><span class="line">    true); //指定多个事件异步执行</span><br><span class="line">assert async.stream().noneMatch(result -&gt; result.getResultType() == ResultType.DENIED);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(5). <strong>失败事件执行</strong>，结果类型为 DENIED</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">final StateMachineEventResult&lt;State, Event&gt; failed =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S1, Event.E13, headers));</span><br><span class="line">assert failed.getResultType() == ResultType.DENIED;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(6). 多个事件执行，<strong>事件之间相互隔离</strong>，失败事件不影响其他事件执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">results = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E13, headers),</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)));</span><br><span class="line">assert results.size() ==3;</span><br><span class="line">//事件失败的数量=1</span><br><span class="line">assert results.stream().filter(result -&gt; result.getResultType() == ResultType.DENIED).count() == 1;</span><br><span class="line">//事件成功的数量=2</span><br><span class="line">assert results.stream().filter(result -&gt; result.getResultType() == ResultType.ACCEPTED).count() == 2;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(7). <strong>Guad 校验不通过</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StateMachineEventResult&lt;State, Event&gt; guard =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S3, Event.E22, headers));</span><br><span class="line">assert guard.getResultType() == ResultType.DENIED;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>有限状态机对于复杂的多状态流转管理是有效的，但状态机的执行流程引入会增加系统的复杂性和提升维护难度，因此不能滥用。对于简单的状态流转，例如只有 3 个状态变换，且执行操作单一，更建议直接使用 Switch Case &#x2F; 枚举实现。最后，希望通过本文可了解到 FSM 框架的一些设计思路。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/arm-mcu/" rel="tag"><i class="fa fa-tag"></i> arm mcu</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/05/18/C%E8%BF%90%E8%A1%8C%E5%BA%93/" rel="prev" title="嵌入式 C/C++ 开发">
+      <i class="fa fa-chevron-left"></i> 嵌入式 C/C++ 开发
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/05/20/CMSIS-FreeRTOS/" rel="next" title="CMSIS_v2 FreeRTOS">
+      CMSIS_v2 FreeRTOS <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mini-FSM"><span class="nav-text">Mini FSM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-text">实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F"><span class="nav-text">状态模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E6%9C%BA%E6%A1%86%E6%9E%B6"><span class="nav-text">状态机框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-Statemachine"><span class="nav-text">Spring Statemachine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cola-StateMachine"><span class="nav-text">Cola StateMachine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%A1%86%E6%9E%B6"><span class="nav-text">其他框架</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E5%AE%9E%E7%8E%B0"><span class="nav-text">轻量级实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E"><span class="nav-text">设计说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%9E%B6%E6%9E%84"><span class="nav-text">实现架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-text">使用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89%E7%8A%B6%E6%80%81%E4%B8%8E%E4%BA%8B%E4%BB%B6"><span class="nav-text">1. 定义状态与事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%9E%84%E5%BB%BA%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="nav-text">2. 构建状态机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%89%A7%E8%A1%8C-Event-%E4%BA%8B%E4%BB%B6"><span class="nav-text">3. 执行 Event 事件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Linkua</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Linkua</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

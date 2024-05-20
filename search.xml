@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CMSIS_v2 FreeRTOS</title>
+    <url>/2024/05/20/CMSIS-FreeRTOS/</url>
+    <content><![CDATA[<p>#include &lt;cmsis_os2.h&gt;</p>
+<h2 id="thread"><a href="#thread" class="headerlink" title="thread"></a>thread</h2><h3 id="osKernelInitialize"><a href="#osKernelInitialize" class="headerlink" title="osKernelInitialize();"></a>osKernelInitialize();</h3><h3 id="osThreadId-t"><a href="#osThreadId-t" class="headerlink" title="osThreadId_t"></a>osThreadId_t</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">osThreadId_t defaultTaskHandle;</span><br></pre></td></tr></table></figure>
+
+<h3 id="osThreadAttr-t"><a href="#osThreadAttr-t" class="headerlink" title="osThreadAttr_t"></a>osThreadAttr_t</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  const osThreadAttr_t defaultTask_attributes = &#123;</span><br><span class="line">  .name = &quot;defaultTask&quot;,</span><br><span class="line">  .stack_size = 128 * 4,</span><br><span class="line">  .priority = (osPriority_t) osPriorityNormal,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="osThreadNew"><a href="#osThreadNew" class="headerlink" title="osThreadNew()"></a>osThreadNew()</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &amp;defaultTask_attributes);</span><br></pre></td></tr></table></figure>
+
+<h3 id="osKernelStart"><a href="#osKernelStart" class="headerlink" title="osKernelStart()"></a>osKernelStart()</h3><h2 id="semaphore"><a href="#semaphore" class="headerlink" title="semaphore"></a>semaphore</h2><h3 id="osSemaphoreId-t"><a href="#osSemaphoreId-t" class="headerlink" title="osSemaphoreId_t"></a>osSemaphoreId_t</h3><h3 id="osSemaphoreNew"><a href="#osSemaphoreNew" class="headerlink" title="osSemaphoreNew()"></a>osSemaphoreNew()</h3><h3 id="osSemaphoreRelease"><a href="#osSemaphoreRelease" class="headerlink" title="osSemaphoreRelease()"></a>osSemaphoreRelease()</h3><h3 id="osSemaphoreAcquire"><a href="#osSemaphoreAcquire" class="headerlink" title="osSemaphoreAcquire()"></a>osSemaphoreAcquire()</h3>]]></content>
+      <categories>
+        <category>MCU</category>
+      </categories>
+      <tags>
+        <tag>arm RTOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>嵌入式 C/C++ 开发</title>
+    <url>/2024/05/18/C%E8%BF%90%E8%A1%8C%E5%BA%93/</url>
+    <content><![CDATA[<h1 id="嵌入式开发"><a href="#嵌入式开发" class="headerlink" title="嵌入式开发"></a>嵌入式开发</h1><p>嵌入式设备开发中，应用层开发、算法开发中使用C++，底层的操作系统、音视频开发使用C语言；<br>应用开发使用C++(编译使用g++),驱动使用C(编译使用g++);</p>
+<p>在C&#x2F;C++编程中，运行时库和标准库是两个不同的概念，它们之间存在一定的区别。</p>
+<ul>
+<li>运行时库：提供程序运行所需的基本功能，简化程序员的工作。</li>
+<li>标准库：提供高级别的抽象和功能，简化复杂数学和数据处理任务。</li>
+</ul>
+<blockquote>
+<p>运行时库与平台编译器相关，通常由编译器提供 </p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="编译工具链"><a href="#编译工具链" class="headerlink" title="编译工具链"></a>编译工具链</h2><p>从源文件的编写到二进制代码，需要经过汇编器 as、C 编译器 gcc、C++编译器 g++、链接器 ld、二进制转换工具 objcopy。<br>编译基于 Arm 平台的非 linux 程序的工具链位arm-none-eabi-*。<br>(gcc for arm 工具链使用)(<a href="https://blog.csdn.net/fdcp123/article/details/114537469">https://blog.csdn.net/fdcp123/article/details/114537469</a>)</p>
+<h2 id="C-运行时库"><a href="#C-运行时库" class="headerlink" title="C 运行时库"></a>C 运行时库</h2><p>C&#x2F;C++运行时库是一组预先编写好的函数和类，用于支持程序的运行时环境。<strong>运行时库包括内存管理、字符串操作、数学函数、输入&#x2F;输出操作等常用功能。</strong>它们的主要目的是提供程序运行所需的基本功能，以便程序员可以专注于实现应用程序的核心功能。C&#x2F;C++运行时库通常由编译器提供，例如GCC、Microsoft Visual Studio等。<br><strong>操作系统在装载可执行文件后，将把控制权交付给运行库的程序入口函数。</strong><br>因此，程序首先运行的代码并不是main函数，而是负责为main函数执行创造环境，并负责调用main的入口函数（Entry Point）。main函数返回的值也会被这个入口函数所记录，然后调用atexit注册的函数，最终结束进程。</p>
+<ul>
+<li>glibc    linux-gcc</li>
+<li>newlib&#x2F;newlib_nano   arm-linux(arm-gcc)</li>
+</ul>
+<p>arm-none-eabi 工具链带有两个基于 newlib 的库可供选择（newlib 和 newlib_nano），其中 newlib_nano 库对代码尺寸做了优化.</p>
+<h2 id="C-标准库"><a href="#C-标准库" class="headerlink" title="C++ 标准库"></a>C++ 标准库</h2><p>C&#x2F;C++标准库是一组广泛使用的C&#x2F;C++库，它们提供了更高级别的抽象，以简化程序员的工作。C&#x2F;C++标准库包括STL（Standard Template Library，标准模板库）、Boost等。<strong>这些库提供了许多高级数据结构和算法，以及其他实用工具类，如智能指针、异常处理等。</strong>C&#x2F;C++标准库通常作为C&#x2F;C++运行时库的扩展存在。<br>C++运行库的分类C++运行库可以分为两类：</p>
+<ul>
+<li>静态链接库（StaticLinkLibrary，简称SLL）</li>
+<li>动态链接库（DynamicLinkLibrary，简称DLL）</li>
+</ul>
+<p>静态链接库在程序编译时被完全拷贝到可执行文件中，因此可执行文件会变得较大。<br>而动态链接库则是在程序运行时才会加载，这样可以减小可执行文件的大小</p>
+<h2 id="C-C-混合编程"><a href="#C-C-混合编程" class="headerlink" title="C&#x2F;C++ 混合编程"></a>C&#x2F;C++ 混合编程</h2><ul>
+<li>函数重载问题</li>
+<li>extern “C”{}<br>C和C++之间互相调用是根据函数名进行，在链接时通过函数名将函数对应的二进制代码链接起来；<br>C++支持函数重载：C++中可以有相同名字的函数，只要同名函数的传参不同，C++就不会报错，并根据调用时的传参来选择调用对应的函数；<br>返回值不同，形参相同时不构成函数重载，因为调用时无法区分用那个函数。<br>在符号表中，C语言的函数名是不考虑传参的，但是C++的函数名是和传参类型有关的，这就导致通一个函数在C和C++中函数名不一致，也就会导致在链接时找不到函数的报错；g++编译完成后，函数名字的修饰发生改变，编译器将函数参数类型信息添加到修改后的名字中。</li>
+</ul>
+<p>解决方法：<br>在C++中，用**extern “C”{}**括起来的内容表示向C兼容，g++ 不使用函数重载机制。</p>
+<p>extern “C”{}使用示例：</p>
+<pre><code>#ifdef __cplusplus
+extern &quot;C&quot;&#123;
+#endif
+
+    ······
+
+#ifdef __cplusplus
+&#125;
+#endif
+</code></pre>
+<blockquote>
+<p>注意点：extern “C”{}是C++中支持的，在C中是没有extern “C”{}这个用法的，C语言使用编译会报错；</p>
+</blockquote>
+<h4 id="C-调用-C库"><a href="#C-调用-C库" class="headerlink" title="C++ 调用 C库"></a>C++ 调用 C库</h4><ul>
+<li>C库头文件使用 extern “C”{}<br>用C语言写功能库代码时，需要<strong>对外提供的函数接口头文件用extern “C”{}括起来</strong>，将来库无论被C语言调用还是被C++调用都支持；</li>
+</ul>
+<h4 id="C-调用-C"><a href="#C-调用-C" class="headerlink" title="C 调用 C++"></a>C 调用 C++</h4><ul>
+<li>将 C++ 库再封装一层<br>(1)如果别人给你提供了C++写的代码库，但是写C++代码库的人并没有考虑被C调用的情况，所以给你的库版本并没有用extern “C”{}去兼容C调用；<br>(2)通常对方提供.so动态库，你在没有源码的情况下是无法修改源码并重新编译动态库的，但是你可以对动态库再封装一层，封装的接口用extern “C”{}去括起来；</li>
+</ul>
+<h2 id="OpenCV"><a href="#OpenCV" class="headerlink" title="OpenCV"></a>OpenCV</h2><p>OpenCV是一个基于Apache2.0许可（开源）发行的<strong>跨平台计算机视觉和机器学习软件库</strong>，可以运行在Linux、Windows、Android和Mac OS操作系统上。 [1]它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，同时提供了Python、Ruby、MATLAB等语言的接口，实现了图像处理和计算机视觉方面的很多通用算法。<br>OpenCV用C++语言编写，它具有C ++，Python，Java和MATLAB接口，并支持Windows，Linux，Android和Mac OS，OpenCV主要倾向于实时视觉应用，并在可用时利用MMX和SSE指令， 如今也提供对于C#、Ch、Ruby，GO的支持。<br>OpenCV 拥有包括 500 多个C函数的跨平台的中、高层 API。它不依赖于其它的外部库——尽管也可以使用某些外部库。</p>
+<h2 id="QT"><a href="#QT" class="headerlink" title="QT"></a>QT</h2><p>Qt [1]是一个1991年由Qt Company开发的<strong>跨平台C++图形用户界面应用程序开发框架</strong>。它既可以开发GUI程序，也可用于开发非GUI程序，比如控制台工具和服务器。Qt是面向对象的框架，使用特殊的代码生成扩展（称为元对象编译器(Meta Object Compiler, moc)）以及一些宏，Qt很容易扩展，并且允许真正的组件编程。</p>
+]]></content>
+      <categories>
+        <category>MCU</category>
+      </categories>
+      <tags>
+        <tag>arm gcc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ESP Arduino Libraries</title>
     <url>/2024/05/17/ESP32-ArduinoLib/</url>
     <content><![CDATA[<h1 id="ESP32-Arduino-Libraries"><a href="#ESP32-Arduino-Libraries" class="headerlink" title="ESP32 Arduino Libraries"></a>ESP32 Arduino Libraries</h1><p>arduino-esp32 includes libraries for Arduino compatibility along with some object wrappers around hardware specific devices.  Examples are included in the examples folder under each library folder.  The ESP32 includes additional examples which need no special drivers.</p>
@@ -163,36 +242,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ESP 开发</title>
-    <url>/2024/04/15/ESP8266%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="ESP8266"><a href="#ESP8266" class="headerlink" title="ESP8266"></a>ESP8266</h3><p>ESP8266是一款低成本、低功耗、高度集成的Wi-Fi芯片，其主要参数包括：12</p>
-<p>主频：80 MHz (单核)<br>内存：80 KB RAM + 4 MB Flash<br>Wi-Fi标准：802.11 b&#x2F;g&#x2F;n 不支持蓝牙<br>工作电压：3.0V - 3.6V<br>工作温度：-40℃ ~ 125℃<br>支持模式：STA&#x2F;AP&#x2F;AP+STA<br>支持协议：TCP&#x2F;UDP<br>支持连接：多连接<br>支持升级：OTA升级<br>此外，ESP8266还具备以下特性：</p>
-<p>无线参数：支持802.11 b&#x2F;g&#x2F;n标准，频率范围2.4GHz至2.5GHz，具有不同的发射功率和接收灵敏度，以满足不同标准下的通信需求。<br>存储系统：配备有32Mb(4M)的Flash存储器和80KB的SRAM，Flash存储器分为几个部分，包括Bootloader等。<br>处理器和性能：内置超低功耗的Tensilica L106 32位RISC处理器，最高时钟速度可达160MHz，支持RTOS和Wi-Fi协议栈，能够将高达80%的处理能力留给应用编程和开发。</p>
-<p>ESP8266模块有多个型号和变种，例如<strong>ESP-01、ESP-12E、NodeMCU</strong>等，每种型号的功能和特点可能略有不同。<br><img src="https://pic1.zhimg.com/v2-e65552b66eb883bb5bfda9b3159d5308_b.jpg"></p>
-<p> ESP32-C3发布已经有一段时间了，作为ESP8266的替代品，上架之初C3模组就保持了10元以下的友好价格，并在8266的基础上增加了蓝牙支持。<br> 内建的USB-CDC支持，提供一个USB串口以及JTAG调试器。这表明我们可以跳过CH340、CP2102等USB转串口芯片直接对C3模组进行开发调试。<br> <span id="more"></span></p>
-<h4 id="ESP12F-引脚图"><a href="#ESP12F-引脚图" class="headerlink" title="ESP12F 引脚图"></a>ESP12F 引脚图</h4><p>ESP-12F模块型号，它包含了ESP8266芯片本身以及附加的外部元件，如天线、电源管理电路等。<br>共有22个引脚,GPIO6～GPIO 11被用于连接开发板的闪存（Flash Memory）因此建议不要使用GPIO6～GPIO 11。<br>|EN 0 2|1TX0 3 RX0|4 SDA 5 SCL|6<del>11 FLASH|12 13 14 15 SPI| 16 | A0 0</del>1Vinput|</p>
-<blockquote>
-<p>上电的一瞬间GPIO0、GPIO2都会从高电平变为低电平，然后再变为高电平    </p>
-</blockquote>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vbmllX2hlbi9YU0pfaW1nL3Jhdy9tYXN0ZXIvJUU1JUIwJThGJUU0JUI5JUE2JUU1JThDJUEwLzE1ODExNDUwMDQ1NDEucG5n?x-oss-process=image/format,png" alt="esp12f"></p>
-<p>启动相关引脚，EN、GPIO0、GPIO2等</p>
-<h4 id="AT-固件"><a href="#AT-固件" class="headerlink" title="AT 固件"></a>AT 固件</h4><ul>
-<li>MQTT</li>
-</ul>
-<h4 id="相关的github-项目"><a href="#相关的github-项目" class="headerlink" title="相关的github 项目"></a>相关的github 项目</h4><ul>
-<li>tasmota</li>
-<li>esphome</li>
-<li>wled</li>
-</ul>
-]]></content>
-      <categories>
-        <category>MCU</category>
-      </categories>
-      <tags>
-        <tag>esp32</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LETV IR code</title>
     <url>/2023/03/03/LETV%20IR%20code/</url>
     <content><![CDATA[<h1 id="LETV-IR-code"><a href="#LETV-IR-code" class="headerlink" title="LETV IR code"></a>LETV IR code</h1><p>乐视超级电视曲面x55 Cured的红外解码</p>
@@ -222,6 +271,36 @@
       </categories>
       <tags>
         <tag>hass</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ESP 开发</title>
+    <url>/2024/04/15/ESP8266%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="ESP8266"><a href="#ESP8266" class="headerlink" title="ESP8266"></a>ESP8266</h3><p>ESP8266是一款低成本、低功耗、高度集成的Wi-Fi芯片，其主要参数包括：12</p>
+<p>主频：80 MHz (单核)<br>内存：80 KB RAM + 4 MB Flash<br>Wi-Fi标准：802.11 b&#x2F;g&#x2F;n 不支持蓝牙<br>工作电压：3.0V - 3.6V<br>工作温度：-40℃ ~ 125℃<br>支持模式：STA&#x2F;AP&#x2F;AP+STA<br>支持协议：TCP&#x2F;UDP<br>支持连接：多连接<br>支持升级：OTA升级<br>此外，ESP8266还具备以下特性：</p>
+<p>无线参数：支持802.11 b&#x2F;g&#x2F;n标准，频率范围2.4GHz至2.5GHz，具有不同的发射功率和接收灵敏度，以满足不同标准下的通信需求。<br>存储系统：配备有32Mb(4M)的Flash存储器和80KB的SRAM，Flash存储器分为几个部分，包括Bootloader等。<br>处理器和性能：内置超低功耗的Tensilica L106 32位RISC处理器，最高时钟速度可达160MHz，支持RTOS和Wi-Fi协议栈，能够将高达80%的处理能力留给应用编程和开发。</p>
+<p>ESP8266模块有多个型号和变种，例如<strong>ESP-01、ESP-12E、NodeMCU</strong>等，每种型号的功能和特点可能略有不同。<br><img src="https://pic1.zhimg.com/v2-e65552b66eb883bb5bfda9b3159d5308_b.jpg"></p>
+<p> ESP32-C3发布已经有一段时间了，作为ESP8266的替代品，上架之初C3模组就保持了10元以下的友好价格，并在8266的基础上增加了蓝牙支持。<br> 内建的USB-CDC支持，提供一个USB串口以及JTAG调试器。这表明我们可以跳过CH340、CP2102等USB转串口芯片直接对C3模组进行开发调试。<br> <span id="more"></span></p>
+<h4 id="ESP12F-引脚图"><a href="#ESP12F-引脚图" class="headerlink" title="ESP12F 引脚图"></a>ESP12F 引脚图</h4><p>ESP-12F模块型号，它包含了ESP8266芯片本身以及附加的外部元件，如天线、电源管理电路等。<br>共有22个引脚,GPIO6～GPIO 11被用于连接开发板的闪存（Flash Memory）因此建议不要使用GPIO6～GPIO 11。<br>|EN 0 2|1TX0 3 RX0|4 SDA 5 SCL|6<del>11 FLASH|12 13 14 15 SPI| 16 | A0 0</del>1Vinput|</p>
+<blockquote>
+<p>上电的一瞬间GPIO0、GPIO2都会从高电平变为低电平，然后再变为高电平    </p>
+</blockquote>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vbmllX2hlbi9YU0pfaW1nL3Jhdy9tYXN0ZXIvJUU1JUIwJThGJUU0JUI5JUE2JUU1JThDJUEwLzE1ODExNDUwMDQ1NDEucG5n?x-oss-process=image/format,png" alt="esp12f"></p>
+<p>启动相关引脚，EN、GPIO0、GPIO2等</p>
+<h4 id="AT-固件"><a href="#AT-固件" class="headerlink" title="AT 固件"></a>AT 固件</h4><ul>
+<li>MQTT</li>
+</ul>
+<h4 id="相关的github-项目"><a href="#相关的github-项目" class="headerlink" title="相关的github 项目"></a>相关的github 项目</h4><ul>
+<li>tasmota</li>
+<li>esphome</li>
+<li>wled</li>
+</ul>
+]]></content>
+      <categories>
+        <category>MCU</category>
+      </categories>
+      <tags>
+        <tag>esp32</tag>
       </tags>
   </entry>
   <entry>
@@ -259,6 +338,12 @@
 <p>代码表现为：<br>在 “stm32f1xx_hal_msp.c” 中</p>
 <p>禁止SWD<br> &#x2F;** DISABLE: JTAG-DP Disabled and SW-DP Disabled<br>  *&#x2F;<br>  __HAL_AFIO_REMAP_SWJ_DISABLE();</p>
 <p>使用SWD<br> &#x2F;** NOJTAG: JTAG-DP Disabled and SW-DP Enabled<br>  *&#x2F;<br>  __HAL_AFIO_REMAP_SWJ_NOJTAG()<br>将禁止 SWD 改为使用 SWD 就可以了。</p>
+<h3 id="freertos"><a href="#freertos" class="headerlink" title="freertos"></a>freertos</h3><ul>
+<li>无freertos<br> Memory region         Used Size  Region Size  %age Used<br>       RAM:        1728 B        20 KB      8.44%<br>     FLASH:        6884 B        64 KB     10.50%</li>
+<li>有freertos<br>Memory region         Used Size  Region Size  %age Used<br>       RAM:        8208 B        20 KB     40.08%<br>     FLASH:       17820 B        64 KB     27.19%</li>
+</ul>
+<p>可见RAM + 6480, FLASH + 10936, 10K RAM (c6t6)以下不建议使用 freeRTOS 开发，<br>考虑使用有限状态机，事件驱动。</p>
+<p>使用时，尽量使用 CMSIS-RTOS 接口。</p>
 ]]></content>
       <categories>
         <category>MCU</category>
@@ -672,123 +757,6 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2024/05/20/five/</url>
-    <content><![CDATA[<h1 id="嵌入式开发"><a href="#嵌入式开发" class="headerlink" title="嵌入式开发"></a>嵌入式开发</h1><p>嵌入式设备开发中，应用层开发、算法开发中使用C++，底层的操作系统、音视频开发使用C语言；<br>应用开发使用C++(编译使用g++),驱动使用C(编译使用g++);</p>
-<p>在C&#x2F;C++编程中，运行时库和标准库是两个不同的概念，它们之间存在一定的区别。</p>
-<ul>
-<li>运行时库：提供程序运行所需的基本功能，简化程序员的工作。</li>
-<li>标准库：提供高级别的抽象和功能，简化复杂数学和数据处理任务。</li>
-</ul>
-<h2 id="C-运行时库"><a href="#C-运行时库" class="headerlink" title="C 运行时库"></a>C 运行时库</h2><p>C&#x2F;C++运行时库是一组预先编写好的函数和类，用于支持程序的运行时环境。<strong>运行时库包括内存管理、字符串操作、数学函数、输入&#x2F;输出操作等常用功能。</strong>它们的主要目的是提供程序运行所需的基本功能，以便程序员可以专注于实现应用程序的核心功能。C&#x2F;C++运行时库通常由编译器提供，例如GCC、Microsoft Visual Studio等。<br><strong>操作系统在装载可执行文件后，将把控制权交付给运行库的程序入口函数。</strong><br>因此，程序首先运行的代码并不是main函数，而是负责为main函数执行创造环境，并负责调用main的入口函数（Entry Point）。main函数返回的值也会被这个入口函数所记录，然后调用atexit注册的函数，最终结束进程。</p>
-<h2 id="C-标准库"><a href="#C-标准库" class="headerlink" title="C++ 标准库"></a>C++ 标准库</h2><p>C&#x2F;C++标准库是一组广泛使用的C&#x2F;C++库，它们提供了更高级别的抽象，以简化程序员的工作。C&#x2F;C++标准库包括STL（Standard Template Library，标准模板库）、Boost等。<strong>这些库提供了许多高级数据结构和算法，以及其他实用工具类，如智能指针、异常处理等。</strong>C&#x2F;C++标准库通常作为C&#x2F;C++运行时库的扩展存在。<br>C++运行库的分类C++运行库可以分为两类：</p>
-<ul>
-<li>静态链接库（StaticLinkLibrary，简称SLL）</li>
-<li>动态链接库（DynamicLinkLibrary，简称DLL）</li>
-</ul>
-<p>静态链接库在程序编译时被完全拷贝到可执行文件中，因此可执行文件会变得较大。<br>而动态链接库则是在程序运行时才会加载，这样可以减小可执行文件的大小</p>
-<h2 id="C-C-混合编程"><a href="#C-C-混合编程" class="headerlink" title="C&#x2F;C++ 混合编程"></a>C&#x2F;C++ 混合编程</h2><ul>
-<li>函数重载问题</li>
-<li>extern “C”{}<br>C和C++之间互相调用是根据函数名进行，在链接时通过函数名将函数对应的二进制代码链接起来；<br>C++支持函数重载：C++中可以有相同名字的函数，只要同名函数的传参不同，C++就不会报错，并根据调用时的传参来选择调用对应的函数；<br>返回值不同，形参相同时不构成函数重载，因为调用时无法区分用那个函数。<br>在符号表中，C语言的函数名是不考虑传参的，但是C++的函数名是和传参类型有关的，这就导致通一个函数在C和C++中函数名不一致，也就会导致在链接时找不到函数的报错；g++编译完成后，函数名字的修饰发生改变，编译器将函数参数类型信息添加到修改后的名字中。</li>
-</ul>
-<p>解决方法：<br>在C++中，用**extern “C”{}**括起来的内容表示向C兼容，g++ 不使用函数重载机制。</p>
-<p>extern “C”{}使用示例：</p>
-<pre><code>#ifdef __cplusplus
-extern &quot;C&quot;&#123;
-#endif
-
-    ······
-
-#ifdef __cplusplus
-&#125;
-#endif
-</code></pre>
-<blockquote>
-<p>注意点：extern “C”{}是C++中支持的，在C中是没有extern “C”{}这个用法的，C语言使用编译会报错；</p>
-</blockquote>
-<h4 id="C-调用-C库"><a href="#C-调用-C库" class="headerlink" title="C++ 调用 C库"></a>C++ 调用 C库</h4><ul>
-<li>C库头文件使用 extern “C”{}<br>用C语言写功能库代码时，需要<strong>对外提供的函数接口头文件用extern “C”{}括起来</strong>，将来库无论被C语言调用还是被C++调用都支持；</li>
-</ul>
-<h4 id="C-调用-C"><a href="#C-调用-C" class="headerlink" title="C 调用 C++"></a>C 调用 C++</h4><ul>
-<li>将 C++ 库再封装一层<br>(1)如果别人给你提供了C++写的代码库，但是写C++代码库的人并没有考虑被C调用的情况，所以给你的库版本并没有用extern “C”{}去兼容C调用；<br>(2)通常对方提供.so动态库，你在没有源码的情况下是无法修改源码并重新编译动态库的，但是你可以对动态库再封装一层，封装的接口用extern “C”{}去括起来；</li>
-</ul>
-<h2 id="OpenCV"><a href="#OpenCV" class="headerlink" title="OpenCV"></a>OpenCV</h2><p>OpenCV是一个基于Apache2.0许可（开源）发行的<strong>跨平台计算机视觉和机器学习软件库</strong>，可以运行在Linux、Windows、Android和Mac OS操作系统上。 [1]它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，同时提供了Python、Ruby、MATLAB等语言的接口，实现了图像处理和计算机视觉方面的很多通用算法。<br>OpenCV用C++语言编写，它具有C ++，Python，Java和MATLAB接口，并支持Windows，Linux，Android和Mac OS，OpenCV主要倾向于实时视觉应用，并在可用时利用MMX和SSE指令， 如今也提供对于C#、Ch、Ruby，GO的支持。<br>OpenCV 拥有包括 500 多个C函数的跨平台的中、高层 API。它不依赖于其它的外部库——尽管也可以使用某些外部库。</p>
-<h2 id="QT"><a href="#QT" class="headerlink" title="QT"></a>QT</h2><p>Qt [1]是一个1991年由Qt Company开发的<strong>跨平台C++图形用户界面应用程序开发框架</strong>。它既可以开发GUI程序，也可用于开发非GUI程序，比如控制台工具和服务器。Qt是面向对象的框架，使用特殊的代码生成扩展（称为元对象编译器(Meta Object Compiler, moc)）以及一些宏，Qt很容易扩展，并且允许真正的组件编程。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>git</title>
-    <url>/2023/03/04/git/</url>
-    <content><![CDATA[<h2 id="git-命令使用"><a href="#git-命令使用" class="headerlink" title="git 命令使用"></a>git 命令使用</h2><p>开始使用 git 的简易指南<br>更多可以参考: (<a href="http://book.git-scm.com/">http://book.git-scm.com/</a>)</p>
-<span id="more"></span>
-
-<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init </span><br></pre></td></tr></table></figure>
-<p> 以创建新的 git 仓库。</p>
-<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> /path/to/repository</span><br></pre></td></tr></table></figure>
-<p>如果是远端服务器上的仓库，你的命令会是这个样子</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> username@host:/path/to/repository</span><br></pre></td></tr></table></figure>
-
-<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录,它持有实际文件；第二个是 缓存区，它像个缓存区域(Index)，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。 </p>
-<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add filename</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
-<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;代码提交信息&quot;</span></span><br></pre></td></tr></table></figure>
-<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
-<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-<p>可以把 <i>master</i> 换成你想要推送的任何分支。</p>
-<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt; </span><br></pre></td></tr></table></figure>
-<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
-<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master&#x2F;main 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上创建一个叫做“branch_x”的分支，并切换过去：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branch_x</span><br></pre></td></tr></table></figure>
-<p>切换回主分支：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b main</span><br></pre></td></tr></table></figure>
-<p>再把新建的分支删掉：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branch_x</span><br></pre></td></tr></table></figure>
-<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-
-<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。要合并其他分支到你的当前分支（例如 master），执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-
-<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-<p>在合并改动之前，也可以使用如下命令查看：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;file name&gt;</span><br></pre></td></tr></table></figure>
-<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
-<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard origin/master </span><br></pre></td></tr></table></figure>
-
-<p>显示历史记录时，只显示一行注释信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config format.pretty oneline</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="github-com和raw-githubusercontent-com访问不了的解决方法"><a href="#github-com和raw-githubusercontent-com访问不了的解决方法" class="headerlink" title="github.com和raw.githubusercontent.com访问不了的解决方法"></a>github.com和raw.githubusercontent.com访问不了的解决方法</h3><p>本文链接 <a href="https://www.ioiox.com/archives/62.html">https://www.ioiox.com/archives/62.html</a><br>这里还有免费FRP!!!</p>
-<h3 id="修改-hosts"><a href="#修改-hosts" class="headerlink" title="修改 hosts"></a>修改 hosts</h3><p>在 hosts 文件添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用gh-proxy来代理访问"><a href="#使用gh-proxy来代理访问" class="headerlink" title="使用gh-proxy来代理访问"></a>使用gh-proxy来代理访问</h3><p>gh-proxy 是一款 github release、archive以及项目文件的加速项目，支持直接在终端 git clone ,也可以在 web 端代理下载 github 以及 raw.githubusercontent.com 等文件.<br>项目默认使用jsdelivr和cnpmjs</p>
-<p>支持终端命令行下载 , 例如 git clone , wget , curl 等以及 raw.githubusercontent.com 文件下载.<br>注意：不支持 SSH Key 方式 git clone 下载.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone</span><br><span class="line">git clone https://ghproxy.com/https://github.com/stilleshan/ServerStatus.git</span><br><span class="line"></span><br><span class="line">wget &amp; curl</span><br><span class="line">wget https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">wget https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br><span class="line">curl -O https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">curl -O https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>freertos</title>
     <url>/2024/01/02/freeRTOS/</url>
     <content><![CDATA[<h2 id="MISRA"><a href="#MISRA" class="headerlink" title="MISRA"></a>MISRA</h2><p>MISRA C是由汽车产业软件可靠性协会（MISRA）提出的C语言开发标准。其目的是在增进嵌入式系统的安全性及可移植性。针对C++语言也有对应的标准MISRA C++。</p>
@@ -1060,6 +1028,78 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </categories>
       <tags>
         <tag>rtos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git</title>
+    <url>/2023/03/04/git/</url>
+    <content><![CDATA[<h2 id="git-命令使用"><a href="#git-命令使用" class="headerlink" title="git 命令使用"></a>git 命令使用</h2><p>开始使用 git 的简易指南<br>更多可以参考: (<a href="http://book.git-scm.com/">http://book.git-scm.com/</a>)</p>
+<span id="more"></span>
+
+<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init </span><br></pre></td></tr></table></figure>
+<p> 以创建新的 git 仓库。</p>
+<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> /path/to/repository</span><br></pre></td></tr></table></figure>
+<p>如果是远端服务器上的仓库，你的命令会是这个样子</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> username@host:/path/to/repository</span><br></pre></td></tr></table></figure>
+
+<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录,它持有实际文件；第二个是 缓存区，它像个缓存区域(Index)，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。 </p>
+<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
+<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;代码提交信息&quot;</span></span><br></pre></td></tr></table></figure>
+<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
+<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<p>可以把 <i>master</i> 换成你想要推送的任何分支。</p>
+<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt; </span><br></pre></td></tr></table></figure>
+<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master&#x2F;main 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上创建一个叫做“branch_x”的分支，并切换过去：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branch_x</span><br></pre></td></tr></table></figure>
+<p>切换回主分支：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b main</span><br></pre></td></tr></table></figure>
+<p>再把新建的分支删掉：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branch_x</span><br></pre></td></tr></table></figure>
+<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+
+<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。要合并其他分支到你的当前分支（例如 master），执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>在合并改动之前，也可以使用如下命令查看：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;file name&gt;</span><br></pre></td></tr></table></figure>
+<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
+<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard origin/master </span><br></pre></td></tr></table></figure>
+
+<p>显示历史记录时，只显示一行注释信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config format.pretty oneline</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="github-com和raw-githubusercontent-com访问不了的解决方法"><a href="#github-com和raw-githubusercontent-com访问不了的解决方法" class="headerlink" title="github.com和raw.githubusercontent.com访问不了的解决方法"></a>github.com和raw.githubusercontent.com访问不了的解决方法</h3><p>本文链接 <a href="https://www.ioiox.com/archives/62.html">https://www.ioiox.com/archives/62.html</a><br>这里还有免费FRP!!!</p>
+<h3 id="修改-hosts"><a href="#修改-hosts" class="headerlink" title="修改 hosts"></a>修改 hosts</h3><p>在 hosts 文件添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用gh-proxy来代理访问"><a href="#使用gh-proxy来代理访问" class="headerlink" title="使用gh-proxy来代理访问"></a>使用gh-proxy来代理访问</h3><p>gh-proxy 是一款 github release、archive以及项目文件的加速项目，支持直接在终端 git clone ,也可以在 web 端代理下载 github 以及 raw.githubusercontent.com 等文件.<br>项目默认使用jsdelivr和cnpmjs</p>
+<p>支持终端命令行下载 , 例如 git clone , wget , curl 等以及 raw.githubusercontent.com 文件下载.<br>注意：不支持 SSH Key 方式 git clone 下载.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone</span><br><span class="line">git clone https://ghproxy.com/https://github.com/stilleshan/ServerStatus.git</span><br><span class="line"></span><br><span class="line">wget &amp; curl</span><br><span class="line">wget https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">wget https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br><span class="line">curl -O https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">curl -O https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -1784,6 +1824,58 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </tags>
   </entry>
   <entry>
+    <title>makefile 文件使用</title>
+    <url>/2024/04/14/makefile%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>Makefile的编写 </p>
+<span id="more"></span>
+<h3 id="源程序编译"><a href="#源程序编译" class="headerlink" title="源程序编译"></a>源程序编译</h3><ol>
+<li>源程序的编译<br>在 Linux 下面，如果要编译一个 C 语言源程序，我们要使用 GNU 的 gcc 编译器。 下面我们以一个实例来说明如何使用 gcc 编译器。<br>假设我们有下面一个非常简单的源程序 (hello.c)：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;Hello Linux\n&quot;)；  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>要编译这个程序，我们只要在命令行下执行：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -o hello hello.c</span><br></pre></td></tr></table></figure>
+
+
+<p>gcc 编译器就会为我们生成一个 hello 的可执行文件。执行.&#x2F;hello 就可以看到程序的输出结果了。命令行中 gcc 表示我们是用 gcc 来编译我们的源程序，-o 选项表示我们要求编译器给我们输出的可执行文件名为 hello 而 hello.c 是我们的源程序文件。<br>gcc 编译器有许多选项，一般来说我们只要知道其中的几个就够了。 -o 选项我们已经知道了，表示我们要求输出的可执行文件名。 -c 选项表示我们只要求编译器输出目标代码，而不必要输出可执行文件。 -g 选项表示我们要求编译器在编译的时候提供我们以后对程序进行调试的信息。<br>知道了这三个选项，我们就可以编译我们自己所写的简单的源程序了，如果你想要知道更多的选项，可以查看 gcc 的帮助文档，那里有着许多对其它选项的详细说明。</p>
+<p>2.Makefile 的编写<br>假设我们有下面这样的一个程序，源代码如下：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* main.c */  </span><br><span class="line">#include &quot;mytool1.h&quot;  </span><br><span class="line">#include &quot;mytool2.h&quot;  </span><br><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">    mytool1_print(&quot;hello&quot;)；  </span><br><span class="line">    mytool2_print(&quot;hello&quot;)；  </span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">/* mytool1.h */  </span><br><span class="line">#ifndef _MYTOOL_1_H  </span><br><span class="line">#define _MYTOOL_1_H  </span><br><span class="line">void mytool1_print(char *print_str)；  </span><br><span class="line">#endif  </span><br><span class="line">/* mytool1.c */  </span><br><span class="line">#include &quot;mytool1.h&quot;  </span><br><span class="line">void mytool1_print(char *print_str)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;This is mytool1 print %s\n&quot;，print_str)；  </span><br><span class="line">&#125;  </span><br><span class="line">/* mytool2.h */  </span><br><span class="line">#ifndef _MYTOOL_2_H  </span><br><span class="line">#define _MYTOOL_2_H  </span><br><span class="line">void mytool2_print(char *print_str)；  </span><br><span class="line">#endif  </span><br><span class="line">/* mytool2.c */  </span><br><span class="line">#include &quot;mytool2.h&quot;  </span><br><span class="line">void mytool2_print(char *print_str)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;This is mytool2 print %s\n&quot;，print_str)；  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>当然由于这个程序是很短的我们可以这样来编译 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -c main.c  </span><br><span class="line">gcc -c mytool1.c  </span><br><span class="line">gcc -c mytool2.c  </span><br><span class="line">gcc -o main main.o mytool1.o mytool2.o</span><br></pre></td></tr></table></figure>
+
+<p>这样的话我们也可以产生 main 程序，而且也不时很麻烦。但是如果我们考虑一下如果有一天我们修改了其中的一个文件 (比如说 mytool1.c) 那么我们 难道还要重新输入上面的命令? 也许你会说，这个很容易解决啊，我写一个 SHELL 脚本，让她帮我去完成不就可以了。是的对于这个程序来说，是可以起到作用 的。但是当我们把事情想的更复杂一点，如果我们的程序有几百个源程序的时候，难道也要编译器重新一个一个的去编译?<br>为此，聪明的程序员们想出了一个很好的工具来做这件事情，这就是 make。我们只要执行以下 make，就可以把上面的问题解决掉。在我们执行 make 之 前，我们要先编写一个非常重要的文件。–Makefile。对于上面的那个程序来说，可能的一个 Makefile 的文件是：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o main main.o mytool1.o mytool2.o  </span><br><span class="line">main.o：main.c mytool1.h mytool2.h  </span><br><span class="line">gcc -c main.c  </span><br><span class="line">mytool1.o：mytool1.c mytool1.h  </span><br><span class="line">gcc -c mytool1.c  </span><br><span class="line">mytool2.o：mytool2.c mytool2.h  </span><br><span class="line">gcc -c mytool2.c</span><br></pre></td></tr></table></figure>
+
+<p>有了这个 Makefile 文件，不过我们什么时候修改了源程序当中的什么文件，我们只要执行 make 命令，我们的编译器都只会去编译和我们修改的文件有关的文件，其它的文件她连理都不想去理的。<br>下面我们学习 Makefile 是如何编写的。<br>在 Makefile 中也 #开始的行都是注释行. Makefile 中最重要的是描述文件的依赖关系的说明。一般的格式是：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">target：components  </span><br><span class="line">TAB rule</span><br></pre></td></tr></table></figure>
+
+<p>第一行表示的是依赖关系。第二行是规则。<br>比如说我们上面的那个 Makefile 文件的第二行  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main：main.o mytool1.o mytool2.o</span><br></pre></td></tr></table></figure>
+<p>表示我们的目标 (target)main 的依赖对象(components) 是 main.o mytool1.o mytool2.o 当倚赖的对象在目标修改后修改的话，就要去执行规则一行所指定的命令。就象我们的上面那个 Makefile 第三行所说的一样要执行 gcc -o main main.o mytool1.o mytool2.o 注意规则一行中的 TAB 表示那里是一个 TAB 键  </p>
+<h3 id="变量-，-，"><a href="#变量-，-，" class="headerlink" title="变量 $@，$^，$&lt;"></a>变量 $@，$^，$&lt;</h3><p>Makefile 有三个非常有用的变量。分别是 $@，$^，$&lt; 代表的意义分别是：<br>$@– 目标文件，$^– 所有的依赖文件，$&lt;– 第一个依赖文件。<br>如果我们使用上面三个变量，那么我们可以简化我们的 Makefile 文件为：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这是简化后的 Makefile  </span><br><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o $@ $^  </span><br><span class="line">main.o：main.c mytool1.h mytool2.h  </span><br><span class="line">gcc -c $&lt;  </span><br><span class="line">mytool1.o：mytool1.c mytool1.h  </span><br><span class="line">gcc -c $&lt;  </span><br><span class="line">mytool2.o：mytool2.c mytool2.h  </span><br><span class="line">gcc -c $&lt;  </span><br></pre></td></tr></table></figure>
+
+<p>经过简化后我们的 Makefile 是简单了一点，不过人们有时候还想简单一点。这里我们学习一个 Makefile 的缺省规则<br>.c.o：<br><code>gcc -c $&lt;</code><br>这个规则表示所有的 .o 文件都是依赖与相应的. c 文件的。例如 mytool.o 依赖于 mytool.c 这样 Makefile 还可以变为：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这是再一次简化后的 Makefile  </span><br><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o $@ $^  </span><br><span class="line">.c.o：  </span><br><span class="line">gcc -c $&lt;</span><br></pre></td></tr></table></figure>
+<p>好了，我们的 Makefile 也差不多了，如果想知道更多的关于 Makefile 规则可以查看相应的文档。</p>
+<h3 id="程序库的链接"><a href="#程序库的链接" class="headerlink" title="程序库的链接"></a>程序库的链接</h3><p>试着编译下面这个程序  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* temp.c */  </span><br><span class="line">#include  </span><br><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">double value；  </span><br><span class="line">printf(&quot;Value：%f\n&quot;，value)；  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个程序相当简单，但是当我们用 gcc -o temp temp.c 编译时会出现下面所示的错误。  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/tmp/cc33Kydu.o： In function `main&#x27;：  </span><br><span class="line">/tmp/cc33Kydu.o(.text+0xe)： undefined reference to `log&#x27;  </span><br><span class="line">collect2： ld returned 1 exit status</span><br></pre></td></tr></table></figure>
+
+<p>出现这个错误是因为编译器找不到 log 的具体实现。虽然我们包括了正确的头文件，但是我们在编译的时候还是要连接确定的库。在 Linux 下，为了使用数学 函数，我们必须和数学库连接，为此我们要加入 -lm 选项。 <code>gcc -o temp temp.c -lm</code> 这样才能够正确的编译。也许有人要问，前面我们用 printf 函数的时候怎么没有连接库呢? 是这样的，对于一些常用的函数的实现，gcc 编译器会自 动去连接一些常用库，这样我们就没有必要自己去指定了。有时候我们在编译程序的时候还要指定库的路径，这个时候我们要用到编译器的  -L 选项指定路径。比如说我们有一个库在 &#x2F;home&#x2F;hoyt&#x2F;mylib 下，这样我们编译的时候还要加上<code>-L/home/hoyt/mylib</code>对于一些标准库来说，我们没有必要指出路径。只要它们在起缺省库的路径下就可以了。系统的缺省库的路径<code>/lib /usr/lib /usr/local/lib </code>在这三个路径下面的库，我们可以不指定路径。</p>
+<h3 id="程序的调试"><a href="#程序的调试" class="headerlink" title="程序的调试"></a>程序的调试</h3><p>我们编写的程序不太可能一次性就会成功的，在我们的程序当中，会出现许许多多我们想不到的错误，这个时候我们就要对我们的程序进行调试了。<br>最常用的调试软件是 gdb. 如果你想在图形界面下调试程序，那么你现在可以选择 xxgdb. 记得要在编译的时候加入 -g 选项. 关于 gdb 的使用可以看 gdb 的帮助文件。由于我没有用过这个软件，所以我也不能够说出如何使用。不过我不喜欢用 gdb. 跟踪一个程序是很烦的 事情，我一般用在程序当中输出中间变量的值来调试程序的。当然你可以选择自己的办法，没有必要去学别人的。现在有了许多 IDE 环境，里面已经自己带了调试 器了。你可以选择几个试一试找出自己喜欢的一个用。</p>
+<h3 id="头文件和系统求助"><a href="#头文件和系统求助" class="headerlink" title="头文件和系统求助"></a>头文件和系统求助</h3><p>有时候我们只知道一个函数的大概形式，不记得确切的表达式，或者是不记得着函数在那个头文件进行了说明。这个时候我们可以求助系统。<br>比如说我们想知道 fread 这个函数的确切形式，我们只要执行 man fread 系统就会输出着函数的详细解释的。和这个函数所在的头文件说明了。 如果我们要 write 这个函数的说明，当我们执行 man write 时，输出的结果却不是我们所需要的。 因为我们要的是 write 这个函数的说明，可是出来的却是 write 这个命令的说明。为了得到 write 的函数说明我们要用 man 2 write. 2 表示我们用的 write 这个函数是系统调用函数，还有一个我们常用的是 3 表示函数是 C 的库函数。<br>记住不管什么时候，man 都是我们的最好助手</p>
+<p><a href="https://so.csdn.net/so/search?q=Makefile&spm=1001.2101.3001.7020" title="Makefile">Makefile</a> 中<code> $(SRC:%.c=%.o)</code> 的含义：<strong>将 SRC 变量中所有以. c 结尾的文件名替换成对应的以. o 结尾的文件名，然后赋回给 SRC</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CROSS_COMPILE ?= arm-linux-gnueabihf-</span><br><span class="line"></span><br><span class="line">GCC := $(CROSS_COMPILE)gcc </span><br><span class="line"></span><br><span class="line">APP_TARGET = ./app_button</span><br><span class="line"></span><br><span class="line">INC_DIR = -I/  </span><br><span class="line">INC_DIR += -I./bsp/beep   </span><br><span class="line">INC_DIR += -I./bsp/clk   </span><br><span class="line">INC_DIR += -I./bsp/led  </span><br><span class="line">INC_DIR += -I./bsp/button </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">CFLAGS += $(INC_DIR)</span><br><span class="line"></span><br><span class="line">BEEP = \  </span><br><span class="line">    ./bsp/beep/beep.c \  </span><br><span class="line">    ./bsp/clk/clk.c \  </span><br><span class="line">    ./bsp/led/led.c \  </span><br><span class="line">    ./bsp/button/button.c</span><br><span class="line"></span><br><span class="line">MAIN = ./main.c</span><br><span class="line"></span><br><span class="line">SRC += $(MAIN)  </span><br><span class="line">SRC += $(BEEP)</span><br><span class="line"></span><br><span class="line">%.o:%.c  </span><br><span class="line">    $(GCC) -c $(CFLAGS) $^ -o $@</span><br><span class="line"></span><br><span class="line">SRCOBJ = $(SRC:.c=.o)</span><br><span class="line"></span><br><span class="line">all:$(APP_TARGET)  </span><br><span class="line">$(APP_TARGET): $(SRCOBJ)  </span><br><span class="line">    $(GCC) $(SRCOBJ) $(CFLAGS) -o $(APP_TARGET)</span><br><span class="line"></span><br><span class="line">clean:  </span><br><span class="line">    rm -f $(APP_TARGET) $(SRCOBJ)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile make</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MCU 与 MPU</title>
     <url>/2024/04/12/mcu%E4%B8%8Empu/</url>
     <content><![CDATA[<h1 id="MCU-与-MPU"><a href="#MCU-与-MPU" class="headerlink" title="MCU 与 MPU"></a>MCU 与 MPU</h1><p>MCU的全称是Mirco Controller Unit，MPU的全称叫Micro Processor Unit。<br>微控制器（单片机，Cortex-M0&#x2F;M3内核架构，没有内存管理单元MMU），早期8位8051系列主频不过10几MHz，flash 1-10k, ram 256&#x2F;512字节， 还是12个周期执行一条指令。而随着ARM的32位MCU的出现，采用ARM的M系列的MCU也开始逐步扩大市场。以ST、NXP公司的产品为主要代表，stm32fl103, flash 32-128k, ram 10-48k。但是这些ARM系列MCU的主频一般也是在几十MHz到100多MHz的量级。<br>随着物理网发展，一些带有wifi&#x2F;蓝牙的SOC,弥补MCU与MPU的空白，例如 ESP3 频率在240MHz, 520KB SRAM，448KB ROM，同时支持外部4MB-16 SPI Flash. 还有树莓派 pico rp2040,双核 Arm Cortex-M0 + @ 133MHz<br>芯片内置 264KB SRAM 和 2MB 的板载闪存。。</p>
@@ -1880,58 +1972,6 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </categories>
       <tags>
         <tag>freertos linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>makefile 文件使用</title>
-    <url>/2024/04/14/makefile%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>Makefile的编写 </p>
-<span id="more"></span>
-<h3 id="源程序编译"><a href="#源程序编译" class="headerlink" title="源程序编译"></a>源程序编译</h3><ol>
-<li>源程序的编译<br>在 Linux 下面，如果要编译一个 C 语言源程序，我们要使用 GNU 的 gcc 编译器。 下面我们以一个实例来说明如何使用 gcc 编译器。<br>假设我们有下面一个非常简单的源程序 (hello.c)：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;Hello Linux\n&quot;)；  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>要编译这个程序，我们只要在命令行下执行：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -o hello hello.c</span><br></pre></td></tr></table></figure>
-
-
-<p>gcc 编译器就会为我们生成一个 hello 的可执行文件。执行.&#x2F;hello 就可以看到程序的输出结果了。命令行中 gcc 表示我们是用 gcc 来编译我们的源程序，-o 选项表示我们要求编译器给我们输出的可执行文件名为 hello 而 hello.c 是我们的源程序文件。<br>gcc 编译器有许多选项，一般来说我们只要知道其中的几个就够了。 -o 选项我们已经知道了，表示我们要求输出的可执行文件名。 -c 选项表示我们只要求编译器输出目标代码，而不必要输出可执行文件。 -g 选项表示我们要求编译器在编译的时候提供我们以后对程序进行调试的信息。<br>知道了这三个选项，我们就可以编译我们自己所写的简单的源程序了，如果你想要知道更多的选项，可以查看 gcc 的帮助文档，那里有着许多对其它选项的详细说明。</p>
-<p>2.Makefile 的编写<br>假设我们有下面这样的一个程序，源代码如下：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* main.c */  </span><br><span class="line">#include &quot;mytool1.h&quot;  </span><br><span class="line">#include &quot;mytool2.h&quot;  </span><br><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">    mytool1_print(&quot;hello&quot;)；  </span><br><span class="line">    mytool2_print(&quot;hello&quot;)；  </span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">/* mytool1.h */  </span><br><span class="line">#ifndef _MYTOOL_1_H  </span><br><span class="line">#define _MYTOOL_1_H  </span><br><span class="line">void mytool1_print(char *print_str)；  </span><br><span class="line">#endif  </span><br><span class="line">/* mytool1.c */  </span><br><span class="line">#include &quot;mytool1.h&quot;  </span><br><span class="line">void mytool1_print(char *print_str)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;This is mytool1 print %s\n&quot;，print_str)；  </span><br><span class="line">&#125;  </span><br><span class="line">/* mytool2.h */  </span><br><span class="line">#ifndef _MYTOOL_2_H  </span><br><span class="line">#define _MYTOOL_2_H  </span><br><span class="line">void mytool2_print(char *print_str)；  </span><br><span class="line">#endif  </span><br><span class="line">/* mytool2.c */  </span><br><span class="line">#include &quot;mytool2.h&quot;  </span><br><span class="line">void mytool2_print(char *print_str)  </span><br><span class="line">&#123;  </span><br><span class="line">    printf(&quot;This is mytool2 print %s\n&quot;，print_str)；  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>当然由于这个程序是很短的我们可以这样来编译 ：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -c main.c  </span><br><span class="line">gcc -c mytool1.c  </span><br><span class="line">gcc -c mytool2.c  </span><br><span class="line">gcc -o main main.o mytool1.o mytool2.o</span><br></pre></td></tr></table></figure>
-
-<p>这样的话我们也可以产生 main 程序，而且也不时很麻烦。但是如果我们考虑一下如果有一天我们修改了其中的一个文件 (比如说 mytool1.c) 那么我们 难道还要重新输入上面的命令? 也许你会说，这个很容易解决啊，我写一个 SHELL 脚本，让她帮我去完成不就可以了。是的对于这个程序来说，是可以起到作用 的。但是当我们把事情想的更复杂一点，如果我们的程序有几百个源程序的时候，难道也要编译器重新一个一个的去编译?<br>为此，聪明的程序员们想出了一个很好的工具来做这件事情，这就是 make。我们只要执行以下 make，就可以把上面的问题解决掉。在我们执行 make 之 前，我们要先编写一个非常重要的文件。–Makefile。对于上面的那个程序来说，可能的一个 Makefile 的文件是：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o main main.o mytool1.o mytool2.o  </span><br><span class="line">main.o：main.c mytool1.h mytool2.h  </span><br><span class="line">gcc -c main.c  </span><br><span class="line">mytool1.o：mytool1.c mytool1.h  </span><br><span class="line">gcc -c mytool1.c  </span><br><span class="line">mytool2.o：mytool2.c mytool2.h  </span><br><span class="line">gcc -c mytool2.c</span><br></pre></td></tr></table></figure>
-
-<p>有了这个 Makefile 文件，不过我们什么时候修改了源程序当中的什么文件，我们只要执行 make 命令，我们的编译器都只会去编译和我们修改的文件有关的文件，其它的文件她连理都不想去理的。<br>下面我们学习 Makefile 是如何编写的。<br>在 Makefile 中也 #开始的行都是注释行. Makefile 中最重要的是描述文件的依赖关系的说明。一般的格式是：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">target：components  </span><br><span class="line">TAB rule</span><br></pre></td></tr></table></figure>
-
-<p>第一行表示的是依赖关系。第二行是规则。<br>比如说我们上面的那个 Makefile 文件的第二行  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main：main.o mytool1.o mytool2.o</span><br></pre></td></tr></table></figure>
-<p>表示我们的目标 (target)main 的依赖对象(components) 是 main.o mytool1.o mytool2.o 当倚赖的对象在目标修改后修改的话，就要去执行规则一行所指定的命令。就象我们的上面那个 Makefile 第三行所说的一样要执行 gcc -o main main.o mytool1.o mytool2.o 注意规则一行中的 TAB 表示那里是一个 TAB 键  </p>
-<h3 id="变量-，-，"><a href="#变量-，-，" class="headerlink" title="变量 $@，$^，$&lt;"></a>变量 $@，$^，$&lt;</h3><p>Makefile 有三个非常有用的变量。分别是 $@，$^，$&lt; 代表的意义分别是：<br>$@– 目标文件，$^– 所有的依赖文件，$&lt;– 第一个依赖文件。<br>如果我们使用上面三个变量，那么我们可以简化我们的 Makefile 文件为：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这是简化后的 Makefile  </span><br><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o $@ $^  </span><br><span class="line">main.o：main.c mytool1.h mytool2.h  </span><br><span class="line">gcc -c $&lt;  </span><br><span class="line">mytool1.o：mytool1.c mytool1.h  </span><br><span class="line">gcc -c $&lt;  </span><br><span class="line">mytool2.o：mytool2.c mytool2.h  </span><br><span class="line">gcc -c $&lt;  </span><br></pre></td></tr></table></figure>
-
-<p>经过简化后我们的 Makefile 是简单了一点，不过人们有时候还想简单一点。这里我们学习一个 Makefile 的缺省规则<br>.c.o：<br><code>gcc -c $&lt;</code><br>这个规则表示所有的 .o 文件都是依赖与相应的. c 文件的。例如 mytool.o 依赖于 mytool.c 这样 Makefile 还可以变为：  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这是再一次简化后的 Makefile  </span><br><span class="line">main：main.o mytool1.o mytool2.o  </span><br><span class="line">gcc -o $@ $^  </span><br><span class="line">.c.o：  </span><br><span class="line">gcc -c $&lt;</span><br></pre></td></tr></table></figure>
-<p>好了，我们的 Makefile 也差不多了，如果想知道更多的关于 Makefile 规则可以查看相应的文档。</p>
-<h3 id="程序库的链接"><a href="#程序库的链接" class="headerlink" title="程序库的链接"></a>程序库的链接</h3><p>试着编译下面这个程序  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* temp.c */  </span><br><span class="line">#include  </span><br><span class="line">int main(int argc，char **argv)  </span><br><span class="line">&#123;  </span><br><span class="line">double value；  </span><br><span class="line">printf(&quot;Value：%f\n&quot;，value)；  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个程序相当简单，但是当我们用 gcc -o temp temp.c 编译时会出现下面所示的错误。  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/tmp/cc33Kydu.o： In function `main&#x27;：  </span><br><span class="line">/tmp/cc33Kydu.o(.text+0xe)： undefined reference to `log&#x27;  </span><br><span class="line">collect2： ld returned 1 exit status</span><br></pre></td></tr></table></figure>
-
-<p>出现这个错误是因为编译器找不到 log 的具体实现。虽然我们包括了正确的头文件，但是我们在编译的时候还是要连接确定的库。在 Linux 下，为了使用数学 函数，我们必须和数学库连接，为此我们要加入 -lm 选项。 <code>gcc -o temp temp.c -lm</code> 这样才能够正确的编译。也许有人要问，前面我们用 printf 函数的时候怎么没有连接库呢? 是这样的，对于一些常用的函数的实现，gcc 编译器会自 动去连接一些常用库，这样我们就没有必要自己去指定了。有时候我们在编译程序的时候还要指定库的路径，这个时候我们要用到编译器的  -L 选项指定路径。比如说我们有一个库在 &#x2F;home&#x2F;hoyt&#x2F;mylib 下，这样我们编译的时候还要加上<code>-L/home/hoyt/mylib</code>对于一些标准库来说，我们没有必要指出路径。只要它们在起缺省库的路径下就可以了。系统的缺省库的路径<code>/lib /usr/lib /usr/local/lib </code>在这三个路径下面的库，我们可以不指定路径。</p>
-<h3 id="程序的调试"><a href="#程序的调试" class="headerlink" title="程序的调试"></a>程序的调试</h3><p>我们编写的程序不太可能一次性就会成功的，在我们的程序当中，会出现许许多多我们想不到的错误，这个时候我们就要对我们的程序进行调试了。<br>最常用的调试软件是 gdb. 如果你想在图形界面下调试程序，那么你现在可以选择 xxgdb. 记得要在编译的时候加入 -g 选项. 关于 gdb 的使用可以看 gdb 的帮助文件。由于我没有用过这个软件，所以我也不能够说出如何使用。不过我不喜欢用 gdb. 跟踪一个程序是很烦的 事情，我一般用在程序当中输出中间变量的值来调试程序的。当然你可以选择自己的办法，没有必要去学别人的。现在有了许多 IDE 环境，里面已经自己带了调试 器了。你可以选择几个试一试找出自己喜欢的一个用。</p>
-<h3 id="头文件和系统求助"><a href="#头文件和系统求助" class="headerlink" title="头文件和系统求助"></a>头文件和系统求助</h3><p>有时候我们只知道一个函数的大概形式，不记得确切的表达式，或者是不记得着函数在那个头文件进行了说明。这个时候我们可以求助系统。<br>比如说我们想知道 fread 这个函数的确切形式，我们只要执行 man fread 系统就会输出着函数的详细解释的。和这个函数所在的头文件说明了。 如果我们要 write 这个函数的说明，当我们执行 man write 时，输出的结果却不是我们所需要的。 因为我们要的是 write 这个函数的说明，可是出来的却是 write 这个命令的说明。为了得到 write 的函数说明我们要用 man 2 write. 2 表示我们用的 write 这个函数是系统调用函数，还有一个我们常用的是 3 表示函数是 C 的库函数。<br>记住不管什么时候，man 都是我们的最好助手</p>
-<p><a href="https://so.csdn.net/so/search?q=Makefile&spm=1001.2101.3001.7020" title="Makefile">Makefile</a> 中<code> $(SRC:%.c=%.o)</code> 的含义：<strong>将 SRC 变量中所有以. c 结尾的文件名替换成对应的以. o 结尾的文件名，然后赋回给 SRC</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CROSS_COMPILE ?= arm-linux-gnueabihf-</span><br><span class="line"></span><br><span class="line">GCC := $(CROSS_COMPILE)gcc </span><br><span class="line"></span><br><span class="line">APP_TARGET = ./app_button</span><br><span class="line"></span><br><span class="line">INC_DIR = -I/  </span><br><span class="line">INC_DIR += -I./bsp/beep   </span><br><span class="line">INC_DIR += -I./bsp/clk   </span><br><span class="line">INC_DIR += -I./bsp/led  </span><br><span class="line">INC_DIR += -I./bsp/button </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">CFLAGS += $(INC_DIR)</span><br><span class="line"></span><br><span class="line">BEEP = \  </span><br><span class="line">    ./bsp/beep/beep.c \  </span><br><span class="line">    ./bsp/clk/clk.c \  </span><br><span class="line">    ./bsp/led/led.c \  </span><br><span class="line">    ./bsp/button/button.c</span><br><span class="line"></span><br><span class="line">MAIN = ./main.c</span><br><span class="line"></span><br><span class="line">SRC += $(MAIN)  </span><br><span class="line">SRC += $(BEEP)</span><br><span class="line"></span><br><span class="line">%.o:%.c  </span><br><span class="line">    $(GCC) -c $(CFLAGS) $^ -o $@</span><br><span class="line"></span><br><span class="line">SRCOBJ = $(SRC:.c=.o)</span><br><span class="line"></span><br><span class="line">all:$(APP_TARGET)  </span><br><span class="line">$(APP_TARGET): $(SRCOBJ)  </span><br><span class="line">    $(GCC) $(SRCOBJ) $(CFLAGS) -o $(APP_TARGET)</span><br><span class="line"></span><br><span class="line">clean:  </span><br><span class="line">    rm -f $(APP_TARGET) $(SRCOBJ)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile make</tag>
       </tags>
   </entry>
   <entry>
@@ -2329,6 +2369,146 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </categories>
       <tags>
         <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>有限状态机 FSM</title>
+    <url>/2024/05/19/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/</url>
+    <content><![CDATA[<h1 id="Mini-FSM"><a href="#Mini-FSM" class="headerlink" title="Mini FSM"></a>Mini FSM</h1><p>有限状态机 (Finite State Machine，简称 FSM)，<strong>表示有限个状态以及在这些状态之间的转移和动作等行为的处理模型</strong>。在任何给定的时间点，有限状态机都处于某一特定状态，并且可以根据当前状态和输入条件，从当前状态转移到另一个状态。有限状态机相关的核心概念主要包括：</p>
+<ul>
+<li>**实体 (Entity)**：状态机的主体和作用对象，它的状态可以改变</li>
+<li><strong>状态 (State)<strong>：实体在某一特定时间点的情况，可分为</strong>现态 (当前状态)<strong>、</strong>次态 (跳转新状态)</strong></li>
+<li>**事件 (Event)**：导致状态转换的触发器和条件</li>
+<li>**动作 (Action)**：状态转换时执行的操作，可以发生在状态转换前、转换中、转换后阶段</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/3365be5eb7155d7dd44de5f999dd0115.png"></p>
+<p>状态转移图</p>
+<p>有限状态机除了使用状态转移图表示，也可以使用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://zh.wikipedia.org/wiki/%25E7%258A%25B6%25E6%2580%2581%25E8%25BD%25AC%25E7%25A7%25BB%25E8%25A1%25A8&source=article&objectId=2418561">状态转移表</a>呈现，展示基于当前状态和其他输入，要移动到什么状态的表格。例如：当前状态（B）和条件（Y）的组合指示出下一个状态（C）。</p>
+<p>很多调度系统和工作流系统都会内置状态机管理，用于维护状态转移的事件处理。例如，YARN(资源调度系统) 将各种处理逻辑抽象为<strong>事件</strong>和对应的<strong>事件调度器</strong>。每类事件的处理过程可分割成多个步骤，用<strong>有限状态机</strong>表示。</p>
+<p>处理请求作为事件进入系统，由<strong>中央异步调度器 (Async-Dispatcher)</strong> 负责传递给相应**事件调度器 (Event Handler)**。事件调度器可能将事件转发给另外一个事件调度器，也可能转发给一个带有有限状态机的事件处理器，其处理结果也以事件的形式输出给中央异步调度器。而新的事件会再次被中央异步调度器转发给下一个事件调度器，直至达到终止条件才处理完成。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/5b8b6322e33067a2f05a828cc3e9fae3.png"></p>
+<p>YARN 事件处理模型</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>有限状态机有不同的实现方式，具体取决于具体的应用场景，常见的实现方式有：</p>
+<ul>
+<li><strong>Switch Case &#x2F; 枚举实现</strong>：基于枚举类型表示状态，定义一个方法来处理状态转换，转移过程可基于 Switch 匹配语句实现</li>
+<li><strong>查找表</strong>：基于二维数组或者哈希表维护状态转移表，其中一维表示<strong>当前状态</strong>，另一维表示**输入条件 (时间)**，表格中的元素则表示下一个状态。该方法处理简单便捷，适合非复杂场景</li>
+<li><strong>状态模式</strong>：State Pattern，是一种行为设计模式。将对象的状态分离并封装到专用的状态类，使得对象状态可灵活变化，当状态改变时会相应改变对象的行为</li>
+<li><strong>状态机框架</strong>：基于现成的状态机库或框架处理，功能较丰富且完整</li>
+</ul>
+<h3 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h3><p>每个状态都是一个对象，这些对象共享一个公共状态接口。<strong>状态机持有一个状态对象的引用，所有的事件处理和动作执行都委托给这个状态对象</strong>。当状态转移时，状态机将引用切换到另一个状态对象。</p>
+<ul>
+<li><strong>Context</strong>：**上下文 (状态机)**，保存具体状态的引用，通过状态接口与状态对象交互，提供设置器用于接收新的状态对象</li>
+<li><strong>State</strong>：<strong>状态</strong>，以接口类的形式定义状态的公共方法，用于事件处理和动作执行</li>
+<li><strong>Concrete States</strong>：<strong>具体状态</strong>，继承 State，实现特定状态对应的事件处理方法。可保存 Context 的反向引用，从 Context 获取所需信息并触发状态转移</li>
+</ul>
+<p>其中，<strong>Context 和具体状态都可以设置 Context 的下个状态</strong>， 并通过触发变更 Context 的状态引用实现状态转移。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/232bd1e6296adf6eb7350d5b39a0f625.png"></p>
+<p>状态模式结构</p>
+<h3 id="状态机框架"><a href="#状态机框架" class="headerlink" title="状态机框架"></a>状态机框架</h3><h4 id="Spring-Statemachine"><a href="#Spring-Statemachine" class="headerlink" title="Spring Statemachine"></a>Spring Statemachine</h4><p>Spring Statemachine (SSM) 是一个框架，允许在 Spring 应用程序中使用传统的状态机概念。SSM 提供以下功能：</p>
+<ul>
+<li>易于使用的一级状态机，适用于简单的用例</li>
+<li>分层状态机结构，以简化复杂的状态配置</li>
+<li>状态机区域提供更复杂的状态配置</li>
+<li>触发器 (triggers)、转换(transitions)、检测器(guards) 和动作 (actions) 的使用，其中，transitions 指示状态变更，guards 检测是否满足从一个状态切换到另外一个状态的条件</li>
+<li>类型安全的配置适配器</li>
+<li>状态机事件监听器</li>
+<li>Spring IoC 集成将 bean 与状态机相关联</li>
+</ul>
+<p>更多详情可查看：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://springref.com/docs/spring-statemachine&source=article&objectId=2418561">官方文档</a></p>
+<h4 id="Cola-StateMachine"><a href="#Cola-StateMachine" class="headerlink" title="Cola StateMachine"></a>Cola StateMachine</h4><p><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/alibaba/COLA&source=article&objectId=2418561">Cola</a>：Clean Object-Oriented and Layered Architecture 的缩写，<strong>代表 “整洁面向对象分层架构”。</strong>COLA 分为两个部分，<strong>COLA 架构</strong>和 <strong>COLA 组件，</strong>其中 <strong>StateMachine 组件</strong>实现了有限状态机功能。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/2b17b088f8716f01414a28542700dcee.png"></p>
+<p><strong>Cola 参考 Spring Statemachine 设计思想进行简化</strong>，有限状态机的核心概念主要包括：</p>
+<ul>
+<li>StateMachine：状态机，维护状态机的上下文</li>
+<li>State：状态</li>
+<li>Event：事件，状态由事件触发，引起变化</li>
+<li>Transition：流转，表示从一个状态到另一个状态<ul>
+<li>External Transition：外部流转，两个不同状态之间的流转</li>
+<li>Internal Transition：内部流转，同一个状态之间的流转</li>
+</ul>
+</li>
+<li>Condition：条件，表示是否允许到达某个状态</li>
+<li>Action：动作，到达某个状态之后，可以做什么</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/e6dc15b9b38a6fef79eedf73c45d0170.png"></p>
+<p>核心语义模型</p>
+<p>更多详情可查看：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://blog.csdn.net/significantfrank/article/details/104996419&source=article&objectId=2418561">官方说明文档</a></p>
+<h4 id="其他框架"><a href="#其他框架" class="headerlink" title="其他框架"></a>其他框架</h4><p>常见的其他状态机开源框架有：</p>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/hekailiang/squirrel&source=article&objectId=2418561"><strong>Squirrel-foundation</strong></a>：一个基于 Java 的轻量级状态机库</li>
+<li><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/dotnet-state-machine/stateless&source=article&objectId=2418561"><strong>Stateless</strong></a>：NET 中基于 C# 实现的轻量级状态库，支持各种类型作为状态和触发事件、支持状态继承、支持状态进入 &#x2F; 离开事件、支持条件状态转移、支持状态 &#x2F; 转移查询，对应的 Java 版本实现：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/stateless4j/stateless4j&source=article&objectId=2418561">Stateless4j</a>。</li>
+</ul>
+<h2 id="轻量级实现"><a href="#轻量级实现" class="headerlink" title="轻量级实现"></a>轻量级实现</h2><h3 id="设计说明"><a href="#设计说明" class="headerlink" title="设计说明"></a>设计说明</h3><p>在业务功能实现时，遇到状态流转的管理。针对状态机进行选择，遇到几个问题：</p>
+<ul>
+<li><strong>复杂性</strong>：开源系统丰富的功能，有很多高级转换功能，但对于我们系统来说太多复杂且不必须，引入会增加系统复杂性</li>
+<li><strong>性能问题</strong>：开源的状态机都是有状态的（Stateful）的，对应实例线程不安全，在使用过程中存在性能问题</li>
+</ul>
+<p>Cola StateMachine 的状态机本身是无状态（Stateless）的，且实现较简洁，<strong>因此选择基于 Cola StateMachine 和 Spring StateMachine 的设计思想进行简化。</strong>在系统内部内嵌了简单的有限状态机管理，并根据业务需求扩展了 Action 执行后的返回结果 ActionResult。其中 Action 的执行使用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://blog.csdn.net/ZYC88888/article/details/103679605&source=article&objectId=2418561">响应式编程</a>，<strong>基于 Flux 和 Mono 实现</strong>。</p>
+<p>简化的 Mini-FSM 有限状态机的主要接口定义包括：</p>
+<ul>
+<li>StateMachine：状态机，维护状态机的上下文</li>
+<li>StateMachineEventResult：状态机事件转换的返回结果，包括获取当前状态、Action 结果等</li>
+<li>State：状态，<strong>传递事件信息并用于状态转换</strong>，FSM 核心处理，<strong>StateContext</strong> 反向引用状态机的上下文</li>
+<li>Event：事件，可基于枚举类定义</li>
+<li>Action：动作，对应具体事件的执行处理</li>
+<li>ActionResult：事件执行的返回结果，封装结果详情</li>
+<li>Guard：条件，表示是否允许到达某个状态</li>
+<li><strong>Transition</strong>：流转，表示从一个状态到另一个状态，包括 TransitionKind 类型，TransitionData 数据</li>
+</ul>
+<h3 id="实现架构"><a href="#实现架构" class="headerlink" title="实现架构"></a>实现架构</h3><p>Mini-FSM 框架实现如下所示：<strong>用户基于 Event 事件触发当前状态转移并返回转移结果</strong>。</p>
+<ul>
+<li><strong>sendEvent</strong>：Action 接受 sendEvent 请求处理，封装封装 transition 信息进行 transit 操作</li>
+<li><strong>transit</strong>：基于 TransitionData 处理，1. 基于 Guard 校验执行条件；2. 基于 Action 触发执行 Apply 并返回执行结果</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/0a017ec73628ffb7bae7ea4aebe02455.png"></p>
+<p>Transition 流转类型分为两类：</p>
+<ul>
+<li>EXTERNAL：外部流转，Event 执行变更状态</li>
+<li>INTERNAL：内部流转，Event 执行不变更状态，现态与次态保持一致，是 EXTERNAL 流转的特例</li>
+</ul>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><blockquote>
+<p>更多可参考 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/YiwenWu/mini-fsm&source=article&objectId=2418561">Mini-FSM</a> 中的单元测试类 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/YiwenWu/mini-fsm/blob/main/src/test/java/com/github/minifsm/StateMachineTest.java&source=article&objectId=2418561">StateMachineTest</a>。</p>
+</blockquote>
+<h4 id="1-定义状态与事件"><a href="#1-定义状态与事件" class="headerlink" title="1. 定义状态与事件"></a>1. <strong>定义状态与事件</strong></h4><p>可自定义使用枚举类定义 <strong>State</strong> 状态 和 <strong>Event</strong> 事件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enum State &#123;</span><br><span class="line">    S1, S2, S3</span><br><span class="line">&#125;</span><br><span class="line">enum Event &#123;</span><br><span class="line">    E1, E23, E22, E13</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-构建状态机"><a href="#2-构建状态机" class="headerlink" title="2. 构建状态机"></a>2. <strong>构建状态机</strong></h4><p>本示例中状态机配置定义包括：</p>
+<ol>
+<li>S1 基于 E1 的内部流转</li>
+<li>S2 → S3 基于 E23 的外部流转</li>
+<li>模拟 S1 基于 E13 的<strong>异常流转</strong></li>
+<li>模拟 S3 流转 <strong>Guard 条件校验不通过</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Builder&lt;State, Event&gt; builder = StateMachineBuilder.builder();</span><br><span class="line">// FSM状态变换定义</span><br><span class="line">builder.configureTransitions()</span><br><span class="line">    .withInternal() //1.构建内部流转 S1</span><br><span class="line">    .source(State.S1)</span><br><span class="line">    .event(Event.E1)</span><br><span class="line">    .action(context -&gt; &#123;</span><br><span class="line">        sleep(2000);</span><br><span class="line">        assert context.getEvent() == Event.E1;</span><br><span class="line">        return ActionResult.of();</span><br><span class="line">    &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withExternal() //2.构建外部流转 S2 → S3</span><br><span class="line">    .source(State.S2)</span><br><span class="line">    .target(State.S3)</span><br><span class="line">    .event(Event.E23)</span><br><span class="line">    .action(context -&gt; &#123;</span><br><span class="line">        assert context.getEvent() == Event.E23;</span><br><span class="line">        MessageHeaders headers = context.getMessage().getHeaders();</span><br><span class="line">        String result = ((String) headers.get(&quot;info&quot;)) + context.getEvent();</span><br><span class="line">        return ActionResult.of(ImmutableMap.of(&quot;result&quot;, result));</span><br><span class="line">    &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withInternal()</span><br><span class="line">    .source(State.S1)</span><br><span class="line">    .event(Event.E13) //3.构建内部流转 S1, 模拟异常回滚</span><br><span class="line">    .action(</span><br><span class="line">        context -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;mock failed case&quot;);</span><br><span class="line">            throw new RuntimeException(&quot;event e13 error&quot;);</span><br><span class="line">        &#125;,</span><br><span class="line">        context -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;Drop table Rollback&quot;);</span><br><span class="line">            return ActionResult.of(ImmutableMap.of(&quot;result&quot;, &quot;drop table back&quot;));</span><br><span class="line">        &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withInternal()</span><br><span class="line">    .source(State.S3)</span><br><span class="line">    .event(Event.E22)</span><br><span class="line">    .guard(context -&gt; context.getEvent() == Event.E13) //4.构建内部流转S3,模拟guard失败</span><br><span class="line">    .action(context -&gt; ActionResult.of());</span><br><span class="line">//构建FSM状态机</span><br><span class="line">StateMachine&lt;State, Event&gt; stateMachine = builder.build();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-执行-Event-事件"><a href="#3-执行-Event-事件" class="headerlink" title="3. 执行 Event 事件"></a>3. <strong>执行 Event 事件</strong></h4><p>(1). 单个 Event 事件执行，没有返回结果场景</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MessageHeaders headers = new MessageHeaders(ImmutableMap.of(&quot;info&quot;, &quot;123456&quot;));</span><br><span class="line">final StateMachineEventResult&lt;State, Event&gt; inner =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S1, Event.E1, headers));</span><br><span class="line">assert inner.getResultType() == ResultType.ACCEPTED;</span><br><span class="line">assert inner.getState() == State.S1;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(2). 单个 Event 事件执行，<strong>具有返回执行结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">final StateMachineEventResult&lt;State, Event&gt; external =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S2, Event.E23, headers));</span><br><span class="line">assert external.getState() == State.S3;</span><br><span class="line">ActionResult actionResult = external.getActionResults().iterator().next();//获取结果</span><br><span class="line">assertEquals(&quot;123456E23&quot;, actionResult.infos().get(&quot;result&quot;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(3). 多个 Event 事件 <strong>同步执行，默认执行方式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;StateMachineEventResult&lt;State, Event&gt;&gt; results = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)));</span><br><span class="line">assert results.stream().noneMatch(result -&gt; result.getResultType() == ResultType.DENIED);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(4). 多个 Event 事件 <strong>异步执行</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;StateMachineEventResult&lt;State, Event&gt;&gt; async = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)), </span><br><span class="line">    true); //指定多个事件异步执行</span><br><span class="line">assert async.stream().noneMatch(result -&gt; result.getResultType() == ResultType.DENIED);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(5). <strong>失败事件执行</strong>，结果类型为 DENIED</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">final StateMachineEventResult&lt;State, Event&gt; failed =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S1, Event.E13, headers));</span><br><span class="line">assert failed.getResultType() == ResultType.DENIED;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(6). 多个事件执行，<strong>事件之间相互隔离</strong>，失败事件不影响其他事件执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">results = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E13, headers),</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)));</span><br><span class="line">assert results.size() ==3;</span><br><span class="line">//事件失败的数量=1</span><br><span class="line">assert results.stream().filter(result -&gt; result.getResultType() == ResultType.DENIED).count() == 1;</span><br><span class="line">//事件成功的数量=2</span><br><span class="line">assert results.stream().filter(result -&gt; result.getResultType() == ResultType.ACCEPTED).count() == 2;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>(7). <strong>Guad 校验不通过</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">StateMachineEventResult&lt;State, Event&gt; guard =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S3, Event.E22, headers));</span><br><span class="line">assert guard.getResultType() == ResultType.DENIED;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>有限状态机对于复杂的多状态流转管理是有效的，但状态机的执行流程引入会增加系统的复杂性和提升维护难度，因此不能滥用。对于简单的状态流转，例如只有 3 个状态变换，且执行操作单一，更建议直接使用 Switch Case &#x2F; 枚举实现。最后，希望通过本文可了解到 FSM 框架的一些设计思路。</p>
+]]></content>
+      <categories>
+        <category>MCU</category>
+      </categories>
+      <tags>
+        <tag>arm mcu</tag>
       </tags>
   </entry>
   <entry>
