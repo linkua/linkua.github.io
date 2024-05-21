@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CMSIS_v2 FreeRTOS</title>
-    <url>/2024/05/20/CMSIS-FreeRTOS/</url>
-    <content><![CDATA[<p>#include &lt;cmsis_os2.h&gt;</p>
-<h2 id="thread"><a href="#thread" class="headerlink" title="thread"></a>thread</h2><h3 id="osKernelInitialize"><a href="#osKernelInitialize" class="headerlink" title="osKernelInitialize();"></a>osKernelInitialize();</h3><h3 id="osThreadId-t"><a href="#osThreadId-t" class="headerlink" title="osThreadId_t"></a>osThreadId_t</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">osThreadId_t defaultTaskHandle;</span><br></pre></td></tr></table></figure>
-
-<h3 id="osThreadAttr-t"><a href="#osThreadAttr-t" class="headerlink" title="osThreadAttr_t"></a>osThreadAttr_t</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  const osThreadAttr_t defaultTask_attributes = &#123;</span><br><span class="line">  .name = &quot;defaultTask&quot;,</span><br><span class="line">  .stack_size = 128 * 4,</span><br><span class="line">  .priority = (osPriority_t) osPriorityNormal,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="osThreadNew"><a href="#osThreadNew" class="headerlink" title="osThreadNew()"></a>osThreadNew()</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &amp;defaultTask_attributes);</span><br></pre></td></tr></table></figure>
-
-<h3 id="osKernelStart"><a href="#osKernelStart" class="headerlink" title="osKernelStart()"></a>osKernelStart()</h3><h2 id="semaphore"><a href="#semaphore" class="headerlink" title="semaphore"></a>semaphore</h2><h3 id="osSemaphoreId-t"><a href="#osSemaphoreId-t" class="headerlink" title="osSemaphoreId_t"></a>osSemaphoreId_t</h3><h3 id="osSemaphoreNew"><a href="#osSemaphoreNew" class="headerlink" title="osSemaphoreNew()"></a>osSemaphoreNew()</h3><h3 id="osSemaphoreRelease"><a href="#osSemaphoreRelease" class="headerlink" title="osSemaphoreRelease()"></a>osSemaphoreRelease()</h3><h3 id="osSemaphoreAcquire"><a href="#osSemaphoreAcquire" class="headerlink" title="osSemaphoreAcquire()"></a>osSemaphoreAcquire()</h3>]]></content>
-      <categories>
-        <category>MCU</category>
-      </categories>
-      <tags>
-        <tag>arm RTOS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>嵌入式 C/C++ 开发</title>
     <url>/2024/05/18/C%E8%BF%90%E8%A1%8C%E5%BA%93/</url>
     <content><![CDATA[<h1 id="嵌入式开发"><a href="#嵌入式开发" class="headerlink" title="嵌入式开发"></a>嵌入式开发</h1><p>嵌入式设备开发中，应用层开发、算法开发中使用C++，底层的操作系统、音视频开发使用C语言；<br>应用开发使用C++(编译使用g++),驱动使用C(编译使用g++);</p>
@@ -31,13 +14,75 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="编译工具链"><a href="#编译工具链" class="headerlink" title="编译工具链"></a>编译工具链</h2><p>从源文件的编写到二进制代码，需要经过汇编器 as、C 编译器 gcc、C++编译器 g++、链接器 ld、二进制转换工具 objcopy。<br>编译基于 Arm 平台的非 linux 程序的工具链位arm-none-eabi-*。<br>(gcc for arm 工具链使用)(<a href="https://blog.csdn.net/fdcp123/article/details/114537469">https://blog.csdn.net/fdcp123/article/details/114537469</a>)</p>
-<h2 id="C-运行时库"><a href="#C-运行时库" class="headerlink" title="C 运行时库"></a>C 运行时库</h2><p>C&#x2F;C++运行时库是一组预先编写好的函数和类，用于支持程序的运行时环境。<strong>运行时库包括内存管理、字符串操作、数学函数、输入&#x2F;输出操作等常用功能。</strong>它们的主要目的是提供程序运行所需的基本功能，以便程序员可以专注于实现应用程序的核心功能。C&#x2F;C++运行时库通常由编译器提供，例如GCC、Microsoft Visual Studio等。<br><strong>操作系统在装载可执行文件后，将把控制权交付给运行库的程序入口函数。</strong><br>因此，程序首先运行的代码并不是main函数，而是负责为main函数执行创造环境，并负责调用main的入口函数（Entry Point）。main函数返回的值也会被这个入口函数所记录，然后调用atexit注册的函数，最终结束进程。</p>
+<h2 id="编译工具链"><a href="#编译工具链" class="headerlink" title="编译工具链"></a>编译工具链</h2><p>从源文件的编写到二进制代码，需要经过汇编器 as、C 编译器 gcc、C++编译器 g++、链接器 ld、二进制转换工具 objcopy。<br>编译工具链与平台相关，例如 linux-GNU GCC Windows-visual studio<br>编译基于 Arm 平台的非 linux 程序的工具链位arm-none-eabi-*。<br>(gcc for arm 工具链使用)(<a href="https://blog.csdn.net/fdcp123/article/details/114537469">https://blog.csdn.net/fdcp123/article/details/114537469</a>)</p>
+<h2 id="C-运行时库"><a href="#C-运行时库" class="headerlink" title="C 运行时库"></a>C 运行时库</h2><p><strong>运行库标头文件提供 ANSI&#x2F;ISO C 标准推荐样式的函数声明</strong>。<br>C&#x2F;C++运行时库是一组预先编写好的函数和类，用于支持程序的运行时环境。<strong>运行时库包括内存管理、字符串操作、数学函数、输入&#x2F;输出操作等常用功能。</strong>它们的主要目的是提供程序运行所需的基本功能，以便程序员可以专注于实现应用程序的核心功能。<strong>C&#x2F;C++运行时库通常由编译器提供</strong>，例如GCC、Microsoft Visual Studio等。<br><strong>操作系统在装载可执行文件后，将把控制权交付给运行库的程序入口函数。</strong><br>因此，程序首先运行的代码并不是main函数，而是负责为main函数执行创造环境，并负责调用main的入口函数（Entry Point）。main函数返回的值也会被这个入口函数所记录，然后调用atexit注册的函数，最终结束进程。</p>
+<h3 id="UCRT库-MSVC-工具集-cl-exe"><a href="#UCRT库-MSVC-工具集-cl-exe" class="headerlink" title="UCRT库  MSVC 工具集(cl.exe)"></a>UCRT库  MSVC 工具集(cl.exe)</h3><p>UCRT 还实现了 POSIX.1（ISO&#x2F;IEC 9945-1:1996，POSIX 系统应用程序编程接口）C 库的大型子集。<br>但不完全符合任何特定的 POSIX 标准。 UCRT 还实现了几个特定于 Microsoft 的函数和不属于标准的一部分的宏。<br>Microsoft 专用函数和全局变量的名称均以一个下划线开头。<br>Microsoft 专用的宏和清单常量的名称均以两个下划线（或一个后面紧跟一个大写字母的前导下划线）开头。<br>Microsoft 运行时库提供了用于对 Microsoft Windows 操作系统进行编程的例程，visual studio CRT库。</p>
 <ul>
-<li>glibc    linux-gcc</li>
-<li>newlib&#x2F;newlib_nano   arm-linux(arm-gcc)</li>
+<li>参数访问      &lt;stdarg.h&gt;   va_arg</li>
+<li>缓冲区操作    &lt;string.h&gt;  memcpy() memcmp()</li>
+<li>字符分类      &lt;ctype.h&gt;   isalnum() isalpha() isupper()</li>
+<li>复数数学支持  &lt;complex.h&gt;  casin() ccos()</li>
+<li>数据对齐     &lt;malloc.h&gt;   _aligned_malloc（）</li>
+<li>数据转换     &lt;stdlib.h&gt;   atoi()  _itoa_s() </li>
+<li>调试例程     &lt;crtdbg.h&gt;   _CrtSetDbgFlag() _DEBUG     </li>
+<li>目录控制     &lt;direct.h&gt;   mkdir() rmdir()</li>
+<li>错误处理     &lt;assert.h&gt;   assert()</li>
+<li>异常处理例程  &lt;eh.h&gt;       terminate()</li>
+<li>文件处理     &lt;stdio.h&gt;    chmod() fopen() fclose() fwrite() fseek()</li>
+<li>数学和浮点支持 &lt;math.h&gt;    abs() sin() cos() asin() sqrt()</li>
+<li>输入和输出   &lt;stdio.h&gt;    printf() scanf()</li>
+<li>国际化       &lt;locale.h&gt;  setlocale(LC_ALL, “en_US”)</li>
+<li>内存分配     &lt;malloc.h&gt;   malloc() delete() free() </li>
+<li>进程和环境控制 &lt;process.h&gt; &lt;signal.h&gt; exit() wait() raise() signal()</li>
+<li>稳定性       &lt;eh.h&gt;</li>
+<li>运行时错误检查 &lt;rtcapi.h&gt;  _RTC_GetErrDesc()</li>
+<li>搜索和排序    &lt;search.h&gt;  _lfind() qsort()</li>
+<li>字符串操作    &lt;string.h&gt;  strcmp() strcpy() strlen()</li>
+<li>系统调用      &lt;io.h&gt;     _findfirst() 找到具有指定特性的文件</li>
+<li>工时管理      &lt;time.h&gt;   time() localtime() asctime()</li>
 </ul>
-<p>arm-none-eabi 工具链带有两个基于 newlib 的库可供选择（newlib 和 newlib_nano），其中 newlib_nano 库对代码尺寸做了优化.</p>
+<blockquote>
+<p>如果您计划将程序移植到 UNIX，请遵循以下准则：<br>请勿从 SYS 子目录中移除标头文件。 仅当不计划将程序传输到 UNIX 时，才可以将 SYS 标头文件放置到其他位置。</p>
+</blockquote>
+<blockquote>
+<p>在采用将路径和文件名表示为参数的字符串的例程中使用与 UNIX 兼容的路径分隔符。 为此，UNIX 仅支持正斜杠 (&#x2F;)，但 Win32 操作系统同时支持反斜杠 () 和正斜杠 (&#x2F;)。 本文档将与 UNIX 兼容的正斜杠用作路径分隔符，例如在 #include 语句中。 （但是，Windows 操作系统命令外壳 (CMD.EXE) 不支持在从命令提示符处输入的命令中使用正斜杠。）</p>
+</blockquote>
+<blockquote>
+<p>使用在 UNIX 中正常运行的路径和文件名（区分大小写）。 Win32 操作系统中的文件分配表 (FAT) 文件系统不区分大小写。 NTFS 文件系统对目录列表保留大小写，但对文件搜索和其他系统操作忽略大小写。</p>
+</blockquote>
+<h3 id="glibc-GNU-gcc"><a href="#glibc-GNU-gcc" class="headerlink" title="glibc   GNU-gcc"></a>glibc   GNU-gcc</h3><p>glibc是linux系统中最底层的api, GNU C运行期库，是一种C函数库，是程序运行时使用到的一些API集合，它们一般是已预先编译好，以二进制代码形式存在Linux类系统中，GNU C运行期库通常作为GNU C编译程序的一个部分发布。</p>
+<ul>
+<li><strong>string，字符串处理</strong></li>
+<li><strong>signal，信号处理</strong></li>
+<li>dlfcn，管理共享库的动态加载</li>
+<li><strong>direct，文件目录操作</strong></li>
+<li>elf，共享库的动态加载器，也即interpreter</li>
+<li>iconv，不同字符集的编码转换</li>
+<li><strong>inet，socket接口的实现</strong></li>
+<li>intl，国际化，也即gettext的实现</li>
+<li><strong>io</strong></li>
+<li><strong>linuxthreads</strong></li>
+<li>locale，本地化</li>
+<li>login，虚拟终端设备的管理，及系统的安全访问</li>
+<li><strong>malloc，动态内存的分配与管理</strong></li>
+<li>nis</li>
+<li>stdlib，其它基本功能</li>
+</ul>
+<h3 id="newlib-newlib-nano-ARM-gcc"><a href="#newlib-newlib-nano-ARM-gcc" class="headerlink" title="newlib&#x2F;newlib_nano   ARM-gcc"></a>newlib&#x2F;newlib_nano   ARM-gcc</h3><p>arm-none-eabi 工具链带有两个基于 newlib 的库可供选择（newlib 和 newlib_nano），其中 newlib_nano 库对代码尺寸做了优化.</p>
+<p>arm-none-eabi-gcc工具链中的newlib库，它实现的printf函数非常复杂，需要大约37k字节的FLASH和5k字节的RAM才能运行一个简单的hello-world程序。</p>
+<p>Newlib nano是使用优化级别Os构建的。这会导致更小的memcpy和memset，因为newlib在发现这些函数是用Os构建时会选择它们的简单版本。<br>总之，newlib nano可以将hello world程序的大小减少80%左右。在C++程序的极端情况下，大小缩减可能超过90%。</p>
+<h3 id="microlib"><a href="#microlib" class="headerlink" title="microlib"></a>microlib</h3><p>MicroLib 是一个高度优化的库，适用于用 C 编写的基于 ARM 的嵌入式应用程序。与 ARM 编译器工具链中包含的标准 C 库相比，MicroLib 提供了许多嵌入式系统所需的显着代码大小优势。</p>
+<blockquote>
+<p>在使用CubeMX初始化代码时，生成的工程默认是使用Microlib的，正常情况下，在STM32CubeMX通过成的.s文件里可以看到一个__main函数，这个就是microlib的入口地址，他会<strong>完成创建栈空间，创建堆空间，初始化用户可能用到的系统库等初始化动作，最后跳转到我们熟悉的main</strong>，当使用Microlib时，__main链接的是Microlib，当不使用Microlib时，__main链接的是标准库的C&#x2F;C++；</p>
+</blockquote>
+<h3 id="MCU-printf-重定向"><a href="#MCU-printf-重定向" class="headerlink" title="MCU printf 重定向"></a>MCU printf 重定向</h3><h4 id="在MDK中使用MicroLib重定向printf"><a href="#在MDK中使用MicroLib重定向printf" class="headerlink" title="在MDK中使用MicroLib重定向printf"></a>在MDK中使用MicroLib重定向printf</h4><p><strong>重新实现fputc函数</strong>，编写代码将这个字符通过串口发送，因为发送每个字符时都会调用该函数，所以为了效率，不再调用库函数 HAL_UART_Transmit 发送，而是直接操作寄存器发送。</p>
+<h5 id="在MDK中使用标准库重定向printf"><a href="#在MDK中使用标准库重定向printf" class="headerlink" title="在MDK中使用标准库重定向printf"></a>在MDK中使用标准库重定向printf</h5><p>printf 函数使用了半主机模式，所以直接使用标准库会导致程序无法运行，因此必须提前告知编译器不使用半主机模式：<br><strong>不使用半主机模式</strong> + <strong>重新实现fputc函数</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">不使用半主机模式</span><br><span class="line"></span><br><span class="line">/* 告知连接器不从C库链接使用半主机的函数 */</span><br><span class="line">#pragma import(__use_no_semihosting)</span><br><span class="line"></span><br><span class="line">/* 定义 _sys_exit() 以避免使用半主机模式 */</span><br><span class="line">void _sys_exit(int x)</span><br><span class="line">&#123;</span><br><span class="line">    x = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="在GCC中使用标准库重定向printf"><a href="#在GCC中使用标准库重定向printf" class="headerlink" title="在GCC中使用标准库重定向printf"></a>在GCC中使用标准库重定向printf</h5><p>不同的编译器对于C库的底层实现机制是不同的，所以上面两种在MDK中的实现方法，在使用Gcc编译器的时候是不可行的。<br>在Gcc中重定向printf函数时注意两个关键点：</p>
+<ul>
+<li>与重定义fputs()函数一样，在使用Gcc编译器的时候，需要<strong>重新定义_write函数</strong>；</li>
+<li>Gcc中没有MicroLib，只能使用标准库；</li>
+</ul>
 <h2 id="C-标准库"><a href="#C-标准库" class="headerlink" title="C++ 标准库"></a>C++ 标准库</h2><p>C&#x2F;C++标准库是一组广泛使用的C&#x2F;C++库，它们提供了更高级别的抽象，以简化程序员的工作。C&#x2F;C++标准库包括STL（Standard Template Library，标准模板库）、Boost等。<strong>这些库提供了许多高级数据结构和算法，以及其他实用工具类，如智能指针、异常处理等。</strong>C&#x2F;C++标准库通常作为C&#x2F;C++运行时库的扩展存在。<br>C++运行库的分类C++运行库可以分为两类：</p>
 <ul>
 <li>静态链接库（StaticLinkLibrary，简称SLL）</li>
@@ -137,6 +182,51 @@ extern &quot;C&quot;&#123;
       </categories>
       <tags>
         <tag>esp32 arduino</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ESP 开发</title>
+    <url>/2024/04/15/ESP8266%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="ESP8266"><a href="#ESP8266" class="headerlink" title="ESP8266"></a>ESP8266</h3><p>ESP8266是一款低成本、低功耗、高度集成的Wi-Fi芯片，其主要参数包括：12</p>
+<p>主频：80 MHz (单核)<br>内存：80 KB RAM + 4 MB Flash<br>Wi-Fi标准：802.11 b&#x2F;g&#x2F;n 不支持蓝牙<br>工作电压：3.0V - 3.6V<br>工作温度：-40℃ ~ 125℃<br>支持模式：STA&#x2F;AP&#x2F;AP+STA<br>支持协议：TCP&#x2F;UDP<br>支持连接：多连接<br>支持升级：OTA升级<br>此外，ESP8266还具备以下特性：</p>
+<p>无线参数：支持802.11 b&#x2F;g&#x2F;n标准，频率范围2.4GHz至2.5GHz，具有不同的发射功率和接收灵敏度，以满足不同标准下的通信需求。<br>存储系统：配备有32Mb(4M)的Flash存储器和80KB的SRAM，Flash存储器分为几个部分，包括Bootloader等。<br>处理器和性能：内置超低功耗的Tensilica L106 32位RISC处理器，最高时钟速度可达160MHz，支持RTOS和Wi-Fi协议栈，能够将高达80%的处理能力留给应用编程和开发。</p>
+<p>ESP8266模块有多个型号和变种，例如<strong>ESP-01、ESP-12E、NodeMCU</strong>等，每种型号的功能和特点可能略有不同。<br><img src="https://pic1.zhimg.com/v2-e65552b66eb883bb5bfda9b3159d5308_b.jpg"></p>
+<p> ESP32-C3发布已经有一段时间了，作为ESP8266的替代品，上架之初C3模组就保持了10元以下的友好价格，并在8266的基础上增加了蓝牙支持。<br> 内建的USB-CDC支持，提供一个USB串口以及JTAG调试器。这表明我们可以跳过CH340、CP2102等USB转串口芯片直接对C3模组进行开发调试。<br> <span id="more"></span></p>
+<h4 id="ESP12F-引脚图"><a href="#ESP12F-引脚图" class="headerlink" title="ESP12F 引脚图"></a>ESP12F 引脚图</h4><p>ESP-12F模块型号，它包含了ESP8266芯片本身以及附加的外部元件，如天线、电源管理电路等。<br>共有22个引脚,GPIO6～GPIO 11被用于连接开发板的闪存（Flash Memory）因此建议不要使用GPIO6～GPIO 11。<br>|EN 0 2|1TX0 3 RX0|4 SDA 5 SCL|6<del>11 FLASH|12 13 14 15 SPI| 16 | A0 0</del>1Vinput|</p>
+<blockquote>
+<p>上电的一瞬间GPIO0、GPIO2都会从高电平变为低电平，然后再变为高电平    </p>
+</blockquote>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vbmllX2hlbi9YU0pfaW1nL3Jhdy9tYXN0ZXIvJUU1JUIwJThGJUU0JUI5JUE2JUU1JThDJUEwLzE1ODExNDUwMDQ1NDEucG5n?x-oss-process=image/format,png" alt="esp12f"></p>
+<p>启动相关引脚，EN、GPIO0、GPIO2等</p>
+<h3 id="ESP32C3"><a href="#ESP32C3" class="headerlink" title="ESP32C3"></a>ESP32C3</h3><ul>
+<li>强大的 CPU：ESP32-C3，32 位 RISC-V 单核处理器，运行频率高达 160 MHz</li>
+<li>WiFi：802.11b&#x2F;g&#x2F;n协议、2.4GhHz、支持Station模式、SoftAP模式、SoftAP+Station模式、混杂模式</li>
+<li>蓝牙：Bluetooth 5.0</li>
+<li>超低功耗：深度睡眠功耗约43μA</li>
+<li>丰富的板子资源：400KB SRAM、384KB ROM 内置4Mflash 。</li>
+<li>芯片型号 ：ESP32C3FN4</li>
+<li>超小尺寸：小至拇指 (22.52x18mm) 经典外形，适用于可穿戴设备和小型项目</li>
+<li>可靠的安全功能：支持 AES-128&#x2F;256、哈希、RSA、HMAC、数字签名和安全启动的加密硬件加速器</li>
+<li>丰富的接口：1xI2C、1xSPI、2xUART、11xGPIO(PWM)、4xADC</li>
+<li>单面元件、表面贴装设计</li>
+<li>板载LED蓝灯： GPIO8引脚</li>
+<li>JTAG&#x2F;serial debug unit 自带USB转串口功能</li>
+</ul>
+<p><img src="https://www.nologo.tech/assets/img/esp32/esp32c3supermini/esp32c3foot1.png" alt="引脚图"></p>
+<h4 id="AT-固件"><a href="#AT-固件" class="headerlink" title="AT 固件"></a>AT 固件</h4><ul>
+<li>MQTT</li>
+</ul>
+<h4 id="相关的github-项目"><a href="#相关的github-项目" class="headerlink" title="相关的github 项目"></a>相关的github 项目</h4><ul>
+<li>tasmota</li>
+<li>esphome</li>
+<li>wled</li>
+</ul>
+]]></content>
+      <categories>
+        <category>MCU</category>
+      </categories>
+      <tags>
+        <tag>esp32</tag>
       </tags>
   </entry>
   <entry>
@@ -274,33 +364,20 @@ extern &quot;C&quot;&#123;
       </tags>
   </entry>
   <entry>
-    <title>ESP 开发</title>
-    <url>/2024/04/15/ESP8266%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="ESP8266"><a href="#ESP8266" class="headerlink" title="ESP8266"></a>ESP8266</h3><p>ESP8266是一款低成本、低功耗、高度集成的Wi-Fi芯片，其主要参数包括：12</p>
-<p>主频：80 MHz (单核)<br>内存：80 KB RAM + 4 MB Flash<br>Wi-Fi标准：802.11 b&#x2F;g&#x2F;n 不支持蓝牙<br>工作电压：3.0V - 3.6V<br>工作温度：-40℃ ~ 125℃<br>支持模式：STA&#x2F;AP&#x2F;AP+STA<br>支持协议：TCP&#x2F;UDP<br>支持连接：多连接<br>支持升级：OTA升级<br>此外，ESP8266还具备以下特性：</p>
-<p>无线参数：支持802.11 b&#x2F;g&#x2F;n标准，频率范围2.4GHz至2.5GHz，具有不同的发射功率和接收灵敏度，以满足不同标准下的通信需求。<br>存储系统：配备有32Mb(4M)的Flash存储器和80KB的SRAM，Flash存储器分为几个部分，包括Bootloader等。<br>处理器和性能：内置超低功耗的Tensilica L106 32位RISC处理器，最高时钟速度可达160MHz，支持RTOS和Wi-Fi协议栈，能够将高达80%的处理能力留给应用编程和开发。</p>
-<p>ESP8266模块有多个型号和变种，例如<strong>ESP-01、ESP-12E、NodeMCU</strong>等，每种型号的功能和特点可能略有不同。<br><img src="https://pic1.zhimg.com/v2-e65552b66eb883bb5bfda9b3159d5308_b.jpg"></p>
-<p> ESP32-C3发布已经有一段时间了，作为ESP8266的替代品，上架之初C3模组就保持了10元以下的友好价格，并在8266的基础上增加了蓝牙支持。<br> 内建的USB-CDC支持，提供一个USB串口以及JTAG调试器。这表明我们可以跳过CH340、CP2102等USB转串口芯片直接对C3模组进行开发调试。<br> <span id="more"></span></p>
-<h4 id="ESP12F-引脚图"><a href="#ESP12F-引脚图" class="headerlink" title="ESP12F 引脚图"></a>ESP12F 引脚图</h4><p>ESP-12F模块型号，它包含了ESP8266芯片本身以及附加的外部元件，如天线、电源管理电路等。<br>共有22个引脚,GPIO6～GPIO 11被用于连接开发板的闪存（Flash Memory）因此建议不要使用GPIO6～GPIO 11。<br>|EN 0 2|1TX0 3 RX0|4 SDA 5 SCL|6<del>11 FLASH|12 13 14 15 SPI| 16 | A0 0</del>1Vinput|</p>
-<blockquote>
-<p>上电的一瞬间GPIO0、GPIO2都会从高电平变为低电平，然后再变为高电平    </p>
-</blockquote>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vbmllX2hlbi9YU0pfaW1nL3Jhdy9tYXN0ZXIvJUU1JUIwJThGJUU0JUI5JUE2JUU1JThDJUEwLzE1ODExNDUwMDQ1NDEucG5n?x-oss-process=image/format,png" alt="esp12f"></p>
-<p>启动相关引脚，EN、GPIO0、GPIO2等</p>
-<h4 id="AT-固件"><a href="#AT-固件" class="headerlink" title="AT 固件"></a>AT 固件</h4><ul>
-<li>MQTT</li>
-</ul>
-<h4 id="相关的github-项目"><a href="#相关的github-项目" class="headerlink" title="相关的github 项目"></a>相关的github 项目</h4><ul>
-<li>tasmota</li>
-<li>esphome</li>
-<li>wled</li>
-</ul>
-]]></content>
+    <title>CMSIS_v2 FreeRTOS</title>
+    <url>/2024/05/20/CMSIS-FreeRTOS/</url>
+    <content><![CDATA[<p>#include &lt;cmsis_os2.h&gt;</p>
+<h2 id="thread"><a href="#thread" class="headerlink" title="thread"></a>thread</h2><h3 id="osKernelInitialize"><a href="#osKernelInitialize" class="headerlink" title="osKernelInitialize();"></a>osKernelInitialize();</h3><h3 id="osThreadId-t"><a href="#osThreadId-t" class="headerlink" title="osThreadId_t"></a>osThreadId_t</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">osThreadId_t defaultTaskHandle;</span><br></pre></td></tr></table></figure>
+
+<h3 id="osThreadAttr-t"><a href="#osThreadAttr-t" class="headerlink" title="osThreadAttr_t"></a>osThreadAttr_t</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  const osThreadAttr_t defaultTask_attributes = &#123;</span><br><span class="line">  .name = &quot;defaultTask&quot;,</span><br><span class="line">  .stack_size = 128 * 4,</span><br><span class="line">  .priority = (osPriority_t) osPriorityNormal,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="osThreadNew"><a href="#osThreadNew" class="headerlink" title="osThreadNew()"></a>osThreadNew()</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &amp;defaultTask_attributes);</span><br></pre></td></tr></table></figure>
+
+<h3 id="osKernelStart"><a href="#osKernelStart" class="headerlink" title="osKernelStart()"></a>osKernelStart()</h3><h2 id="semaphore"><a href="#semaphore" class="headerlink" title="semaphore"></a>semaphore</h2><h3 id="osSemaphoreId-t"><a href="#osSemaphoreId-t" class="headerlink" title="osSemaphoreId_t"></a>osSemaphoreId_t</h3><h3 id="osSemaphoreNew"><a href="#osSemaphoreNew" class="headerlink" title="osSemaphoreNew()"></a>osSemaphoreNew()</h3><h3 id="osSemaphoreRelease"><a href="#osSemaphoreRelease" class="headerlink" title="osSemaphoreRelease()"></a>osSemaphoreRelease()</h3><h3 id="osSemaphoreAcquire"><a href="#osSemaphoreAcquire" class="headerlink" title="osSemaphoreAcquire()"></a>osSemaphoreAcquire()</h3>]]></content>
       <categories>
         <category>MCU</category>
       </categories>
       <tags>
-        <tag>esp32</tag>
+        <tag>arm RTOS</tag>
       </tags>
   </entry>
   <entry>
@@ -713,47 +790,75 @@ extern &quot;C&quot;&#123;
       </tags>
   </entry>
   <entry>
-    <title>F1C100s/F1C200s 开发</title>
-    <url>/2024/03/08/f1c100s%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h1 id="F1C100s-F1C200s"><a href="#F1C100s-F1C200s" class="headerlink" title="F1C100s&#x2F;F1C200s"></a>F1C100s&#x2F;F1C200s</h1><ul>
-<li>F1C100s 的内核是 ARM926EJ-S ，ARMv5 架构，有 MMU，没有硬件 FPU，主频默认为 408MHz；</li>
-<li>F1C100s 内置 32MB DDR1 内存；</li>
-<li>F1C200s 是 F1C100s 的兄弟型号，其它特性都相同，内存容量翻倍为 64MB；</li>
-</ul>
-<h4 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Manufacturer    Allwinner</span><br><span class="line">CPU             ARM ARM926EJ-S @ 533MHz</span><br><span class="line">                L1 Cache: 16KB Data, 32KB Instruction</span><br><span class="line">                FPU: None</span><br><span class="line">Memory          32MB Embedded DDR (F1C100s) or 64MB Embedded DDR (F1C200s)</span><br><span class="line">GPU              Custom 2D-only</span><br><span class="line">VPU              Unknown</span><br><span class="line">Video            LCD, CVBS</span><br><span class="line">Audio            DAC</span><br><span class="line">Storage          SD/MMC (SD v2.0, eMMC V4.41)</span><br><span class="line">USB              USB 2.0 OTG</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>git</title>
+    <url>/2023/03/04/git/</url>
+    <content><![CDATA[<h2 id="git-命令使用"><a href="#git-命令使用" class="headerlink" title="git 命令使用"></a>git 命令使用</h2><p>开始使用 git 的简易指南<br>更多可以参考: (<a href="http://book.git-scm.com/">http://book.git-scm.com/</a>)</p>
 <span id="more"></span>
 
-<h4 id="功能框图"><a href="#功能框图" class="headerlink" title="功能框图"></a>功能框图</h4><p><img src="https://aijishu.com/img/bVbJ2K"></p>
-<h4 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h4><p><img src="https://aijishu.com/img/bVbJ2L"></p>
-<h3 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h3><p>1、上电后, f1c100s 内部 BROM (芯片内置，无法擦除) 启动；<br>2、首先检查 SD0 有没有插卡, 如果有插卡就读卡 8k 偏移数据，是否是合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>3、检测 SPI0 NOR FLASH(W25QXXX, MX25LXXX) 是否存在, 是否有合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>4、检测 SPI0 NAND FLASH 是否存在, 是否有合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>5、因为找不到任何可以引导的介质， 系统进入 usb fel 模式， 可以用 USB 烧录了。<br>对于 F1C100s 而言启动时寻找用户程序的位置顺序如下：</p>
-<ul>
-<li>SDC0 接口（PF0~PF5）上的 SD（TF）卡；</li>
-<li>SPI0 接口（PC0~PC3）上的 Nor Flash；</li>
-<li>SPI0 接口（PC0~PC3）上的 Nand Flash；<br>对于 SD（TF）卡而言在它上面的数据存储布局通常如下：</li>
-</ul>
-<table><thead><tr><th>start</th><th>sector</th><th>size</th><th>usage</th></tr></thead><tbody><tr><td>0KB</td><td>0</td><td>8KB</td><td>Unused, available for an MBR or (limited) GPT partition table</td></tr><tr><td>8KB</td><td>16</td><td>32KB</td><td>Initial SPL loader</td></tr><tr><td>40KB</td><td>80</td><td>Max 984KB</td><td>U-Boot</td></tr><tr><td>1MB</td><td>2048</td><td>-</td><td>bootfs and rootfs</td></tr></tbody></table>
+<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init </span><br></pre></td></tr></table></figure>
+<p> 以创建新的 git 仓库。</p>
+<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> /path/to/repository</span><br></pre></td></tr></table></figure>
+<p>如果是远端服务器上的仓库，你的命令会是这个样子</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> username@host:/path/to/repository</span><br></pre></td></tr></table></figure>
 
-<p>上面参数中 SPL 从 8K 位置开始不能动（这是由 BROM 决定的）；文件系统可以根据需要来分区，boot 分区在前，通常为 FAT 格式。</p>
-<p>编译后得到 u-boot-sunxi-with-spl.bin 这个文件会拼合 spl 和 u-boot ，直接把这个文件写入到 8KB 开始的位置就行了。</p>
-<p>对于 SPI Flash 而言其实和 SD（TF）卡而言差不多，最关键的就是将 u-boot-sunxi-with-spl.bin 文件放在头部，即从 0 位置开始写入；其它内容根据需求而设置，只要对应的调整 u-boot 读取启动内核时相关位置参数就行。</p>
-<p>需要注意的是默认情况下 SPI Flash 最大支持 16M，更大就需要在程序中设置 bank 了。</p>
-<h3 id="sunxi-tools"><a href="#sunxi-tools" class="headerlink" title="sunxi-tools"></a>sunxi-tools</h3><p>Sunxi-tools 是一组命令行工具，用于操作基于全志 SoC 的 ARM 设备。它们可以用于各种目的，比如在 FEX 和二进制格式之间转换，操作 PIO 设置，访问 FEL 工厂模式，以及编程 SPI 闪存。</p>
-<p>今天咱们研究下如何在 Windows 环境下使用 sunxi-tools。</p>
-<p>下载并解压缩</p>
-<p>Zadig 用于安装 sunxi-tools windows 驱动安装。</p>
-<p>Zadig USB 是一个开源的 USB 驱动程序安装工具，它允许用户更改 USB 设备的驱动程序。这个工具通常用于 Windows 操作系统，用于安装 WinUSB、libusb、usbser 等驱动程序。</p>
-<p>开发板进入烧写模式</p>
-<p>短路 V3S（F1C100s&#x2F;F1C200s&#x2F;V3s）板子的 spi flash 1,4 或 1,2 脚, 上电（通过 USB 线进入接入电脑）电脑检测到新的 usb 烧写设备。</p>
-<h3 id="fel-模式"><a href="#fel-模式" class="headerlink" title="fel 模式"></a>fel 模式</h3><p>上文中可以了解到 F1C100s 要是启动外部程序均失败的话就会进入 FEL 模式，用户可以通过 USB 和芯片进行交互 。在 FEL 模式你可以直接运行 u-boot 和 linux 等，也可以将数据写入 spiflash 中（可以用作烧录固件到设备中）。</p>
-<p>FEL 模式其实也就是 BROM 上的一段程序，可以在 u-boot 命令行中使用 go 0xffff0020 跳转进入。另外也可以通过在 SD（TF）卡写入下面数据来通过 SD（TF）卡启动跳转：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># sdX 为SD（TF）卡，使用 sudo fdisk -l 查看</span><br><span class="line"># 如果有自动挂载的分区则逐条使用 sudo umount /dev/sdXn 进行卸载</span><br><span class="line">wget https://github.com/linux-sunxi/sunxi-tools/raw/master/bin/fel-sdboot.sunxi</span><br><span class="line">sudo dd if=fel-sdboot.sunxi of=/dev/sdX bs=1024 seek=8</span><br></pre></td></tr></table></figure>
-<h2 id="H3-四核Cortex-A7-32bit"><a href="#H3-四核Cortex-A7-32bit" class="headerlink" title="H3 四核Cortex-A7 32bit"></a>H3 四核Cortex-A7 32bit</h2><p><a href="https://www.armbian.com/nanopi-neo/">https://www.armbian.com/nanopi-neo/</a><br>镜像<br><a href="https://github.com/armbian/community/releases/download/24.5.0-trunk.306/Armbian_community_24.5.0-trunk.306_Nanopineo_jammy_current_6.6.23.img.xz">https://github.com/armbian/community/releases/download/24.5.0-trunk.306/Armbian_community_24.5.0-trunk.306_Nanopineo_jammy_current_6.6.23.img.xz</a> root 1234</p>
+<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录,它持有实际文件；第二个是 缓存区，它像个缓存区域(Index)，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。 </p>
+<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
+<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;代码提交信息&quot;</span></span><br></pre></td></tr></table></figure>
+<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
+<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<p>可以把 <i>master</i> 换成你想要推送的任何分支。</p>
+<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt; </span><br></pre></td></tr></table></figure>
+<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master&#x2F;main 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上创建一个叫做“branch_x”的分支，并切换过去：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branch_x</span><br></pre></td></tr></table></figure>
+<p>切换回主分支：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b main</span><br></pre></td></tr></table></figure>
+<p>再把新建的分支删掉：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branch_x</span><br></pre></td></tr></table></figure>
+<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+
+<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。要合并其他分支到你的当前分支（例如 master），执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>在合并改动之前，也可以使用如下命令查看：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;file name&gt;</span><br></pre></td></tr></table></figure>
+<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
+<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard origin/master </span><br></pre></td></tr></table></figure>
+
+<p>显示历史记录时，只显示一行注释信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config format.pretty oneline</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="github-com和raw-githubusercontent-com访问不了的解决方法"><a href="#github-com和raw-githubusercontent-com访问不了的解决方法" class="headerlink" title="github.com和raw.githubusercontent.com访问不了的解决方法"></a>github.com和raw.githubusercontent.com访问不了的解决方法</h3><p>本文链接 <a href="https://www.ioiox.com/archives/62.html">https://www.ioiox.com/archives/62.html</a><br>这里还有免费FRP!!!</p>
+<h3 id="修改-hosts"><a href="#修改-hosts" class="headerlink" title="修改 hosts"></a>修改 hosts</h3><p>在 hosts 文件添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用gh-proxy来代理访问"><a href="#使用gh-proxy来代理访问" class="headerlink" title="使用gh-proxy来代理访问"></a>使用gh-proxy来代理访问</h3><p>gh-proxy 是一款 github release、archive以及项目文件的加速项目，支持直接在终端 git clone ,也可以在 web 端代理下载 github 以及 raw.githubusercontent.com 等文件.<br>项目默认使用jsdelivr和cnpmjs</p>
+<p>支持终端命令行下载 , 例如 git clone , wget , curl 等以及 raw.githubusercontent.com 文件下载.<br>注意：不支持 SSH Key 方式 git clone 下载.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone</span><br><span class="line">git clone https://ghproxy.com/https://github.com/stilleshan/ServerStatus.git</span><br><span class="line"></span><br><span class="line">wget &amp; curl</span><br><span class="line">wget https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">wget https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br><span class="line">curl -O https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">curl -O https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>ARM926EJ-S</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -1031,78 +1136,6 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </tags>
   </entry>
   <entry>
-    <title>git</title>
-    <url>/2023/03/04/git/</url>
-    <content><![CDATA[<h2 id="git-命令使用"><a href="#git-命令使用" class="headerlink" title="git 命令使用"></a>git 命令使用</h2><p>开始使用 git 的简易指南<br>更多可以参考: (<a href="http://book.git-scm.com/">http://book.git-scm.com/</a>)</p>
-<span id="more"></span>
-
-<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init </span><br></pre></td></tr></table></figure>
-<p> 以创建新的 git 仓库。</p>
-<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> /path/to/repository</span><br></pre></td></tr></table></figure>
-<p>如果是远端服务器上的仓库，你的命令会是这个样子</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> username@host:/path/to/repository</span><br></pre></td></tr></table></figure>
-
-<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录,它持有实际文件；第二个是 缓存区，它像个缓存区域(Index)，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。 </p>
-<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add filename</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
-<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m <span class="string">&quot;代码提交信息&quot;</span></span><br></pre></td></tr></table></figure>
-<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
-<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-<p>可以把 <i>master</i> 换成你想要推送的任何分支。</p>
-<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt; </span><br></pre></td></tr></table></figure>
-<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
-<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master&#x2F;main 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上创建一个叫做“branch_x”的分支，并切换过去：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branch_x</span><br></pre></td></tr></table></figure>
-<p>切换回主分支：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b main</span><br></pre></td></tr></table></figure>
-<p>再把新建的分支删掉：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branch_x</span><br></pre></td></tr></table></figure>
-<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-
-<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。要合并其他分支到你的当前分支（例如 master），执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-
-<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-<p>在合并改动之前，也可以使用如下命令查看：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;file name&gt;</span><br></pre></td></tr></table></figure>
-<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
-<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch origin</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard origin/master </span><br></pre></td></tr></table></figure>
-
-<p>显示历史记录时，只显示一行注释信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config format.pretty oneline</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="github-com和raw-githubusercontent-com访问不了的解决方法"><a href="#github-com和raw-githubusercontent-com访问不了的解决方法" class="headerlink" title="github.com和raw.githubusercontent.com访问不了的解决方法"></a>github.com和raw.githubusercontent.com访问不了的解决方法</h3><p>本文链接 <a href="https://www.ioiox.com/archives/62.html">https://www.ioiox.com/archives/62.html</a><br>这里还有免费FRP!!!</p>
-<h3 id="修改-hosts"><a href="#修改-hosts" class="headerlink" title="修改 hosts"></a>修改 hosts</h3><p>在 hosts 文件添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用gh-proxy来代理访问"><a href="#使用gh-proxy来代理访问" class="headerlink" title="使用gh-proxy来代理访问"></a>使用gh-proxy来代理访问</h3><p>gh-proxy 是一款 github release、archive以及项目文件的加速项目，支持直接在终端 git clone ,也可以在 web 端代理下载 github 以及 raw.githubusercontent.com 等文件.<br>项目默认使用jsdelivr和cnpmjs</p>
-<p>支持终端命令行下载 , 例如 git clone , wget , curl 等以及 raw.githubusercontent.com 文件下载.<br>注意：不支持 SSH Key 方式 git clone 下载.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone</span><br><span class="line">git clone https://ghproxy.com/https://github.com/stilleshan/ServerStatus.git</span><br><span class="line"></span><br><span class="line">wget &amp; curl</span><br><span class="line">wget https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">wget https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br><span class="line">curl -O https://ghproxy.com/https://github.com/stilleshan/ServerStatus/archive/master.zip</span><br><span class="line">curl -O https://ghproxy.com/https://raw.githubusercontent.com/stilleshan/ServerStatus/master/Dockerfile</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hello world</title>
     <url>/2023/01/01/hello/</url>
     <content><![CDATA[<h1 id="静态网页博客搭建"><a href="#静态网页博客搭建" class="headerlink" title="静态网页博客搭建"></a>静态网页博客搭建</h1><ul>
@@ -1265,91 +1298,47 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </tags>
   </entry>
   <entry>
-    <title>人生如赴宴，举止须从容</title>
-    <url>/2034/05/04/life/</url>
-    <content><![CDATA[<h1 id="人生如赴宴，举止须从容"><a href="#人生如赴宴，举止须从容" class="headerlink" title="人生如赴宴，举止须从容"></a>人生如赴宴，举止须从容</h1><p>人和动物&#x2F;野兽的区别，人是有智慧的。身体由大脑控制，大脑是由思想，意志等控制着。所以需要训练大脑，增强意志力，拥有更强的自控力。如同计算机发出指令，最简单的if&#x2F;else判断语句后面都有一个True&#x2F;Flase。人也一样，一个优秀的人，在做出主动选择或者被动响应时，都应该由一个判断的过程，而这个判断的算法每个人都不一样。如何得到一个优秀的执行判断的神经网络模型，需要训练，多看（输入）、多做（输出）、多想（反馈），才能得到优化。</p>
-<p>一个人的成长，是从全能自恋到真实自信的过程，也是从孤独自恋到有深情依恋的过程，同时是从想象进入现实的过程。<br>想象与现实的一个巨大差别是，想象可瞬间完成，而现实却需要时间和过程，它越重要，就越需要漫长的过程。</p>
-<p>现代人的大脑结构，有好几个自我。它们相互竞争，试图控制我们的想法、感受和行动。每个意志力挑战都是一次自我博弈。要想让更好的自己占据主导，我们就要强化自我意识和自控力。这样，我们才会有意志力和“我想要”的力量。</p>
-<p>作为一个遵纪守法的好人，也许我们从来没有想过和“暴力”扯上关系。不过如果稍微留意一下现实生活中的谈话方式，并且用心体会各种谈话方式给我们的不同感受，我们一定会发现有些话确实伤人！言语上的指责、嘲讽、否定、说教以及任意打断、拒不回应、随意出口的评价和结论给我们带来的情感和精神上的创伤，甚至比肉体的伤害更加令人痛苦。这些无心或有意的语言暴力让人变得冷漠、隔膜、敌视。</p>
+    <title>F1C100s/F1C200s 开发</title>
+    <url>/2024/03/08/f1c100s%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h1 id="F1C100s-F1C200s"><a href="#F1C100s-F1C200s" class="headerlink" title="F1C100s&#x2F;F1C200s"></a>F1C100s&#x2F;F1C200s</h1><ul>
+<li>F1C100s 的内核是 ARM926EJ-S ，ARMv5 架构，有 MMU，没有硬件 FPU，主频默认为 408MHz；</li>
+<li>F1C100s 内置 32MB DDR1 内存；</li>
+<li>F1C200s 是 F1C100s 的兄弟型号，其它特性都相同，内存容量翻倍为 64MB；</li>
+</ul>
+<h4 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Manufacturer    Allwinner</span><br><span class="line">CPU             ARM ARM926EJ-S @ 533MHz</span><br><span class="line">                L1 Cache: 16KB Data, 32KB Instruction</span><br><span class="line">                FPU: None</span><br><span class="line">Memory          32MB Embedded DDR (F1C100s) or 64MB Embedded DDR (F1C200s)</span><br><span class="line">GPU              Custom 2D-only</span><br><span class="line">VPU              Unknown</span><br><span class="line">Video            LCD, CVBS</span><br><span class="line">Audio            DAC</span><br><span class="line">Storage          SD/MMC (SD v2.0, eMMC V4.41)</span><br><span class="line">USB              USB 2.0 OTG</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 
-<h2 id="全能自恋"><a href="#全能自恋" class="headerlink" title="全能自恋"></a>全能自恋</h2><ul>
-<li>你只是一个人，不是生来就全能，需要不断的学习和实践。</li>
-<li>行动和投入是对全能自恋的直接治疗方法。</li>
-<li>一些事情我们自己能控制，另一些则不能。学会区分什么你能控制的，什么你不能控制的。</li>
-</ul>
-<h2 id="自控力"><a href="#自控力" class="headerlink" title="自控力"></a>自控力</h2><p>如果你想要更强的自控力，就得有更多的自我意识，要意识到自己在做什么，为什么要这样做（什么样的想法、感受和情况最容易让你有冲动，想些什么或暗示什么最容易让你放弃冲动）。</p>
+<h4 id="功能框图"><a href="#功能框图" class="headerlink" title="功能框图"></a>功能框图</h4><p><img src="https://aijishu.com/img/bVbJ2K"></p>
+<h4 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h4><p><img src="https://aijishu.com/img/bVbJ2L"></p>
+<h3 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h3><p>1、上电后, f1c100s 内部 BROM (芯片内置，无法擦除) 启动；<br>2、首先检查 SD0 有没有插卡, 如果有插卡就读卡 8k 偏移数据，是否是合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>3、检测 SPI0 NOR FLASH(W25QXXX, MX25LXXX) 是否存在, 是否有合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>4、检测 SPI0 NAND FLASH 是否存在, 是否有合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>5、因为找不到任何可以引导的介质， 系统进入 usb fel 模式， 可以用 USB 烧录了。<br>对于 F1C100s 而言启动时寻找用户程序的位置顺序如下：</p>
 <ul>
-<li>任何时候，我们都有选择的空间。任何时候，我都可以选择我的行为，朝向你认为“好”的方向。哪怕是赴死，也可以选择从容、优雅一些。</li>
+<li>SDC0 接口（PF0~PF5）上的 SD（TF）卡；</li>
+<li>SPI0 接口（PC0~PC3）上的 Nor Flash；</li>
+<li>SPI0 接口（PC0~PC3）上的 Nand Flash；<br>对于 SD（TF）卡而言在它上面的数据存储布局通常如下：</li>
 </ul>
-<h4 id="脑力训练"><a href="#脑力训练" class="headerlink" title="脑力训练"></a>脑力训练</h4><p>经常挑战自己说<strong>我不要</strong>和<strong>我想要</strong>，日常冥想练习，让更多的血液流进前额皮质。<br>每天做10分钟冥想训练，注意力收回的过程就是自控力。</p>
-<ol>
-<li>原定不动，安静坐好。不要烦躁     </li>
-<li>注意你的呼吸。闭上眼睛，吸气在脑海中默念“吸”，呼气时在脑海里默念“呼”。</li>
-<li>感受呼吸，弄清自己是怎么走神的。集中注意力在呼吸上。</li>
-</ol>
-<h4 id="三思而后行"><a href="#三思而后行" class="headerlink" title="三思而后行"></a>三思而后行</h4><p>自控力不仅和心理有关，更和生理有关。只有在大脑和身体同时作用的瞬间，你才有力量克服冲动。当你最需要意志力的时候，你能够学会将自己的生理机能调整到这种状态。自控力就成了本能反应。<br>利用威胁，对生命的威胁，不做会死，例如剑齿虎的威胁，利用应激反应做启动，引出自控力。<br>深呼一口气，让你的身体进入更平静的状态，避免冲动行为，给自己更多的时间，让你深思熟虑想办法。</p>
-<h4 id="降低你的心率"><a href="#降低你的心率" class="headerlink" title="降低你的心率"></a>降低你的心率</h4><p><strong>当人感受到压力时，交感神经系统会控制身体。这种生理现象让你能够战斗或者逃跑。心率升高，心率变异程度就会降低</strong>此时，由于伴随应激反应产生的焦虑或愤怒，心率会被迫保持在较高水平上。<strong>相反，当人们成功自控的时候，副交感神经系统会发挥主要作用，缓解压力，控制冲动行为。心率降低，心率变异程度便会升高。</strong></p>
-<h2 id="非暴力沟通"><a href="#非暴力沟通" class="headerlink" title="非暴力沟通"></a>非暴力沟通</h2><p>非暴力沟通指导我们转变谈话和聆听的方式。我们不在条件反射式地反应，而是去明了自己的观察、感受和愿望，有意识的使用语言。尊重和倾听他人，又诚实、清晰地表达自己。<br><strong>听到批评时，我们一般会申辩、退缩或反击</strong>。然而，一旦<strong>专注于彼此的观察、感受及需要，而不反驳他人</strong>，我们便能发现内心的柔情，对自己和他人产生新的体会。通过强调倾听–<strong>倾听自己和他人</strong>，非暴力沟通培养彼此的尊重、关注与爱，使人乐于助人。</p>
-<p>（发起方）非暴力沟通模式的四个要素（观察，感受，需求，请求），利用四要素诚实地表达自己。</p>
-<ul>
-<li>留意发生的事情，我们此刻<strong>观察</strong>到什么？清楚地表达观察结果，而不是判断或评估。</li>
-<li>接着，表达<strong>感受</strong>，例如受伤、害怕、喜悦、开心、气愤等。</li>
-<li>然受，说出哪些<strong>需要</strong>导致那样的感受。</li>
-<li><strong>具体的请求</strong>，明确的告知他人，我们期待他采取何种行动，来满足我们。</li>
-</ul>
-<p>（接收方）非暴力沟通另一方面是借助它们关切地倾听。我们首先通过体会他人此刻的观察、感受和需要，和他们建立联系，然后聆听他们的请求，来发现做什么可以帮助他们。</p>
-<p>实际应用<br>非暴力沟通不只是语言表达或使用文字的技巧，它包含的意识和意图，也可以通过沉默、专注以及面部表情和身体语言来表达。<strong>倾听每句话所包含的情感和感受，去了解，去询问。</strong></p>
-<h3 id="是什么蒙蔽了爱"><a href="#是什么蒙蔽了爱" class="headerlink" title="是什么蒙蔽了爱"></a>是什么蒙蔽了爱</h3><p>是什么使我们难以体会到心中的爱，某些语言和表达方式的负面影响，它们虽然致力向于忽视人的感受和需要，以致彼此的疏远和伤寒。这些语言和表达方式，我称为“异化的沟通方式”。我们大多数的人使用的语言倾向于评判、比较、命令和指责 ，而不是鼓励我们倾听彼此的感受和需要。</p>
-<h4 id="道德评判"><a href="#道德评判" class="headerlink" title="道德评判"></a>道德评判</h4><p>道德评判是用道德标准来评判人，如果一个人的行为不符合我们的价值观，那他就被看作是不道德的或者邪恶的。批评、指责、辱骂、归类、比较及评论等都是在评判人。<br><strong>苏菲派诗人鲁米写道：“在道德与不道德的区分之外，有片田野。我将在那里见你。”</strong><br>然而，语言使我们陷入是非之中。它擅长将人分类，把人看作好人或坏人，正常或不正常，负责人或者不负责任，聪明或愚蠢，等等。诸如此类的评论暗含着我们的价值观及需要。不幸的是，以这样的方式提出主张，很可能会招来敌意，使我们的愿望难得到满足，即使他们接受批评，做出让步，通常不是心甘情愿的。如果他们处于恐惧或内疚来迎合我们，或迟或早，我们将会发现对方不再那么友好。当然，他们也付出了代价。屈服于外部和内部的压力，很可能使他们心怀怨恨，并厌恶自己。<br>不要将价值判断于道德评判混为一谈，什么是可贵的品质，我们每个人都要自己的看法。例如，我们也许会欣赏诚实、自由以及和平的价值。</p>
-<h4 id="进行比较"><a href="#进行比较" class="headerlink" title="进行比较"></a>进行比较</h4><p>比较也是批判的一种形式。比较蒙蔽了我们对人对己的爱意。如果真想过上悲惨生活，就去与他人做比较。<br>去和优秀的人比较，开始觉得自己活得很惨，心情极为低落。</p>
-<h4 id="回避责任"><a href="#回避责任" class="headerlink" title="回避责任"></a>回避责任</h4><p>我们对自己的思想、情感和行动负有责任。不是因为“不得不”而去做一件事情，而是你负有不可推卸的责任，作为子女、伴侣、公民的责任，要有责任感，而不是唯名是从，服从命令。</p>
-<h4 id="强人所难"><a href="#强人所难" class="headerlink" title="强人所难"></a>强人所难</h4><p>我们对别人的要求往往暗含着威胁,如果不配合，他们就会受到惩罚。</p>
-<h2 id="道歉的五种语言"><a href="#道歉的五种语言" class="headerlink" title="道歉的五种语言"></a>道歉的五种语言</h2><p>冒犯他人后需要真诚的道歉，丈夫要妻子，关怀她，努力满足她的需求。美好婚姻的基石并不是完美的人，而愿意承认错误并寻求宽恕的心。</p>
-<h3 id="变达歉意"><a href="#变达歉意" class="headerlink" title="变达歉意"></a>变达歉意</h3><p>说“对不起”，要让人感觉到我们的真诚，从身体语言动作上，看别人的眼神，说话的声音。<br><strong>真诚的道歉不能找借口，在道歉之后马上来个“但是…”, 应该另找时机进行沟通。</strong>一旦我们在口头上把责任推给对方(这就是指责)，道歉就会变成攻击。而攻击永远不会带来宽恕与和解。</p>
-<ul>
-<li>我现在才知道已经深深地伤害了你，这让我感到无比痛苦。我为自己的行为真诚地道歉。</li>
-<li>我真的很难过，让你失望了。我本来应该更细心一些，很抱歉让你这么痛苦。</li>
-<li>我当时显然没有认真考虑你地感受。我从来没打算要伤害你，但现在我知道我的话太过火了。<br>很抱歉，我当时那么的不礼貌。</li>
-<li>她很爱自己的东西，很珍惜自己花钱买的东西。</li>
-</ul>
-<h3 id="承认过错"><a href="#承认过错" class="headerlink" title="承认过错"></a>承认过错</h3><p>借口又使他们觉得没必要道歉。不愿意承认错误是和自尊心分不开的。承认错误会被视为软弱，因为只有失败者才会人认错。<strong>成熟的成年人会学会为自己的行为承认责任。</strong> 不成熟的人则继续哪些幼稚的幻想，把自己的错误推卸给别人。<br>为自己的行为负责的核心是愿意承认<strong>我错了</strong>。真正的强大在于，有足够的智慧和勇气知错就改。</p>
-<ul>
-<li>我知道我做错了，毫无借口。说到底，我的做法很自私，我错了。</li>
-<li>我又犯了一个我们以前讨论过的错误，把事情搞砸了。我知道只是我的错。</li>
-</ul>
-<h3 id="弥补过失"><a href="#弥补过失" class="headerlink" title="弥补过失"></a>弥补过失</h3><p>真正的歉意体现在想要为自己给别人造成的痛苦做出的赔偿的意愿中。当我们被家人的语言或者行为伤害时，常常感到愤怒。之所以伤害如此之深，愤怒如此强烈，是因为我们极度渴望被那个人爱。了解她喜欢的爱的语言。<br><strong>说出她的主要爱语</strong></p>
-<ul>
-<li><strong>肯定的言词</strong> 你穿这件衣服很漂亮。 你做的饭太好吃了！真是厨艺精湛。你那么好，我还伤害了你。 </li>
-<li><strong>服务的行动</strong> 体贴入微的善意行动，洗衣服、洗盘子、倒垃圾、照顾孩子、做饭。</li>
-<li><strong>接受礼物</strong> 赠送和接受礼物是表达爱的一种普遍方式。赠送礼物视为一种爱的表达方式，送花补偿伤害行为。</li>
-<li><strong>精心的时刻</strong> 道歉时需要将全部的注意力放在道歉对象的身上，注意她的眼睛，握着她的手说。</li>
-<li><strong>身体接触</strong> 挽手、亲吻、拥抱、搂着对方的肩膀、轻拍对方的脊背、抚弄对方的头发。</li>
-</ul>
-<p><strong>如果只是说”对不起，我错了”之类的话，却没有诚心诚意地努力赔偿，对方永远不会认为你地道歉是真诚的。</strong><br>真诚地道歉应该包含渴望纠正犯下地错误、弥补所造成的损失，以及向对方证实你地关爱。</p>
-<ul>
-<li>我能做些什么来弥补我地所作所为呢？</li>
-</ul>
-<h3 id="真诚悔改"><a href="#真诚悔改" class="headerlink" title="真诚悔改"></a>真诚悔改</h3><p>道歉里需要表达出改变的意愿，并且下次不再这样做，应该承诺”我会努力不再做这样的事”，还要有行为上的改变。<br><strong>真正的悔改发自内心，不再为过错找借口、狡辩，为自己的行为承担所有的责任，告诉她我会努力不再犯同样的错。</strong><br>我知道自己不会一下子就改好，但是我愿意去改变，希望他们对我有耐心，数周或数月。<br>如果不承认自己的错误，那么向配偶传达的消息是我们的道歉缺乏诚意。<strong>由于害羞和尴尬，我们常常不肯承认自己的失败。但是，最好的做法是立刻承认我们的旧病复发。</strong><br>  健康的婚姻里，我们所做出的改变通常与道德层面毫不相干，而与构建一个和谐的婚姻关系息息相关，去满足她的需求，这也是一种示爱方式，这个小小的改变能让妻子无比的幸福，这个代价实在是小且值得付出的。<br><strong>悔改的第二步是做出改变的计划，不要说说而已，要真正的改变。</strong><br><strong>悔改的第三步是执行计划。让计划得以实行需要付诸思考和行动。</strong><br>虽然旧的行为方式不能很快就彻底改掉，但是只要我们继续坚持改变，总有一天会成功。</p>
-<p>现实生活中，人们对事物的认知见仁见智，不同意别人的看法，需要先肯定他，然后再说出自己的观点。<strong>1这么看问题很有意思，2这一点我能理解，3关于这个想法，我最喜欢的是…</strong></p>
-<ul>
-<li>我知道我的做法于事无补。你觉得我怎么改变才会让你感觉好一些呢？</li>
-<li>我又犯了同样的错误，让你失望了。我怎么做才能让你重新建立对我的信任呢？</li>
-<li>我的老毛病实在由来已久，我知道现在想要改变一定会很难，而且可能会失败，再次伤害到你。如果你能帮助我想出让我能够坚持改变的方法，并在觉得我做得好的时候鼓励我，我会很感激的。</li>
-</ul>
-<h3 id="请求饶恕"><a href="#请求饶恕" class="headerlink" title="请求饶恕"></a>请求饶恕</h3><p>道歉了，还要说”请你原谅我，好吗”。你们的关系将如何发展就取决于对方，你失去了对事情的控制权，对一些人来说，<strong>交出控制权</strong>是他们很难接受的事情。<strong>害怕被拒绝</strong>是人之常情，成熟的人能认识到自己的恐惧，同时拒绝被恐惧所支配。如果珍视一段关系，他们愿意抵制自己的恐惧心理，采取必要的措施来修复关系。</p>
-<p><strong>第三种妨碍人们请求饶恕的恐惧是害怕失败</strong>，如果承认错误，就是承认”我是个失败者”。他们的反应通常是于对方进行激烈的争论，坚持自己的做法没有错。他们会说：”那么做可能伤害到了你，那么做可能冒犯了你，但你误会了，我可不是那个意思。”有时他们为自己做辩解的方式本身比最初的冒犯行为更伤人，但是他们看不到这一点。</p>
-<p>放低姿态，请求原谅，而不是要求，入药如同坐在宝座上的君王。</p>
-<ul>
-<li>我为自己对你说话的方式感到抱歉。我的声音很大、说话很难听，这样做很不对。你不该受到那样的对待。请你原谅我。</li>
-<li>我知道我深深地伤害了额你。你有理由不理我，但是我真的为自己的所作所为感到抱歉。希望你能够原谅我。</li>
-</ul>
+<table><thead><tr><th>start</th><th>sector</th><th>size</th><th>usage</th></tr></thead><tbody><tr><td>0KB</td><td>0</td><td>8KB</td><td>Unused, available for an MBR or (limited) GPT partition table</td></tr><tr><td>8KB</td><td>16</td><td>32KB</td><td>Initial SPL loader</td></tr><tr><td>40KB</td><td>80</td><td>Max 984KB</td><td>U-Boot</td></tr><tr><td>1MB</td><td>2048</td><td>-</td><td>bootfs and rootfs</td></tr></tbody></table>
+
+<p>上面参数中 SPL 从 8K 位置开始不能动（这是由 BROM 决定的）；文件系统可以根据需要来分区，boot 分区在前，通常为 FAT 格式。</p>
+<p>编译后得到 u-boot-sunxi-with-spl.bin 这个文件会拼合 spl 和 u-boot ，直接把这个文件写入到 8KB 开始的位置就行了。</p>
+<p>对于 SPI Flash 而言其实和 SD（TF）卡而言差不多，最关键的就是将 u-boot-sunxi-with-spl.bin 文件放在头部，即从 0 位置开始写入；其它内容根据需求而设置，只要对应的调整 u-boot 读取启动内核时相关位置参数就行。</p>
+<p>需要注意的是默认情况下 SPI Flash 最大支持 16M，更大就需要在程序中设置 bank 了。</p>
+<h3 id="sunxi-tools"><a href="#sunxi-tools" class="headerlink" title="sunxi-tools"></a>sunxi-tools</h3><p>Sunxi-tools 是一组命令行工具，用于操作基于全志 SoC 的 ARM 设备。它们可以用于各种目的，比如在 FEX 和二进制格式之间转换，操作 PIO 设置，访问 FEL 工厂模式，以及编程 SPI 闪存。</p>
+<p>今天咱们研究下如何在 Windows 环境下使用 sunxi-tools。</p>
+<p>下载并解压缩</p>
+<p>Zadig 用于安装 sunxi-tools windows 驱动安装。</p>
+<p>Zadig USB 是一个开源的 USB 驱动程序安装工具，它允许用户更改 USB 设备的驱动程序。这个工具通常用于 Windows 操作系统，用于安装 WinUSB、libusb、usbser 等驱动程序。</p>
+<p>开发板进入烧写模式</p>
+<p>短路 V3S（F1C100s&#x2F;F1C200s&#x2F;V3s）板子的 spi flash 1,4 或 1,2 脚, 上电（通过 USB 线进入接入电脑）电脑检测到新的 usb 烧写设备。</p>
+<h3 id="fel-模式"><a href="#fel-模式" class="headerlink" title="fel 模式"></a>fel 模式</h3><p>上文中可以了解到 F1C100s 要是启动外部程序均失败的话就会进入 FEL 模式，用户可以通过 USB 和芯片进行交互 。在 FEL 模式你可以直接运行 u-boot 和 linux 等，也可以将数据写入 spiflash 中（可以用作烧录固件到设备中）。</p>
+<p>FEL 模式其实也就是 BROM 上的一段程序，可以在 u-boot 命令行中使用 go 0xffff0020 跳转进入。另外也可以通过在 SD（TF）卡写入下面数据来通过 SD（TF）卡启动跳转：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># sdX 为SD（TF）卡，使用 sudo fdisk -l 查看</span><br><span class="line"># 如果有自动挂载的分区则逐条使用 sudo umount /dev/sdXn 进行卸载</span><br><span class="line">wget https://github.com/linux-sunxi/sunxi-tools/raw/master/bin/fel-sdboot.sunxi</span><br><span class="line">sudo dd if=fel-sdboot.sunxi of=/dev/sdX bs=1024 seek=8</span><br></pre></td></tr></table></figure>
+<h2 id="H3-四核Cortex-A7-32bit"><a href="#H3-四核Cortex-A7-32bit" class="headerlink" title="H3 四核Cortex-A7 32bit"></a>H3 四核Cortex-A7 32bit</h2><p><a href="https://www.armbian.com/nanopi-neo/">https://www.armbian.com/nanopi-neo/</a><br>镜像<br><a href="https://github.com/armbian/community/releases/download/24.5.0-trunk.306/Armbian_community_24.5.0-trunk.306_Nanopineo_jammy_current_6.6.23.img.xz">https://github.com/armbian/community/releases/download/24.5.0-trunk.306/Armbian_community_24.5.0-trunk.306_Nanopineo_jammy_current_6.6.23.img.xz</a> root 1234</p>
 ]]></content>
       <categories>
-        <category>book</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>phychology</tag>
+        <tag>ARM926EJ-S</tag>
       </tags>
   </entry>
   <entry>
@@ -1648,86 +1637,6 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </tags>
   </entry>
   <entry>
-    <title>linux 应用开发</title>
-    <url>/2024/04/02/linux%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="VScode-Clangd"><a href="#VScode-Clangd" class="headerlink" title="VScode Clangd"></a>VScode Clangd</h3><p><a href="https://clangd.llvm.org/">Clangd</a> 是一个基于 Clang 的语言服务器，它提供了代码智能感知和导航功能。通过与 VSCode 集成。</p>
-<ol>
-<li><p>搜索 clangd 插件安装</p>
-</li>
-<li><p>禁用或卸载 Microsoft C&#x2F;C++ Intelligence</p>
-</li>
-<li><p>VSCode clangd 插件本身是不能运行的，它还需要 clangd 的环境，所以接下来安装 clangd。<br>在 Ubuntu 中最好不要使用 apt 安装，因为版本比较旧，建议下载后手动安装。<br>解压后，<br>将 bin 文件夹下的 clangd 移动到 &#x2F;usr&#x2F;bin 目录下，<br>将 lib 文件夹下的所有移动到 &#x2F;usr&#x2F;local&#x2F;lib 目录下。<br><code>clangd --version</code>查看版本。</p>
-<span id="more"></span>
-</li>
-<li><p>使用 bear 构建源码的 compile_commands.json 文件,clangd需要这个文件才能提供补全和跳转，compile_commands.json 文件记录了你的工程是如何构建的，使用到了哪些源码文件，源码文件之间的包含关系，引用路径之类的，这些可以帮助 clangd 构建符号关系索引库。<br><code>sudo apt install bear</code> 安装 bear </p>
-</li>
-<li><p>修改 compile_commands.json 文件<br>需要全局替换：”cc”  –&gt;  “arm-linux-gnueabihf-gcc”<br>保存后关闭 VSCode，如果有. cache 文件夹的话，删除掉它。之后重新用 VSCode 打开源码目录，随便打开一个. c 文件，clangd 便自动开始索引文件了，索引文件会保存在 .cache 目录下。</p>
-</li>
-<li><p>驱动程序和应用程序的编写<br>对于驱动程序来说，我的方法是在当前源码目录下新建一个文件夹，在这个文件夹下进行驱动程序的编写，这样跳转、补全之类的都比较方便。<br>然后保存工作区，方便下次打开：<br>对应用程序来说，不便放在源码工作区当中，可以像这样单独打开一个用于编写应用程序：<br>驱动程序写完后，拷贝到应用程序所在目录的驱动程序文件中。</p>
-</li>
-</ol>
-<h3 id="安装-NFS"><a href="#安装-NFS" class="headerlink" title="安装 NFS"></a>安装 NFS</h3><h4 id="在Ubuntu上设置NFS服务器的步骤如下："><a href="#在Ubuntu上设置NFS服务器的步骤如下：" class="headerlink" title="在Ubuntu上设置NFS服务器的步骤如下："></a>在Ubuntu上设置NFS服务器的步骤如下：</h4><ol>
-<li><p>安装NFS内核服务器：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nfs-kernel-server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建共享目录：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /srv/nfs/share</span><br><span class="line">sudo chown nobody:nogroup /srv/nfs/share</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置共享权限。编辑 &#x2F;etc&#x2F;exports 文件，并添加共享目录配置：<code>sudo nano /etc/exports</code></p>
-</li>
-</ol>
-<p>添加以下行：<code>/srv/nfs/share 192.168.1.0/24(rw,sync,no_subtree_check)</code></p>
-<ol start="4">
-<li>启动 NFS服务<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl start nfs-kernel-server</span><br><span class="line">sudo systemctl enable nfs-kernel-server</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="在客户端计算机上，您需要安装NFS通用文件系统客户端："><a href="#在客户端计算机上，您需要安装NFS通用文件系统客户端：" class="headerlink" title="在客户端计算机上，您需要安装NFS通用文件系统客户端："></a>在客户端计算机上，您需要安装NFS通用文件系统客户端：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nfs-common</span><br></pre></td></tr></table></figure>
-<p>然后，您可以挂载服务器上的共享目录：<br><code>sudo mount -t nfs 192.168.1.x:/srv/nfs/share /mnt</code></p>
-<h4 id="windows-挂载linux-NFS"><a href="#windows-挂载linux-NFS" class="headerlink" title="windows 挂载linux NFS"></a>windows 挂载linux NFS</h4><p>在Windows上挂载Linux NFS共享，你需要确保已经在Linux服务器上配置了NFS共享，并且Windows客户端已安装NFS客户端功能。以下是如何在Windows上挂载Linux NFS共享的步骤：</p>
-<p>安装NFS客户端功能：</p>
-<p>打开“控制面板” -&gt; “程序和功能” -&gt; “启用或关闭Windows功能”，勾选“NFS客户端”，然后点击“确定”安装。</p>
-<p>使用命令行挂载NFS共享：</p>
-<p>打开命令提示符或PowerShell，使用mount命令挂载Linux NFS共享。</p>
-<p>例如，如果你的Linux NFS服务器IP是192.168.1.100，NFS共享路径是&#x2F;shared，你想将其挂载到本地的Z:驱动器，可以使用以下命令：</p>
-<p><code>mount \\192.168.1.100\shared Z:</code><br>如果你想在每次启动时自动挂载该共享，可以在mount命令后添加-p参数，并将命令添加到autocmd.bat文件中，该文件位于C:\Windows\System32\目录下。</p>
-<p>注意：确保你的Windows防火墙设置允许NFS通信。如果你的NFS服务器配置了访问控制，你可能需要提供用户名和密码。</p>
-<h3 id="gcc-命令"><a href="#gcc-命令" class="headerlink" title="gcc 命令"></a>gcc 命令</h3><p> GCC 常用编译选项<br> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-E 预处理，开发过程中想快速确定某个宏可以使用“-E -dM”</span><br><span class="line">-c 把预处理、编译、汇编都做了，但是不链接</span><br><span class="line">-o 指定输出文件</span><br><span class="line">-I 指定头文件目录</span><br><span class="line">-L 指定链接时库文件目录</span><br><span class="line">-l 指定链接哪一个库文件</span><br></pre></td></tr></table></figure><br>常用 <code>gcc -o hello hello.c</code></p>
-<h3 id="Makefine"><a href="#Makefine" class="headerlink" title="Makefine"></a>Makefine</h3><h4 id="Make-fine-原理"><a href="#Make-fine-原理" class="headerlink" title="Make fine 原理"></a>Make fine 原理</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -c -o a.o a.c</span><br><span class="line">gcc -c -o b.o b.c</span><br><span class="line">gcc -o test a.o b.o</span><br><span class="line">gcc -c -o c.o c.c -MD -MF c.d</span><br></pre></td></tr></table></figure>
-<p>gcc 生成依赖 c.d<br>如何判断哪些文件被修改，只编译被修改的文件，比较时间：目标文件和依赖文件的时间，当依赖比目标新时，执行编译文件。</p>
-<p>目标:依赖<br>[TAB]命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">test:a.o b.o</span><br><span class="line">    gcc -o test a.o b.o</span><br><span class="line"></span><br><span class="line">a.o : a.c</span><br><span class="line">    gcc -o a.o a.c</span><br><span class="line"></span><br><span class="line">b.o : b.c</span><br><span class="line">    gcc -o b.o b.c</span><br></pre></td></tr></table></figure>
-<h4 id="Makefile语法"><a href="#Makefile语法" class="headerlink" title="Makefile语法"></a>Makefile语法</h4><p>% 通配符 %.o<br>$@ 目标<br>$&lt; 第一个依赖文件<br>$^ 所有依赖文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">test:a.o b.o</span><br><span class="line">    gcc -o test $^</span><br><span class="line">%.o : %.c</span><br><span class="line">gcc -c -o $@ $&lt;</span><br></pre></td></tr></table></figure>
-
-<p>make 无目标，默认第一个为目标<br>使用下面的语句把“clean”设置为假想目标：<br><code>.PHONY : clean</code></p>
-<p>即时变量、延时变量，export</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">A = xxx // 延时变量</span><br><span class="line">B ?= xxx // 延时变量，只有第一次定义时赋值才成功；如果曾定义过，此赋值无效</span><br><span class="line">C := xxx // 立即变量</span><br><span class="line">D += yyy // 如果 D 在前面是延时变量，那么现在它还是延时变量；</span><br><span class="line">D += dir/ dir 是一个目录</span><br><span class="line">// 如果 D 在前面是立即变量，那么现在它还是立即变量</span><br></pre></td></tr></table></figure>
-<p>@echo 看不到变量<br>@echo $(A)</p>
-<h5 id="makefile-函数"><a href="#makefile-函数" class="headerlink" title="makefile 函数"></a>makefile 函数</h5><p><code>$(foreach var,list,text)</code><br>简单地说，就是 for each var in list, change it to text。对 list 中的每一个<br>元素，取出来赋给 var，然后把 var 改为 text 所描述的形式。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">objs := a.o b.o</span><br><span class="line">dep_files := $(foreach f, $(objs), .$(f).d) // 最终 dep_files := .a.o.d .b.o.d</span><br></pre></td></tr></table></figure>
-<p><code>$(wildcard pattern)</code><br>pattern 所列出的文件是否存在，把存在的文件都列出来。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src_files := $( wildcard *.c) // 最终 src_files 中列出了当前目录下的所有.c 文件</span><br></pre></td></tr></table></figure>
-
-<p><code>$(filter pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter(过滤)出来、留下来。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter %/, $(obj-y)) //结果为：c/ d/</span><br></pre></td></tr></table></figure>
-
-<p><code>$(filter-out pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter-out(过滤)出来、扔掉。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter-out %/, $(obj-y)) //结果为：a.o b.o</span><br></pre></td></tr></table></figure>
-
-<p><code>$(patsubst pattern,replacement,text)</code><br>寻找text中符合格式pattern的字，用replacement替换它们。<br>pattern和replacement中可以使用通配符。</p>
-<p>比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">subdir-y := c/ d/</span><br><span class="line">subdir-y := $(patsubst %/, %, $(subdir-y)) // 结果为：c d</span><br></pre></td></tr></table></figure>
-<p>EXTRA_CFLAGS :&#x3D; -D DEBUG 打开宏</p>
-<h4 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h4><p>Linux 内核编译通常使用 make 工具，而不是 cmake。cmake 是用于跨平台构建系统的工具，但 Linux 内核不是为跨平台设计的，而是直接使用 make 工具来构建。</p>
-<h4 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h4><p>linux&#x2F;unix 系统开发</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux_app</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LVGL</title>
     <url>/2024/04/17/lvgl/</url>
     <content><![CDATA[<h1 id="LVGL"><a href="#LVGL" class="headerlink" title="LVGL"></a>LVGL</h1><p>LVGL（Light and Versatile Graphics Library）是一个免费的开源图形库，提供创建具有易于使用的图形元素、漂亮的视觉效果和低内存占用的嵌入式 GUI。接下来我们来看一下 LVGL图形用户库的主要特征有哪些：</p>
@@ -1821,6 +1730,244 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </categories>
       <tags>
         <tag>lvgl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人生如赴宴，举止须从容</title>
+    <url>/2034/05/04/life/</url>
+    <content><![CDATA[<h1 id="人生如赴宴，举止须从容"><a href="#人生如赴宴，举止须从容" class="headerlink" title="人生如赴宴，举止须从容"></a>人生如赴宴，举止须从容</h1><p>人和动物&#x2F;野兽的区别，人是有智慧的。身体由大脑控制，大脑是由思想，意志等控制着。所以需要训练大脑，增强意志力，拥有更强的自控力。如同计算机发出指令，最简单的if&#x2F;else判断语句后面都有一个True&#x2F;Flase。人也一样，一个优秀的人，在做出主动选择或者被动响应时，都应该由一个判断的过程，而这个判断的算法每个人都不一样。如何得到一个优秀的执行判断的神经网络模型，需要训练，多看（输入）、多做（输出）、多想（反馈），才能得到优化。</p>
+<p>一个人的成长，是从全能自恋到真实自信的过程，也是从孤独自恋到有深情依恋的过程，同时是从想象进入现实的过程。<br>想象与现实的一个巨大差别是，想象可瞬间完成，而现实却需要时间和过程，它越重要，就越需要漫长的过程。</p>
+<p>现代人的大脑结构，有好几个自我。它们相互竞争，试图控制我们的想法、感受和行动。每个意志力挑战都是一次自我博弈。要想让更好的自己占据主导，我们就要强化自我意识和自控力。这样，我们才会有意志力和“我想要”的力量。</p>
+<p>作为一个遵纪守法的好人，也许我们从来没有想过和“暴力”扯上关系。不过如果稍微留意一下现实生活中的谈话方式，并且用心体会各种谈话方式给我们的不同感受，我们一定会发现有些话确实伤人！言语上的指责、嘲讽、否定、说教以及任意打断、拒不回应、随意出口的评价和结论给我们带来的情感和精神上的创伤，甚至比肉体的伤害更加令人痛苦。这些无心或有意的语言暴力让人变得冷漠、隔膜、敌视。</p>
+<span id="more"></span>
+
+<h2 id="全能自恋"><a href="#全能自恋" class="headerlink" title="全能自恋"></a>全能自恋</h2><ul>
+<li>你只是一个人，不是生来就全能，需要不断的学习和实践。</li>
+<li>行动和投入是对全能自恋的直接治疗方法。</li>
+<li>一些事情我们自己能控制，另一些则不能。学会区分什么你能控制的，什么你不能控制的。</li>
+</ul>
+<h2 id="自控力"><a href="#自控力" class="headerlink" title="自控力"></a>自控力</h2><p>如果你想要更强的自控力，就得有更多的自我意识，要意识到自己在做什么，为什么要这样做（什么样的想法、感受和情况最容易让你有冲动，想些什么或暗示什么最容易让你放弃冲动）。</p>
+<ul>
+<li>任何时候，我们都有选择的空间。任何时候，我都可以选择我的行为，朝向你认为“好”的方向。哪怕是赴死，也可以选择从容、优雅一些。</li>
+</ul>
+<h4 id="脑力训练"><a href="#脑力训练" class="headerlink" title="脑力训练"></a>脑力训练</h4><p>经常挑战自己说<strong>我不要</strong>和<strong>我想要</strong>，日常冥想练习，让更多的血液流进前额皮质。<br>每天做10分钟冥想训练，注意力收回的过程就是自控力。</p>
+<ol>
+<li>原定不动，安静坐好。不要烦躁     </li>
+<li>注意你的呼吸。闭上眼睛，吸气在脑海中默念“吸”，呼气时在脑海里默念“呼”。</li>
+<li>感受呼吸，弄清自己是怎么走神的。集中注意力在呼吸上。</li>
+</ol>
+<h4 id="三思而后行"><a href="#三思而后行" class="headerlink" title="三思而后行"></a>三思而后行</h4><p>自控力不仅和心理有关，更和生理有关。只有在大脑和身体同时作用的瞬间，你才有力量克服冲动。当你最需要意志力的时候，你能够学会将自己的生理机能调整到这种状态。自控力就成了本能反应。<br>利用威胁，对生命的威胁，不做会死，例如剑齿虎的威胁，利用应激反应做启动，引出自控力。<br>深呼一口气，让你的身体进入更平静的状态，避免冲动行为，给自己更多的时间，让你深思熟虑想办法。</p>
+<h4 id="降低你的心率"><a href="#降低你的心率" class="headerlink" title="降低你的心率"></a>降低你的心率</h4><p><strong>当人感受到压力时，交感神经系统会控制身体。这种生理现象让你能够战斗或者逃跑。心率升高，心率变异程度就会降低</strong>此时，由于伴随应激反应产生的焦虑或愤怒，心率会被迫保持在较高水平上。<strong>相反，当人们成功自控的时候，副交感神经系统会发挥主要作用，缓解压力，控制冲动行为。心率降低，心率变异程度便会升高。</strong></p>
+<h2 id="非暴力沟通"><a href="#非暴力沟通" class="headerlink" title="非暴力沟通"></a>非暴力沟通</h2><p>非暴力沟通指导我们转变谈话和聆听的方式。我们不在条件反射式地反应，而是去明了自己的观察、感受和愿望，有意识的使用语言。尊重和倾听他人，又诚实、清晰地表达自己。<br><strong>听到批评时，我们一般会申辩、退缩或反击</strong>。然而，一旦<strong>专注于彼此的观察、感受及需要，而不反驳他人</strong>，我们便能发现内心的柔情，对自己和他人产生新的体会。通过强调倾听–<strong>倾听自己和他人</strong>，非暴力沟通培养彼此的尊重、关注与爱，使人乐于助人。</p>
+<p>（发起方）非暴力沟通模式的四个要素（观察，感受，需求，请求），利用四要素诚实地表达自己。</p>
+<ul>
+<li>留意发生的事情，我们此刻<strong>观察</strong>到什么？清楚地表达观察结果，而不是判断或评估。</li>
+<li>接着，表达<strong>感受</strong>，例如受伤、害怕、喜悦、开心、气愤等。</li>
+<li>然受，说出哪些<strong>需要</strong>导致那样的感受。</li>
+<li><strong>具体的请求</strong>，明确的告知他人，我们期待他采取何种行动，来满足我们。</li>
+</ul>
+<p>（接收方）非暴力沟通另一方面是借助它们关切地倾听。我们首先通过体会他人此刻的观察、感受和需要，和他们建立联系，然后聆听他们的请求，来发现做什么可以帮助他们。</p>
+<p>实际应用<br>非暴力沟通不只是语言表达或使用文字的技巧，它包含的意识和意图，也可以通过沉默、专注以及面部表情和身体语言来表达。<strong>倾听每句话所包含的情感和感受，去了解，去询问。</strong></p>
+<h3 id="是什么蒙蔽了爱"><a href="#是什么蒙蔽了爱" class="headerlink" title="是什么蒙蔽了爱"></a>是什么蒙蔽了爱</h3><p>是什么使我们难以体会到心中的爱，某些语言和表达方式的负面影响，它们虽然致力向于忽视人的感受和需要，以致彼此的疏远和伤寒。这些语言和表达方式，我称为“异化的沟通方式”。我们大多数的人使用的语言倾向于评判、比较、命令和指责 ，而不是鼓励我们倾听彼此的感受和需要。</p>
+<h4 id="道德评判"><a href="#道德评判" class="headerlink" title="道德评判"></a>道德评判</h4><p>道德评判是用道德标准来评判人，如果一个人的行为不符合我们的价值观，那他就被看作是不道德的或者邪恶的。批评、指责、辱骂、归类、比较及评论等都是在评判人。<br><strong>苏菲派诗人鲁米写道：“在道德与不道德的区分之外，有片田野。我将在那里见你。”</strong><br>然而，语言使我们陷入是非之中。它擅长将人分类，把人看作好人或坏人，正常或不正常，负责人或者不负责任，聪明或愚蠢，等等。诸如此类的评论暗含着我们的价值观及需要。不幸的是，以这样的方式提出主张，很可能会招来敌意，使我们的愿望难得到满足，即使他们接受批评，做出让步，通常不是心甘情愿的。如果他们处于恐惧或内疚来迎合我们，或迟或早，我们将会发现对方不再那么友好。当然，他们也付出了代价。屈服于外部和内部的压力，很可能使他们心怀怨恨，并厌恶自己。<br>不要将价值判断于道德评判混为一谈，什么是可贵的品质，我们每个人都要自己的看法。例如，我们也许会欣赏诚实、自由以及和平的价值。</p>
+<h4 id="进行比较"><a href="#进行比较" class="headerlink" title="进行比较"></a>进行比较</h4><p>比较也是批判的一种形式。比较蒙蔽了我们对人对己的爱意。如果真想过上悲惨生活，就去与他人做比较。<br>去和优秀的人比较，开始觉得自己活得很惨，心情极为低落。</p>
+<h4 id="回避责任"><a href="#回避责任" class="headerlink" title="回避责任"></a>回避责任</h4><p>我们对自己的思想、情感和行动负有责任。不是因为“不得不”而去做一件事情，而是你负有不可推卸的责任，作为子女、伴侣、公民的责任，要有责任感，而不是唯名是从，服从命令。</p>
+<h4 id="强人所难"><a href="#强人所难" class="headerlink" title="强人所难"></a>强人所难</h4><p>我们对别人的要求往往暗含着威胁,如果不配合，他们就会受到惩罚。</p>
+<h2 id="道歉的五种语言"><a href="#道歉的五种语言" class="headerlink" title="道歉的五种语言"></a>道歉的五种语言</h2><p>冒犯他人后需要真诚的道歉，丈夫要妻子，关怀她，努力满足她的需求。美好婚姻的基石并不是完美的人，而愿意承认错误并寻求宽恕的心。</p>
+<h3 id="变达歉意"><a href="#变达歉意" class="headerlink" title="变达歉意"></a>变达歉意</h3><p>说“对不起”，要让人感觉到我们的真诚，从身体语言动作上，看别人的眼神，说话的声音。<br><strong>真诚的道歉不能找借口，在道歉之后马上来个“但是…”, 应该另找时机进行沟通。</strong>一旦我们在口头上把责任推给对方(这就是指责)，道歉就会变成攻击。而攻击永远不会带来宽恕与和解。</p>
+<ul>
+<li>我现在才知道已经深深地伤害了你，这让我感到无比痛苦。我为自己的行为真诚地道歉。</li>
+<li>我真的很难过，让你失望了。我本来应该更细心一些，很抱歉让你这么痛苦。</li>
+<li>我当时显然没有认真考虑你地感受。我从来没打算要伤害你，但现在我知道我的话太过火了。<br>很抱歉，我当时那么的不礼貌。</li>
+<li>她很爱自己的东西，很珍惜自己花钱买的东西。</li>
+</ul>
+<h3 id="承认过错"><a href="#承认过错" class="headerlink" title="承认过错"></a>承认过错</h3><p>借口又使他们觉得没必要道歉。不愿意承认错误是和自尊心分不开的。承认错误会被视为软弱，因为只有失败者才会人认错。<strong>成熟的成年人会学会为自己的行为承认责任。</strong> 不成熟的人则继续哪些幼稚的幻想，把自己的错误推卸给别人。<br>为自己的行为负责的核心是愿意承认<strong>我错了</strong>。真正的强大在于，有足够的智慧和勇气知错就改。</p>
+<ul>
+<li>我知道我做错了，毫无借口。说到底，我的做法很自私，我错了。</li>
+<li>我又犯了一个我们以前讨论过的错误，把事情搞砸了。我知道只是我的错。</li>
+</ul>
+<h3 id="弥补过失"><a href="#弥补过失" class="headerlink" title="弥补过失"></a>弥补过失</h3><p>真正的歉意体现在想要为自己给别人造成的痛苦做出的赔偿的意愿中。当我们被家人的语言或者行为伤害时，常常感到愤怒。之所以伤害如此之深，愤怒如此强烈，是因为我们极度渴望被那个人爱。了解她喜欢的爱的语言。<br><strong>说出她的主要爱语</strong></p>
+<ul>
+<li><strong>肯定的言词</strong> 你穿这件衣服很漂亮。 你做的饭太好吃了！真是厨艺精湛。你那么好，我还伤害了你。 </li>
+<li><strong>服务的行动</strong> 体贴入微的善意行动，洗衣服、洗盘子、倒垃圾、照顾孩子、做饭。</li>
+<li><strong>接受礼物</strong> 赠送和接受礼物是表达爱的一种普遍方式。赠送礼物视为一种爱的表达方式，送花补偿伤害行为。</li>
+<li><strong>精心的时刻</strong> 道歉时需要将全部的注意力放在道歉对象的身上，注意她的眼睛，握着她的手说。</li>
+<li><strong>身体接触</strong> 挽手、亲吻、拥抱、搂着对方的肩膀、轻拍对方的脊背、抚弄对方的头发。</li>
+</ul>
+<p><strong>如果只是说”对不起，我错了”之类的话，却没有诚心诚意地努力赔偿，对方永远不会认为你地道歉是真诚的。</strong><br>真诚地道歉应该包含渴望纠正犯下地错误、弥补所造成的损失，以及向对方证实你地关爱。</p>
+<ul>
+<li>我能做些什么来弥补我地所作所为呢？</li>
+</ul>
+<h3 id="真诚悔改"><a href="#真诚悔改" class="headerlink" title="真诚悔改"></a>真诚悔改</h3><p>道歉里需要表达出改变的意愿，并且下次不再这样做，应该承诺”我会努力不再做这样的事”，还要有行为上的改变。<br><strong>真正的悔改发自内心，不再为过错找借口、狡辩，为自己的行为承担所有的责任，告诉她我会努力不再犯同样的错。</strong><br>我知道自己不会一下子就改好，但是我愿意去改变，希望他们对我有耐心，数周或数月。<br>如果不承认自己的错误，那么向配偶传达的消息是我们的道歉缺乏诚意。<strong>由于害羞和尴尬，我们常常不肯承认自己的失败。但是，最好的做法是立刻承认我们的旧病复发。</strong><br>  健康的婚姻里，我们所做出的改变通常与道德层面毫不相干，而与构建一个和谐的婚姻关系息息相关，去满足她的需求，这也是一种示爱方式，这个小小的改变能让妻子无比的幸福，这个代价实在是小且值得付出的。<br><strong>悔改的第二步是做出改变的计划，不要说说而已，要真正的改变。</strong><br><strong>悔改的第三步是执行计划。让计划得以实行需要付诸思考和行动。</strong><br>虽然旧的行为方式不能很快就彻底改掉，但是只要我们继续坚持改变，总有一天会成功。</p>
+<p>现实生活中，人们对事物的认知见仁见智，不同意别人的看法，需要先肯定他，然后再说出自己的观点。<strong>1这么看问题很有意思，2这一点我能理解，3关于这个想法，我最喜欢的是…</strong></p>
+<ul>
+<li>我知道我的做法于事无补。你觉得我怎么改变才会让你感觉好一些呢？</li>
+<li>我又犯了同样的错误，让你失望了。我怎么做才能让你重新建立对我的信任呢？</li>
+<li>我的老毛病实在由来已久，我知道现在想要改变一定会很难，而且可能会失败，再次伤害到你。如果你能帮助我想出让我能够坚持改变的方法，并在觉得我做得好的时候鼓励我，我会很感激的。</li>
+</ul>
+<h3 id="请求饶恕"><a href="#请求饶恕" class="headerlink" title="请求饶恕"></a>请求饶恕</h3><p>道歉了，还要说”请你原谅我，好吗”。你们的关系将如何发展就取决于对方，你失去了对事情的控制权，对一些人来说，<strong>交出控制权</strong>是他们很难接受的事情。<strong>害怕被拒绝</strong>是人之常情，成熟的人能认识到自己的恐惧，同时拒绝被恐惧所支配。如果珍视一段关系，他们愿意抵制自己的恐惧心理，采取必要的措施来修复关系。</p>
+<p><strong>第三种妨碍人们请求饶恕的恐惧是害怕失败</strong>，如果承认错误，就是承认”我是个失败者”。他们的反应通常是于对方进行激烈的争论，坚持自己的做法没有错。他们会说：”那么做可能伤害到了你，那么做可能冒犯了你，但你误会了，我可不是那个意思。”有时他们为自己做辩解的方式本身比最初的冒犯行为更伤人，但是他们看不到这一点。</p>
+<p>放低姿态，请求原谅，而不是要求，入药如同坐在宝座上的君王。</p>
+<ul>
+<li>我为自己对你说话的方式感到抱歉。我的声音很大、说话很难听，这样做很不对。你不该受到那样的对待。请你原谅我。</li>
+<li>我知道我深深地伤害了额你。你有理由不理我，但是我真的为自己的所作所为感到抱歉。希望你能够原谅我。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>book</category>
+      </categories>
+      <tags>
+        <tag>phychology</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux 应用开发</title>
+    <url>/2024/04/02/linux%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="VScode-Clangd"><a href="#VScode-Clangd" class="headerlink" title="VScode Clangd"></a>VScode Clangd</h3><p><a href="https://clangd.llvm.org/">Clangd</a> 是一个基于 Clang 的语言服务器，它提供了代码智能感知和导航功能。通过与 VSCode 集成。</p>
+<ol>
+<li><p>搜索 clangd 插件安装</p>
+</li>
+<li><p>禁用或卸载 Microsoft C&#x2F;C++ Intelligence</p>
+</li>
+<li><p>VSCode clangd 插件本身是不能运行的，它还需要 clangd 的环境，所以接下来安装 clangd。<br>在 Ubuntu 中最好不要使用 apt 安装，因为版本比较旧，建议下载后手动安装。<br>解压后，<br>将 bin 文件夹下的 clangd 移动到 &#x2F;usr&#x2F;bin 目录下，<br>将 lib 文件夹下的所有移动到 &#x2F;usr&#x2F;local&#x2F;lib 目录下。<br><code>clangd --version</code>查看版本。</p>
+<span id="more"></span>
+</li>
+<li><p>使用 bear 构建源码的 compile_commands.json 文件,clangd需要这个文件才能提供补全和跳转，compile_commands.json 文件记录了你的工程是如何构建的，使用到了哪些源码文件，源码文件之间的包含关系，引用路径之类的，这些可以帮助 clangd 构建符号关系索引库。<br><code>sudo apt install bear</code> 安装 bear </p>
+</li>
+<li><p>修改 compile_commands.json 文件<br>需要全局替换：”cc”  –&gt;  “arm-linux-gnueabihf-gcc”<br>保存后关闭 VSCode，如果有. cache 文件夹的话，删除掉它。之后重新用 VSCode 打开源码目录，随便打开一个. c 文件，clangd 便自动开始索引文件了，索引文件会保存在 .cache 目录下。</p>
+</li>
+<li><p>驱动程序和应用程序的编写<br>对于驱动程序来说，我的方法是在当前源码目录下新建一个文件夹，在这个文件夹下进行驱动程序的编写，这样跳转、补全之类的都比较方便。<br>然后保存工作区，方便下次打开：<br>对应用程序来说，不便放在源码工作区当中，可以像这样单独打开一个用于编写应用程序：<br>驱动程序写完后，拷贝到应用程序所在目录的驱动程序文件中。</p>
+</li>
+</ol>
+<h3 id="安装-NFS"><a href="#安装-NFS" class="headerlink" title="安装 NFS"></a>安装 NFS</h3><h4 id="在Ubuntu上设置NFS服务器的步骤如下："><a href="#在Ubuntu上设置NFS服务器的步骤如下：" class="headerlink" title="在Ubuntu上设置NFS服务器的步骤如下："></a>在Ubuntu上设置NFS服务器的步骤如下：</h4><ol>
+<li><p>安装NFS内核服务器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nfs-kernel-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建共享目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /srv/nfs/share</span><br><span class="line">sudo chown nobody:nogroup /srv/nfs/share</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置共享权限。编辑 &#x2F;etc&#x2F;exports 文件，并添加共享目录配置：<code>sudo nano /etc/exports</code></p>
+</li>
+</ol>
+<p>添加以下行：<code>/srv/nfs/share 192.168.1.0/24(rw,sync,no_subtree_check)</code></p>
+<ol start="4">
+<li>启动 NFS服务<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl start nfs-kernel-server</span><br><span class="line">sudo systemctl enable nfs-kernel-server</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="在客户端计算机上，您需要安装NFS通用文件系统客户端："><a href="#在客户端计算机上，您需要安装NFS通用文件系统客户端：" class="headerlink" title="在客户端计算机上，您需要安装NFS通用文件系统客户端："></a>在客户端计算机上，您需要安装NFS通用文件系统客户端：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nfs-common</span><br></pre></td></tr></table></figure>
+<p>然后，您可以挂载服务器上的共享目录：<br><code>sudo mount -t nfs 192.168.1.x:/srv/nfs/share /mnt</code></p>
+<h4 id="windows-挂载linux-NFS"><a href="#windows-挂载linux-NFS" class="headerlink" title="windows 挂载linux NFS"></a>windows 挂载linux NFS</h4><p>在Windows上挂载Linux NFS共享，你需要确保已经在Linux服务器上配置了NFS共享，并且Windows客户端已安装NFS客户端功能。以下是如何在Windows上挂载Linux NFS共享的步骤：</p>
+<p>安装NFS客户端功能：</p>
+<p>打开“控制面板” -&gt; “程序和功能” -&gt; “启用或关闭Windows功能”，勾选“NFS客户端”，然后点击“确定”安装。</p>
+<p>使用命令行挂载NFS共享：</p>
+<p>打开命令提示符或PowerShell，使用mount命令挂载Linux NFS共享。</p>
+<p>例如，如果你的Linux NFS服务器IP是192.168.1.100，NFS共享路径是&#x2F;shared，你想将其挂载到本地的Z:驱动器，可以使用以下命令：</p>
+<p><code>mount \\192.168.1.100\shared Z:</code><br>如果你想在每次启动时自动挂载该共享，可以在mount命令后添加-p参数，并将命令添加到autocmd.bat文件中，该文件位于C:\Windows\System32\目录下。</p>
+<p>注意：确保你的Windows防火墙设置允许NFS通信。如果你的NFS服务器配置了访问控制，你可能需要提供用户名和密码。</p>
+<h3 id="gcc-命令"><a href="#gcc-命令" class="headerlink" title="gcc 命令"></a>gcc 命令</h3><p> GCC 常用编译选项<br> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-E 预处理，开发过程中想快速确定某个宏可以使用“-E -dM”</span><br><span class="line">-c 把预处理、编译、汇编都做了，但是不链接</span><br><span class="line">-o 指定输出文件</span><br><span class="line">-I 指定头文件目录</span><br><span class="line">-L 指定链接时库文件目录</span><br><span class="line">-l 指定链接哪一个库文件</span><br></pre></td></tr></table></figure><br>常用 <code>gcc -o hello hello.c</code></p>
+<h3 id="Makefine"><a href="#Makefine" class="headerlink" title="Makefine"></a>Makefine</h3><h4 id="Make-fine-原理"><a href="#Make-fine-原理" class="headerlink" title="Make fine 原理"></a>Make fine 原理</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gcc -c -o a.o a.c</span><br><span class="line">gcc -c -o b.o b.c</span><br><span class="line">gcc -o test a.o b.o</span><br><span class="line">gcc -c -o c.o c.c -MD -MF c.d</span><br></pre></td></tr></table></figure>
+<p>gcc 生成依赖 c.d<br>如何判断哪些文件被修改，只编译被修改的文件，比较时间：目标文件和依赖文件的时间，当依赖比目标新时，执行编译文件。</p>
+<p>目标:依赖<br>[TAB]命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">test:a.o b.o</span><br><span class="line">    gcc -o test a.o b.o</span><br><span class="line"></span><br><span class="line">a.o : a.c</span><br><span class="line">    gcc -o a.o a.c</span><br><span class="line"></span><br><span class="line">b.o : b.c</span><br><span class="line">    gcc -o b.o b.c</span><br></pre></td></tr></table></figure>
+<h4 id="Makefile语法"><a href="#Makefile语法" class="headerlink" title="Makefile语法"></a>Makefile语法</h4><p>% 通配符 %.o<br>$@ 目标<br>$&lt; 第一个依赖文件<br>$^ 所有依赖文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">test:a.o b.o</span><br><span class="line">    gcc -o test $^</span><br><span class="line">%.o : %.c</span><br><span class="line">gcc -c -o $@ $&lt;</span><br></pre></td></tr></table></figure>
+
+<p>make 无目标，默认第一个为目标<br>使用下面的语句把“clean”设置为假想目标：<br><code>.PHONY : clean</code></p>
+<p>即时变量、延时变量，export</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">A = xxx // 延时变量</span><br><span class="line">B ?= xxx // 延时变量，只有第一次定义时赋值才成功；如果曾定义过，此赋值无效</span><br><span class="line">C := xxx // 立即变量</span><br><span class="line">D += yyy // 如果 D 在前面是延时变量，那么现在它还是延时变量；</span><br><span class="line">D += dir/ dir 是一个目录</span><br><span class="line">// 如果 D 在前面是立即变量，那么现在它还是立即变量</span><br></pre></td></tr></table></figure>
+<p>@echo 看不到变量<br>@echo $(A)</p>
+<h5 id="makefile-函数"><a href="#makefile-函数" class="headerlink" title="makefile 函数"></a>makefile 函数</h5><p><code>$(foreach var,list,text)</code><br>简单地说，就是 for each var in list, change it to text。对 list 中的每一个<br>元素，取出来赋给 var，然后把 var 改为 text 所描述的形式。<br>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">objs := a.o b.o</span><br><span class="line">dep_files := $(foreach f, $(objs), .$(f).d) // 最终 dep_files := .a.o.d .b.o.d</span><br></pre></td></tr></table></figure>
+<p><code>$(wildcard pattern)</code><br>pattern 所列出的文件是否存在，把存在的文件都列出来。<br>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src_files := $( wildcard *.c) // 最终 src_files 中列出了当前目录下的所有.c 文件</span><br></pre></td></tr></table></figure>
+
+<p><code>$(filter pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter(过滤)出来、留下来。<br>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter %/, $(obj-y)) //结果为：c/ d/</span><br></pre></td></tr></table></figure>
+
+<p><code>$(filter-out pattern...,text)</code><br>把 text 中符合 pattern 格式的内容，filter-out(过滤)出来、扔掉。<br>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">obj-y := a.o b.o c/ d/</span><br><span class="line">DIR := $(filter-out %/, $(obj-y)) //结果为：a.o b.o</span><br></pre></td></tr></table></figure>
+
+<p><code>$(patsubst pattern,replacement,text)</code><br>寻找text中符合格式pattern的字，用replacement替换它们。<br>pattern和replacement中可以使用通配符。</p>
+<p>比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">subdir-y := c/ d/</span><br><span class="line">subdir-y := $(patsubst %/, %, $(subdir-y)) // 结果为：c d</span><br></pre></td></tr></table></figure>
+<p>EXTRA_CFLAGS :&#x3D; -D DEBUG 打开宏</p>
+<h4 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h4><p>Linux 内核编译通常使用 make 工具，而不是 cmake。cmake 是用于跨平台构建系统的工具，但 Linux 内核不是为跨平台设计的，而是直接使用 make 工具来构建。</p>
+<h4 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h4><p>linux&#x2F;unix 系统开发</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux_app</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql</title>
+    <url>/2023/05/02/mysql/</url>
+    <content><![CDATA[<h3 id="MySQL-简介"><a href="#MySQL-简介" class="headerlink" title="MySQL 简介"></a>MySQL 简介</h3><p>MySQL 最早是由瑞典的 MySQL AB 公司开发的一个开放源码的关系数据库管理系统，该公司于2008年被昇阳微系统公司（Sun Microsystems）收购。在2009年，甲骨文公司（Oracle）收购昇阳微系统公司，因此 MySQL 目前也是 Oracle 旗下产品。</p>
+<p>MySQL 在过去由于性能高、成本低、可靠性好，已经成为最流行的开源数据库，因此被广泛地应用于中小型网站开发。随着 MySQL 的不断成熟，它也逐渐被应用于更多大规模网站和应用，比如维基百科、谷歌（Google）、脸书（Facebook）、淘宝网等网站都使用了 MySQL 来提供数据持久化服务。</p>
+<p>甲骨文公司收购后昇阳微系统公司，大幅调涨 MySQL 商业版的售价，且甲骨文公司不再支持另一个自由软件项目 <a href="https://zh.wikipedia.org/wiki/OpenSolaris">OpenSolaris </a> 的发展，因此导致自由软件社区对于 Oracle 是否还会持续支持 MySQL 社区版（MySQL 的各个发行版本中唯一免费的版本）有所担忧，MySQL 的创始人麦克尔·维德纽斯以 MySQL 为基础，创建了 <a href="https://zh.wikipedia.org/wiki/MariaDB">MariaDB</a>（以他女儿的名字命名的数据库）分支。有许多原来使用 MySQL 数据库的公司（例如：维基百科）已经陆续完成了从 MySQL 数据库到 MariaDB 数据库的迁移。</p>
+<span id="more"></span>
+
+<h4 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h4><p>方法一应用华为镜像包解压：参考linuxdeploy<br>方法二使用官网rpm源：<br>   可以在 <a href="https://www.mysql.com/">MySQL 官方网站</a>下载安装文件。首先在下载页面中选择平台和版本，然后找到对应的下载链接，直接下载包含所有安装文件的归档文件，解归档之后通过包管理工具进行安装。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://downloads.mysql.com/archives/get/p/23/file/mysql-xxx.rpm-bundle.tar</span><br><span class="line">tar -xvf mysql-xxx.rpm-bundle.tar</span><br></pre></td></tr></table></figure>
+<p>   如果系统上有 MariaDB 相关的文件，需要先移除 MariaDB 相关的文件。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum list installed | grep mariadb | awk &#x27;&#123;print $1&#125;&#x27; | xargs yum erase -y</span><br></pre></td></tr></table></figure>
+
+<p>更新和安装可能用到的底层依赖库。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install -y libaio libaio-devel</span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">接下来可以按照如下所示的顺序用 RPM（Redhat Package Manager）工具安装 MySQL。</span><br><span class="line"></span><br><span class="line">```Shell</span><br><span class="line">rpm -ivh mysql-community-common-xxx.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-xxx.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-compat-xxx.rpm</span><br><span class="line">rpm -ivh mysql-community-devel-xxx.rpm</span><br><span class="line">rpm -ivh mysql-community-client-xxx.rpm</span><br><span class="line">rpm -ivh mysql-community-server-xxx.rpm</span><br></pre></td></tr></table></figure>
+<p>可以使用下面的命令查看已经安装的 MySQL 相关的包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep mysql</span><br></pre></td></tr></table></figure>
+<p>可以使用下面的命令来启动 MySQL。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
+
+<p>在 CentOS 7 中，更推荐使用下面的命令来启动 MySQL。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
+
+<p>启动 MySQL 成功后，可以通过下面的命令来检查网络端口使用情况，MySQL 默认使用<code>3306</code>端口。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netstat -ntlp | grep mysql</span><br></pre></td></tr></table></figure>
+<h4 id="使用-MySQL-客户端工具连接服务器。"><a href="#使用-MySQL-客户端工具连接服务器。" class="headerlink" title="使用 MySQL 客户端工具连接服务器。"></a>使用 MySQL 客户端工具连接服务器。</h4><p>在实际开发中，为了方便用户操作，可以选择图形化的客户端工具来连接 MySQL 服务器，例如MySQL Workbench（官方工具）</p>
+<p>使用 MySQL 客户端工具连接服务器。<br>命令行工具：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p>修改口令</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> validate_password_policy<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> validate_password_length<span class="operator">=</span><span class="number">6</span>;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;123456&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="创建用户：以root用户登录到数据库进行用户创建"><a href="#创建用户：以root用户登录到数据库进行用户创建" class="headerlink" title="创建用户：以root用户登录到数据库进行用户创建"></a>创建用户：以root用户登录到数据库进行用户创建</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;password&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>note:<br>username——将要创建的用户名；<br>host——指定该用户在哪个主机上可以登录，”localhost”指该用户只能在本地登录，不能在另外一台机器上远程登录，如果想远程登录，将”localhost”改为”%”，表示在任何一台电脑上都可以登录；也可以指定某台机器可以远程登录；<br>password——该用户的登录密码，密码可以为空，若为空则该用户可以不需要密码登录服务器。</p>
+<h4 id="授权：以root用户登录到数据库进行授权"><a href="#授权：以root用户登录到数据库进行授权" class="headerlink" title="授权：以root用户登录到数据库进行授权"></a>授权：以root用户登录到数据库进行授权</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> privileges <span class="keyword">ON</span> databasename.tablename <span class="keyword">TO</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>note:<br>privileges——用户的操作权限，如SELECT等。如果授予所有权限则使用ALL。<br>databasename——数据库名称。tablename——表名。如果要给该用户授予对所有数据库和表的相应操作权限则可用<em>表示，例如</em>.*<br>例如：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> test_db.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;test_admin2&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>note:必须执行flush privileges;</p>
+<h4 id="撤销用户权限"><a href="#撤销用户权限" class="headerlink" title="撤销用户权限"></a>撤销用户权限</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> privilege <span class="keyword">ON</span> databasename.tablename <span class="keyword">FROM</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除账户及权限："><a href="#删除账户及权限：" class="headerlink" title="删除账户及权限："></a>删除账户及权限：</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">user</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看用户的授权"><a href="#查看用户的授权" class="headerlink" title="查看用户的授权"></a>查看用户的授权</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> GRANTS <span class="keyword">FOR</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="备份数据库"><a href="#备份数据库" class="headerlink" title="备份数据库"></a>备份数据库</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">mysqldump <span class="operator">-</span>p funds <span class="operator">&gt;</span> funds_backup.sql</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="天天基金数据"><a href="#天天基金数据" class="headerlink" title="天天基金数据"></a>天天基金数据</h3><p>通过访问下面的链接提供适当参数，即可获取指定基金在指定日期段内的净值数据，例如获取基金代码005918</p>
+<p>无参数版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://fundf10.eastmoney.com/F10DataApi.aspx?type=lsjz&amp;code=005918</span><br></pre></td></tr></table></figure>
+<p>默认返回近10天的数据，如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var apidata=&#123; content:&quot;</span><br><span class="line">净值日期	单位净值	累计净值	日增长率	申购状态	赎回状态	分红送配</span><br><span class="line">2022-03-08	1.2146	1.2146	-1.87%	开放申购	开放赎回	</span><br><span class="line">...	</span><br><span class="line">&quot;,records:944,pages:472,curpage:1&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>加参数版本，</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&amp;code=005918&amp;page=1&amp;sdate=2020-01-01&amp;edate=2020-02-13&amp;per=20</span><br></pre></td></tr></table></figure>
+
+<p>链接中的各参数含义简单说明：</p>
+<p>code：指明基金代码；<br>sdate：数据开始日期；<br>edate：数据结束日期；<br>per：指定每页显示的条数，如果不指定该参数，则默认值为10，如果指定该参数值在1-49之间，则每页条数按照指定参数值显示，如果指定该值大于等于50，则每页显示20条；<br>page：per指定了每页的显示条数，存在一页显示不完整的情况，该参数直接指定显示第几页。<br>如上图，底部有pages、curpage参数，分别指明总页数和当前页数，在抓取数据时，需要特别处理，否则只能获取当页数据</p>
+<p>查询带有估值信息的接口，如查询005918</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://fundgz.1234567.com.cn/js/005918.js</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jsonpgz(&#123;&quot;fundcode&quot;:&quot;005918&quot;,&quot;name&quot;:&quot;澶╁紭娌繁300ETF鑱旀帴C&quot;,&quot;jzrq&quot;:&quot;2022-03-08&quot;,&quot;dwjz&quot;:&quot;1.2146&quot;,&quot;gsz&quot;:&quot;1.2040&quot;,&quot;gszzl&quot;:&quot;-0.87&quot;,&quot;gztime&quot;:&quot;2022-03-09 15:00&quot;&#125;);</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -2065,91 +2212,143 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </tags>
   </entry>
   <entry>
-    <title>mysql</title>
-    <url>/2023/05/02/mysql/</url>
-    <content><![CDATA[<h3 id="MySQL-简介"><a href="#MySQL-简介" class="headerlink" title="MySQL 简介"></a>MySQL 简介</h3><p>MySQL 最早是由瑞典的 MySQL AB 公司开发的一个开放源码的关系数据库管理系统，该公司于2008年被昇阳微系统公司（Sun Microsystems）收购。在2009年，甲骨文公司（Oracle）收购昇阳微系统公司，因此 MySQL 目前也是 Oracle 旗下产品。</p>
-<p>MySQL 在过去由于性能高、成本低、可靠性好，已经成为最流行的开源数据库，因此被广泛地应用于中小型网站开发。随着 MySQL 的不断成熟，它也逐渐被应用于更多大规模网站和应用，比如维基百科、谷歌（Google）、脸书（Facebook）、淘宝网等网站都使用了 MySQL 来提供数据持久化服务。</p>
-<p>甲骨文公司收购后昇阳微系统公司，大幅调涨 MySQL 商业版的售价，且甲骨文公司不再支持另一个自由软件项目 <a href="https://zh.wikipedia.org/wiki/OpenSolaris">OpenSolaris </a> 的发展，因此导致自由软件社区对于 Oracle 是否还会持续支持 MySQL 社区版（MySQL 的各个发行版本中唯一免费的版本）有所担忧，MySQL 的创始人麦克尔·维德纽斯以 MySQL 为基础，创建了 <a href="https://zh.wikipedia.org/wiki/MariaDB">MariaDB</a>（以他女儿的名字命名的数据库）分支。有许多原来使用 MySQL 数据库的公司（例如：维基百科）已经陆续完成了从 MySQL 数据库到 MariaDB 数据库的迁移。</p>
-<span id="more"></span>
+    <title>有限状态机 FSM</title>
+    <url>/2024/05/19/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/</url>
+    <content><![CDATA[<h1 id="Mini-FSM"><a href="#Mini-FSM" class="headerlink" title="Mini FSM"></a>Mini FSM</h1><p>有限状态机 (Finite State Machine，简称 FSM)，<strong>表示有限个状态以及在这些状态之间的转移和动作等行为的处理模型</strong>。在任何给定的时间点，有限状态机都处于某一特定状态，并且可以根据当前状态和输入条件，从当前状态转移到另一个状态。有限状态机相关的核心概念主要包括：</p>
+<ul>
+<li>**实体 (Entity)**：状态机的主体和作用对象，它的状态可以改变</li>
+<li><strong>状态 (State)<strong>：实体在某一特定时间点的情况，可分为</strong>现态 (当前状态)<strong>、</strong>次态 (跳转新状态)</strong></li>
+<li>**事件 (Event)**：导致状态转换的触发器和条件</li>
+<li>**动作 (Action)**：状态转换时执行的操作，可以发生在状态转换前、转换中、转换后阶段</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/3365be5eb7155d7dd44de5f999dd0115.png"></p>
+<p>状态转移图</p>
+<p>有限状态机除了使用状态转移图表示，也可以使用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://zh.wikipedia.org/wiki/%25E7%258A%25B6%25E6%2580%2581%25E8%25BD%25AC%25E7%25A7%25BB%25E8%25A1%25A8&source=article&objectId=2418561">状态转移表</a>呈现，展示基于当前状态和其他输入，要移动到什么状态的表格。例如：当前状态（B）和条件（Y）的组合指示出下一个状态（C）。</p>
+<p>很多调度系统和工作流系统都会内置状态机管理，用于维护状态转移的事件处理。例如，YARN(资源调度系统) 将各种处理逻辑抽象为<strong>事件</strong>和对应的<strong>事件调度器</strong>。每类事件的处理过程可分割成多个步骤，用<strong>有限状态机</strong>表示。</p>
+<p>处理请求作为事件进入系统，由<strong>中央异步调度器 (Async-Dispatcher)</strong> 负责传递给相应**事件调度器 (Event Handler)**。事件调度器可能将事件转发给另外一个事件调度器，也可能转发给一个带有有限状态机的事件处理器，其处理结果也以事件的形式输出给中央异步调度器。而新的事件会再次被中央异步调度器转发给下一个事件调度器，直至达到终止条件才处理完成。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/5b8b6322e33067a2f05a828cc3e9fae3.png"></p>
+<p>YARN 事件处理模型</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>有限状态机有不同的实现方式，具体取决于具体的应用场景，常见的实现方式有：</p>
+<ul>
+<li><strong>Switch Case &#x2F; 枚举实现</strong>：基于枚举类型表示状态，定义一个方法来处理状态转换，转移过程可基于 Switch 匹配语句实现</li>
+<li><strong>查找表</strong>：基于二维数组或者哈希表维护状态转移表，其中一维表示<strong>当前状态</strong>，另一维表示**输入条件 (时间)**，表格中的元素则表示下一个状态。该方法处理简单便捷，适合非复杂场景</li>
+<li><strong>状态模式</strong>：State Pattern，是一种行为设计模式。将对象的状态分离并封装到专用的状态类，使得对象状态可灵活变化，当状态改变时会相应改变对象的行为</li>
+<li><strong>状态机框架</strong>：基于现成的状态机库或框架处理，功能较丰富且完整</li>
+</ul>
+<h3 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h3><p>每个状态都是一个对象，这些对象共享一个公共状态接口。<strong>状态机持有一个状态对象的引用，所有的事件处理和动作执行都委托给这个状态对象</strong>。当状态转移时，状态机将引用切换到另一个状态对象。</p>
+<ul>
+<li><strong>Context</strong>：**上下文 (状态机)**，保存具体状态的引用，通过状态接口与状态对象交互，提供设置器用于接收新的状态对象</li>
+<li><strong>State</strong>：<strong>状态</strong>，以接口类的形式定义状态的公共方法，用于事件处理和动作执行</li>
+<li><strong>Concrete States</strong>：<strong>具体状态</strong>，继承 State，实现特定状态对应的事件处理方法。可保存 Context 的反向引用，从 Context 获取所需信息并触发状态转移</li>
+</ul>
+<p>其中，<strong>Context 和具体状态都可以设置 Context 的下个状态</strong>， 并通过触发变更 Context 的状态引用实现状态转移。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/232bd1e6296adf6eb7350d5b39a0f625.png"></p>
+<p>状态模式结构</p>
+<h3 id="状态机框架"><a href="#状态机框架" class="headerlink" title="状态机框架"></a>状态机框架</h3><h4 id="Spring-Statemachine"><a href="#Spring-Statemachine" class="headerlink" title="Spring Statemachine"></a>Spring Statemachine</h4><p>Spring Statemachine (SSM) 是一个框架，允许在 Spring 应用程序中使用传统的状态机概念。SSM 提供以下功能：</p>
+<ul>
+<li>易于使用的一级状态机，适用于简单的用例</li>
+<li>分层状态机结构，以简化复杂的状态配置</li>
+<li>状态机区域提供更复杂的状态配置</li>
+<li>触发器 (triggers)、转换(transitions)、检测器(guards) 和动作 (actions) 的使用，其中，transitions 指示状态变更，guards 检测是否满足从一个状态切换到另外一个状态的条件</li>
+<li>类型安全的配置适配器</li>
+<li>状态机事件监听器</li>
+<li>Spring IoC 集成将 bean 与状态机相关联</li>
+</ul>
+<p>更多详情可查看：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://springref.com/docs/spring-statemachine&source=article&objectId=2418561">官方文档</a></p>
+<h4 id="Cola-StateMachine"><a href="#Cola-StateMachine" class="headerlink" title="Cola StateMachine"></a>Cola StateMachine</h4><p><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/alibaba/COLA&source=article&objectId=2418561">Cola</a>：Clean Object-Oriented and Layered Architecture 的缩写，<strong>代表 “整洁面向对象分层架构”。</strong>COLA 分为两个部分，<strong>COLA 架构</strong>和 <strong>COLA 组件，</strong>其中 <strong>StateMachine 组件</strong>实现了有限状态机功能。</p>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/2b17b088f8716f01414a28542700dcee.png"></p>
+<p><strong>Cola 参考 Spring Statemachine 设计思想进行简化</strong>，有限状态机的核心概念主要包括：</p>
+<ul>
+<li>StateMachine：状态机，维护状态机的上下文</li>
+<li>State：状态</li>
+<li>Event：事件，状态由事件触发，引起变化</li>
+<li>Transition：流转，表示从一个状态到另一个状态<ul>
+<li>External Transition：外部流转，两个不同状态之间的流转</li>
+<li>Internal Transition：内部流转，同一个状态之间的流转</li>
+</ul>
+</li>
+<li>Condition：条件，表示是否允许到达某个状态</li>
+<li>Action：动作，到达某个状态之后，可以做什么</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/e6dc15b9b38a6fef79eedf73c45d0170.png"></p>
+<p>核心语义模型</p>
+<p>更多详情可查看：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://blog.csdn.net/significantfrank/article/details/104996419&source=article&objectId=2418561">官方说明文档</a></p>
+<h4 id="其他框架"><a href="#其他框架" class="headerlink" title="其他框架"></a>其他框架</h4><p>常见的其他状态机开源框架有：</p>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/hekailiang/squirrel&source=article&objectId=2418561"><strong>Squirrel-foundation</strong></a>：一个基于 Java 的轻量级状态机库</li>
+<li><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/dotnet-state-machine/stateless&source=article&objectId=2418561"><strong>Stateless</strong></a>：NET 中基于 C# 实现的轻量级状态库，支持各种类型作为状态和触发事件、支持状态继承、支持状态进入 &#x2F; 离开事件、支持条件状态转移、支持状态 &#x2F; 转移查询，对应的 Java 版本实现：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/stateless4j/stateless4j&source=article&objectId=2418561">Stateless4j</a>。</li>
+</ul>
+<h2 id="轻量级实现"><a href="#轻量级实现" class="headerlink" title="轻量级实现"></a>轻量级实现</h2><h3 id="设计说明"><a href="#设计说明" class="headerlink" title="设计说明"></a>设计说明</h3><p>在业务功能实现时，遇到状态流转的管理。针对状态机进行选择，遇到几个问题：</p>
+<ul>
+<li><strong>复杂性</strong>：开源系统丰富的功能，有很多高级转换功能，但对于我们系统来说太多复杂且不必须，引入会增加系统复杂性</li>
+<li><strong>性能问题</strong>：开源的状态机都是有状态的（Stateful）的，对应实例线程不安全，在使用过程中存在性能问题</li>
+</ul>
+<p>Cola StateMachine 的状态机本身是无状态（Stateless）的，且实现较简洁，<strong>因此选择基于 Cola StateMachine 和 Spring StateMachine 的设计思想进行简化。</strong>在系统内部内嵌了简单的有限状态机管理，并根据业务需求扩展了 Action 执行后的返回结果 ActionResult。其中 Action 的执行使用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://blog.csdn.net/ZYC88888/article/details/103679605&source=article&objectId=2418561">响应式编程</a>，<strong>基于 Flux 和 Mono 实现</strong>。</p>
+<p>简化的 Mini-FSM 有限状态机的主要接口定义包括：</p>
+<ul>
+<li>StateMachine：状态机，维护状态机的上下文</li>
+<li>StateMachineEventResult：状态机事件转换的返回结果，包括获取当前状态、Action 结果等</li>
+<li>State：状态，<strong>传递事件信息并用于状态转换</strong>，FSM 核心处理，<strong>StateContext</strong> 反向引用状态机的上下文</li>
+<li>Event：事件，可基于枚举类定义</li>
+<li>Action：动作，对应具体事件的执行处理</li>
+<li>ActionResult：事件执行的返回结果，封装结果详情</li>
+<li>Guard：条件，表示是否允许到达某个状态</li>
+<li><strong>Transition</strong>：流转，表示从一个状态到另一个状态，包括 TransitionKind 类型，TransitionData 数据</li>
+</ul>
+<h3 id="实现架构"><a href="#实现架构" class="headerlink" title="实现架构"></a>实现架构</h3><p>Mini-FSM 框架实现如下所示：<strong>用户基于 Event 事件触发当前状态转移并返回转移结果</strong>。</p>
+<ul>
+<li><strong>sendEvent</strong>：Action 接受 sendEvent 请求处理，封装封装 transition 信息进行 transit 操作</li>
+<li><strong>transit</strong>：基于 TransitionData 处理，1. 基于 Guard 校验执行条件；2. 基于 Action 触发执行 Apply 并返回执行结果</li>
+</ul>
+<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/0a017ec73628ffb7bae7ea4aebe02455.png"></p>
+<p>Transition 流转类型分为两类：</p>
+<ul>
+<li>EXTERNAL：外部流转，Event 执行变更状态</li>
+<li>INTERNAL：内部流转，Event 执行不变更状态，现态与次态保持一致，是 EXTERNAL 流转的特例</li>
+</ul>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><blockquote>
+<p>更多可参考 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/YiwenWu/mini-fsm&source=article&objectId=2418561">Mini-FSM</a> 中的单元测试类 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/YiwenWu/mini-fsm/blob/main/src/test/java/com/github/minifsm/StateMachineTest.java&source=article&objectId=2418561">StateMachineTest</a>。</p>
+</blockquote>
+<h4 id="1-定义状态与事件"><a href="#1-定义状态与事件" class="headerlink" title="1. 定义状态与事件"></a>1. <strong>定义状态与事件</strong></h4><p>可自定义使用枚举类定义 <strong>State</strong> 状态 和 <strong>Event</strong> 事件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enum State &#123;</span><br><span class="line">    S1, S2, S3</span><br><span class="line">&#125;</span><br><span class="line">enum Event &#123;</span><br><span class="line">    E1, E23, E22, E13</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h4 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h4><p>方法一应用华为镜像包解压：参考linuxdeploy<br>方法二使用官网rpm源：<br>   可以在 <a href="https://www.mysql.com/">MySQL 官方网站</a>下载安装文件。首先在下载页面中选择平台和版本，然后找到对应的下载链接，直接下载包含所有安装文件的归档文件，解归档之后通过包管理工具进行安装。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://downloads.mysql.com/archives/get/p/23/file/mysql-xxx.rpm-bundle.tar</span><br><span class="line">tar -xvf mysql-xxx.rpm-bundle.tar</span><br></pre></td></tr></table></figure>
-<p>   如果系统上有 MariaDB 相关的文件，需要先移除 MariaDB 相关的文件。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum list installed | grep mariadb | awk &#x27;&#123;print $1&#125;&#x27; | xargs yum erase -y</span><br></pre></td></tr></table></figure>
+<h4 id="2-构建状态机"><a href="#2-构建状态机" class="headerlink" title="2. 构建状态机"></a>2. <strong>构建状态机</strong></h4><p>本示例中状态机配置定义包括：</p>
+<ol>
+<li>S1 基于 E1 的内部流转</li>
+<li>S2 → S3 基于 E23 的外部流转</li>
+<li>模拟 S1 基于 E13 的<strong>异常流转</strong></li>
+<li>模拟 S3 流转 <strong>Guard 条件校验不通过</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Builder&lt;State, Event&gt; builder = StateMachineBuilder.builder();</span><br><span class="line">// FSM状态变换定义</span><br><span class="line">builder.configureTransitions()</span><br><span class="line">    .withInternal() //1.构建内部流转 S1</span><br><span class="line">    .source(State.S1)</span><br><span class="line">    .event(Event.E1)</span><br><span class="line">    .action(context -&gt; &#123;</span><br><span class="line">        sleep(2000);</span><br><span class="line">        assert context.getEvent() == Event.E1;</span><br><span class="line">        return ActionResult.of();</span><br><span class="line">    &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withExternal() //2.构建外部流转 S2 → S3</span><br><span class="line">    .source(State.S2)</span><br><span class="line">    .target(State.S3)</span><br><span class="line">    .event(Event.E23)</span><br><span class="line">    .action(context -&gt; &#123;</span><br><span class="line">        assert context.getEvent() == Event.E23;</span><br><span class="line">        MessageHeaders headers = context.getMessage().getHeaders();</span><br><span class="line">        String result = ((String) headers.get(&quot;info&quot;)) + context.getEvent();</span><br><span class="line">        return ActionResult.of(ImmutableMap.of(&quot;result&quot;, result));</span><br><span class="line">    &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withInternal()</span><br><span class="line">    .source(State.S1)</span><br><span class="line">    .event(Event.E13) //3.构建内部流转 S1, 模拟异常回滚</span><br><span class="line">    .action(</span><br><span class="line">        context -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;mock failed case&quot;);</span><br><span class="line">            throw new RuntimeException(&quot;event e13 error&quot;);</span><br><span class="line">        &#125;,</span><br><span class="line">        context -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;Drop table Rollback&quot;);</span><br><span class="line">            return ActionResult.of(ImmutableMap.of(&quot;result&quot;, &quot;drop table back&quot;));</span><br><span class="line">        &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withInternal()</span><br><span class="line">    .source(State.S3)</span><br><span class="line">    .event(Event.E22)</span><br><span class="line">    .guard(context -&gt; context.getEvent() == Event.E13) //4.构建内部流转S3,模拟guard失败</span><br><span class="line">    .action(context -&gt; ActionResult.of());</span><br><span class="line">//构建FSM状态机</span><br><span class="line">StateMachine&lt;State, Event&gt; stateMachine = builder.build();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>更新和安装可能用到的底层依赖库。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install -y libaio libaio-devel</span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">接下来可以按照如下所示的顺序用 RPM（Redhat Package Manager）工具安装 MySQL。</span><br><span class="line"></span><br><span class="line">```Shell</span><br><span class="line">rpm -ivh mysql-community-common-xxx.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-xxx.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-compat-xxx.rpm</span><br><span class="line">rpm -ivh mysql-community-devel-xxx.rpm</span><br><span class="line">rpm -ivh mysql-community-client-xxx.rpm</span><br><span class="line">rpm -ivh mysql-community-server-xxx.rpm</span><br></pre></td></tr></table></figure>
-<p>可以使用下面的命令查看已经安装的 MySQL 相关的包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep mysql</span><br></pre></td></tr></table></figure>
-<p>可以使用下面的命令来启动 MySQL。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
+<h4 id="3-执行-Event-事件"><a href="#3-执行-Event-事件" class="headerlink" title="3. 执行 Event 事件"></a>3. <strong>执行 Event 事件</strong></h4><p>(1). 单个 Event 事件执行，没有返回结果场景</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MessageHeaders headers = new MessageHeaders(ImmutableMap.of(&quot;info&quot;, &quot;123456&quot;));</span><br><span class="line">final StateMachineEventResult&lt;State, Event&gt; inner =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S1, Event.E1, headers));</span><br><span class="line">assert inner.getResultType() == ResultType.ACCEPTED;</span><br><span class="line">assert inner.getState() == State.S1;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>在 CentOS 7 中，更推荐使用下面的命令来启动 MySQL。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
+<p>(2). 单个 Event 事件执行，<strong>具有返回执行结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">final StateMachineEventResult&lt;State, Event&gt; external =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S2, Event.E23, headers));</span><br><span class="line">assert external.getState() == State.S3;</span><br><span class="line">ActionResult actionResult = external.getActionResults().iterator().next();//获取结果</span><br><span class="line">assertEquals(&quot;123456E23&quot;, actionResult.infos().get(&quot;result&quot;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>启动 MySQL 成功后，可以通过下面的命令来检查网络端口使用情况，MySQL 默认使用<code>3306</code>端口。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netstat -ntlp | grep mysql</span><br></pre></td></tr></table></figure>
-<h4 id="使用-MySQL-客户端工具连接服务器。"><a href="#使用-MySQL-客户端工具连接服务器。" class="headerlink" title="使用 MySQL 客户端工具连接服务器。"></a>使用 MySQL 客户端工具连接服务器。</h4><p>在实际开发中，为了方便用户操作，可以选择图形化的客户端工具来连接 MySQL 服务器，例如MySQL Workbench（官方工具）</p>
-<p>使用 MySQL 客户端工具连接服务器。<br>命令行工具：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-<p>修改口令</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> validate_password_policy<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> validate_password_length<span class="operator">=</span><span class="number">6</span>;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;123456&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="创建用户：以root用户登录到数据库进行用户创建"><a href="#创建用户：以root用户登录到数据库进行用户创建" class="headerlink" title="创建用户：以root用户登录到数据库进行用户创建"></a>创建用户：以root用户登录到数据库进行用户创建</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;password&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>note:<br>username——将要创建的用户名；<br>host——指定该用户在哪个主机上可以登录，”localhost”指该用户只能在本地登录，不能在另外一台机器上远程登录，如果想远程登录，将”localhost”改为”%”，表示在任何一台电脑上都可以登录；也可以指定某台机器可以远程登录；<br>password——该用户的登录密码，密码可以为空，若为空则该用户可以不需要密码登录服务器。</p>
-<h4 id="授权：以root用户登录到数据库进行授权"><a href="#授权：以root用户登录到数据库进行授权" class="headerlink" title="授权：以root用户登录到数据库进行授权"></a>授权：以root用户登录到数据库进行授权</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> privileges <span class="keyword">ON</span> databasename.tablename <span class="keyword">TO</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>note:<br>privileges——用户的操作权限，如SELECT等。如果授予所有权限则使用ALL。<br>databasename——数据库名称。tablename——表名。如果要给该用户授予对所有数据库和表的相应操作权限则可用<em>表示，例如</em>.*<br>例如：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> test_db.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;test_admin2&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-<p>note:必须执行flush privileges;</p>
-<h4 id="撤销用户权限"><a href="#撤销用户权限" class="headerlink" title="撤销用户权限"></a>撤销用户权限</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> privilege <span class="keyword">ON</span> databasename.tablename <span class="keyword">FROM</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>(3). 多个 Event 事件 <strong>同步执行，默认执行方式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;StateMachineEventResult&lt;State, Event&gt;&gt; results = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)));</span><br><span class="line">assert results.stream().noneMatch(result -&gt; result.getResultType() == ResultType.DENIED);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h4 id="删除账户及权限："><a href="#删除账户及权限：" class="headerlink" title="删除账户及权限："></a>删除账户及权限：</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">user</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>(4). 多个 Event 事件 <strong>异步执行</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;StateMachineEventResult&lt;State, Event&gt;&gt; async = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)), </span><br><span class="line">    true); //指定多个事件异步执行</span><br><span class="line">assert async.stream().noneMatch(result -&gt; result.getResultType() == ResultType.DENIED);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h4 id="查看用户的授权"><a href="#查看用户的授权" class="headerlink" title="查看用户的授权"></a>查看用户的授权</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> GRANTS <span class="keyword">FOR</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>(5). <strong>失败事件执行</strong>，结果类型为 DENIED</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">final StateMachineEventResult&lt;State, Event&gt; failed =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S1, Event.E13, headers));</span><br><span class="line">assert failed.getResultType() == ResultType.DENIED;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h4 id="备份数据库"><a href="#备份数据库" class="headerlink" title="备份数据库"></a>备份数据库</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">mysqldump <span class="operator">-</span>p funds <span class="operator">&gt;</span> funds_backup.sql</span><br></pre></td></tr></table></figure>
+<p>(6). 多个事件执行，<strong>事件之间相互隔离</strong>，失败事件不影响其他事件执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">results = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E13, headers),</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)));</span><br><span class="line">assert results.size() ==3;</span><br><span class="line">//事件失败的数量=1</span><br><span class="line">assert results.stream().filter(result -&gt; result.getResultType() == ResultType.DENIED).count() == 1;</span><br><span class="line">//事件成功的数量=2</span><br><span class="line">assert results.stream().filter(result -&gt; result.getResultType() == ResultType.ACCEPTED).count() == 2;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>(7). <strong>Guad 校验不通过</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">StateMachineEventResult&lt;State, Event&gt; guard =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S3, Event.E22, headers));</span><br><span class="line">assert guard.getResultType() == ResultType.DENIED;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="天天基金数据"><a href="#天天基金数据" class="headerlink" title="天天基金数据"></a>天天基金数据</h3><p>通过访问下面的链接提供适当参数，即可获取指定基金在指定日期段内的净值数据，例如获取基金代码005918</p>
-<p>无参数版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://fundf10.eastmoney.com/F10DataApi.aspx?type=lsjz&amp;code=005918</span><br></pre></td></tr></table></figure>
-<p>默认返回近10天的数据，如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var apidata=&#123; content:&quot;</span><br><span class="line">净值日期	单位净值	累计净值	日增长率	申购状态	赎回状态	分红送配</span><br><span class="line">2022-03-08	1.2146	1.2146	-1.87%	开放申购	开放赎回	</span><br><span class="line">...	</span><br><span class="line">&quot;,records:944,pages:472,curpage:1&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>加参数版本，</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&amp;code=005918&amp;page=1&amp;sdate=2020-01-01&amp;edate=2020-02-13&amp;per=20</span><br></pre></td></tr></table></figure>
-
-<p>链接中的各参数含义简单说明：</p>
-<p>code：指明基金代码；<br>sdate：数据开始日期；<br>edate：数据结束日期；<br>per：指定每页显示的条数，如果不指定该参数，则默认值为10，如果指定该参数值在1-49之间，则每页条数按照指定参数值显示，如果指定该值大于等于50，则每页显示20条；<br>page：per指定了每页的显示条数，存在一页显示不完整的情况，该参数直接指定显示第几页。<br>如上图，底部有pages、curpage参数，分别指明总页数和当前页数，在抓取数据时，需要特别处理，否则只能获取当页数据</p>
-<p>查询带有估值信息的接口，如查询005918</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://fundgz.1234567.com.cn/js/005918.js</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jsonpgz(&#123;&quot;fundcode&quot;:&quot;005918&quot;,&quot;name&quot;:&quot;澶╁紭娌繁300ETF鑱旀帴C&quot;,&quot;jzrq&quot;:&quot;2022-03-08&quot;,&quot;dwjz&quot;:&quot;1.2146&quot;,&quot;gsz&quot;:&quot;1.2040&quot;,&quot;gszzl&quot;:&quot;-0.87&quot;,&quot;gztime&quot;:&quot;2022-03-09 15:00&quot;&#125;);</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OneNET</title>
-    <url>/2024/03/23/onenet/</url>
-    <content><![CDATA[<h3 id="MQTT"><a href="#MQTT" class="headerlink" title="MQTT"></a>MQTT</h3><p>设备接入支持标准MQTTV3.1.1版本，支持TLS加密，接入服务地址如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MQTT协议 &#x27;mqtts.heclouds.com:1883&#x27;</span><br></pre></td></tr></table></figure>
-<p>设备可通过MQTT connnect报文进行登录，connect报文中三要素填写方法如下：</p>
-<p>参数	是否必须	参数说明<br>clientId	是	设备名称<br>username	是	平台分配的产品ID<br>password	是	填写经过 key 计算的 token</p>
-<span id="more"></span>
-
-<h4 id="token计算方式"><a href="#token计算方式" class="headerlink" title="token计算方式"></a>token计算方式</h4><p>打开 “tokenV2.0.exe”<br>res: products&#x2F;产品ID&#x2F;devices&#x2F;设备名称   例如：res &#x3D; products&#x2F;vUui7WOi1a&#x2F;devices&#x2F;led0<br>et: 2121957139 例如 UTC token最后有效时间 2038</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>有限状态机对于复杂的多状态流转管理是有效的，但状态机的执行流程引入会增加系统的复杂性和提升维护难度，因此不能滥用。对于简单的状态流转，例如只有 3 个状态变换，且执行操作单一，更建议直接使用 Switch Case &#x2F; 枚举实现。最后，希望通过本文可了解到 FSM 框架的一些设计思路。</p>
 ]]></content>
       <categories>
         <category>MCU</category>
       </categories>
       <tags>
-        <tag>MQTT</tag>
+        <tag>arm mcu</tag>
       </tags>
   </entry>
   <entry>
@@ -2372,146 +2571,6 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </tags>
   </entry>
   <entry>
-    <title>有限状态机 FSM</title>
-    <url>/2024/05/19/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/</url>
-    <content><![CDATA[<h1 id="Mini-FSM"><a href="#Mini-FSM" class="headerlink" title="Mini FSM"></a>Mini FSM</h1><p>有限状态机 (Finite State Machine，简称 FSM)，<strong>表示有限个状态以及在这些状态之间的转移和动作等行为的处理模型</strong>。在任何给定的时间点，有限状态机都处于某一特定状态，并且可以根据当前状态和输入条件，从当前状态转移到另一个状态。有限状态机相关的核心概念主要包括：</p>
-<ul>
-<li>**实体 (Entity)**：状态机的主体和作用对象，它的状态可以改变</li>
-<li><strong>状态 (State)<strong>：实体在某一特定时间点的情况，可分为</strong>现态 (当前状态)<strong>、</strong>次态 (跳转新状态)</strong></li>
-<li>**事件 (Event)**：导致状态转换的触发器和条件</li>
-<li>**动作 (Action)**：状态转换时执行的操作，可以发生在状态转换前、转换中、转换后阶段</li>
-</ul>
-<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/3365be5eb7155d7dd44de5f999dd0115.png"></p>
-<p>状态转移图</p>
-<p>有限状态机除了使用状态转移图表示，也可以使用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://zh.wikipedia.org/wiki/%25E7%258A%25B6%25E6%2580%2581%25E8%25BD%25AC%25E7%25A7%25BB%25E8%25A1%25A8&source=article&objectId=2418561">状态转移表</a>呈现，展示基于当前状态和其他输入，要移动到什么状态的表格。例如：当前状态（B）和条件（Y）的组合指示出下一个状态（C）。</p>
-<p>很多调度系统和工作流系统都会内置状态机管理，用于维护状态转移的事件处理。例如，YARN(资源调度系统) 将各种处理逻辑抽象为<strong>事件</strong>和对应的<strong>事件调度器</strong>。每类事件的处理过程可分割成多个步骤，用<strong>有限状态机</strong>表示。</p>
-<p>处理请求作为事件进入系统，由<strong>中央异步调度器 (Async-Dispatcher)</strong> 负责传递给相应**事件调度器 (Event Handler)**。事件调度器可能将事件转发给另外一个事件调度器，也可能转发给一个带有有限状态机的事件处理器，其处理结果也以事件的形式输出给中央异步调度器。而新的事件会再次被中央异步调度器转发给下一个事件调度器，直至达到终止条件才处理完成。</p>
-<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/5b8b6322e33067a2f05a828cc3e9fae3.png"></p>
-<p>YARN 事件处理模型</p>
-<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>有限状态机有不同的实现方式，具体取决于具体的应用场景，常见的实现方式有：</p>
-<ul>
-<li><strong>Switch Case &#x2F; 枚举实现</strong>：基于枚举类型表示状态，定义一个方法来处理状态转换，转移过程可基于 Switch 匹配语句实现</li>
-<li><strong>查找表</strong>：基于二维数组或者哈希表维护状态转移表，其中一维表示<strong>当前状态</strong>，另一维表示**输入条件 (时间)**，表格中的元素则表示下一个状态。该方法处理简单便捷，适合非复杂场景</li>
-<li><strong>状态模式</strong>：State Pattern，是一种行为设计模式。将对象的状态分离并封装到专用的状态类，使得对象状态可灵活变化，当状态改变时会相应改变对象的行为</li>
-<li><strong>状态机框架</strong>：基于现成的状态机库或框架处理，功能较丰富且完整</li>
-</ul>
-<h3 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h3><p>每个状态都是一个对象，这些对象共享一个公共状态接口。<strong>状态机持有一个状态对象的引用，所有的事件处理和动作执行都委托给这个状态对象</strong>。当状态转移时，状态机将引用切换到另一个状态对象。</p>
-<ul>
-<li><strong>Context</strong>：**上下文 (状态机)**，保存具体状态的引用，通过状态接口与状态对象交互，提供设置器用于接收新的状态对象</li>
-<li><strong>State</strong>：<strong>状态</strong>，以接口类的形式定义状态的公共方法，用于事件处理和动作执行</li>
-<li><strong>Concrete States</strong>：<strong>具体状态</strong>，继承 State，实现特定状态对应的事件处理方法。可保存 Context 的反向引用，从 Context 获取所需信息并触发状态转移</li>
-</ul>
-<p>其中，<strong>Context 和具体状态都可以设置 Context 的下个状态</strong>， 并通过触发变更 Context 的状态引用实现状态转移。</p>
-<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/232bd1e6296adf6eb7350d5b39a0f625.png"></p>
-<p>状态模式结构</p>
-<h3 id="状态机框架"><a href="#状态机框架" class="headerlink" title="状态机框架"></a>状态机框架</h3><h4 id="Spring-Statemachine"><a href="#Spring-Statemachine" class="headerlink" title="Spring Statemachine"></a>Spring Statemachine</h4><p>Spring Statemachine (SSM) 是一个框架，允许在 Spring 应用程序中使用传统的状态机概念。SSM 提供以下功能：</p>
-<ul>
-<li>易于使用的一级状态机，适用于简单的用例</li>
-<li>分层状态机结构，以简化复杂的状态配置</li>
-<li>状态机区域提供更复杂的状态配置</li>
-<li>触发器 (triggers)、转换(transitions)、检测器(guards) 和动作 (actions) 的使用，其中，transitions 指示状态变更，guards 检测是否满足从一个状态切换到另外一个状态的条件</li>
-<li>类型安全的配置适配器</li>
-<li>状态机事件监听器</li>
-<li>Spring IoC 集成将 bean 与状态机相关联</li>
-</ul>
-<p>更多详情可查看：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://springref.com/docs/spring-statemachine&source=article&objectId=2418561">官方文档</a></p>
-<h4 id="Cola-StateMachine"><a href="#Cola-StateMachine" class="headerlink" title="Cola StateMachine"></a>Cola StateMachine</h4><p><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/alibaba/COLA&source=article&objectId=2418561">Cola</a>：Clean Object-Oriented and Layered Architecture 的缩写，<strong>代表 “整洁面向对象分层架构”。</strong>COLA 分为两个部分，<strong>COLA 架构</strong>和 <strong>COLA 组件，</strong>其中 <strong>StateMachine 组件</strong>实现了有限状态机功能。</p>
-<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/2b17b088f8716f01414a28542700dcee.png"></p>
-<p><strong>Cola 参考 Spring Statemachine 设计思想进行简化</strong>，有限状态机的核心概念主要包括：</p>
-<ul>
-<li>StateMachine：状态机，维护状态机的上下文</li>
-<li>State：状态</li>
-<li>Event：事件，状态由事件触发，引起变化</li>
-<li>Transition：流转，表示从一个状态到另一个状态<ul>
-<li>External Transition：外部流转，两个不同状态之间的流转</li>
-<li>Internal Transition：内部流转，同一个状态之间的流转</li>
-</ul>
-</li>
-<li>Condition：条件，表示是否允许到达某个状态</li>
-<li>Action：动作，到达某个状态之后，可以做什么</li>
-</ul>
-<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/e6dc15b9b38a6fef79eedf73c45d0170.png"></p>
-<p>核心语义模型</p>
-<p>更多详情可查看：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://blog.csdn.net/significantfrank/article/details/104996419&source=article&objectId=2418561">官方说明文档</a></p>
-<h4 id="其他框架"><a href="#其他框架" class="headerlink" title="其他框架"></a>其他框架</h4><p>常见的其他状态机开源框架有：</p>
-<ul>
-<li><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/hekailiang/squirrel&source=article&objectId=2418561"><strong>Squirrel-foundation</strong></a>：一个基于 Java 的轻量级状态机库</li>
-<li><a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/dotnet-state-machine/stateless&source=article&objectId=2418561"><strong>Stateless</strong></a>：NET 中基于 C# 实现的轻量级状态库，支持各种类型作为状态和触发事件、支持状态继承、支持状态进入 &#x2F; 离开事件、支持条件状态转移、支持状态 &#x2F; 转移查询，对应的 Java 版本实现：<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/stateless4j/stateless4j&source=article&objectId=2418561">Stateless4j</a>。</li>
-</ul>
-<h2 id="轻量级实现"><a href="#轻量级实现" class="headerlink" title="轻量级实现"></a>轻量级实现</h2><h3 id="设计说明"><a href="#设计说明" class="headerlink" title="设计说明"></a>设计说明</h3><p>在业务功能实现时，遇到状态流转的管理。针对状态机进行选择，遇到几个问题：</p>
-<ul>
-<li><strong>复杂性</strong>：开源系统丰富的功能，有很多高级转换功能，但对于我们系统来说太多复杂且不必须，引入会增加系统复杂性</li>
-<li><strong>性能问题</strong>：开源的状态机都是有状态的（Stateful）的，对应实例线程不安全，在使用过程中存在性能问题</li>
-</ul>
-<p>Cola StateMachine 的状态机本身是无状态（Stateless）的，且实现较简洁，<strong>因此选择基于 Cola StateMachine 和 Spring StateMachine 的设计思想进行简化。</strong>在系统内部内嵌了简单的有限状态机管理，并根据业务需求扩展了 Action 执行后的返回结果 ActionResult。其中 Action 的执行使用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://blog.csdn.net/ZYC88888/article/details/103679605&source=article&objectId=2418561">响应式编程</a>，<strong>基于 Flux 和 Mono 实现</strong>。</p>
-<p>简化的 Mini-FSM 有限状态机的主要接口定义包括：</p>
-<ul>
-<li>StateMachine：状态机，维护状态机的上下文</li>
-<li>StateMachineEventResult：状态机事件转换的返回结果，包括获取当前状态、Action 结果等</li>
-<li>State：状态，<strong>传递事件信息并用于状态转换</strong>，FSM 核心处理，<strong>StateContext</strong> 反向引用状态机的上下文</li>
-<li>Event：事件，可基于枚举类定义</li>
-<li>Action：动作，对应具体事件的执行处理</li>
-<li>ActionResult：事件执行的返回结果，封装结果详情</li>
-<li>Guard：条件，表示是否允许到达某个状态</li>
-<li><strong>Transition</strong>：流转，表示从一个状态到另一个状态，包括 TransitionKind 类型，TransitionData 数据</li>
-</ul>
-<h3 id="实现架构"><a href="#实现架构" class="headerlink" title="实现架构"></a>实现架构</h3><p>Mini-FSM 框架实现如下所示：<strong>用户基于 Event 事件触发当前状态转移并返回转移结果</strong>。</p>
-<ul>
-<li><strong>sendEvent</strong>：Action 接受 sendEvent 请求处理，封装封装 transition 信息进行 transit 操作</li>
-<li><strong>transit</strong>：基于 TransitionData 处理，1. 基于 Guard 校验执行条件；2. 基于 Action 触发执行 Apply 并返回执行结果</li>
-</ul>
-<p><img src="https://developer.qcloudimg.com/http-save/yehe-1350579/0a017ec73628ffb7bae7ea4aebe02455.png"></p>
-<p>Transition 流转类型分为两类：</p>
-<ul>
-<li>EXTERNAL：外部流转，Event 执行变更状态</li>
-<li>INTERNAL：内部流转，Event 执行不变更状态，现态与次态保持一致，是 EXTERNAL 流转的特例</li>
-</ul>
-<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><blockquote>
-<p>更多可参考 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/YiwenWu/mini-fsm&source=article&objectId=2418561">Mini-FSM</a> 中的单元测试类 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/YiwenWu/mini-fsm/blob/main/src/test/java/com/github/minifsm/StateMachineTest.java&source=article&objectId=2418561">StateMachineTest</a>。</p>
-</blockquote>
-<h4 id="1-定义状态与事件"><a href="#1-定义状态与事件" class="headerlink" title="1. 定义状态与事件"></a>1. <strong>定义状态与事件</strong></h4><p>可自定义使用枚举类定义 <strong>State</strong> 状态 和 <strong>Event</strong> 事件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enum State &#123;</span><br><span class="line">    S1, S2, S3</span><br><span class="line">&#125;</span><br><span class="line">enum Event &#123;</span><br><span class="line">    E1, E23, E22, E13</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-构建状态机"><a href="#2-构建状态机" class="headerlink" title="2. 构建状态机"></a>2. <strong>构建状态机</strong></h4><p>本示例中状态机配置定义包括：</p>
-<ol>
-<li>S1 基于 E1 的内部流转</li>
-<li>S2 → S3 基于 E23 的外部流转</li>
-<li>模拟 S1 基于 E13 的<strong>异常流转</strong></li>
-<li>模拟 S3 流转 <strong>Guard 条件校验不通过</strong></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Builder&lt;State, Event&gt; builder = StateMachineBuilder.builder();</span><br><span class="line">// FSM状态变换定义</span><br><span class="line">builder.configureTransitions()</span><br><span class="line">    .withInternal() //1.构建内部流转 S1</span><br><span class="line">    .source(State.S1)</span><br><span class="line">    .event(Event.E1)</span><br><span class="line">    .action(context -&gt; &#123;</span><br><span class="line">        sleep(2000);</span><br><span class="line">        assert context.getEvent() == Event.E1;</span><br><span class="line">        return ActionResult.of();</span><br><span class="line">    &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withExternal() //2.构建外部流转 S2 → S3</span><br><span class="line">    .source(State.S2)</span><br><span class="line">    .target(State.S3)</span><br><span class="line">    .event(Event.E23)</span><br><span class="line">    .action(context -&gt; &#123;</span><br><span class="line">        assert context.getEvent() == Event.E23;</span><br><span class="line">        MessageHeaders headers = context.getMessage().getHeaders();</span><br><span class="line">        String result = ((String) headers.get(&quot;info&quot;)) + context.getEvent();</span><br><span class="line">        return ActionResult.of(ImmutableMap.of(&quot;result&quot;, result));</span><br><span class="line">    &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withInternal()</span><br><span class="line">    .source(State.S1)</span><br><span class="line">    .event(Event.E13) //3.构建内部流转 S1, 模拟异常回滚</span><br><span class="line">    .action(</span><br><span class="line">        context -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;mock failed case&quot;);</span><br><span class="line">            throw new RuntimeException(&quot;event e13 error&quot;);</span><br><span class="line">        &#125;,</span><br><span class="line">        context -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;Drop table Rollback&quot;);</span><br><span class="line">            return ActionResult.of(ImmutableMap.of(&quot;result&quot;, &quot;drop table back&quot;));</span><br><span class="line">        &#125;)</span><br><span class="line">    .and()</span><br><span class="line">    .withInternal()</span><br><span class="line">    .source(State.S3)</span><br><span class="line">    .event(Event.E22)</span><br><span class="line">    .guard(context -&gt; context.getEvent() == Event.E13) //4.构建内部流转S3,模拟guard失败</span><br><span class="line">    .action(context -&gt; ActionResult.of());</span><br><span class="line">//构建FSM状态机</span><br><span class="line">StateMachine&lt;State, Event&gt; stateMachine = builder.build();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-执行-Event-事件"><a href="#3-执行-Event-事件" class="headerlink" title="3. 执行 Event 事件"></a>3. <strong>执行 Event 事件</strong></h4><p>(1). 单个 Event 事件执行，没有返回结果场景</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MessageHeaders headers = new MessageHeaders(ImmutableMap.of(&quot;info&quot;, &quot;123456&quot;));</span><br><span class="line">final StateMachineEventResult&lt;State, Event&gt; inner =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S1, Event.E1, headers));</span><br><span class="line">assert inner.getResultType() == ResultType.ACCEPTED;</span><br><span class="line">assert inner.getState() == State.S1;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>(2). 单个 Event 事件执行，<strong>具有返回执行结果</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">final StateMachineEventResult&lt;State, Event&gt; external =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S2, Event.E23, headers));</span><br><span class="line">assert external.getState() == State.S3;</span><br><span class="line">ActionResult actionResult = external.getActionResults().iterator().next();//获取结果</span><br><span class="line">assertEquals(&quot;123456E23&quot;, actionResult.infos().get(&quot;result&quot;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>(3). 多个 Event 事件 <strong>同步执行，默认执行方式</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;StateMachineEventResult&lt;State, Event&gt;&gt; results = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)));</span><br><span class="line">assert results.stream().noneMatch(result -&gt; result.getResultType() == ResultType.DENIED);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>(4). 多个 Event 事件 <strong>异步执行</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">List&lt;StateMachineEventResult&lt;State, Event&gt;&gt; async = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)), </span><br><span class="line">    true); //指定多个事件异步执行</span><br><span class="line">assert async.stream().noneMatch(result -&gt; result.getResultType() == ResultType.DENIED);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>(5). <strong>失败事件执行</strong>，结果类型为 DENIED</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">final StateMachineEventResult&lt;State, Event&gt; failed =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S1, Event.E13, headers));</span><br><span class="line">assert failed.getResultType() == ResultType.DENIED;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>(6). 多个事件执行，<strong>事件之间相互隔离</strong>，失败事件不影响其他事件执行</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">results = stateMachine.sendEvents(</span><br><span class="line">    ImmutableList.of(</span><br><span class="line">        Message.of(State.S1, Event.E13, headers),</span><br><span class="line">        Message.of(State.S1, Event.E1, headers),</span><br><span class="line">        Message.of(State.S2, Event.E23, headers)));</span><br><span class="line">assert results.size() ==3;</span><br><span class="line">//事件失败的数量=1</span><br><span class="line">assert results.stream().filter(result -&gt; result.getResultType() == ResultType.DENIED).count() == 1;</span><br><span class="line">//事件成功的数量=2</span><br><span class="line">assert results.stream().filter(result -&gt; result.getResultType() == ResultType.ACCEPTED).count() == 2;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>(7). <strong>Guad 校验不通过</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">StateMachineEventResult&lt;State, Event&gt; guard =</span><br><span class="line">    stateMachine.sendEvent(Message.of(State.S3, Event.E22, headers));</span><br><span class="line">assert guard.getResultType() == ResultType.DENIED;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>有限状态机对于复杂的多状态流转管理是有效的，但状态机的执行流程引入会增加系统的复杂性和提升维护难度，因此不能滥用。对于简单的状态流转，例如只有 3 个状态变换，且执行操作单一，更建议直接使用 Switch Case &#x2F; 枚举实现。最后，希望通过本文可了解到 FSM 框架的一些设计思路。</p>
-]]></content>
-      <categories>
-        <category>MCU</category>
-      </categories>
-      <tags>
-        <tag>arm mcu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>装机</title>
     <url>/2024/03/01/%E8%A3%85%E6%9C%BA/</url>
     <content><![CDATA[<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h4><ul>
@@ -2539,6 +2598,24 @@ portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
       </categories>
       <tags>
         <tag>ventoy rEFInd</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OneNET</title>
+    <url>/2024/03/23/onenet/</url>
+    <content><![CDATA[<h3 id="MQTT"><a href="#MQTT" class="headerlink" title="MQTT"></a>MQTT</h3><p>设备接入支持标准MQTTV3.1.1版本，支持TLS加密，接入服务地址如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MQTT协议 &#x27;mqtts.heclouds.com:1883&#x27;</span><br></pre></td></tr></table></figure>
+<p>设备可通过MQTT connnect报文进行登录，connect报文中三要素填写方法如下：</p>
+<p>参数	是否必须	参数说明<br>clientId	是	设备名称<br>username	是	平台分配的产品ID<br>password	是	填写经过 key 计算的 token</p>
+<span id="more"></span>
+
+<h4 id="token计算方式"><a href="#token计算方式" class="headerlink" title="token计算方式"></a>token计算方式</h4><p>打开 “tokenV2.0.exe”<br>res: products&#x2F;产品ID&#x2F;devices&#x2F;设备名称   例如：res &#x3D; products&#x2F;vUui7WOi1a&#x2F;devices&#x2F;led0<br>et: 2121957139 例如 UTC token最后有效时间 2038</p>
+]]></content>
+      <categories>
+        <category>MCU</category>
+      </categories>
+      <tags>
+        <tag>MQTT</tag>
       </tags>
   </entry>
 </search>

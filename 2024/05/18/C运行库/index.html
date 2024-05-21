@@ -28,7 +28,7 @@
 <meta property="og:description" content="嵌入式开发嵌入式设备开发中，应用层开发、算法开发中使用C++，底层的操作系统、音视频开发使用C语言；应用开发使用C++(编译使用g++),驱动使用C(编译使用g++); 在C&#x2F;C++编程中，运行时库和标准库是两个不同的概念，它们之间存在一定的区别。  运行时库：提供程序运行所需的基本功能，简化程序员的工作。 标准库：提供高级别的抽象和功能，简化复杂数学和数据处理任务。   运行时库与平台">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-05-18T03:19:30.000Z">
-<meta property="article:modified_time" content="2024-05-20T07:36:19.858Z">
+<meta property="article:modified_time" content="2024-05-21T06:35:30.138Z">
 <meta property="article:author" content="Linkua">
 <meta property="article:tag" content="arm gcc">
 <meta name="twitter:card" content="summary">
@@ -214,7 +214,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-20 15:36:19" itemprop="dateModified" datetime="2024-05-20T15:36:19+08:00">2024-05-20</time>
+                <time title="Modified: 2024-05-21 14:35:30" itemprop="dateModified" datetime="2024-05-21T14:35:30+08:00">2024-05-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -248,13 +248,75 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="编译工具链"><a href="#编译工具链" class="headerlink" title="编译工具链"></a>编译工具链</h2><p>从源文件的编写到二进制代码，需要经过汇编器 as、C 编译器 gcc、C++编译器 g++、链接器 ld、二进制转换工具 objcopy。<br>编译基于 Arm 平台的非 linux 程序的工具链位arm-none-eabi-*。<br>(gcc for arm 工具链使用)(<a target="_blank" rel="noopener" href="https://blog.csdn.net/fdcp123/article/details/114537469">https://blog.csdn.net/fdcp123/article/details/114537469</a>)</p>
-<h2 id="C-运行时库"><a href="#C-运行时库" class="headerlink" title="C 运行时库"></a>C 运行时库</h2><p>C&#x2F;C++运行时库是一组预先编写好的函数和类，用于支持程序的运行时环境。<strong>运行时库包括内存管理、字符串操作、数学函数、输入&#x2F;输出操作等常用功能。</strong>它们的主要目的是提供程序运行所需的基本功能，以便程序员可以专注于实现应用程序的核心功能。C&#x2F;C++运行时库通常由编译器提供，例如GCC、Microsoft Visual Studio等。<br><strong>操作系统在装载可执行文件后，将把控制权交付给运行库的程序入口函数。</strong><br>因此，程序首先运行的代码并不是main函数，而是负责为main函数执行创造环境，并负责调用main的入口函数（Entry Point）。main函数返回的值也会被这个入口函数所记录，然后调用atexit注册的函数，最终结束进程。</p>
+<h2 id="编译工具链"><a href="#编译工具链" class="headerlink" title="编译工具链"></a>编译工具链</h2><p>从源文件的编写到二进制代码，需要经过汇编器 as、C 编译器 gcc、C++编译器 g++、链接器 ld、二进制转换工具 objcopy。<br>编译工具链与平台相关，例如 linux-GNU GCC Windows-visual studio<br>编译基于 Arm 平台的非 linux 程序的工具链位arm-none-eabi-*。<br>(gcc for arm 工具链使用)(<a target="_blank" rel="noopener" href="https://blog.csdn.net/fdcp123/article/details/114537469">https://blog.csdn.net/fdcp123/article/details/114537469</a>)</p>
+<h2 id="C-运行时库"><a href="#C-运行时库" class="headerlink" title="C 运行时库"></a>C 运行时库</h2><p><strong>运行库标头文件提供 ANSI&#x2F;ISO C 标准推荐样式的函数声明</strong>。<br>C&#x2F;C++运行时库是一组预先编写好的函数和类，用于支持程序的运行时环境。<strong>运行时库包括内存管理、字符串操作、数学函数、输入&#x2F;输出操作等常用功能。</strong>它们的主要目的是提供程序运行所需的基本功能，以便程序员可以专注于实现应用程序的核心功能。<strong>C&#x2F;C++运行时库通常由编译器提供</strong>，例如GCC、Microsoft Visual Studio等。<br><strong>操作系统在装载可执行文件后，将把控制权交付给运行库的程序入口函数。</strong><br>因此，程序首先运行的代码并不是main函数，而是负责为main函数执行创造环境，并负责调用main的入口函数（Entry Point）。main函数返回的值也会被这个入口函数所记录，然后调用atexit注册的函数，最终结束进程。</p>
+<h3 id="UCRT库-MSVC-工具集-cl-exe"><a href="#UCRT库-MSVC-工具集-cl-exe" class="headerlink" title="UCRT库  MSVC 工具集(cl.exe)"></a>UCRT库  MSVC 工具集(cl.exe)</h3><p>UCRT 还实现了 POSIX.1（ISO&#x2F;IEC 9945-1:1996，POSIX 系统应用程序编程接口）C 库的大型子集。<br>但不完全符合任何特定的 POSIX 标准。 UCRT 还实现了几个特定于 Microsoft 的函数和不属于标准的一部分的宏。<br>Microsoft 专用函数和全局变量的名称均以一个下划线开头。<br>Microsoft 专用的宏和清单常量的名称均以两个下划线（或一个后面紧跟一个大写字母的前导下划线）开头。<br>Microsoft 运行时库提供了用于对 Microsoft Windows 操作系统进行编程的例程，visual studio CRT库。</p>
 <ul>
-<li>glibc    linux-gcc</li>
-<li>newlib&#x2F;newlib_nano   arm-linux(arm-gcc)</li>
+<li>参数访问      &lt;stdarg.h&gt;   va_arg</li>
+<li>缓冲区操作    &lt;string.h&gt;  memcpy() memcmp()</li>
+<li>字符分类      &lt;ctype.h&gt;   isalnum() isalpha() isupper()</li>
+<li>复数数学支持  &lt;complex.h&gt;  casin() ccos()</li>
+<li>数据对齐     &lt;malloc.h&gt;   _aligned_malloc（）</li>
+<li>数据转换     &lt;stdlib.h&gt;   atoi()  _itoa_s() </li>
+<li>调试例程     &lt;crtdbg.h&gt;   _CrtSetDbgFlag() _DEBUG     </li>
+<li>目录控制     &lt;direct.h&gt;   mkdir() rmdir()</li>
+<li>错误处理     &lt;assert.h&gt;   assert()</li>
+<li>异常处理例程  &lt;eh.h&gt;       terminate()</li>
+<li>文件处理     &lt;stdio.h&gt;    chmod() fopen() fclose() fwrite() fseek()</li>
+<li>数学和浮点支持 &lt;math.h&gt;    abs() sin() cos() asin() sqrt()</li>
+<li>输入和输出   &lt;stdio.h&gt;    printf() scanf()</li>
+<li>国际化       &lt;locale.h&gt;  setlocale(LC_ALL, “en_US”)</li>
+<li>内存分配     &lt;malloc.h&gt;   malloc() delete() free() </li>
+<li>进程和环境控制 &lt;process.h&gt; &lt;signal.h&gt; exit() wait() raise() signal()</li>
+<li>稳定性       &lt;eh.h&gt;</li>
+<li>运行时错误检查 &lt;rtcapi.h&gt;  _RTC_GetErrDesc()</li>
+<li>搜索和排序    &lt;search.h&gt;  _lfind() qsort()</li>
+<li>字符串操作    &lt;string.h&gt;  strcmp() strcpy() strlen()</li>
+<li>系统调用      &lt;io.h&gt;     _findfirst() 找到具有指定特性的文件</li>
+<li>工时管理      &lt;time.h&gt;   time() localtime() asctime()</li>
 </ul>
-<p>arm-none-eabi 工具链带有两个基于 newlib 的库可供选择（newlib 和 newlib_nano），其中 newlib_nano 库对代码尺寸做了优化.</p>
+<blockquote>
+<p>如果您计划将程序移植到 UNIX，请遵循以下准则：<br>请勿从 SYS 子目录中移除标头文件。 仅当不计划将程序传输到 UNIX 时，才可以将 SYS 标头文件放置到其他位置。</p>
+</blockquote>
+<blockquote>
+<p>在采用将路径和文件名表示为参数的字符串的例程中使用与 UNIX 兼容的路径分隔符。 为此，UNIX 仅支持正斜杠 (&#x2F;)，但 Win32 操作系统同时支持反斜杠 () 和正斜杠 (&#x2F;)。 本文档将与 UNIX 兼容的正斜杠用作路径分隔符，例如在 #include 语句中。 （但是，Windows 操作系统命令外壳 (CMD.EXE) 不支持在从命令提示符处输入的命令中使用正斜杠。）</p>
+</blockquote>
+<blockquote>
+<p>使用在 UNIX 中正常运行的路径和文件名（区分大小写）。 Win32 操作系统中的文件分配表 (FAT) 文件系统不区分大小写。 NTFS 文件系统对目录列表保留大小写，但对文件搜索和其他系统操作忽略大小写。</p>
+</blockquote>
+<h3 id="glibc-GNU-gcc"><a href="#glibc-GNU-gcc" class="headerlink" title="glibc   GNU-gcc"></a>glibc   GNU-gcc</h3><p>glibc是linux系统中最底层的api, GNU C运行期库，是一种C函数库，是程序运行时使用到的一些API集合，它们一般是已预先编译好，以二进制代码形式存在Linux类系统中，GNU C运行期库通常作为GNU C编译程序的一个部分发布。</p>
+<ul>
+<li><strong>string，字符串处理</strong></li>
+<li><strong>signal，信号处理</strong></li>
+<li>dlfcn，管理共享库的动态加载</li>
+<li><strong>direct，文件目录操作</strong></li>
+<li>elf，共享库的动态加载器，也即interpreter</li>
+<li>iconv，不同字符集的编码转换</li>
+<li><strong>inet，socket接口的实现</strong></li>
+<li>intl，国际化，也即gettext的实现</li>
+<li><strong>io</strong></li>
+<li><strong>linuxthreads</strong></li>
+<li>locale，本地化</li>
+<li>login，虚拟终端设备的管理，及系统的安全访问</li>
+<li><strong>malloc，动态内存的分配与管理</strong></li>
+<li>nis</li>
+<li>stdlib，其它基本功能</li>
+</ul>
+<h3 id="newlib-newlib-nano-ARM-gcc"><a href="#newlib-newlib-nano-ARM-gcc" class="headerlink" title="newlib&#x2F;newlib_nano   ARM-gcc"></a>newlib&#x2F;newlib_nano   ARM-gcc</h3><p>arm-none-eabi 工具链带有两个基于 newlib 的库可供选择（newlib 和 newlib_nano），其中 newlib_nano 库对代码尺寸做了优化.</p>
+<p>arm-none-eabi-gcc工具链中的newlib库，它实现的printf函数非常复杂，需要大约37k字节的FLASH和5k字节的RAM才能运行一个简单的hello-world程序。</p>
+<p>Newlib nano是使用优化级别Os构建的。这会导致更小的memcpy和memset，因为newlib在发现这些函数是用Os构建时会选择它们的简单版本。<br>总之，newlib nano可以将hello world程序的大小减少80%左右。在C++程序的极端情况下，大小缩减可能超过90%。</p>
+<h3 id="microlib"><a href="#microlib" class="headerlink" title="microlib"></a>microlib</h3><p>MicroLib 是一个高度优化的库，适用于用 C 编写的基于 ARM 的嵌入式应用程序。与 ARM 编译器工具链中包含的标准 C 库相比，MicroLib 提供了许多嵌入式系统所需的显着代码大小优势。</p>
+<blockquote>
+<p>在使用CubeMX初始化代码时，生成的工程默认是使用Microlib的，正常情况下，在STM32CubeMX通过成的.s文件里可以看到一个__main函数，这个就是microlib的入口地址，他会<strong>完成创建栈空间，创建堆空间，初始化用户可能用到的系统库等初始化动作，最后跳转到我们熟悉的main</strong>，当使用Microlib时，__main链接的是Microlib，当不使用Microlib时，__main链接的是标准库的C&#x2F;C++；</p>
+</blockquote>
+<h3 id="MCU-printf-重定向"><a href="#MCU-printf-重定向" class="headerlink" title="MCU printf 重定向"></a>MCU printf 重定向</h3><h4 id="在MDK中使用MicroLib重定向printf"><a href="#在MDK中使用MicroLib重定向printf" class="headerlink" title="在MDK中使用MicroLib重定向printf"></a>在MDK中使用MicroLib重定向printf</h4><p><strong>重新实现fputc函数</strong>，编写代码将这个字符通过串口发送，因为发送每个字符时都会调用该函数，所以为了效率，不再调用库函数 HAL_UART_Transmit 发送，而是直接操作寄存器发送。</p>
+<h5 id="在MDK中使用标准库重定向printf"><a href="#在MDK中使用标准库重定向printf" class="headerlink" title="在MDK中使用标准库重定向printf"></a>在MDK中使用标准库重定向printf</h5><p>printf 函数使用了半主机模式，所以直接使用标准库会导致程序无法运行，因此必须提前告知编译器不使用半主机模式：<br><strong>不使用半主机模式</strong> + <strong>重新实现fputc函数</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">不使用半主机模式</span><br><span class="line"></span><br><span class="line">/* 告知连接器不从C库链接使用半主机的函数 */</span><br><span class="line">#pragma import(__use_no_semihosting)</span><br><span class="line"></span><br><span class="line">/* 定义 _sys_exit() 以避免使用半主机模式 */</span><br><span class="line">void _sys_exit(int x)</span><br><span class="line">&#123;</span><br><span class="line">    x = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="在GCC中使用标准库重定向printf"><a href="#在GCC中使用标准库重定向printf" class="headerlink" title="在GCC中使用标准库重定向printf"></a>在GCC中使用标准库重定向printf</h5><p>不同的编译器对于C库的底层实现机制是不同的，所以上面两种在MDK中的实现方法，在使用Gcc编译器的时候是不可行的。<br>在Gcc中重定向printf函数时注意两个关键点：</p>
+<ul>
+<li>与重定义fputs()函数一样，在使用Gcc编译器的时候，需要<strong>重新定义_write函数</strong>；</li>
+<li>Gcc中没有MicroLib，只能使用标准库；</li>
+</ul>
 <h2 id="C-标准库"><a href="#C-标准库" class="headerlink" title="C++ 标准库"></a>C++ 标准库</h2><p>C&#x2F;C++标准库是一组广泛使用的C&#x2F;C++库，它们提供了更高级别的抽象，以简化程序员的工作。C&#x2F;C++标准库包括STL（Standard Template Library，标准模板库）、Boost等。<strong>这些库提供了许多高级数据结构和算法，以及其他实用工具类，如智能指针、异常处理等。</strong>C&#x2F;C++标准库通常作为C&#x2F;C++运行时库的扩展存在。<br>C++运行库的分类C++运行库可以分为两类：</p>
 <ul>
 <li>静态链接库（StaticLinkLibrary，简称SLL）</li>
@@ -372,7 +434,7 @@ extern &quot;C&quot;&#123;
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91"><span class="nav-text">嵌入式开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="nav-text">编译工具链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BA%93"><span class="nav-text">C 运行时库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E6%A0%87%E5%87%86%E5%BA%93"><span class="nav-text">C++ 标准库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C-%E6%B7%B7%E5%90%88%E7%BC%96%E7%A8%8B"><span class="nav-text">C&#x2F;C++ 混合编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E8%B0%83%E7%94%A8-C%E5%BA%93"><span class="nav-text">C++ 调用 C库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E8%B0%83%E7%94%A8-C"><span class="nav-text">C 调用 C++</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV"><span class="nav-text">OpenCV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QT"><span class="nav-text">QT</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91"><span class="nav-text">嵌入式开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="nav-text">编译工具链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BA%93"><span class="nav-text">C 运行时库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UCRT%E5%BA%93-MSVC-%E5%B7%A5%E5%85%B7%E9%9B%86-cl-exe"><span class="nav-text">UCRT库  MSVC 工具集(cl.exe)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#glibc-GNU-gcc"><span class="nav-text">glibc   GNU-gcc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#newlib-newlib-nano-ARM-gcc"><span class="nav-text">newlib&#x2F;newlib_nano   ARM-gcc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#microlib"><span class="nav-text">microlib</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MCU-printf-%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-text">MCU printf 重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8MDK%E4%B8%AD%E4%BD%BF%E7%94%A8MicroLib%E9%87%8D%E5%AE%9A%E5%90%91printf"><span class="nav-text">在MDK中使用MicroLib重定向printf</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8MDK%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%A0%87%E5%87%86%E5%BA%93%E9%87%8D%E5%AE%9A%E5%90%91printf"><span class="nav-text">在MDK中使用标准库重定向printf</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8GCC%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%A0%87%E5%87%86%E5%BA%93%E9%87%8D%E5%AE%9A%E5%90%91printf"><span class="nav-text">在GCC中使用标准库重定向printf</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E6%A0%87%E5%87%86%E5%BA%93"><span class="nav-text">C++ 标准库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C-%E6%B7%B7%E5%90%88%E7%BC%96%E7%A8%8B"><span class="nav-text">C&#x2F;C++ 混合编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E8%B0%83%E7%94%A8-C%E5%BA%93"><span class="nav-text">C++ 调用 C库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E8%B0%83%E7%94%A8-C"><span class="nav-text">C 调用 C++</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV"><span class="nav-text">OpenCV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QT"><span class="nav-text">QT</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
