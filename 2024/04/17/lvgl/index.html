@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/d606d26021e64cad8f9dc228032719f7.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/3cda585ae9b24000b48597939f413f8d.png">
 <meta property="article:published_time" content="2024-04-17T03:19:30.000Z">
-<meta property="article:modified_time" content="2024-05-13T15:26:11.678Z">
+<meta property="article:modified_time" content="2024-06-19T04:46:17.408Z">
 <meta property="article:author" content="Linkua">
 <meta property="article:tag" content="lvgl">
 <meta name="twitter:card" content="summary">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-13 23:26:11" itemprop="dateModified" datetime="2024-05-13T23:26:11+08:00">2024-05-13</time>
+                <time title="Modified: 2024-06-19 12:46:17" itemprop="dateModified" datetime="2024-06-19T12:46:17+08:00">2024-06-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -250,7 +250,7 @@
       
         <h1 id="LVGL"><a href="#LVGL" class="headerlink" title="LVGL"></a>LVGL</h1><p>LVGL（Light and Versatile Graphics Library）是一个免费的开源图形库，提供创建具有易于使用的图形元素、漂亮的视觉效果和低内存占用的嵌入式 GUI。接下来我们来看一下 LVGL图形用户库的主要特征有哪些：</p>
 <ul>
-<li><p>lvgl 其实就是各种图形部件 Widget（如<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%BB%91%E5%9D%97&spm=1001.2101.3001.7020">滑块</a>、滚轮、按钮等）的集合库（GUI 库）。每个部件都是通过 API 函数创建（函数格式一般都是 lv_xxx_create( )，xxx 是部件名）。lv_obj_t 是部件类型，是结构体进行 typedef 后的重命名（可用来创建结构体或结构体指针，这个结构体内部具备所有部件的属性），因此，所有部件都具备一些共同属性，例如大小、颜色、位置、样式这些，只是不同部件其具体的参数可能不同</p>
+<li><p>lvgl 其实就是各种图形部件 Widget（如<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%BB%91%E5%9D%97&spm=1001.2101.3001.7020">滑块</a>、滚轮、按钮等）的集合库（GUI 库）。每个部件都是通过 API 函数创建（函数格式一般都是 lv_xxx_create( )，xxx 是部件名）。<strong>lv_obj_t</strong> 是部件类型，是结构体进行 typedef 后的重命名（可用来创建结构体或结构体指针，这个结构体内部具备所有部件的属性），因此，所有部件都具备一些共同属性，例如<strong>大小</strong>、<strong>颜色</strong>、<strong>位置</strong>、<strong>样式</strong>这些，只是不同部件其具体的参数可能不同</p>
 </li>
 <li><p>lvgl 采用了一定的面向对象编程的设计思想，我们操控的都是一个个别人事先为我们准备好编写好的部件（对象），如果想要使用部件，就得先创建部件需要调用部件创建函数（实例化），不像 C 是面向过程的编程，不管做什么都是从零开始（想使用部件也得从零开始编写出一个部件）。所有的对象都是在 lv_obj_t 这个结构体的基础上进行演变的，诞生各种不一样的部件</p>
 </li>
@@ -333,6 +333,39 @@
 <p>（2）不同的部件共用一个事件回调函数时，不清楚是哪个部件调用了事件回调函数，这时怎么处理才能知道触发事件回调时是哪个部件在触发？解决方法如下，在事件回调函数中调用获取触发事件部件的函数，示例：</p>
 <p><img src="https://img-blog.csdnimg.cn/d606d26021e64cad8f9dc228032719f7.png"></p>
 <p><img src="https://img-blog.csdnimg.cn/3cda585ae9b24000b48597939f413f8d.png"></p>
+<h2 id="GUI-Guider"><a href="#GUI-Guider" class="headerlink" title="GUI Guider"></a>GUI Guider</h2><ul>
+<li>Code export<ul>
+<li>RTOS   <ul>
+<li>RT-Thread</li>
+<li>Zephyr</li>
+</ul>
+</li>
+<li>Unix<ul>
+<li>yocto</li>
+<li>QNX</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>QNX是一个微内核实时操作系统，其核心仅提供4种服务：进程调度、进程间通信、底层网络通信和中断处理，其进程在独立的地址空间运行。所有其它OS服务，都实现为协作的用户进程，因此QNX核心非常小巧（QNX4.x大约为12Kb）而且运行速度极快.</p>
+</blockquote>
+<ul>
+<li>custom<ul>
+<li>custom.c&#x2F;.h</li>
+<li>lv_conf_ext.h</li>
+</ul>
+</li>
+<li>generated<ul>
+<li>fonts_folder</li>
+<li>images</li>
+<li>gui_guider.c&#x2F;.h</li>
+<li>events_init.c&#x2F;.h</li>
+<li>widgets_init.c&#x2F;.h</li>
+</ul>
+</li>
+</ul>
 
     </div>
 
@@ -417,7 +450,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LVGL"><span class="nav-text">LVGL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="nav-text">如何使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E9%97%AA%E5%AD%98-ROM%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">如何减少闪存&#x2F;ROM的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8"><span class="nav-text">如何减少内存使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-lvgl-%E7%9A%84%E5%B1%8F%E5%B9%95"><span class="nav-text">关于 lvgl 的屏幕</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7"><span class="nav-text">部件的基本属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F"><span class="nav-text">大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E7%BD%AE"><span class="nav-text">位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F"><span class="nav-text">样式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6"><span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-text">事件类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-text">事件回调函数</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LVGL"><span class="nav-text">LVGL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="nav-text">如何使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E9%97%AA%E5%AD%98-ROM%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">如何减少闪存&#x2F;ROM的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8"><span class="nav-text">如何减少内存使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-lvgl-%E7%9A%84%E5%B1%8F%E5%B9%95"><span class="nav-text">关于 lvgl 的屏幕</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7"><span class="nav-text">部件的基本属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F"><span class="nav-text">大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E7%BD%AE"><span class="nav-text">位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F"><span class="nav-text">样式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6"><span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-text">事件类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-text">事件回调函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GUI-Guider"><span class="nav-text">GUI Guider</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -431,16 +464,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

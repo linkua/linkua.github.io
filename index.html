@@ -262,6 +262,605 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/11/Allwiner/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/06/11/Allwiner/" class="post-title-link" itemprop="url">Allwiner</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-06-11 11:19:30" itemprop="dateCreated datePublished" datetime="2024-06-11T11:19:30+08:00">2024-06-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-06-19 11:59:59" itemprop="dateModified" datetime="2024-06-19T11:59:59+08:00">2024-06-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Allwiner/" itemprop="url" rel="index"><span itemprop="name">Allwiner</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Allwinner"><a href="#Allwinner" class="headerlink" title="Allwinner"></a>Allwinner</h2><p><img src="https://bbs.aw-ol.com/assets/uploads/files/1690462860520-1496a65a-a0ef-4030-99bb-501a5a0bf6dd-periodic-table-of-allwinner-chips.svg"></p>
+<h3 id="Src"><a href="#Src" class="headerlink" title="Src"></a>Src</h3><ul>
+<li>buildroot example - <a target="_blank" rel="noopener" href="https://github.com/YuzukiTsuru">https://github.com/YuzukiTsuru</a></li>
+<li>uboot - <a target="_blank" rel="noopener" href="https://ftp.denx.de/pub/u-boot/">https://ftp.denx.de/pub/u-boot/</a></li>
+<li>linux - <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/linux-kernel/">http://mirrors.aliyun.com/linux-kernel/</a></li>
+<li>toolchains - <a target="_blank" rel="noopener" href="https://toolchains.bootlin.com/">https://toolchains.bootlin.com/</a></li>
+</ul>
+<h3 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h3><ul>
+<li><p>list config - make list-defconfigs </p>
+</li>
+<li><p>buildroot - make ARCH&#x3D;arm sipeed_licheepi_nano_defconfig</p>
+</li>
+<li><p>make ARCH&#x3D;arm CROSS_COMPILE&#x3D;arm-buildroot-linux-gnueabi- -j4</p>
+</li>
+<li><p>make ARCH&#x3D;arm CROSS_COMPILE&#x3D;arm-buildroot-linux-musleabi- -j4</p>
+</li>
+<li><p>rebuild_kernel - make linux-rebuild -j4</p>
+</li>
+<li><p>rebuild_uboot  - make uboot-rebuild -j4</p>
+</li>
+<li><p>rebuild_pkg    - make pkg-rebuild -j4 </p>
+</li>
+<li><p>make linux-menuconfig</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/01/fpga/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/06/01/fpga/" class="post-title-link" itemprop="url">F1C100s/F1C200s 开发</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-06-01 12:29:00 / Modified: 12:05:29" itemprop="dateCreated datePublished" datetime="2024-06-01T12:29:00+08:00">2024-06-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="FPGA-学习和开发"><a href="#FPGA-学习和开发" class="headerlink" title="FPGA 学习和开发"></a>FPGA 学习和开发</h1><ul>
+<li><p>现场可编程逻辑门阵列，相当于一堆乐高。</p>
+</li>
+<li><p>逻辑门：0&#x2F;1的bool运算，逻辑门 与或非。</p>
+</li>
+<li><p>逻辑门可编程：使用现场可编程，网络通信或视频处理。</p>
+</li>
+<li><p>运行频率不高，可以执行大量并行运算</p>
+</li>
+<li><p>运营商业务基于FPGA实现，国产替代不了，使用ASIC专用芯片替代</p>
+</li>
+<li><p>相控阵雷达阵列，发射和接收单元</p>
+</li>
+<li><p>其他芯片前流片前的硬件测试平台</p>
+</li>
+<li><p>第一片FPGA XILINX XC2064-33</p>
+<ul>
+<li>只有两个三输入查找表</li>
+<li>64个可编程逻辑单元</li>
+<li>800个逻辑门</li>
+</ul>
+</li>
+<li><p>最强FPGA 2019年</p>
+<ul>
+<li>14 nm </li>
+<li>1020万可编程逻辑单元</li>
+<li>433亿晶体管</li>
+<li>2300用户可编程I&#x2F;O</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/06/01/fpga/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/30/Altium%20Designer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Linkua">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Excerpt">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/30/Altium%20Designer/" class="post-title-link" itemprop="url">Altium Designer 24 开发</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-30 11:19:30" itemprop="dateCreated datePublished" datetime="2024-05-30T11:19:30+08:00">2024-05-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-06-03 17:08:31" itemprop="dateModified" datetime="2024-06-03T17:08:31+08:00">2024-06-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="库"><a href="#库" class="headerlink" title="库"></a>库</h2><h3 id="原件库"><a href="#原件库" class="headerlink" title="原件库"></a>原件库</h3><ul>
+<li>绘制原件符号</li>
+<li>RCL.LIB (电阻、电容、电感库)</li>
+<li>DQ.LIB（二极管、晶体管库）</li>
+<li>IC.LIB (集成电路库)</li>
+<li>CON.LIB (接插件库)</li>
+<li>DISPLAY.LIB (光电原件库)</li>
+<li>OTHER.LIB (其他原件库)</li>
+</ul>
+<h4 id="绘制下按-Tab-键设置属性"><a href="#绘制下按-Tab-键设置属性" class="headerlink" title="绘制下按 Tab 键设置属性"></a>绘制下按 Tab 键设置属性</h4><h4 id="放置管脚（具有电气特性的一端朝外，带有x号）"><a href="#放置管脚（具有电气特性的一端朝外，带有x号）" class="headerlink" title="放置管脚（具有电气特性的一端朝外，带有x号）"></a>放置管脚（具有电气特性的一端朝外，带有x号）</h4><h4 id="利用-Symbol-Wizard-制作多管脚元件符号"><a href="#利用-Symbol-Wizard-制作多管脚元件符号" class="headerlink" title="利用 Symbol Wizard 制作多管脚元件符号"></a>利用 Symbol Wizard 制作多管脚元件符号</h4><h4 id="从器件规格书复制管脚信息"><a href="#从器件规格书复制管脚信息" class="headerlink" title="从器件规格书复制管脚信息"></a>从器件规格书复制管脚信息</h4><h3 id="封装库"><a href="#封装库" class="headerlink" title="封装库"></a>封装库</h3><ul>
+<li>按规格书绘制准确的封装</li>
+<li>SMD.LIB (贴片封装库)</li>
+<li>AI.LIB (自动插接件封装库)</li>
+<li>MI.LIB (手工接插件)</li>
+<li>MARK.LIB (标识对象库 螺丝孔 测试点)</li>
+</ul>
+<h4 id="分层信息"><a href="#分层信息" class="headerlink" title="分层信息"></a>分层信息</h4><ul>
+<li>Top Layer 顶层信号层，放置元件，贴片焊盘层</li>
+<li>Bottom Layer 底层信号层,焊接层，多层板也可放元件</li>
+<li>Mid-Layer 中间信号层，在多层板中布置信号线</li>
+<li>丝印层： Top&#x2F;Bottom Overlay </li>
+<li>机械层： PCB 外形尺寸和装配方法<ul>
+<li>Mechanical 1：绘制板框，外形层</li>
+<li>Mechanical 2: 放置PCB加工工艺要求，尺寸、板层等</li>
+<li>Mechanical 13&#x2F;15: 元件本体的尺寸信息，3D模型等</li>
+<li>Mechanical 16：元件的占位面积，默认不显示</li>
+</ul>
+</li>
+<li>阻焊层 Top&#x2F;Bottom Solder 焊盘盖绿油，绿或黑或红</li>
+<li>助焊层 Top&#x2F;Bottom Paste 锡膏防护层、钢网层 </li>
+<li>禁止布线层 Keep-out Layer 电气边界</li>
+<li>钻孔图层 Drill Drawing</li>
+<li>多层 Multi-Layer</li>
+</ul>
+<h4 id="IPC-向导（元件向导）制作封装"><a href="#IPC-向导（元件向导）制作封装" class="headerlink" title="IPC 向导（元件向导）制作封装"></a>IPC 向导（元件向导）制作封装</h4><h4 id="手动绘制"><a href="#手动绘制" class="headerlink" title="手动绘制"></a>手动绘制</h4><ul>
+<li>贴片焊盘可修改 top layer 和 外形</li>
+<li>丝印框采用0.2mm </li>
+<li>放置3D元件体<ul>
+<li>手动绘制 Extruded(挤压型)</li>
+<li>Generic 导入STEP&#x2F;STP格式的 3D 模型文件</li>
+<li>下载 <a target="_blank" rel="noopener" href="https://www.3dcontentcentral.cn/">https://www.3dcontentcentral.cn/</a></li>
+<li>设置旋转</li>
+</ul>
+</li>
+<li>快捷键<ul>
+<li>Tab 属性</li>
+<li>M 移动</li>
+<li>Q 切换 mil 和 mm</li>
+<li>ctl + M 测量距离</li>
+</ul>
+</li>
+</ul>
+<h3 id="集成库"><a href="#集成库" class="headerlink" title="集成库"></a>集成库</h3><ul>
+<li>封装管理器</li>
+<li>编译集成库</li>
+</ul>
+<h2 id="原理图设计"><a href="#原理图设计" class="headerlink" title="原理图设计"></a>原理图设计</h2><p>快捷键，可自定义快捷方式，原理图放线、网络标签、PCB走线、过孔、普通。</p>
+<ul>
+<li>在菜单栏任意空白处右击，在弹出菜单中，执行Customize 命令，可以使用F2~F12功能按键。</li>
+<li>alt + 鼠标左键单击网络，可以全局高亮显示该网络</li>
+<li>P + W 放置导线</li>
+</ul>
+<h3 id="原理图规划"><a href="#原理图规划" class="headerlink" title="原理图规划"></a>原理图规划</h3><h4 id="图纸设置"><a href="#图纸设置" class="headerlink" title="图纸设置"></a>图纸设置</h4><ul>
+<li>打开方式：工具-&gt;原理图优先项</li>
+<li>设置图纸尺寸：A4, 双击原理图边框空白处可以修改</li>
+<li>光标类型: Large</li>
+</ul>
+<h4 id="平坦式原理图"><a href="#平坦式原理图" class="headerlink" title="平坦式原理图"></a>平坦式原理图</h4><ul>
+<li>采用水平方向分割，离图连接器或全局网络标号</li>
+</ul>
+<h4 id="层次式原理图设计"><a href="#层次式原理图设计" class="headerlink" title="层次式原理图设计"></a>层次式原理图设计</h4><ul>
+<li>将总电路按模块划分，模块之间通过端口、页面符、图纸入口实现电气连接</li>
+<li>从页面符创建图纸</li>
+<li>图纸操作 -&gt; creat sheet symbol from sheet</li>
+<li>页面符号操作-&gt;同步图纸端口和入口</li>
+<li>线束连接端口需要使用线速</li>
+<li>总线连接，端口号和网络号需要使用中括号，连接使用总线</li>
+</ul>
+<h3 id="放置元件"><a href="#放置元件" class="headerlink" title="放置元件"></a>放置元件</h3><ul>
+<li>设置元件属性</li>
+<li>对齐</li>
+<li>复制和粘贴</li>
+</ul>
+<h3 id="连接元件"><a href="#连接元件" class="headerlink" title="连接元件"></a>连接元件</h3><h4 id="导线"><a href="#导线" class="headerlink" title="导线"></a>导线</h4><ul>
+<li>wire 连接电气特性的管脚</li>
+</ul>
+<h4 id="网络标号和电源标号"><a href="#网络标号和电源标号" class="headerlink" title="网络标号和电源标号"></a>网络标号和电源标号</h4><ul>
+<li>Net 标签 作用范围单张图纸</li>
+</ul>
+<h4 id="网络端口"><a href="#网络端口" class="headerlink" title="网络端口"></a>网络端口</h4><ul>
+<li>Port 端口 层次原理图间的连接</li>
+</ul>
+<h4 id="放置线束"><a href="#放置线束" class="headerlink" title="放置线束"></a>放置线束</h4><ul>
+<li>放置-&gt;线束-&gt;连接器 P-&gt;H-&gt;C</li>
+<li>放置-&gt;线束-&gt;入口 P-&gt;H-&gt;E </li>
+<li>放置-&gt;线束-&gt;结束 P-&gt;H-&gt;H</li>
+</ul>
+<h3 id="放置标识"><a href="#放置标识" class="headerlink" title="放置标识"></a>放置标识</h3><ul>
+<li>不具备电气特性</li>
+<li>放置线条</li>
+<li>文字</li>
+<li>文本框</li>
+</ul>
+<h3 id="原理图设计后期"><a href="#原理图设计后期" class="headerlink" title="原理图设计后期"></a>原理图设计后期</h3><ul>
+<li>标注位号 工具-&gt;标注-&gt;原理图标注</li>
+<li>匹配封装</li>
+<li>编译检查</li>
+<li>原理图的屏蔽操作</li>
+</ul>
+<h2 id="PCB设计"><a href="#PCB设计" class="headerlink" title="PCB设计"></a>PCB设计</h2><ul>
+<li>取消不常用地DRC检查项，只保留第一项电气特性</li>
+<li>调整丝印，全局调小位号放到元件中间，或先将位号隐藏</li>
+</ul>
+<h3 id="PCB-常用系统参数"><a href="#PCB-常用系统参数" class="headerlink" title="PCB 常用系统参数"></a>PCB 常用系统参数</h3><ul>
+<li>General 参数设置</li>
+<li>普通重建</li>
+<li>interactive Routing布线功能</li>
+<li>关闭自动布线</li>
+<li>交互式布线宽度设置，按Shift+W来调用</li>
+<li>Defaults 参数设置，Track（导线）、Via（过孔）、Pad (焊盘)、Polygon (铜皮)等参数</li>
+</ul>
+<h3 id="PCB板框设计"><a href="#PCB板框设计" class="headerlink" title="PCB板框设计"></a>PCB板框设计</h3><ul>
+<li>切换到 Mechanical 1层，执行放置线条</li>
+<li>设计-&gt;板子形状-&gt;选择对象定义，D+S+D<ul>
+<li>导入CAD板框文件DXF文件</li>
+<li>板框的原点设置，编辑+原点+设置，设置在左下角</li>
+</ul>
+</li>
+<li>放置焊盘充当定位孔<ul>
+<li>修改参数（多层 Multi-Layer）</li>
+<li>simple 修改 Copper Size 0 mm, Hole Size 为定位孔大小</li>
+<li>不勾选 Plated，孔壁无铜，即焊盘非金属化</li>
+</ul>
+</li>
+</ul>
+<h3 id="层的相关设置"><a href="#层的相关设置" class="headerlink" title="层的相关设置"></a>层的相关设置</h3><ul>
+<li>按 L 快捷键设置层的颜色和显示</li>
+<li>按 ctrl + D 设置对象（走线、铜皮、文字..）的显示于隐藏</li>
+</ul>
+<h3 id="规则设置"><a href="#规则设置" class="headerlink" title="规则设置"></a>规则设置</h3><ul>
+<li>特定对象的规则设置方法</li>
+<li>Query语句设计方法</li>
+<li>Electrial 电气类规则</li>
+<li>Routing 布线类规则</li>
+<li>SMT 表面封装规则</li>
+<li>MASK 掩膜类规则</li>
+<li>Plane 平面类规则</li>
+<li>Testpoint 测试点规则</li>
+<li>Manufacturing 制造类规则</li>
+<li>High Speed 高速规则</li>
+<li>Placement 布置规则</li>
+<li>Signal Integrity 信号完整性规则</li>
+</ul>
+<h4 id="铺铜高级连接方式"><a href="#铺铜高级连接方式" class="headerlink" title="铺铜高级连接方式"></a>铺铜高级连接方式</h4><ul>
+<li>过孔使用全连接</li>
+<li>元件焊盘(贴片+直插)使用热连接</li>
+</ul>
+<h4 id="routing规则"><a href="#routing规则" class="headerlink" title="routing规则"></a>routing规则</h4><ul>
+<li>Copper 铺铜间距12 mil, 其他安全间距8 mil</li>
+<li>DDR 3W间距规则，走线线宽4 mil， 安全间距 8mil</li>
+<li>线宽:信号线线宽为8 mil，电源线线宽设为10mil以上</li>
+<li>规则向导，新增规则，规则优先级，GND 网络线宽20 mil, VCC网络线宽 30mil</li>
+<li>添加类来设置线宽规则 </li>
+<li>过孔大小为10&#x2F;20mil</li>
+<li>区域规则设置（Room 规则）<ul>
+<li>设计-&gt;Room命令，从选择的器件产生非直角的Room</li>
+<li>D+R，新建线宽规则，Custom Query输入查询语句 WithinRoom</li>
+</ul>
+</li>
+<li>从查找相似对象(创建表达式)，打开面板-&gt;PCB filter,生成表达式语句</li>
+</ul>
+<h3 id="PCB-布局"><a href="#PCB-布局" class="headerlink" title="PCB 布局"></a>PCB 布局</h3><ul>
+<li>软件分屏操作，文件名称空白位置右击，垂直分割</li>
+<li>工具-&gt;交叉选择模式，或者按快捷键 shift + ctrl + x</li>
+<li>选中对象，工具-&gt;在区域内摆放</li>
+<li>模块化布局，<ul>
+<li>结合 交叉选择和区域内摆放 将同一模块的元件布局在一起，</li>
+<li>然后根据电流流向和信号流向对整个电路进行模块划分，将每个电路大致</li>
+<li>排列在PCB板框周边，实施预布局，就近机制原则，去耦电容靠近引脚摆放</li>
+</ul>
+</li>
+<li>元件换层，拖动过程中按L</li>
+<li>元件对齐，A+A, A+L左对齐，A+T顶对齐</li>
+<li>布局原则：<ul>
+<li>先放结构相关的固定位置元件</li>
+<li>明确结构要求，注意禁止布线区域和限制高度</li>
+<li>元件摆放便于调试和维修，小元件周围不能放置大元件，插拔的接口、排针靠板边摆放</li>
+<li>根据周边接口的元件及其出线方向，判断主控芯片的位置和方向</li>
+<li>先大后小、先难后易原则。重要 的单元电路、核心元件应当优先布局，元件较多、较大的电路优先布局</li>
+<li>高压大电流于低压小电流完全分开，模拟信号与数字信号分开，高频信号与低频信号分开</li>
+<li>同类型插装元件或有极性的元件，在X或Y方向上尽量朝一个方向放置</li>
+<li>相同结构电路部分，尽可能采用“对称式”标准布局</li>
+</ul>
+</li>
+</ul>
+<h3 id="叠层应用及阻抗控制"><a href="#叠层应用及阻抗控制" class="headerlink" title="叠层应用及阻抗控制"></a>叠层应用及阻抗控制</h3><ul>
+<li><p>元件面、焊接面为完整的地平面（屏蔽）</p>
+</li>
+<li><p>无相邻平行布线层</p>
+</li>
+<li><p>所有信号层尽可能与地平面相邻</p>
+</li>
+<li><p>关键信号与地层相邻，不跨分割区</p>
+</li>
+<li><p>主电源层有一相邻地平面</p>
+</li>
+<li><p>常用4，6，8层叠层结构</p>
+<ul>
+<li>元件面下有层地平面，关键信号优先布局在TOP层，**TOP&#x2F;**GND2&#x2F;PWR3&#x2F;<strong>BOTTOM</strong></li>
+<li>6 层， <strong>TOP</strong>&#x2F;GND02&#x2F;<strong>SIN03</strong>&#x2F;<strong>SIN04</strong>&#x2F;PWR05&#x2F;<strong>BOTTOM</strong></li>
+<li>8 层，<strong>TOP</strong>&#x2F;GND02&#x2F;<strong>SIN03</strong>&#x2F;PWR04&#x2F;GND05&#x2F;<strong>SIN06</strong>&#x2F;PWR07&#x2F;<strong>BOTTOM</strong></li>
+<li>10 层，<strong>TOP</strong>&#x2F;GND02&#x2F;<strong>SIN03</strong>&#x2F;<strong>SIN04</strong>&#x2F;GNDO5&#x2F;PWR06&#x2F;<strong>SIN07</strong>&#x2F;<strong>SIN08</strong>&#x2F;GND09&#x2F;<strong>BOTTOM</strong></li>
+</ul>
+</li>
+<li><p>正片(Signal)走线用于信号层，负片(Plane)走线用于电源层和地。负片，凡是画线的地方都没有铜，没有画线的地方铜被保留。</p>
+</li>
+<li><p>3w原则，w为线宽，优先考虑敏感信号及高速信号，例如时钟信号、复位信号。</p>
+</li>
+<li><p>20H原则，H为两个平面距离，电源层相对地层内缩20H.</p>
+</li>
+</ul>
+<h3 id="PCB-布线"><a href="#PCB-布线" class="headerlink" title="PCB 布线"></a>PCB 布线</h3><ul>
+<li>布线过程中 shift + w 改变线宽，shift + G显示线长度, shift + H 显示隐藏</li>
+<li>交互式布线连接,放置走线再单击焊盘</li>
+<li>交互式多根线连接，选中所需多路布线的网络，再单击多根布线按钮，或者按快捷键U+M</li>
+<li>交互式差分对连接，先定义差分对，点击差分对连接按钮，再点单击焊盘或导线</li>
+<li>滴泪的添加与删除，工具-&gt;滴泪命令</li>
+<li>过孔盖油，勾选 Tented</li>
+</ul>
+<h3 id="PCB-铺铜"><a href="#PCB-铺铜" class="headerlink" title="PCB 铺铜"></a>PCB 铺铜</h3><ul>
+<li>新建 Clearance_inpoly, Custom Query:inpoly, 间距 20 mil</li>
+<li>铺铜操作，放置-&gt;铺铜命令或放置多边形平面</li>
+<li>T+G+M，铺铜管理器，右侧下拉选择板外形铺铜</li>
+<li>双击铜皮，选择Pour Over All Same Net Object</li>
+</ul>
+<h3 id="PCB-快捷操作"><a href="#PCB-快捷操作" class="headerlink" title="PCB 快捷操作"></a>PCB 快捷操作</h3><ul>
+<li>shift+s 单层显示</li>
+<li>G+G设置栅格大小</li>
+<li>M,弹出菜单选择“通过X,Y移动选择对象..”</li>
+</ul>
+<h3 id="拼板"><a href="#拼板" class="headerlink" title="拼板"></a>拼板</h3><ul>
+<li>打样工厂提供拼板规则,</li>
+<li>E+A特殊粘贴，保持网络名称，重复位号</li>
+<li>隐藏飞线system color-&gt;conection lisnes, </li>
+<li>复位错误标志</li>
+<li>特殊粘贴-&gt;阵列粘贴焊盘（multi-layer,0.5mm)</li>
+<li>另外放置工艺边和定位孔及Mark点</li>
+<li>邮票孔0.5mm 非金属化孔，孔中心间距0.8mm,每个位置放4~个，主板与副板间距2mm</li>
+<li>PCB半孔，焊盘通孔中心在PCB边线上</li>
+</ul>
+<h4 id="MARK点"><a href="#MARK点" class="headerlink" title="MARK点"></a>MARK点</h4><ul>
+<li>1mm 实心焊盘</li>
+<li>距离板边5 mm</li>
+<li>空旷区直径3 mm</li>
+</ul>
+<h3 id="DRC-检查"><a href="#DRC-检查" class="headerlink" title="DRC 检查"></a>DRC 检查</h3><ul>
+<li>可先关闭其他，检查间隔</li>
+</ul>
+<h2 id="生产资料导出"><a href="#生产资料导出" class="headerlink" title="生产资料导出"></a>生产资料导出</h2><h3 id="位号调整"><a href="#位号调整" class="headerlink" title="位号调整"></a>位号调整</h3><ul>
+<li>隐藏其他层，只显示Overlay和Solder层可以更方便地进行位号调整。</li>
+<li>先 ctrl+A全选，再按A+P,可将位号放入元件内部</li>
+<li>丝印调整，推荐字宽&#x2F;字高 4mil&#x2F;25mil</li>
+</ul>
+<h3 id="位号输出"><a href="#位号输出" class="headerlink" title="位号输出"></a>位号输出</h3><ul>
+<li>隐藏其他层，只显示Overlay和Solder层</li>
+<li>查找相似功能，修改位号高度和宽度</li>
+<li>菜单栏文件——&gt;智能PDF，或者F+M</li>
+<li>底层装配必须勾选Mirror复选框</li>
+</ul>
+<h3 id="Gerber-文件输出"><a href="#Gerber-文件输出" class="headerlink" title="Gerber 文件输出"></a>Gerber 文件输出</h3><ul>
+<li>打样制作，不想给厂家发工程文件</li>
+</ul>
+<h3 id="钻孔文件输出"><a href="#钻孔文件输出" class="headerlink" title="钻孔文件输出"></a>钻孔文件输出</h3><ul>
+<li>NC drill 设置 英寸 2：4</li>
+</ul>
+<h3 id="IPC网表输出"><a href="#IPC网表输出" class="headerlink" title="IPC网表输出"></a>IPC网表输出</h3><ul>
+<li>Test point report 选择IPC-D-356A</li>
+</ul>
+<h3 id="BOM输出"><a href="#BOM输出" class="headerlink" title="BOM输出"></a>BOM输出</h3><ul>
+<li>菜单栏 报告 bill of Materials</li>
+</ul>
+<h2 id="高级实践"><a href="#高级实践" class="headerlink" title="高级实践"></a>高级实践</h2><h3 id="BGA"><a href="#BGA" class="headerlink" title="BGA"></a>BGA</h3><h4 id="扇出"><a href="#扇出" class="headerlink" title="扇出"></a>扇出</h4><ul>
+<li>自动扇出<ul>
+<li>器件操作-&gt;扇出器件</li>
+</ul>
+</li>
+<li>手工扇出<ul>
+<li>ctrl+M测量焊盘距离，小0.5mm的BGA需要采用盲埋孔处理</li>
+<li>管脚中心距离1mm，扇出孔尺寸0.6*0.3mm </li>
+<li>管脚中心距离0.8mm，扇出孔尺寸0.4*0.2mm, 走线线宽5~6mil，过孔 8&#x2F;16mil 10&#x2F;18mil</li>
+<li>管脚中心距离0.65mm，扇出孔尺寸0.35*0.2mm, 走线线宽4mil，过孔 8&#x2F;16mil 8&#x2F;14mil</li>
+<li>管脚中心距离0.5mm，扇出孔尺寸02*0.1mm, 走线线宽3.5mil, 盲埋孔4&#x2F;10mil</li>
+</ul>
+</li>
+</ul>
+<h4 id="蛇形线的等长设计"><a href="#蛇形线的等长设计" class="headerlink" title="蛇形线的等长设计"></a>蛇形线的等长设计</h4><ul>
+<li>蛇形线<ul>
+<li>先完成PCB相应走线的连通</li>
+</ul>
+</li>
+<li>布线-&gt;网络等长调节命令，U+R, 单击走线，tab 调出等长属性面板<ul>
+<li>设置等长目标长度（手工、网络、规则），shift+G可以看长度</li>
+</ul>
+</li>
+<li>DDR等长分组<ul>
+<li>数据组和地址组两类</li>
+<li>地址线、控制线需以CLK为基准线进行等长处理</li>
+<li>数据线布线级别最高</li>
+<li>CLK线需要比最长的数据线长</li>
+</ul>
+</li>
+<li>等长的拓扑结构<ul>
+<li>点对点连接，在 Nets 中查看长度，查看组内最长走线等长即可</li>
+<li>T 型拓扑结构，让CPU到每一个DDR的走线长度相等</li>
+<li>菊花链拓扑结构，信号在两个元件之间传输，从CPU到第一片DDR,再到第二片DDR</li>
+</ul>
+</li>
+<li>xSignal 等长功能<ul>
+<li>设计-&gt;xSignal-&gt;运行signal 向导</li>
+</ul>
+</li>
+<li>From to 等长功能</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/20/CMSIS-FreeRTOS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -537,7 +1136,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/18/C%E8%BF%90%E8%A1%8C%E5%BA%93/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/18/C++/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -551,7 +1150,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/05/18/C%E8%BF%90%E8%A1%8C%E5%BA%93/" class="post-title-link" itemprop="url">嵌入式 C/C++ 开发</a>
+            <a href="/2024/05/18/C++/" class="post-title-link" itemprop="url">嵌入式 C/C++ 开发</a>
         </h2>
 
         <div class="post-meta">
@@ -568,7 +1167,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-21 14:35:30" itemprop="dateModified" datetime="2024-05-21T14:35:30+08:00">2024-05-21</time>
+                <time title="Modified: 2024-06-21 01:10:58" itemprop="dateModified" datetime="2024-06-21T01:10:58+08:00">2024-06-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -591,7 +1190,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="嵌入式开发"><a href="#嵌入式开发" class="headerlink" title="嵌入式开发"></a>嵌入式开发</h1><p>嵌入式设备开发中，应用层开发、算法开发中使用C++，底层的操作系统、音视频开发使用C语言；<br>应用开发使用C++(编译使用g++),驱动使用C(编译使用g++);</p>
+          <h1 id="嵌入式C-C-开发"><a href="#嵌入式C-C-开发" class="headerlink" title="嵌入式C&#x2F;C++开发"></a>嵌入式C&#x2F;C++开发</h1><p>嵌入式设备开发中，应用层开发、算法开发中使用C++，底层的操作系统、音视频开发使用C语言；<br>应用开发使用C++(编译使用g++),驱动使用C(编译使用g++);</p>
 <p>在C&#x2F;C++编程中，运行时库和标准库是两个不同的概念，它们之间存在一定的区别。</p>
 <ul>
 <li>运行时库：提供程序运行所需的基本功能，简化程序员的工作。</li>
@@ -600,9 +1199,24 @@
 <blockquote>
 <p>运行时库与平台编译器相关，通常由编译器提供 </p>
 </blockquote>
+<ul>
+<li>可预测性：操作每次执行的时间是相同的，C++除动态内存分配new,异常throw，动态类型转换外的语言特性（包括虚函数调用）都是可预测的。注意，标准库的string，容器vector，map等等间接使用了动态内存分配。只在启动时使用new。</li>
+</ul>
+<h2 id="C不支持的C-特性和解决方法"><a href="#C不支持的C-特性和解决方法" class="headerlink" title="C不支持的C++特性和解决方法"></a>C不支持的C++特性和解决方法</h2><ul>
+<li>类和成员函数，使用struct和全局函数。</li>
+<li>派生类和虚函数，使用struct、全局函数和函数指针。</li>
+<li>模板和内联函数，使用宏定义。</li>
+<li>异常，使用错误代码和错误返回值。</li>
+<li>函数重载，不同函数使用不同名字。</li>
+<li>new&#x2F;delete,使用malloc()&#x2F;free()分离的初始化和结束处理代码。</li>
+<li>引用，使用指针。</li>
+<li>const&#x2F;constexpr或常量表达形式的函数,使用宏。</li>
+<li>bool类型，使用int。</li>
+<li>static_cast、reinterpret_cast和cast_cast。<br><strong>现在的编译系统通常同时支持C&#x2F;C++,等价的C语言和C++程序在性能上没什么差异</strong></li>
+</ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2024/05/18/C%E8%BF%90%E8%A1%8C%E5%BA%93/#more" rel="contents">
+              <a class="btn" href="/2024/05/18/C++/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -873,270 +1487,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/20/qemu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Linkua">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Excerpt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/20/qemu/" class="post-title-link" itemprop="url">QEMU 仿真 arm</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-04-20 00:00:00" itemprop="dateCreated datePublished" datetime="2024-04-20T00:00:00+08:00">2024-04-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-25 14:42:16" itemprop="dateModified" datetime="2024-04-25T14:42:16+08:00">2024-04-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="QEMU"><a href="#QEMU" class="headerlink" title="QEMU"></a>QEMU</h1><p> QEMU” 是一个广泛使用的开源计算机模拟器和虚拟机。”</p>
-<ul>
-<li>当作为模拟器时，可以在一种架构（如 x86 PC）下运行另一种架构（如 ARM）下的操作系统和程序。通过使用动态转换，它可以获得非常好的性能。</li>
-<li>作为虚拟机时，QEMU 可以使用其他虚拟机管理程序（如 Xen 或 KVM）来使用 CPU 扩展（HVM）进行虚拟化，通过在主机 CPU 上直接执行客户机代码来获得接近于宿主机的性能。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/20/qemu/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/17/lvgl/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Linkua">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Excerpt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/17/lvgl/" class="post-title-link" itemprop="url">LVGL</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-04-17 11:19:30" itemprop="dateCreated datePublished" datetime="2024-04-17T11:19:30+08:00">2024-04-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-13 23:26:11" itemprop="dateModified" datetime="2024-05-13T23:26:11+08:00">2024-05-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="LVGL"><a href="#LVGL" class="headerlink" title="LVGL"></a>LVGL</h1><p>LVGL（Light and Versatile Graphics Library）是一个免费的开源图形库，提供创建具有易于使用的图形元素、漂亮的视觉效果和低内存占用的嵌入式 GUI。接下来我们来看一下 LVGL图形用户库的主要特征有哪些：</p>
-<ul>
-<li><p>lvgl 其实就是各种图形部件 Widget（如<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%BB%91%E5%9D%97&spm=1001.2101.3001.7020">滑块</a>、滚轮、按钮等）的集合库（GUI 库）。每个部件都是通过 API 函数创建（函数格式一般都是 lv_xxx_create( )，xxx 是部件名）。lv_obj_t 是部件类型，是结构体进行 typedef 后的重命名（可用来创建结构体或结构体指针，这个结构体内部具备所有部件的属性），因此，所有部件都具备一些共同属性，例如大小、颜色、位置、样式这些，只是不同部件其具体的参数可能不同</p>
-</li>
-<li><p>lvgl 采用了一定的面向对象编程的设计思想，我们操控的都是一个个别人事先为我们准备好编写好的部件（对象），如果想要使用部件，就得先创建部件需要调用部件创建函数（实例化），不像 C 是面向过程的编程，不管做什么都是从零开始（想使用部件也得从零开始编写出一个部件）。所有的对象都是在 lv_obj_t 这个结构体的基础上进行演变的，诞生各种不一样的部件</p>
-</li>
-<li><p>可扩展性：它能够以小内存运行(<strong>最低 64 kB 闪存，16 kB RAM 的 MCU</strong>)。 需要<strong>32kB RAM 和 128kB ROM, 1&#x2F;10 屏幕 framebuffer size。</strong></p>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/17/lvgl/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/16/ESP32%E5%BC%80%E5%8F%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Linkua">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Excerpt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/16/ESP32%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">ESP 开发</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-04-16 11:19:30" itemprop="dateCreated datePublished" datetime="2024-04-16T11:19:30+08:00">2024-04-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-19 15:35:37" itemprop="dateModified" datetime="2024-05-19T15:35:37+08:00">2024-05-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MCU/" itemprop="url" rel="index"><span itemprop="name">MCU</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="ESP32-简介"><a href="#ESP32-简介" class="headerlink" title="ESP32 简介"></a>ESP32 简介</h2><p>ESP32芯片具有以下特性：</p>
-<ul>
-<li>处理器和内存：双核32位LX6微处理器，主频最高可达240MHz，520KB SRAM，448KB ROM，同时支持外部4MB SPI Flash和外部8MB PSRAM，为数据的处理和存储提供强大的支持。</li>
-<li>WiFi：支持802.11 b&#x2F;g&#x2F;n（2.4GHz）标准，支持STA&#x2F;AP&#x2F;STA+AP工作模式，最大传输速率可达150Mbps，并支持WPA&#x2F;WPA2&#x2F;WPA3安全模式，提供稳定、安全的无线网络连接。</li>
-<li>蓝牙：支持蓝牙4.2（包括BR&#x2F;EDR和BLE），支持蓝牙音频传输（A2DP&#x2F;AVRCP&#x2F;SPP），使得无线音频传输和远程控制更加便捷。</li>
-<li>外设和接口：ESP32提供了丰富的外设和接口，包括最多34个可编程GPIO引脚，支持UART、SPI、I2C、I2S、PWM等多种通信协议。此外，还集成了12位ADC、8位DAC、触摸传感器、霍尔传感器等，为各种应用场景提供了强大的支持。</li>
-<li>电源管理：具有多种低功耗工作模式，电源电压范围2.2V-3.6V，内置低压稳压器（LDO）和开关电源管理单元（SMU），实现高效的电源管理
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/16/ESP32%E5%BC%80%E5%8F%91/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1202,16 +1556,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

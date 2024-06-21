@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://aijishu.com/img/bVbJ2K">
 <meta property="og:image" content="https://aijishu.com/img/bVbJ2L">
 <meta property="article:published_time" content="2024-03-08T09:29:00.000Z">
-<meta property="article:modified_time" content="2024-05-18T08:29:26.687Z">
+<meta property="article:modified_time" content="2024-06-17T13:51:27.263Z">
 <meta property="article:author" content="Linkua">
 <meta property="article:tag" content="ARM926EJ-S">
 <meta name="twitter:card" content="summary">
@@ -217,7 +217,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-18 16:29:26" itemprop="dateModified" datetime="2024-05-18T16:29:26+08:00">2024-05-18</time>
+                <time title="Modified: 2024-06-17 21:51:27" itemprop="dateModified" datetime="2024-06-17T21:51:27+08:00">2024-06-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,16 +240,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="F1C100s-F1C200s"><a href="#F1C100s-F1C200s" class="headerlink" title="F1C100s&#x2F;F1C200s"></a>F1C100s&#x2F;F1C200s</h1><ul>
+        <h2 id="F1C100s-F1C200s"><a href="#F1C100s-F1C200s" class="headerlink" title="F1C100s&#x2F;F1C200s"></a>F1C100s&#x2F;F1C200s</h2><ul>
 <li>F1C100s 的内核是 ARM926EJ-S ，ARMv5 架构，有 MMU，没有硬件 FPU，主频默认为 408MHz；</li>
 <li>F1C100s 内置 32MB DDR1 内存；</li>
 <li>F1C200s 是 F1C100s 的兄弟型号，其它特性都相同，内存容量翻倍为 64MB；</li>
 </ul>
-<h4 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Manufacturer    Allwinner</span><br><span class="line">CPU             ARM ARM926EJ-S @ 533MHz</span><br><span class="line">                L1 Cache: 16KB Data, 32KB Instruction</span><br><span class="line">                FPU: None</span><br><span class="line">Memory          32MB Embedded DDR (F1C100s) or 64MB Embedded DDR (F1C200s)</span><br><span class="line">GPU              Custom 2D-only</span><br><span class="line">VPU              Unknown</span><br><span class="line">Video            LCD, CVBS</span><br><span class="line">Audio            DAC</span><br><span class="line">Storage          SD/MMC (SD v2.0, eMMC V4.41)</span><br><span class="line">USB              USB 2.0 OTG</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Manufacturer    Allwinner</span><br><span class="line">CPU             ARM ARM926EJ-S @ 533MHz</span><br><span class="line">                L1 Cache: 16KB Data, 32KB Instruction</span><br><span class="line">                FPU: None</span><br><span class="line">Memory          32MB Embedded DDR (F1C100s) or 64MB Embedded DDR (F1C200s)</span><br><span class="line">GPU              Custom 2D-only</span><br><span class="line">VPU              Unknown</span><br><span class="line">Video            LCD, CVBS</span><br><span class="line">Audio            DAC</span><br><span class="line">Storage          SD/MMC (SD v2.0, eMMC V4.41)</span><br><span class="line">USB              USB 2.0 OTG</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>由于F1C200s的RAM只有64M，无法支持像是Ubuntu-Core这样的文件系统（最低RAM需求512M），所以一般只能用buildroot来生成简单的文件系统，或者裸机开发。</p>
 <span id="more"></span>
 
-<h4 id="功能框图"><a href="#功能框图" class="headerlink" title="功能框图"></a>功能框图</h4><p><img src="https://aijishu.com/img/bVbJ2K"></p>
-<h4 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h4><p><img src="https://aijishu.com/img/bVbJ2L"></p>
+<h3 id="功能框图"><a href="#功能框图" class="headerlink" title="功能框图"></a>功能框图</h3><p><img src="https://aijishu.com/img/bVbJ2K"></p>
+<h3 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h3><p><img src="https://aijishu.com/img/bVbJ2L"></p>
 <h3 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h3><p>1、上电后, f1c100s 内部 BROM (芯片内置，无法擦除) 启动；<br>2、首先检查 SD0 有没有插卡, 如果有插卡就读卡 8k 偏移数据，是否是合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>3、检测 SPI0 NOR FLASH(W25QXXX, MX25LXXX) 是否存在, 是否有合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>4、检测 SPI0 NAND FLASH 是否存在, 是否有合法的启动数据, 如果是 BROM 引导结束, 否则进入下一步；<br>5、因为找不到任何可以引导的介质， 系统进入 usb fel 模式， 可以用 USB 烧录了。<br>对于 F1C100s 而言启动时寻找用户程序的位置顺序如下：</p>
 <ul>
 <li>SDC0 接口（PF0~PF5）上的 SD（TF）卡；</li>
@@ -269,10 +271,193 @@
 <p>Zadig USB 是一个开源的 USB 驱动程序安装工具，它允许用户更改 USB 设备的驱动程序。这个工具通常用于 Windows 操作系统，用于安装 WinUSB、libusb、usbser 等驱动程序。</p>
 <p>开发板进入烧写模式</p>
 <p>短路 V3S（F1C100s&#x2F;F1C200s&#x2F;V3s）板子的 spi flash 1,4 或 1,2 脚, 上电（通过 USB 线进入接入电脑）电脑检测到新的 usb 烧写设备。</p>
-<h3 id="fel-模式"><a href="#fel-模式" class="headerlink" title="fel 模式"></a>fel 模式</h3><p>上文中可以了解到 F1C100s 要是启动外部程序均失败的话就会进入 FEL 模式，用户可以通过 USB 和芯片进行交互 。在 FEL 模式你可以直接运行 u-boot 和 linux 等，也可以将数据写入 spiflash 中（可以用作烧录固件到设备中）。</p>
-<p>FEL 模式其实也就是 BROM 上的一段程序，可以在 u-boot 命令行中使用 go 0xffff0020 跳转进入。另外也可以通过在 SD（TF）卡写入下面数据来通过 SD（TF）卡启动跳转：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># sdX 为SD（TF）卡，使用 sudo fdisk -l 查看</span><br><span class="line"># 如果有自动挂载的分区则逐条使用 sudo umount /dev/sdXn 进行卸载</span><br><span class="line">wget https://github.com/linux-sunxi/sunxi-tools/raw/master/bin/fel-sdboot.sunxi</span><br><span class="line">sudo dd if=fel-sdboot.sunxi of=/dev/sdX bs=1024 seek=8</span><br></pre></td></tr></table></figure>
-<h2 id="H3-四核Cortex-A7-32bit"><a href="#H3-四核Cortex-A7-32bit" class="headerlink" title="H3 四核Cortex-A7 32bit"></a>H3 四核Cortex-A7 32bit</h2><p><a target="_blank" rel="noopener" href="https://www.armbian.com/nanopi-neo/">https://www.armbian.com/nanopi-neo/</a><br>镜像<br><a target="_blank" rel="noopener" href="https://github.com/armbian/community/releases/download/24.5.0-trunk.306/Armbian_community_24.5.0-trunk.306_Nanopineo_jammy_current_6.6.23.img.xz">https://github.com/armbian/community/releases/download/24.5.0-trunk.306/Armbian_community_24.5.0-trunk.306_Nanopineo_jammy_current_6.6.23.img.xz</a> root 1234</p>
+<h2 id="编译三大件"><a href="#编译三大件" class="headerlink" title="编译三大件"></a>编译三大件</h2><p>构建 TF 卡系统分区<br>需要在 TF 卡上构建两个分区</p>
+<ol>
+<li>分区 1 用于存放系统启动和内核相关文件，格式化为 FAT，一般只需要分配 32MiB 空间</li>
+</ol>
+<ul>
+<li>boot.scr (指引 u-boot 加载内核的文件)</li>
+<li>zImage (系统内核)</li>
+<li>suniv-f1c100s-licheepi-nano.dtb (设备树文件)</li>
+</ul>
+<ol start="2">
+<li>分区 2 用于存放根文件系统，格式化为 ext4 格式，分配所有剩余的空间</li>
+</ol>
+<h3 id="uboot"><a href="#uboot" class="headerlink" title="uboot"></a>uboot</h3><h4 id="uboot-分区配置"><a href="#uboot-分区配置" class="headerlink" title="uboot 分区配置"></a>uboot 分区配置</h4><p>2.3 uboot图形界面配置</p>
+<p>2.3.1使用make menuconfig命令进行图形界面配置</p>
+<p>ubootEnable boot arguments 选项上点击空格，弹出Boot arguments选项，选中回车输入以下内容后回车保存。用来配置串口，等待5秒，文件系统挂载盘符  </p>
+<p>console&#x3D;tty1 console&#x3D;ttyS0,115200 panic&#x3D;5 rootwait root&#x3D;&#x2F;dev&#x2F;mmcblk0p2 earlyprintk rw</p>
+<p>setenv bootargs “console&#x3D;tty1 console&#x3D;ttyS0,115200 panic&#x3D;5 rootwait root&#x3D;&#x2F;dev&#x2F;mmcblk0p2 earlyprintk rw”  使用uboot 命令</p>
+<p>2.3.2同样的操作输入bootcmd的值，输入完成后如下图所示。</p>
+<p>load mmc 0:1 0x80008000 zImage;load mmc 0:1 0x80c08000 suniv-f1c100s-licheepi-nano.dtb;bootz 0x80008000 - 0x80c08000;</p>
+<p>setenv bootcmd “load mmc 0:1 0x80008000 zImage;load mmc 0:1 0x80c08000 suniv-f1c100s-licheepi-nano.dtb;bootz 0x80008000 -x80c08000;” 在uboot下 使用 命令添加</p>
+<p>如果移植在片上flash ，使用如下：bootargs&#x3D;console&#x3D;ttyS0,115200 panic&#x3D;5 rootwait root&#x3D;&#x2F;dev&#x2F;mtdblock3 rw rootfstype&#x3D;jffs2</p>
+<p>bootcmd&#x3D;sf probe 0 50000000; sf read 0x80C00000 0x100000 0x4000; sf read 0x80008000 0x110000 0x400000; bootz 0x80008000 - 0x80C00000 </p>
+<h4 id="boot-scr"><a href="#boot-scr" class="headerlink" title="boot.scr"></a>boot.scr</h4><p>提前打开 nano 板子 u-boot 的输出命令行对应的串口，在板子上电时按 enter 键进入 u-boot 命令行，然后输入printenv指令查看环境变量信息<br><strong>在uboot环境变量里面需要设置内核和设备树的加载地址，使用boot.scr可以直接传递这些参数。</strong></p>
+<ul>
+<li>u_boot启动后，在倒计时结束后按照默认参数启动内核，默认参数其实是通过boot.scr向u-boot传参数的.</li>
+<li>boot.scr是由boot.cmd使用mkimage工具生成的。</li>
+<li>mkimage工具在uboot&#x2F;tools文件夹下</li>
+<li>boot.scr放在TF卡第一分区。</li>
+</ul>
+<p>编译 u-boot 时获取的 u-boot 源码吗，在其下的 tools 目录中有一个 mkimage 工具可以用于生成 boot.scr，为了生成 boot.scr，首先需要编写 boot.cmd 脚本用来指导 mkimage 进行生成,boot.cmd 文件内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setenv bootargs console=tty0 console=ttyS0,115200 panic=5 rootwait root=/dev/mmcblk0p2 rw </span><br><span class="line">load mmc 0:1 0x80C00000 suniv-f1c100s-licheepi-nano.dtb</span><br><span class="line">load mmc 0:1 0x80008000 zImage</span><br><span class="line">bootz 0x80008000 - 0x80C00000</span><br></pre></td></tr></table></figure>
+<p>进入 mkimage 所在目录，然后执行如下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkimage -C none -A arm -T script -d</span><br></pre></td></tr></table></figure>
+
+<h4 id="buildroot-uboot"><a href="#buildroot-uboot" class="headerlink" title="buildroot uboot"></a>buildroot uboot</h4><ol>
+<li><p>make ARCH&#x3D;arm licheepi_nano_defconfig</p>
+</li>
+<li><p>make ARCH&#x3D;arm CROSS_COMPILE&#x3D;arm-linux-gnueabi- -j4</p>
+</li>
+</ol>
+<p>buildroot fragment</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CONFIG_USE_BOOTARGS=y</span><br><span class="line">CONFIG_BOOTARGS=&quot;console=tty0 console=ttyS0,115200 panic=5 rootwait root=/dev/mtdblock3 rw rootfstype=jffs2 mtdparts=spi0.0:512k(uboot)ro,64k(dtb),5M(kernel)ro,-(rootfs)&quot;</span><br><span class="line">CONFIG_BOOTCOMMAND=&quot;sf probe 0 50000000; sf read 0x80C00000 0x80000 0x4000; sf read 0x80008000 0x90000 0x500000; bootz 0x80008000 - 0x80C00000&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><ol>
+<li><p>make ARCH&#x3D;arm CROSS_COMPILE&#x3D;arm-linux-gnueabi- sunxi_defconfig </p>
+</li>
+<li><p>make ARCH&#x3D;arm CROSS_COMPILE&#x3D;arm-linux-gnueabi- -j4</p>
+</li>
+</ol>
+<p>这时到 linux 源码目录下的 arch&#x2F;arm&#x2F;boot&#x2F;目录中可以找到内核镜像 zImage，将其拷贝到 TF 卡的 FAT 第一分区</p>
+<ol>
+<li>make ARCH&#x3D;arm CROSS_COMPILE&#x3D;arm-buildroot-linux-gnueabi- -j4</li>
+</ol>
+<h4 id="dtb"><a href="#dtb" class="headerlink" title="dtb"></a>dtb</h4><p>荔枝派 Nano 对应的 dts 文件为 Linux 源码主目录下的 arch&#x2F;arm&#x2F;boot&#x2F;dts&#x2F;suniv-f1c100s-licheepi-nano.dts</p>
+<p>进入 Linux 源码的主目录，之后执行以下指令编译 dtb 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- dtbs -j4</span><br></pre></td></tr></table></figure>
+<p>编译成功后，在 Linux 源码的主目录的 arch&#x2F;arm&#x2F;boot&#x2F;dts&#x2F;下可以找到 suniv-f1c100s-licheepi-nano.dtb 文件（这个文件的文件名和前面生成 boot.scr 时在 boot.cmd 中设置的文件名一致），将其复制到 TF 卡的 FAT 第一分区。</p>
+<h4 id="linux-diff-between-spi-flash-and-sd-card"><a href="#linux-diff-between-spi-flash-and-sd-card" class="headerlink" title="linux diff between spi-flash and sd card"></a>linux diff between spi-flash and sd card</h4><ul>
+<li>内核配置修改<ul>
+<li>支持jffs2文件系统 <ul>
+<li>Miscellaneous filesystems  —&gt;</li>
+<li>Journalling Flash File System v2 (JFFS2) support</li>
+</ul>
+</li>
+<li>支持MTD设备<ul>
+<li>Memory Technology Device (MTD) support  —&gt;</li>
+<li>Caching block device access to MTD devices</li>
+</ul>
+</li>
+<li>添加flash型号支持<ul>
+<li>修改源码下的 .&#x2F;drivers&#x2F;mtd&#x2F;spi-nor&#x2F;spi-nor.c</li>
+<li>如果是默认的w25q128，则需要将后面的SECT_4K改为0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>linux内核修改dts设备树文件<ul>
+<li>SPI Flash型号是xt25f128b, 官方默认是w25f128，要根据自己板上的型号修改</li>
+</ul>
+</li>
+</ul>
+<h3 id="rootfs"><a href="#rootfs" class="headerlink" title="rootfs"></a>rootfs</h3><p>配置Buildroot<br>1）进入解压后的文件目录：cd buildroot-2021.02.6<br>2）使用命令：make menuconfig</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Target options  ---&gt; </span><br><span class="line">	Target Architecture (ARM (little endian))  ---&gt;  </span><br><span class="line">	Target Binary Format (ELF)  ---&gt;</span><br><span class="line">	Target Architecture Variant (arm926t)  ---&gt;</span><br><span class="line"></span><br><span class="line">Toolchain  ---&gt; </span><br><span class="line">	C library (musl)  ---&gt;</span><br><span class="line"></span><br><span class="line">System configuration  ---&gt;</span><br><span class="line">	[*] Enable root login with password</span><br><span class="line">	(licheepi) Root password </span><br><span class="line">	</span><br><span class="line">	[*] Run a getty (login prompt) after boot  ---&gt; </span><br><span class="line">	[*] remount root filesystem read-write during boot</span><br><span class="line"></span><br><span class="line">	[*] Install timezone info</span><br><span class="line">	(asia) timezone list</span><br><span class="line">	(Asia/Shanghai) default local time </span><br></pre></td></tr></table></figure>
+<h4 id="buildroot-all"><a href="#buildroot-all" class="headerlink" title="buildroot all"></a>buildroot all</h4><ol>
+<li><p>make ARCH&#x3D;arm sipeed_licheepi_nano_defconfig</p>
+</li>
+<li><p>make	-j4</p>
+</li>
+</ol>
+<p>若编译时，buildroot 下载软件包速度太慢，请下载 dl.zip ，将其中的软件包解压至 buildroot 的 dl 下目录（官方文档的解决方法）；</p>
+<p>单独配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ make linux-menuconfig</span><br><span class="line">$ make linux -j4</span><br><span class="line"></span><br><span class="line">$ make uboot-menuconfig</span><br><span class="line">$ make uboot -j4</span><br><span class="line"></span><br><span class="line">$ make busybox-menuconfig</span><br><span class="line">$ make busybox -j4</span><br><span class="line"></span><br><span class="line">$ make uclibc-menuconfig</span><br><span class="line">$ make ublibc -j4</span><br></pre></td></tr></table></figure>
+
+<p>buildroot 编译工具链<br>&#x2F;home&#x2F;link&#x2F;Code&#x2F;licheepi&#x2F;buildroot-2024.02.2&#x2F;output&#x2F;host&#x2F;usr&#x2F;bin</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><h3 id="write-boot"><a href="#write-boot" class="headerlink" title="write boot"></a>write boot</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dd if=/dev/zero of=/dev/sdd bs=1024 seek=8 count=512</span><br><span class="line">sudo dd if=output/images/u-boot-sunxi-with-spl.bin of=/dev/sdd bs=1024 seek=8</span><br></pre></td></tr></table></figure>
+<h3 id="write-p1"><a href="#write-p1" class="headerlink" title="write p1"></a>write p1</h3><p>sudo mount &#x2F;dev&#x2F;sdd mnt<br>sudo cp<br>sudo umount &#x2F;dev&#x2F;sdd</p>
+<h3 id="write-p2"><a href="#write-p2" class="headerlink" title="write p2"></a>write p2</h3><p>sudo tar xzvf $_ROOTFS_FILE -C mnt&#x2F; </p>
+<h3 id="Reset-to-FEL-mode"><a href="#Reset-to-FEL-mode" class="headerlink" title="Reset to FEL mode"></a>Reset to FEL mode</h3><ol>
+<li>在 U-Boot shell运行:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; sf probe 0</span><br><span class="line">=&gt; sf erase 0 0x10000</span><br><span class="line">=&gt; reset</span><br></pre></td></tr></table></figure></li>
+<li>或者短路 spi-flash 的 1和4引脚</li>
+</ol>
+<h3 id="使用-sunxi-tools-下载"><a href="#使用-sunxi-tools-下载" class="headerlink" title="使用 sunxi-tools 下载"></a>使用 sunxi-tools 下载</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ../sunxi-tools/sunxi-fel -p spiflash-write 0 output/images/flash.bin</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-DD-命令下载到-SD-卡"><a href="#使用-DD-命令下载到-SD-卡" class="headerlink" title="使用 DD 命令下载到 SD 卡"></a>使用 DD 命令下载到 SD 卡</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo dd if=output/images/sdcard.img of=/dev/sdX</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h2><p>Linux 的 2 种显示方案</p>
+<p>包括：</p>
+<pre><code>FBDEV: Framebuffer Device
+
+DRM/KMS: Direct Rendering Manager Kernel Mode Setting
+</code></pre>
+<p>它们有什么区别？</p>
+<pre><code>FBDEV：
+    传统的显示框架;
+    简单，但是只能提供最基础的显示功能;
+    无法满足当前上层应用和底层硬件的显示需求;
+
+DRM/KMS：
+    目前主流的显示方案;
+    为了适应当前日益更新的显示硬件;
+    软件上能支持更多高级的控制和特性;
+</code></pre>
+<h3 id="LCD-DRAM"><a href="#LCD-DRAM" class="headerlink" title="LCD DRAM"></a>LCD DRAM</h3><p> 可以将Linux下DRM系统分为3部分：</p>
+<pre><code>DRM相关驱动，可以是LCDC驱动、Panel驱动、GPU驱动。
+DRM Core，负责给底层驱动提供功能，对用户空间导出各种接口。
+libdrm等上层应用，负责GUI框架、3D调用、调用底层显示控制和GPU功能等等。
+</code></pre>
+<h4 id="DRM-config"><a href="#DRM-config" class="headerlink" title="DRM config"></a>DRM config</h4><ul>
+<li>drv (DRM lcd quirk)<ul>
+<li>linux-nano-5.2&#x2F;drivers&#x2F;gpu&#x2F;drm&#x2F;sun4i&#x2F;sun4i_backend.c</li>
+<li>linux-nano-5.2-tf&#x2F;drivers&#x2F;gpu&#x2F;drm&#x2F;sun4i&#x2F;sun4i_drv.c</li>
+<li>linux-nano-5.2-tf&#x2F;drivers&#x2F;gpu&#x2F;drm&#x2F;sun4i&#x2F;sun4i_tcon.c</li>
+</ul>
+</li>
+</ul>
+<p>CONFIG_DRM_SUN4I&#x3D;y<br>CONFIG_DRM_SUN4I_HDMI&#x3D;y<br>CONFIG_DRM_SUN4I_BACKEND&#x3D;y</p>
+<p>在 drivers&#x2F;gpu&#x2F;drm&#x2F;panel&#x2F;panel-simple.c<br>里有很多屏幕型号，选取合适的屏幕型号即可</p>
+<p>开启DRM还需要使能以下内核</p>
+<pre><code>support for simple panels
+CMA
+DMA_CMA
+</code></pre>
+<p>然后需要失能（注释）掉原来的simplefb在dts中的节点</p>
+<h4 id="uboot-LCD"><a href="#uboot-LCD" class="headerlink" title="uboot LCD"></a>uboot LCD</h4><p>选中Enable graphical uboot console on HDMI, LCD or VGA</p>
+<p>然后在 LCD panel timing details ：</p>
+<p>x:480,y:272,depth:18,pclk_khz:10000,le:42,ri:8,up:11,lo:4,hs:1,vs:1,sync:3,vmode:0</p>
+<p>再将LCD panel backlight pwm pin设置为PE6</p>
+<h4 id="dev-fb0"><a href="#dev-fb0" class="headerlink" title="&#x2F;dev&#x2F;fb0"></a>&#x2F;dev&#x2F;fb0</h4><ul>
+<li>Enable legacy fbdev support for your modesetting driver</li>
+</ul>
+<p>用cat &#x2F;dev&#x2F;urandom &gt; &#x2F;dev&#x2F;fb0这个命令，屏幕也没有花屏；</p>
+<h4 id="config"><a href="#config" class="headerlink" title="config"></a>config</h4><p>DRM&#x2F;LCD配置</p>
+<p> DRM相关的设置有：DRM使能、显示控制器驱动、背光驱动、Framebuffer驱动等。<br>复制代码</p>
+<p>Device Drivers<br>　　Graphics support<br>　　　　-&gt;Direct Rendering Manager (XFree86 4.1.0 and higher DRI support)<br>　　　　　　-&gt;Insert extra checks and debug info into the DRM range managers<br>　　　　　　-&gt;Enable legacy fbdev support for your modesetting driver–支持基于DRM的模拟fbdev设备。<br>　　　　　　　　-&gt;Overallocation of the fbdev buffer<br>　　　　-&gt;DRM Support for STMicroelectronics SoC Series–STM32 LCDC驱动。<br>　　　　　　-&gt;STMicroelectronics specific extensions for Synopsys MIPI DSI<br>　　　　-&gt;Display Panels<br>　　　　　　-&gt;support for simple panels–包含一个regulator和gpio上电，以及一个backlight的DRM panel模板驱动。<br>　　　　-&gt;Display Interface Bridges  —&gt;　　　　-&gt;Frame buffer Devices–Framebuffer驱动。<br>　　　　　　-&gt;Support for frame buffer devices<br>　　　　　　　　-&gt;ARM PrimeCell PL110 support<br>　　　　-&gt;Backlight &amp; LCD device support<br>　　　　　　-&gt;Lowlevel Backlight controls–背光驱动。<br>　　　　　　　　-&gt;Generic PWM based Backlight Driver<br>　　　　-&gt;Console display driver support–基于Framebuffer的console。</p>
+<h3 id="tslib"><a href="#tslib" class="headerlink" title="tslib"></a>tslib</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&amp;i2c0 &#123;</span><br><span class="line">    pinctrl-0 = &lt;&amp;i2c0_pins&gt;;</span><br><span class="line">    pinctrl-names = &quot;default&quot;;</span><br><span class="line">    status = &quot;okay&quot;;</span><br><span class="line"></span><br><span class="line">    rtp@48 &#123;</span><br><span class="line">        compatible = &quot;ti,tsc2007&quot;;</span><br><span class="line">        reg = &lt;0x48&gt;;</span><br><span class="line">        interrupt-parent = &lt;&amp;pio&gt;;</span><br><span class="line">        interrupts = &lt;4 3 IRQ_TYPE_EDGE_FALLING&gt;; /* (PE3) */</span><br><span class="line">	gpios = &lt;&amp;pio 4 3 GPIO_ACTIVE_LOW&gt;;</span><br><span class="line">	pendown-gpio = &lt;&amp;pio 4 3 GPIO_ACTIVE_LOW&gt;;</span><br><span class="line">	ti,x-plate-ohms = &lt;660&gt;;</span><br><span class="line">	wakeup-source;</span><br><span class="line">	status = &quot;okay&quot;;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>测试命令 <code>i2cdetect -y 0</code></p>
+<h3 id="esp8089"><a href="#esp8089" class="headerlink" title="esp8089"></a>esp8089</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd linux</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-buildroot-linux-gnueabi- -j4</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-buildroot-linux-gnueabi- -j4 INSTALL_MOD_PATH=out modules</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-buildroot-linux-gnueabi- -j4 INSTALL_MOD_PATH=out modules_install</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-buildroot-linux-gnueabi- -j4 M=../esp8089 CONFIG_ESP8089=m INSTALL_MOD_PATH=out modules</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-buildroot-linux-gnueabi- -j4 M=../esp8089 CONFIG_ESP8089=m INSTALL_MOD_PATH=out modules_install</span><br></pre></td></tr></table></figure>
+<p>Using:</p>
+<p>Must load mac80211.ko first if not baked in.</p>
+<p>sudo modprobe esp8089.ko</p>
+<p>If you get a wlan interface, but scanning shows no networks try using:</p>
+<p>sudo modprobe esp8089.ko config&#x3D;crystal_26M_en&#x3D;1</p>
+<h4 id="WLAN"><a href="#WLAN" class="headerlink" title="WLAN"></a>WLAN</h4><p>vi &#x2F;etc&#x2F;wpa_supplicant.conf</p>
+<p>network&#x3D;{<br>  ssid&#x3D;”wifi名称”<br>  psk&#x3D;”wifi密码”<br>}</p>
+<p>然后执行如下指令进行wifi连接：</p>
+<p>wpa_supplicant -B -d -i wlan0 -c &#x2F;etc&#x2F;wpa_supplicant.conf</p>
+<h1 id="执行udhcpc-i-wlan0命令，获取IP地址：你这个可能是挂载命令的问题，你的晶振是不是24M的，-你试下这个命令-modprobe-esp8089-ko-config-crystal-26M-en-2"><a href="#执行udhcpc-i-wlan0命令，获取IP地址：你这个可能是挂载命令的问题，你的晶振是不是24M的，-你试下这个命令-modprobe-esp8089-ko-config-crystal-26M-en-2" class="headerlink" title="执行udhcpc -i wlan0命令，获取IP地址：你这个可能是挂载命令的问题，你的晶振是不是24M的， 你试下这个命令 modprobe esp8089.ko config&#x3D;crystal_26M_en&#x3D;2"></a>执行udhcpc -i wlan0命令，获取IP地址：<br>你这个可能是挂载命令的问题，你的晶振是不是24M的， 你试下这个命令 modprobe esp8089.ko config&#x3D;crystal_26M_en&#x3D;2</h1><p>modprobe esp8089.ko config&#x3D;crystal_26M_en&#x3D;1<br>ifconfig wlan0 up<br>wpa_supplicant -B -d -i wlan0 -c &#x2F;etc&#x2F;wpa_supplicant.conf<br>udhcpc -i wlan0<br>这里我只记录连接路由的设置步骤：<br>1.配置&#x2F;etc&#x2F;wpa_supplicant.conf<br>2.执行wpa_supplicant -i wlan0 -D wext -c &#x2F;etc&#x2F;wpa_supplicant.conf -B<br>3.udhcpc -i wlan0</p>
+<h3 id="USB-Ethernet"><a href="#USB-Ethernet" class="headerlink" title="USB Ethernet"></a>USB Ethernet</h3><p>打开 USB Gadget RNDIS<br>修改内核</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Location:</span><br><span class="line">-&gt; Device Drivers</span><br><span class="line">	-&gt; USB support (USB_SUPPORT [=y])</span><br><span class="line">		-&gt; USB Gadget Support (USB_GADGET [=y])</span><br><span class="line">			&lt;*&gt;   USB Gadget precomposed configurations (Ethernet Gadget (with CDC Ethernet support))</span><br></pre></td></tr></table></figure>
+<p>在内核选项中勾选上Ethernet Gadget, 就可以让Zero与PC通过usb共享网络</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">modprobe g_ether</span><br><span class="line"></span><br><span class="line">从图中,我们可以看到PC主机的局域网信息为</span><br><span class="line"></span><br><span class="line">    IP地址：172.19.0.2    </span><br><span class="line">    网关：172.19.0.1</span><br><span class="line"></span><br><span class="line">那么我们给开发板给分配一个IP地址，如： 172.19.0.250 执行命令如下：</span><br><span class="line"></span><br><span class="line">ifconfig usb0 172.19.0.250 netmask 255.255.0.0;route add default gw 172.19.0.1</span><br><span class="line"></span><br><span class="line">自动加载 g_ether</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="网卡配置"><a href="#网卡配置" class="headerlink" title="网卡配置"></a>网卡配置</h4><p>配置zero网卡<br>on zero</p>
+<p>打开usb0网卡<br>ifconfig usb0 up</p>
+<p>设置usb0 ip<br>ifconfig usb0 192.168.2.100 netmask 255.255.255.0</p>
+<p>由于usb网卡默认关闭，所以建议将该文件写入开机脚本，上电即可使用ssh连接。<br>修改&#x2F;etc&#x2F;init.d&#x2F;S40network</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">start)</span><br><span class="line">      printf &quot;Starting network: &quot;</span><br><span class="line">      /sbin/ifup -a</span><br><span class="line">      /sbin/ifconfig usb0 up</span><br><span class="line">      /sbin/ifconfig usb0 192.168.2.100 netmask 255.255.255.0</span><br><span class="line">      [ $? = 0 ] &amp;&amp; echo &quot;OK&quot; || echo &quot;FAIL&quot;</span><br><span class="line">      ;;</span><br><span class="line">stop)</span><br><span class="line">      printf &quot;Stopping network: &quot;</span><br><span class="line">      /sbin/ifdown -a</span><br><span class="line">      /sbin/ifconfig usb0 down              </span><br><span class="line">      [ $? = 0 ] &amp;&amp; echo &quot;OK&quot; || echo &quot;FAIL&quot;</span><br><span class="line">      ;;   </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">on pc(linux)</span><br><span class="line"></span><br><span class="line">ifconfig -a</span><br><span class="line"></span><br><span class="line">usb0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt; mtu 1500</span><br><span class="line"></span><br><span class="line">如果出现：</span><br><span class="line"></span><br><span class="line">enx1288194be3c3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt; mtu 1500</span><br><span class="line"></span><br><span class="line">可以尝试重启ubuntu，然后就可以正确识别。如果还不行，也可以以enx1288194be3c3代替usb0继续执行后面操作。</span><br><span class="line">为usb网卡分配ip</span><br><span class="line"></span><br><span class="line">ifconfig usb0 192.168.2.1 netmask 255.255.255.0</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，此时Licheepi Zero只能访问主机ip地址，所以是无法正常上网的。</p>
+<p>如果需要移动文件等操作，可以使用scp，或者在文件管理器中添加s<a href="ftp://192.168.2.100/">ftp://192.168.2.100</a> 以文件夹形式打开Licheepi Zero的磁盘。</p>
+<h4 id="OpenSSH"><a href="#OpenSSH" class="headerlink" title="OpenSSH"></a>OpenSSH</h4><p>有时候，SSH服务器的配置可能导致登录失败。确保SSH服务器配置正确，并且允许使用密码和公钥进行身份验证。您可以检查SSH服务器的配置文件（通常是&#x2F;etc&#x2F;ssh&#x2F;sshd_config）并确保以下3个选项被如下正确设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PubkeyAuthentication yes</span><br><span class="line"></span><br><span class="line"># To disable tunneled clear text passwords, change to no here!</span><br><span class="line">PasswordAuthentication yes</span><br><span class="line"></span><br><span class="line"># Change to yes to enable challenge-response passwords (beware issues with</span><br><span class="line"># some PAM modules and threads)</span><br><span class="line">KbdInteractiveAuthentication yes</span><br></pre></td></tr></table></figure>
+
+<h2 id="SPI-FLASH"><a href="#SPI-FLASH" class="headerlink" title="SPI FLASH"></a>SPI FLASH</h2><ul>
+<li>xt25f128b with 256bytes 4KiB 16Mib</li>
+</ul>
 
     </div>
 
@@ -296,8 +481,8 @@
       <i class="fa fa-chevron-left"></i> 装机
     </a></div>
       <div class="post-nav-item">
-    <a href="/2024/03/23/onenet/" rel="next" title="OneNET">
-      OneNET <i class="fa fa-chevron-right"></i>
+    <a href="/2024/03/09/f1c200s%E5%BC%80%E5%8F%91/" rel="next" title="F1C100s/F1C200s 开发">
+      F1C100s/F1C200s 开发 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -357,7 +542,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#F1C100s-F1C200s"><span class="nav-text">F1C100s&#x2F;F1C200s</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E6%A1%86%E5%9B%BE"><span class="nav-text">功能框图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="nav-text">典型应用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">启动过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sunxi-tools"><span class="nav-text">sunxi-tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fel-%E6%A8%A1%E5%BC%8F"><span class="nav-text">fel 模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H3-%E5%9B%9B%E6%A0%B8Cortex-A7-32bit"><span class="nav-text">H3 四核Cortex-A7 32bit</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#F1C100s-F1C200s"><span class="nav-text">F1C100s&#x2F;F1C200s</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E6%A1%86%E5%9B%BE"><span class="nav-text">功能框图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="nav-text">典型应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">启动过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sunxi-tools"><span class="nav-text">sunxi-tools</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E4%B8%89%E5%A4%A7%E4%BB%B6"><span class="nav-text">编译三大件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uboot"><span class="nav-text">uboot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#uboot-%E5%88%86%E5%8C%BA%E9%85%8D%E7%BD%AE"><span class="nav-text">uboot 分区配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boot-scr"><span class="nav-text">boot.scr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buildroot-uboot"><span class="nav-text">buildroot uboot</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux"><span class="nav-text">linux</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dtb"><span class="nav-text">dtb</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-diff-between-spi-flash-and-sd-card"><span class="nav-text">linux diff between spi-flash and sd card</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rootfs"><span class="nav-text">rootfs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#buildroot-all"><span class="nav-text">buildroot all</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-text">下载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#write-boot"><span class="nav-text">write boot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#write-p1"><span class="nav-text">write p1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#write-p2"><span class="nav-text">write p2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reset-to-FEL-mode"><span class="nav-text">Reset to FEL mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-sunxi-tools-%E4%B8%8B%E8%BD%BD"><span class="nav-text">使用 sunxi-tools 下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-DD-%E5%91%BD%E4%BB%A4%E4%B8%8B%E8%BD%BD%E5%88%B0-SD-%E5%8D%A1"><span class="nav-text">使用 DD 命令下载到 SD 卡</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA"><span class="nav-text">显示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LCD-DRAM"><span class="nav-text">LCD DRAM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DRM-config"><span class="nav-text">DRM config</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uboot-LCD"><span class="nav-text">uboot LCD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dev-fb0"><span class="nav-text">&#x2F;dev&#x2F;fb0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#config"><span class="nav-text">config</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tslib"><span class="nav-text">tslib</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#esp8089"><span class="nav-text">esp8089</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WLAN"><span class="nav-text">WLAN</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cudhcpc-i-wlan0%E5%91%BD%E4%BB%A4%EF%BC%8C%E8%8E%B7%E5%8F%96IP%E5%9C%B0%E5%9D%80%EF%BC%9A%E4%BD%A0%E8%BF%99%E4%B8%AA%E5%8F%AF%E8%83%BD%E6%98%AF%E6%8C%82%E8%BD%BD%E5%91%BD%E4%BB%A4%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E4%BD%A0%E7%9A%84%E6%99%B6%E6%8C%AF%E6%98%AF%E4%B8%8D%E6%98%AF24M%E7%9A%84%EF%BC%8C-%E4%BD%A0%E8%AF%95%E4%B8%8B%E8%BF%99%E4%B8%AA%E5%91%BD%E4%BB%A4-modprobe-esp8089-ko-config-crystal-26M-en-2"><span class="nav-text">执行udhcpc -i wlan0命令，获取IP地址：你这个可能是挂载命令的问题，你的晶振是不是24M的， 你试下这个命令 modprobe esp8089.ko config&#x3D;crystal_26M_en&#x3D;2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#USB-Ethernet"><span class="nav-text">USB Ethernet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E5%8D%A1%E9%85%8D%E7%BD%AE"><span class="nav-text">网卡配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenSSH"><span class="nav-text">OpenSSH</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPI-FLASH"><span class="nav-text">SPI FLASH</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -371,16 +556,16 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
